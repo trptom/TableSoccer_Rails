@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  team_home: 1
+  team_away: 1
+  league: 
+  season: 1
+  start_date: 2013-03-13 15:07:46
+  place: MyString
+
+two:
+  team_home: 1
+  team_away: 1
+  league: 
+  season: 1
+  start_date: 2013-03-13 15:07:46
+  place: MyString

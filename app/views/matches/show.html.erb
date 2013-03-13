@@ -1,0 +1,37 @@
+<div class="admin matches show">
+  <p id="notice"><%= notice %></p>
+
+  <p>
+    <b>Team home:</b>
+    <%= @match.team_home %>
+  </p>
+
+  <p>
+    <b>Team away:</b>
+    <%= @match.team_away %>
+  </p>
+
+  <p>
+    <b>League:</b>
+    <%= @match.league %>
+  </p>
+
+  <p>
+    <b>Season:</b>
+    <%= @match.season %>
+  </p>
+
+  <p>
+    <b>Start date:</b>
+    <%= @match.start_date %>
+  </p>
+
+  <p>
+    <b>Place:</b>
+    <%= @match.place %>
+  </p>
+
+
+  <%= link_to 'Edit', edit_match_path(@match) %> |
+  <%= link_to 'Back', matches_path %>
+</div>

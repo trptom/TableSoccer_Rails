@@ -1,0 +1,32 @@
+<div class="admin leagues show">
+  <p id="notice"><%= notice %></p>
+
+  <p>
+    <b>Name:</b>
+    <%= @league.name %>
+  </p>
+
+  <p>
+    <b>Short name:</b>
+    <%= @league.short_name %>
+  </p>
+
+  <p>
+    <b>Shortcut:</b>
+    <%= @league.shortcut %>
+  </p>
+
+  <p>
+    <b>Level:</b>
+    <%= @league.level %>
+  </p>
+
+  <p>
+    <b>Division:</b>
+    <%= @league.division %>
+  </p>
+
+
+  <%= link_to 'Edit', edit_league_path(@league) %> |
+  <%= link_to 'Back', leagues_path %>
+</div>

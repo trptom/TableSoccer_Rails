@@ -1,0 +1,32 @@
+<div class="admin games show">
+  <p id="notice"><%= notice %></p>
+
+  <p>
+    <b>Match:</b>
+    <%= @game.match %>
+  </p>
+
+  <p>
+    <b>Game number:</b>
+    <%= @game.game_number %>
+  </p>
+
+  <p>
+    <b>Game type:</b>
+    <%= @game.game_type %>
+  </p>
+
+  <p>
+    <b>Score home:</b>
+    <%= @game.score_home %>
+  </p>
+
+  <p>
+    <b>Score away:</b>
+    <%= @game.score_away %>
+  </p>
+
+
+  <%= link_to 'Edit', edit_game_path(@game) %> |
+  <%= link_to 'Back', games_path %>
+</div>

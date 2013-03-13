@@ -1,0 +1,31 @@
+<div class="admin players index">
+  <h1>Listing players</h1>
+
+  <table>
+    <tr>
+      <th>First name</th>
+      <th>Second name</th>
+      <th>Nick</th>
+      <th>Team</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+
+  <% @players.each do |player| %>
+    <tr>
+      <td><%= player.first_name %></td>
+      <td><%= player.second_name %></td>
+      <td><%= player.nick %></td>
+      <td><%= player.team %></td>
+      <td><%= link_to 'Show', player %></td>
+      <td><%= link_to 'Edit', edit_player_path(player) %></td>
+      <td><%= link_to 'Destroy', player, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+  </table>
+
+  <br />
+
+  <%= link_to 'New Player', new_player_path %>
+</div>

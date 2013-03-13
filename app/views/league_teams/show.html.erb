@@ -1,0 +1,22 @@
+<div class="admin league-teams show">
+  <p id="notice"><%= notice %></p>
+
+  <p>
+    <b>League:</b>
+    <%= @league_team.league %>
+  </p>
+
+  <p>
+    <b>Team:</b>
+    <%= @league_team.team %>
+  </p>
+
+  <p>
+    <b>Season:</b>
+    <%= @league_team.season %>
+  </p>
+
+
+  <%= link_to 'Edit', edit_league_team_path(@league_team) %> |
+  <%= link_to 'Back', league_teams_path %>
+</div>

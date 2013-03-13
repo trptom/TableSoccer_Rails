@@ -1,0 +1,27 @@
+<div class="admin teams show">
+  <p id="notice"><%= notice %></p>
+
+  <p>
+    <b>Name:</b>
+    <%= @team.name %>
+  </p>
+
+  <p>
+    <b>Short name:</b>
+    <%= @team.short_name %>
+  </p>
+
+  <p>
+    <b>Shortcut:</b>
+    <%= @team.shortcut %>
+  </p>
+
+  <p>
+    <b>Logo:</b>
+    <%= @team.logo %>
+  </p>
+
+
+  <%= link_to 'Edit', edit_team_path(@team) %> |
+  <%= link_to 'Back', teams_path %>
+</div>

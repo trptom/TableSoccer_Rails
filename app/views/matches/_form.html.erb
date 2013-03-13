@@ -1,0 +1,41 @@
+<%= form_for(@match) do |f| %>
+  <% if @match.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@match.errors.count, "error") %> prohibited this match from being saved:</h2>
+
+      <ul>
+      <% @match.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    Domácí<br />
+    <%= f.select :team_home, options_for_select(get_team_options) %>
+  </div>
+  <div class="field">
+    Hosté<br />
+    <%= f.select :team_away, options_for_select(get_team_options) %>
+  </div>
+  <div class="field">
+    Liga<br />
+    <%= f.select :league, options_for_select(get_league_options) %>
+  </div>
+  <div class="field">
+    Sezona<br />
+    <%= f.select :season, 2000..2100 %>
+  </div>
+  <div class="field">
+    Datum a čas začátku<br />
+    <%= f.datetime_select :start_date %>
+  </div>
+  <div class="field">
+    <%= f.label :place %><br />
+    <%= f.text_field :place %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
