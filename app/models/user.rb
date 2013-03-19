@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
 
   belongs_to :player
 
-  attr_accessible :username, :email, :password, :password_confirmation, :player
+  attr_accessible :username, :email, :password, :password_confirmation, :player, :player_id
 
   validates :username,
     :length => { :minimum => 3, :maximum => 255, :message => "špatná délka uživatelského jména (3-255)" },
@@ -17,6 +17,12 @@ class User < ActiveRecord::Base
     :allow_blank => true,
     :allow_nil => true,
   :if => :email
+
+  validates :player_id,
+    :numericality => { :only_integer => true, :greater_than_or_equal_to => 1, :message => "chybný propojený hráč" },
+    :allow_blank => true,
+    :allow_nil => true,
+  :if => :player_id
 
   validates_length_of :password, :minimum => 3, :message => "heslo musí mít alespoň 3 znaky", :if => :password
   validates_confirmation_of :password, :message => "heslo a jeho kontrola se liší", :if => :password

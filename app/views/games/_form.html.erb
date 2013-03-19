@@ -17,19 +17,19 @@
   </div>
   <div class="field">
     Pořadové číslo hry<br />
-    <%= f.select :game_number, 1..11 %>
+    <%= f.select :game_number, 1..11, :selected => @game.game_number %>
   </div>
   <div class="field">
     Typ hry<br />
-    <%= f.select :game_type, options_for_select(get_game_type_options) %>
+    <%= f.select :game_type, options_for_select(get_game_type_options, @game.game_type.to_s) %>
   </div>
   <div class="field">
     Skóre domácích<br />
-    <%= f.select :score_home, options_for_select([["Neuvedeno", nil], 0, 1, 2]) %>
+    <%= f.select :score_home, options_for_select([["Neuvedeno", nil], 0, 1, 2], @game.score_home) %>
   </div>
   <div class="field">
     Skóre hostů<br />
-    <%= f.select :score_away, options_for_select([["Neuvedeno", nil], 0, 1, 2]) %>
+    <%= f.select :score_away, options_for_select([["Neuvedeno", nil], 0, 1, 2], @game.score_away) %>
   </div>
   <div class="actions">
     <%= f.submit %>

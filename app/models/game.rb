@@ -5,7 +5,7 @@ class Game < ActiveRecord::Base
 
   has_many :game_players
 
-  attr_accessible :game_number, :game_type, :score_home, :score_away, :game_players, :match
+  attr_accessible :game_number, :game_type, :score_home, :score_away, :game_players, :match, :match_id
 
   validates :game_number,
     :numericality => { :only_integer => true, :greater_than_or_equal_to => 1, :less_than_or_equal_to  => 11, :message => "neplatné pořadové číslo hry" },
@@ -24,4 +24,8 @@ class Game < ActiveRecord::Base
     :numericality => { :only_integer => true, :greater_than_or_equal_to => 0, :less_than_or_equal_to  => 2, :message => "neplatné skóre hostů" },
     :allow_nil => true,
   :if => :score_away
+
+  validates :match_id,
+    :numericality => { :only_integer => true, :greater_than_or_equal_to => 1, :message => "chybný zápas" },
+  :if => :match_id
 end

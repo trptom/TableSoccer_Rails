@@ -16,6 +16,14 @@ class GamePlayer < ActiveRecord::Base
     :allow_nil => true,
   :if => :team
 
+  validates :game_id,
+    :numericality => { :only_integer => true, :greater_than_or_equal_to => 1, :message => "chybná hra" },
+  :if => :game_id
+
+  validates :player_id,
+    :numericality => { :only_integer => true, :greater_than_or_equal_to => 1, :message => "chybný hráč" },
+  :if => :player_id
+
 #  validates :game,
 #  :if => :game
 

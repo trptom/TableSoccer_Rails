@@ -22,5 +22,9 @@ class Player < ActiveRecord::Base
     :length => { :minimum => 2, :maximum => 50, :message => "špatná délka zkratky (2-50)" },
   :if => :nick
 
+  validates :team_id,
+    :numericality => { :only_integer => true, :greater_than_or_equal_to => 1, :message => "chybný tým" },
+  :if => :team_id
+
   ##############################################################################
 end

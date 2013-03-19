@@ -20,6 +20,14 @@ class Match < ActiveRecord::Base
     :numericality => { :only_integer => true, :greater_than_or_equal_to => 2000, :less_than_or_equal_to  => 2100, :message => "špatná sezona" },
   :if => :season
 
+  validates :team_home_id,
+    :numericality => { :only_integer => true, :greater_than_or_equal_to => 1, :message => "chybný tým domácích" },
+  :if => :team_home_id
+
+  validates :team_away_id,
+    :numericality => { :only_integer => true, :greater_than_or_equal_to => 1, :message => "chybný tým hostí" },
+  :if => :team_away_id
+
   validates :score_home,
     :numericality => { :only_integer => true, :greater_than_or_equal_to => 0, :less_than  => 2, :message => "neplatné skóre domácích" },
     :allow_nil => true,
