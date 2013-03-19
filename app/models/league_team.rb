@@ -17,4 +17,10 @@ class LeagueTeam < ActiveRecord::Base
   validates :team_id,
     :numericality => { :only_integer => true, :greater_than_or_equal_to => 1, :message => "chybný tým" },
   :if => :team_id
+
+  validates :league_id, :presence => { :message => "chybná liga" }
+  validates :league, :associated => { :message => "chybná liga" }
+
+  validates :team_id, :presence => { :message => "chybný tým" }
+  validates :team, :associated => { :message => "chybný tým" }
 end

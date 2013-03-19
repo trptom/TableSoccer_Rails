@@ -18,11 +18,8 @@ class User < ActiveRecord::Base
     :allow_nil => true,
   :if => :email
 
-  validates :player_id,
-    :numericality => { :only_integer => true, :greater_than_or_equal_to => 1, :message => "chybný propojený hráč" },
-    :allow_blank => true,
-    :allow_nil => true,
-  :if => :player_id
+  validates :player_id, :presence => { :message => "chybný propojený hráč" }
+  validates :player, :associated => { :message => "chybný propojený hráč" }
 
   validates_length_of :password, :minimum => 3, :message => "heslo musí mít alespoň 3 znaky", :if => :password
   validates_confirmation_of :password, :message => "heslo a jeho kontrola se liší", :if => :password

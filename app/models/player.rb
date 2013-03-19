@@ -9,12 +9,12 @@ class Player < ActiveRecord::Base
   attr_accessible :first_name, :second_name, :nick, :team, :team_id, :game_players
 
   validates :first_name,
-    :format => { :with => /^(|[a-zA-Z\-]{2,})$/, :message => "chybný formát jména (alespoň 2 znaky)" },
+    :length => { :minimum => 2, :maximum => 50, :message => "chybný formát jména (2-50 znaků)" },
     :allow_blank => true,
   :if => :first_name
 
   validates :second_name,
-    :format => { :with => /^(|[a-zA-Z\-]{2,})$/, :message => "chybný formát příjmení (alespoň 2 znaky)" },
+    :length => { :minimum => 2, :maximum => 50, :message => "chybný formát příjmení (2-50 znaků)" },
     :allow_blank => true,
   :if => :second_name
 
@@ -22,9 +22,8 @@ class Player < ActiveRecord::Base
     :length => { :minimum => 2, :maximum => 50, :message => "špatná délka zkratky (2-50)" },
   :if => :nick
 
-  validates :team_id,
-    :numericality => { :only_integer => true, :greater_than_or_equal_to => 1, :message => "chybný tým" },
-  :if => :team_id
+#  validates :team_id, :presence => { :message => "chybný tým" }
+  validates :team, :associated => { :message => "chybný tým" }
 
   ##############################################################################
 end

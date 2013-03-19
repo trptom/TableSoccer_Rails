@@ -25,7 +25,6 @@ class Game < ActiveRecord::Base
     :allow_nil => true,
   :if => :score_away
 
-  validates :match_id,
-    :numericality => { :only_integer => true, :greater_than_or_equal_to => 1, :message => "chybný zápas" },
-  :if => :match_id
+  validates :match_id, :presence => { :message => "chybný zápas" }
+  validates :match, :associated => { :message => "chybný zápas" }
 end
