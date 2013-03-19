@@ -51,7 +51,7 @@
 
   <div class="footer btn-group">
     <%= current_user ? (link_to 'Editovat', edit_match_path(@match), :class => "btn") + " | " : nil %>
-    <%= current_user ? (link_to 'Přidat zápas', "/matches/"+@match.id.to_s+"/add_game", :class => "btn") + " | " : nil %>
+    <%= current_user ? (link_to 'Přidat hru', "/matches/"+@match.id.to_s+"/add_game", :class => "btn") + " | " : nil %>
     <%= link_to 'Seznam', matches_path, :class => "btn" %>
   </div>
 </div>

@@ -31,6 +31,8 @@
      line-height: 50px;
      text-align: center;
      background-color: #ffffff;
+     font-weight: bold;
+     font-size: 170%;
  }
 
  #content {

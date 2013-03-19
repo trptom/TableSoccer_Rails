@@ -1,16 +1,16 @@
+<% if @user.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+    <ul>
+    <% @user.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <%= form_for(@user) do |f| %>
-  <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
-
-      <ul>
-      <% @user.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
   <div class="field">
      <%= f.label :username %><br />
      <%= f.text_field :username %>
@@ -20,6 +20,16 @@
      <%= f.text_field :email %>
   </div>
   <div class="field">
+     <%= f.label :player_id %><br />
+     <%= f.select :player_id, options_for_select(get_player_options(nil), @user.player_id.to_s) %>
+  </div>
+  <div class="actions">
+    <%= f.submit :value => "Upravit nastavení" %>
+  </div>
+<% end %>
+
+<%= form_for(@user) do |f| %>
+  <div class="field">
      <%= f.label :password %><br />
      <%= f.password_field :password %>
   </div>
@@ -28,6 +38,6 @@
      <%= f.password_field :password_confirmation %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit :value => "Změnit heslo" %>
   </div>
 <% end %>

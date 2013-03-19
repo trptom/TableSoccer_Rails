@@ -35,6 +35,9 @@ class Match < ActiveRecord::Base
 
   validates :team_away_id, :presence => { :message => "špatný tým hostí" }
   validates :team_away, :associated => { :message => "špatný tým hostí" }
+
+  validates :league_id, :presence => { :message => "špatná liga" }
+  validates :league, :associated => { :message => "špatná liga" }
   
 #  validates :start_date,
 #    :allow_blank => false,

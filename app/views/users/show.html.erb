@@ -13,7 +13,7 @@
 
   <p>
     <b>Hráč:</b>
-    <%= @user.player ? @user.player.name_s : "žádný" %>
+    <%= @user.player ? get_player_name(@user.player) : "žádný" %>
   </p>
 
 

@@ -1,26 +1,89 @@
 <% if @team %>
-<table class="list">
-  <tr>
-    <th>Hráč</th>
-    <th>Zápasy</th>
-    <th>V</th>
-    <th>R</th>
-    <th>P</th>
-    <th>Skóre</th>
-    <th>Procenta</th>
-  </tr>
-  <% for player in @player_info %>
-    <tr>
-      <td><%= get_player_name(player[:player]) %></td>
-      <td><%= player[:gp] %></td>
-      <td><%= player[:w] %></td>
-      <td><%= player[:t] %></td>
-      <td><%= player[:l] %></td>
-      <td><%= player[:gf].to_s+":"+player[:ga].to_s %></td>
-      <td><%= player[:percentage] %> %</td>
-    </tr>
-  <% end %>
-</table>
+<div class="content-wrapper">
+  <div class="stats players">
+    <h1>Celková statistika</h1>
+    <div class="table-wrapper">
+      <table class="list">
+        <tr>
+          <th>Hráč</th>
+          <th>Z</th>
+          <th>V</th>
+          <th>P</th>
+          <th>Skóre</th>
+          <th>Procenta</th>
+        </tr>
+        <% for player in @player_info.sort{|e1, e2| e2[:rate] <=> e1[:rate]} %>
+          <tr>
+            <td><%= link_to get_player_name(player[:player]), player[:player] %></td>
+            <td><%= player[:gp] %></td>
+            <td><%= player[:w] %></td>
+            <td><%= player[:l] %></td>
+            <td><%= player[:gf].to_s+":"+player[:ga].to_s %></td>
+            <td><%= player[:percentage] %> %</td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+
+  <div class="stats players">
+    <h1>Zápasy</h1>
+    <div class="table-wrapper">
+      <table class="list">
+        <tr>
+          <th>Hráč</th>
+          <th>Zápasy</th>
+        </tr>
+        <% for player in @player_info.sort{|e1, e2| e2[:gp] <=> e1[:gp]} %>
+          <tr>
+            <td><%= link_to get_player_name(player[:player]), player[:player] %></td>
+            <td><%= player[:gp] %></td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+
+  <div class="stats players">
+    <h1>Výhry</h1>
+    <div class="table-wrapper">
+      <table class="list">
+        <tr>
+          <th>Hráč</th>
+          <th>Zápasy</th>
+          <th>Výhry</th>
+        </tr>
+        <% for player in @player_info.sort{|e1, e2| e2[:w] <=> e1[:w]} %>
+          <tr>
+            <td><%= link_to get_player_name(player[:player]), player[:player] %></td>
+            <td><%= player[:gp] %></td>
+            <td><%= player[:w] %></td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+
+  <div class="stats players">
+    <h1>Skóre</h1>
+    <div class="table-wrapper">
+      <table class="list">
+        <tr>
+          <th>Hráč</th>
+          <th>Zápasy</th>
+          <th>Skóre</th>
+        </tr>
+        <% for player in @player_info.sort{|e1, e2| e2[:score_diff] <=> e1[:score_diff]} %>
+          <tr>
+            <td><%= link_to get_player_name(player[:player]), player[:player] %></td>
+            <td><%= player[:gp] %></td>
+            <td><%= player[:score_diff] > 0 ? "+" : nil %><%= player[:score_diff] %> (<%= player[:gf] %>:<%= player[:ga] %>)</td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
 <% else %>
 <h1>Není vybrán žádný tým</h1>
 <% end %>

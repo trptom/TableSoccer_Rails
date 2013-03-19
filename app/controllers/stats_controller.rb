@@ -18,6 +18,7 @@ class StatsController < ApplicationController
         tmp[:w] = 0;
         tmp[:t] = 0;
         tmp[:l] = 0;
+        tmp[:rate] = 0;
         for gp in player.game_players
           if (gp.game && gp.game.score_home && gp.game.score_away)
             tmp[:gp] += 1
@@ -52,7 +53,9 @@ class StatsController < ApplicationController
           end
         end
 
-        tmp[:percentage] = tmp[:gp] > 0 ? sprintf('%.2f', tmp[:w].to_f/tmp[:gp].to_f) : 0;
+        tmp[:rate] = tmp[:gp] > 0 ? tmp[:w].to_f/tmp[:gp].to_f : 0;
+        tmp[:percentage] = sprintf('%.2f', tmp[:rate]*100)
+        tmp[:score_diff] = tmp[:gf] - tmp[:ga]
         @player_info << tmp
       end
     end
