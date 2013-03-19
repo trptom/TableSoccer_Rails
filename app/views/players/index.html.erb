@@ -1,31 +1,29 @@
 <div class="admin players index">
-  <h1>Listing players</h1>
+  <h1>Seznam hráčů</h1>
 
-  <table>
-    <tr>
-      <th>First name</th>
-      <th>Second name</th>
-      <th>Nick</th>
-      <th>Team</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
+  <div class="list">
+    <table>
+      <tr>
+        <th>Jméno</th>
+        <th>Tým</th>
+        <th>Akce</th>
+      </tr>
 
-  <% @players.each do |player| %>
-    <tr>
-      <td><%= player.first_name %></td>
-      <td><%= player.second_name %></td>
-      <td><%= player.nick %></td>
-      <td><%= player.team %></td>
-      <td><%= link_to 'Show', player %></td>
-      <td><%= link_to 'Edit', edit_player_path(player) %></td>
-      <td><%= link_to 'Destroy', player, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    </tr>
-  <% end %>
-  </table>
+      <% @players.each do |player| %>
+        <tr>
+          <td><%= get_player_name(player) %></td>
+          <td><%= player.team ? player.team.name : nil %></td>
+          <td>
+            <%= link_to 'Zobrazit', player, :class => "btn" %>
+            <%= link_to 'Editovat', edit_player_path(player), :class => "btn" %>
+            <%= link_to 'Smazat', player, method: :delete, data: { confirm: 'Jste si jistý(á)?' }, :class => "btn" %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
 
-  <br />
-
-  <%= link_to 'New Player', new_player_path %>
+  <div class="footer btn-group">
+    <%= link_to 'Nový hráč', new_player_path, :class => "btn" %>
+  </div>
 </div>

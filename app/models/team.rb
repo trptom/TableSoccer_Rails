@@ -26,5 +26,6 @@ class Team < ActiveRecord::Base
   validates :logo,
     :length => { :minimum => 1, :maximum => 255, :message => "špatná délka cesty k logu (1-255)" },
     :allow_nil => true,
+    :allow_blank => true,
   :if => :logo
 end

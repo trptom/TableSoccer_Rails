@@ -1,32 +1,48 @@
 <div class="admin leagues show">
   <p id="notice"><%= notice %></p>
 
-  <p>
-    <b>Name:</b>
-    <%= @league.name %>
-  </p>
+  <div class="detail">
+    <div class="name line">
+      <span>Název:</span>
+      <span><%= @league.name %></span>
+    </div>
+    <div class="short-name line">
+      <span>Krátký název:</span>
+      <span><%= @league.short_name %></span>
+    </div>
+    <div class="shortcut line">
+      <span>Zkratka</span>
+      <span><%= @league.shortcut %></span>
+    </div>
+    <div class="level line">
+      <span>Úroveň</span>
+      <span><%= @league.level %></span>
+    </div>
+    <div class="division line">
+      <span>Divize</span>
+      <span><%= @league.division %></span>
+    </div>
+  </div>
 
-  <p>
-    <b>Short name:</b>
-    <%= @league.short_name %>
-  </p>
+  <div class="teams">
+    <% for season in @teams %>
+      <div class="seacon">
+        <div class="title">
+          <%= season[0].season %>
+        </div>
+        <div class="content">
+          <% for lt in season %>
+            <%= lt.team.name %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
 
-  <p>
-    <b>Shortcut:</b>
-    <%= @league.shortcut %>
-  </p>
-
-  <p>
-    <b>Level:</b>
-    <%= @league.level %>
-  </p>
-
-  <p>
-    <b>Division:</b>
-    <%= @league.division %>
-  </p>
-
-
-  <%= link_to 'Edit', edit_league_path(@league) %> |
-  <%= link_to 'Back', leagues_path %>
+  <% if current_user %>
+    <div class="footer btn-group">
+      <%= link_to 'Edit', edit_league_path(@league), :class => "btn" %>
+      <%= link_to 'Back', leagues_path, :class => "btn" %>
+    </div>
+  <% end %>
 </div>

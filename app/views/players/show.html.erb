@@ -2,23 +2,23 @@
   <p id="notice"><%= notice %></p>
 
   <p>
-    <b>First name:</b>
+    <b>Jméno:</b>
     <%= @player.first_name %>
   </p>
 
   <p>
-    <b>Second name:</b>
+    <b>Příjmení:</b>
     <%= @player.second_name %>
   </p>
 
   <p>
-    <b>Nick:</b>
+    <b>Přezdívka:</b>
     <%= @player.nick %>
   </p>
 
   <p>
-    <b>Team:</b>
-    <%= @player.team %>
+    <b>Tým:</b>
+    <%= @player.team ? (link_to @player.team.name, @player.team) : nil %>
   </p>
 
 

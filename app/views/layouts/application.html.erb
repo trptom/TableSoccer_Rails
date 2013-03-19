@@ -1,14 +1,77 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>TableSoccer</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <head>
+    <title>TableSoccer</title>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" />
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "application" %>
+    <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
+    <%= csrf_meta_tags %>
+    <script type="text/javascript">
+      $(function() {
+        $( "#menu" ).menu();
+      });
+    </script>
+  </head>
+  <body>
 
-<%= yield %>
+    <% if current_user %>
+      <ul id="menu">
+        <li>
+          <a href="#">Statistiky</a>
+          <ul>
+            <li><a href="/stats/players">Porovnání hráčů</a></li>
+            <li><a href="/stats/player">Statistika hráče</a></li>
+            <li><a href="/stats/team">Statistika týmu</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">Admin zóna</a>
+          <ul>
+            <li><%= link_to "Ligy", leagues_path %></li>
+            <li><%= link_to "Týmy", teams_path %></li>
+            <li><%= link_to "Hráči", players_path %></li>
+            <li><%= link_to "Zápasy", matches_path %></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">Uživatel</a>
+          <ul>
+            <li><%= link_to "Editovat profil", edit_user_path(current_user.id) %></li>
+            <li><%= link_to "Přidat nového", new_user_path %></li>
+            <li><%= link_to "Odhlásit", :logout %></li>
+          </ul>
+        </li>
+      </ul>
+    <% else %>
+      <ul id="menu">
+        <li>
+          <a href="#">Statistiky</a>
+          <ul>
+            <li><%= link_to "Porovnání hráčů", {:controller => "stats", :action => "players"} %></li>
+            <li><%= link_to "Porovnání hráče", {:controller => "stats", :action => "player"} %></li>
+            <li><%= link_to "Porovnání týmu", {:controller => "stats", :action => "team"} %></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">Uživatel</a>
+          <ul>
+            <li><%= link_to "Přihlásit", :login %></li>
+          </ul>
+        </li>
+      </ul>
+    <% end %>
 
-</body>
+    <div id="header">XXX</div>
+
+    <div id="content">
+      <div>
+        <p id="notice"><%= notice %></p>
+        <p id="alert"><%= alert %></p>
+      </div>
+
+      <%= yield %>
+    </div>
+
+  </body>
 </html>

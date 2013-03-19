@@ -12,43 +12,31 @@
  *= require_tree .
  */
 
- .admin.index, .admin.new, .admin.edit, .admin.show {
-     border: solid #000000 1px;
-     border-radius: 10px;
-     text-align: center;
-     overflow: hidden;
+ .ui-menu {
+     width: 200px;
+     position: absolute;
+     left: 20px;
+     top: 100px;
+     z-index: 1;
  }
 
- .admin.new > h1, .admin.edit > h1 {
-     display: inline-block;
+ #header {
+     position: absolute;
+     z-index: 2;
+     left: 0px;
+     top: 0px;
      width: 100%;
+     border-bottom: #000000 solid 1px;
+     height: 50px;
+     line-height: 50px;
      text-align: center;
-     border-bottom: solid #000000 1px;
-     margin: 0px;
-     padding: 0px;
-     line-height: 60px;
-     background-color: #eeeeee;
+     background-color: #ffffff;
  }
 
- .admin.new > form, .admin.edit > form {
-     margin: 20px;
- }
-
- .admin.index {
-     text-align: center;
- }
-
- .admin.index > table {
-     display: block;
+ #content {
+     position: relative;
+     z-index: 0;
+     margin-top: 100px;
+     margin-left: 250px;
      width: auto;
-     margin: auto;
-     border: solid #000000 1px;
- }
-
- .admin.index > table {
-     border-bottom: solid #000000 1px;
- }
-
- .admin.index > table th {
-     font-weight: bold;
  }

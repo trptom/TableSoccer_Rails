@@ -16,12 +16,12 @@ class Game < ActiveRecord::Base
   :if => :game_type
 
   validates :score_home,
-    :numericality => { :only_integer => true, :greater_than_or_equal_to => 0, :less_than  => 2, :message => "neplatné skóre domácích" },
+    :numericality => { :only_integer => true, :greater_than_or_equal_to => 0, :less_than_or_equal_to  => 2, :message => "neplatné skóre domácích" },
     :allow_nil => true,
   :if => :score_home
 
   validates :score_away,
-    :numericality => { :only_integer => true, :greater_than_or_equal_to => 0, :less_than  => 2, :message => "neplatné skóre hostů" },
+    :numericality => { :only_integer => true, :greater_than_or_equal_to => 0, :less_than_or_equal_to  => 2, :message => "neplatné skóre hostů" },
     :allow_nil => true,
   :if => :score_away
 end

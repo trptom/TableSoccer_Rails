@@ -41,7 +41,7 @@ module ApplicationHelper
     tmp = team_id ? Player.where(:team_id => team_id).order(:nick).all : Player.order(:nick).all
     ret = Array.new
     for player in tmp
-      ret << [player.nick, player.id]
+      ret << [get_player_name(player), player.id]
     end
     if ret.length == 0
       ret << [ "Žádný hráč", nil ]
@@ -51,10 +51,36 @@ module ApplicationHelper
 
   def get_game_type_options
     ret = Array.new
-    ret << [ GAME_TYPE_STR[GAME_TYPE_SINGLE], GAME_TYPE_SINGLE ]
-    ret << [ GAME_TYPE_STR[GAME_TYPE_DOUBLE], GAME_TYPE_DOUBLE ]
-    ret << [ GAME_TYPE_STR[GAME_TYPE_TWO_BALL], GAME_TYPE_TWO_BALL ]
-    ret << [ GAME_TYPE_STR[GAME_TYPE_FOURS], GAME_TYPE_FOURS ]
+    ret << [ GAME_TYPE_STR[GAME_TYPE_SINGLE], GAME_TYPE_SINGLE.to_s ]
+    ret << [ GAME_TYPE_STR[GAME_TYPE_DOUBLE], GAME_TYPE_DOUBLE.to_s ]
+    ret << [ GAME_TYPE_STR[GAME_TYPE_TWO_BALL], GAME_TYPE_TWO_BALL.to_s ]
+    ret << [ GAME_TYPE_STR[GAME_TYPE_FOURS], GAME_TYPE_FOURS.to_s ]
     return ret
+  end
+
+  def get_current_user_player
+    return current_user ? current_user.player : nil
+  end
+
+  def get_current_user_team
+    player = get_current_user_player
+    return player ? player.team : nil
+  end
+
+  def get_player_name(player)
+    if player.nick
+      return player.nick
+    else
+      if player.first_name && player.second_name
+        return player.first_name + " " + player.second_name
+      else
+        if (player.second_name)
+          return player.second_name
+        end
+        if (player.first_name)
+          return player.first_name
+        end
+      end
+    end
   end
 end

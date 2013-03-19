@@ -14,6 +14,15 @@ class LeaguesController < ApplicationController
   # GET /leagues/1.json
   def show
     @league = League.find(params[:id])
+    @teams_list = @league.league_teams.order(:season).all
+    @teams = Hash.new
+
+    for lt in @teams_list
+      if (@teams[lt.season])
+        @teams[lt.season] = Array.new
+      end
+      @teams[lt.season] << lt;
+    end
 
     respond_to do |format|
       format.html # show.html.erb

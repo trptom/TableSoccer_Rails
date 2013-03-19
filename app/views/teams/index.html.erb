@@ -1,31 +1,31 @@
 <div class="admin teams index">
   <h1>Seznam týmů</h1>
 
-  <table>
-    <tr>
-      <th>Name</th>
-      <th>Short name</th>
-      <th>Shortcut</th>
-      <th>Logo</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
+  <div class="list">
+    <table>
+      <tr>
+        <th>Název</th>
+        <th>Krátký název</th>
+        <th>Zkratka</th>
+        <th>Akce</th>
+      </tr>
 
-  <% @teams.each do |team| %>
-    <tr>
-      <td><%= team.name %></td>
-      <td><%= team.short_name %></td>
-      <td><%= team.shortcut %></td>
-      <td><%= team.logo %></td>
-      <td><%= link_to 'Show', team %></td>
-      <td><%= link_to 'Edit', edit_team_path(team) %></td>
-      <td><%= link_to 'Destroy', team, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    </tr>
-  <% end %>
-  </table>
+      <% @teams.each do |team| %>
+        <tr>
+          <td><%= team.name %></td>
+          <td><%= team.short_name %></td>
+          <td><%= team.shortcut %></td>
+          <td>
+            <%= link_to 'Zobrazit', team, :class => "btn" %>
+            <%= link_to 'Editovat', edit_team_path(team), :class => "btn" %>
+            <%= link_to 'Smazat', team, method: :delete, data: { confirm: 'Jste si jistý(á)?' }, :class => "btn" %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
 
-  <br />
-
-  <%= link_to 'New Team', new_team_path %>
+  <div class="footer btn-group">
+    <%= link_to 'Nový tým', new_team_path, :class => "btn" %>
+  </div>
 </div>

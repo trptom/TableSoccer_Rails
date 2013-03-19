@@ -1,0 +1,21 @@
+<div class="admin users show">
+  <p id="notice"><%= notice %></p>
+
+  <p>
+    <b>Uživatelské jméno:</b>
+    <%= @user.username %>
+  </p>
+
+  <p>
+    <b>Email:</b>
+    <%= @user.email %>
+  </p>
+
+  <p>
+    <b>Hráč:</b>
+    <%= @user.player ? @user.player.name_s : "žádný" %>
+  </p>
+
+
+  <%= link_to 'Edit', edit_user_path(@user) %>
+</div>

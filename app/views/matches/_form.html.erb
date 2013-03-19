@@ -13,15 +13,15 @@
 
   <div class="field">
     Domácí<br />
-    <%= f.select :team_home, options_for_select(get_team_options) %>
+    <%= f.select :team_home_id, options_for_select(get_team_options) %>
   </div>
   <div class="field">
     Hosté<br />
-    <%= f.select :team_away, options_for_select(get_team_options) %>
+    <%= f.select :team_away_id, options_for_select(get_team_options) %>
   </div>
   <div class="field">
     Liga<br />
-    <%= f.select :league, options_for_select(get_league_options) %>
+    <%= f.select :league_id, options_for_select(get_league_options) %>
   </div>
   <div class="field">
     Sezona<br />

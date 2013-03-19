@@ -1,37 +1,57 @@
 <div class="admin matches show">
-  <p id="notice"><%= notice %></p>
+  <div class="teams">
+    <div class="home"><%= link_to @match.team_home.name, @match.team_home %></div>
+    <div class="score"><%= @match.score_home && @match.score_away ? (@match.score_home.to_s + ":" + @match.score_away.to_s) : "vs." %></div>
+    <div class="away"><%= link_to @match.team_away.name, @match.team_away %></div>
+  </div>
+  <div class="info">
+    <div class="league"><%= link_to @match.league.name, @match.league %></div>
+    <div class="season"><%= @match.season %></div>
+    <div class="time"><%= @match.start_date %></div>
+    <div class="place"><%= @match.place %></div>
+  </div>
+  <div class="list games">
+    <table>
+      <tr>
+        <th>Číslo</th>
+        <th>Typ</th>
+        <th>Domácí</th>
+        <th>Hosté</th>
+        <th>Skóre</th>
+        <% if current_user %>
+          <th>Akce</th>
+        <% end %>
+      </tr>
+      <% for game in @match.games.order(:game_number).all %>
+      <tr>
+        <td>#<%= game.game_number %></td>
+        <td><%= GAME_TYPE_STR[game.game_type] %></td>
+        <td>
+          <% for game_player in game.game_players.where(:team => TEAM_HOME).all %>
+            <div class="player"><%= get_player_name game_player.player %></div>
+          <% end %>
+        </td>
+        <td>
+          <% for game_player in game.game_players.where(:team => TEAM_AWAY).all %>
+            <div class="player"><%= get_player_name game_player.player %></div>
+          <% end %>
+        </td>
+        <td><%= game.score_home && game.score_away ? (game.score_home.to_s + ":" + game.score_away.to_s) : "-:-" %></td>
+        <% if current_user %>
+          <td class="btn-group">
+            <%= link_to "Zobrazit", game, :class => "btn" %>
+            <%= link_to "Editovat", edit_game_path(game), :class => "btn" %>
+            <%= link_to "Smazat", game, method: :delete, data: { confirm: 'Jste si jistý(á)?' }, :class => "btn" %>
+          </td>
+        <% end %>
+      </tr>
+      <% end %>
+    </table>
+  </div>
 
-  <p>
-    <b>Team home:</b>
-    <%= @match.team_home %>
-  </p>
-
-  <p>
-    <b>Team away:</b>
-    <%= @match.team_away %>
-  </p>
-
-  <p>
-    <b>League:</b>
-    <%= @match.league %>
-  </p>
-
-  <p>
-    <b>Season:</b>
-    <%= @match.season %>
-  </p>
-
-  <p>
-    <b>Start date:</b>
-    <%= @match.start_date %>
-  </p>
-
-  <p>
-    <b>Place:</b>
-    <%= @match.place %>
-  </p>
-
-
-  <%= link_to 'Edit', edit_match_path(@match) %> |
-  <%= link_to 'Back', matches_path %>
+  <div class="footer btn-group">
+    <%= current_user ? (link_to 'Editovat', edit_match_path(@match), :class => "btn") + " | " : nil %>
+    <%= current_user ? (link_to 'Přidat zápas', "/matches/"+@match.id.to_s+"/add_game", :class => "btn") + " | " : nil %>
+    <%= link_to 'Seznam', matches_path, :class => "btn" %>
+  </div>
 </div>

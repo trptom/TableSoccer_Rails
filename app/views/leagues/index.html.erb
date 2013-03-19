@@ -1,33 +1,35 @@
 <div class="admin leagues index">
-  <h1>Listing leagues</h1>
+  <h1>Seznam lig</h1>
 
-  <table>
-    <tr>
-      <th>Name</th>
-      <th>Short name</th>
-      <th>Shortcut</th>
-      <th>Level</th>
-      <th>Division</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
+  <div class="list">
+    <table>
+      <tr>
+        <th>Název</th>
+        <th>Krátký název</th>
+        <th>Zkratka</th>
+        <th>Úroveň</th>
+        <th>Divize</th>
+        <th>Akce</th>
+      </tr>
 
-  <% @leagues.each do |league| %>
-    <tr>
-      <td><%= league.name %></td>
-      <td><%= league.short_name %></td>
-      <td><%= league.shortcut %></td>
-      <td><%= league.level %></td>
-      <td><%= league.division %></td>
-      <td><%= link_to 'Show', league %></td>
-      <td><%= link_to 'Edit', edit_league_path(league) %></td>
-      <td><%= link_to 'Destroy', league, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    </tr>
-  <% end %>
-  </table>
+    <% @leagues.each do |league| %>
+      <tr>
+        <td><%= league.name %></td>
+        <td><%= league.short_name %></td>
+        <td><%= league.shortcut %></td>
+        <td><%= league.level %></td>
+        <td><%= league.division %></td>
+        <td class="btn-group">
+          <%= link_to 'Zobrazit', league, :class => "btn" %>
+          <%= link_to 'Editovat', edit_league_path(league), :class => "btn" %>
+          <%= link_to 'Smazat', league, method: :delete, data: { confirm: 'Jste si jistý(á)?' }, :class => "btn" %>
+        </td>
+      </tr>
+    <% end %>
+    </table>
+  </div>
 
-  <br />
-
-  <%= link_to 'New League', new_league_path %>
+  <div class="footer btn-group">
+    <%= link_to 'Nová liga', new_league_path, :class => "btn" %>
+  </div>
 </div>

@@ -78,6 +78,7 @@ rails_env=
 railties\:install\:migrations=
 routes=
 secret=
+sorcery\:bootstrap=
 stats=
 test=
 test\:benchmark=

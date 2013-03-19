@@ -1,0 +1,26 @@
+<% if @team %>
+<table class="list">
+  <tr>
+    <th>Hráč</th>
+    <th>Zápasy</th>
+    <th>V</th>
+    <th>R</th>
+    <th>P</th>
+    <th>Skóre</th>
+    <th>Procenta</th>
+  </tr>
+  <% for player in @player_info %>
+    <tr>
+      <td><%= get_player_name(player[:player]) %></td>
+      <td><%= player[:gp] %></td>
+      <td><%= player[:w] %></td>
+      <td><%= player[:t] %></td>
+      <td><%= player[:l] %></td>
+      <td><%= player[:gf].to_s+":"+player[:ga].to_s %></td>
+      <td><%= player[:percentage] %> %</td>
+    </tr>
+  <% end %>
+</table>
+<% else %>
+<h1>Není vybrán žádný tým</h1>
+<% end %>

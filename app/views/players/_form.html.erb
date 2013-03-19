@@ -12,20 +12,20 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :first_name %><br />
+    Jméno<br />
     <%= f.text_field :first_name %>
   </div>
   <div class="field">
-    <%= f.label :second_name %><br />
+    Příjmení<br />
     <%= f.text_field :second_name %>
   </div>
   <div class="field">
-    <%= f.label :nick %><br />
+    Přezdívka<br />
     <%= f.text_field :nick %>
   </div>
   <div class="field">
-    <%= f.label :team %><br />
-    <%= f.select :team, options_for_select(get_team_options << ["zadny", nil]) %>
+    Tým<br />
+    <%= f.select :team_id, options_for_select(get_team_options << ["zadny", nil]) %>
   </div>
   <div class="actions">
     <%= f.submit %>

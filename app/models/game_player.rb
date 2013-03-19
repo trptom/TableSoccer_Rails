@@ -4,7 +4,7 @@ class GamePlayer < ActiveRecord::Base
   belongs_to :game
   belongs_to :player
 
-  attr_accessible :position, :team, :game, :player
+  attr_accessible :position, :team, :game, :player, :game_id, :player_id
 
   validates :position,
     :numericality => { :only_integer => true, :greater_than_or_equal_to => 1, :message => "neplatná pozice" },
