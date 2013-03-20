@@ -26,17 +26,28 @@
 
   <div class="teams">
     <% for season in @teams %>
-      <div class="seacon">
+      <div class="season">
         <div class="title">
-          <%= season[0].season %>
+          <%= season[0] %>
         </div>
         <div class="content">
-          <% for lt in season %>
-            <%= lt.team.name %>
+          <% for lt in season[1][:lt] %>
+            <div class="team">
+              <%= lt.team.name %>
+              <%= link_to "x", lt, method: :delete, data: { confirm: 'Jste si jistý(á)?' }, :class => "btn" %>
+            </div>
           <% end %>
         </div>
       </div>
     <% end %>
+    <div class="new">
+      <%= form_for @new_team do |f| %>
+        <%= f.hidden_field :league_id %>
+        <%= f.select :team_id, options_for_select(get_team_options, @new_team.team_id)  %>
+        <%= f.select :season, options_for_select(2000..2100, @new_team.season)  %>
+        <%= f.submit :class => "btn", :value => "+" %>
+      <% end %>
+    </div>
   </div>
 
   <% if current_user %>

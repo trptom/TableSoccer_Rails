@@ -25,7 +25,7 @@
   </div>
   <div class="field">
     Tým<br />
-    <%= f.select :team_id, options_for_select(get_team_options << ["zadny", nil]) %>
+    <%= f.select :team_id, options_for_select(get_team_options) %>
   </div>
   <div class="actions">
     <%= f.submit %>

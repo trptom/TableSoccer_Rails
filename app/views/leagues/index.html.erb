@@ -1,15 +1,15 @@
 <div class="admin leagues index">
-  <h1>Seznam lig</h1>
+  <h1><%= I18n.t('messages.leagues.index.title') %></h1>
 
   <div class="list">
     <table>
       <tr>
-        <th>Název</th>
-        <th>Krátký název</th>
-        <th>Zkratka</th>
-        <th>Úroveň</th>
-        <th>Divize</th>
-        <th>Akce</th>
+        <th><%= I18n.t('messages.base.name') %></th>
+        <th><%= I18n.t('messages.base.short_name') %></th>
+        <th><%= I18n.t('messages.base.shortcut') %></th>
+        <th><%= I18n.t('messages.base.level') %></th>
+        <th><%= I18n.t('messages.base.division') %></th>
+        <th><%= I18n.t('messages.base.action') %></th>
       </tr>
 
     <% @leagues.each do |league| %>
@@ -20,9 +20,9 @@
         <td><%= league.level %></td>
         <td><%= league.division %></td>
         <td class="btn-group">
-          <%= link_to 'Zobrazit', league, :class => "btn" %>
-          <%= link_to 'Editovat', edit_league_path(league), :class => "btn" %>
-          <%= link_to 'Smazat', league, method: :delete, data: { confirm: 'Jste si jistý(á)?' }, :class => "btn" %>
+          <%= link_to_show nil, league %>
+          <%= link_to_edit nil, edit_league_path(league) %>
+          <%= link_to_delete nil, league %>
         </td>
       </tr>
     <% end %>
@@ -30,6 +30,6 @@
   </div>
 
   <div class="footer btn-group">
-    <%= link_to 'Nová liga', new_league_path, :class => "btn" %>
+    <%= link_to_new nil, new_league_path %>
   </div>
 </div>

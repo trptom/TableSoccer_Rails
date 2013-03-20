@@ -1,0 +1,19 @@
+.admin.leagues.show .teams {
+    border-top: solid #000000 1px;
+    border-bottom: solid #000000 1px;
+    width: auto;
+}
+
+.admin.leagues.show .teams > .season {
+    border-bottom: solid #000000 1px;
+    width: auto;
+}
+
+.admin.leagues.show .teams > .season > .title {
+    display: inline-block;
+    width: 10%;
+    height: 10%;
+}
+
+.admin.leagues.show .teams > .season > .content {
+}

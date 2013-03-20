@@ -1,0 +1,76 @@
+cs:
+  messages:
+    base:
+      action: Akce
+      add: Přidat
+      all_types: Všechny typy
+      are_you_sure: Jste si jistý(á)?
+      delete: Smazat
+      division: Divize
+      edit: Editovat
+      first_name: Jméno
+      game_type: Typ hry
+      game_type_single: Jednotlivci
+      game_type_double: Dvojice
+      game_type_fours: 4 na 4
+      game_type_two_ball: Two-ball
+      games_played: Zápasy
+      l: P
+      level: Úroveň
+      name: Název
+      nick: Přezdívka
+      no_game: Žádná hra
+      no_league: Žádná liga
+      no_match: Žádný zápas
+      no_player: Žádný hráč
+      no_team: Žádný tým
+      percentage: Procenta
+      player: Hráč
+      player_name: Jméno hráče
+      score: Skóre
+      second_name: Příjmení
+      short_name: Krátký název
+      shortcut: Zkratka
+      show: Zobrazit
+      total: Celkem
+      w: V
+      wins: Výhry
+      
+    application:
+      title: TableSoccer
+      header: Stolní fotbálek - statistiky
+
+    menu:
+      stats:
+        title: Statistiky
+        players: Porovnání hráčů
+        player: Statistiky hráče
+        team: Statistiky týmu
+      admin:
+        title: Admin zóna
+        leagues: Ligy
+        teams: Týmy
+        players: Hráči
+        matches: Zápasy
+      user:
+        title: Uživatel
+        edit: Editovat
+        add: Přidat nového
+        login: Přihlásit
+        logout: Odhlásit
+
+    stats:
+      players:
+        title_total: Celkově
+        title_games: Odehrané zápasy
+        title_wins: Výhry
+        title_score: Skóre (na legy)
+        team_not_selected: Není vybrán žádný tým
+      player:
+        title_game_types: Typy her
+        player_not_selected: Není vybrán žádný hráč
+      team:
+    leagues:
+      index:
+        title: Seznam lig
+        new: Nová liga

@@ -8,7 +8,7 @@ module ApplicationHelper
       ret << [team.name, team.id]
     end
     if ret.length == 0
-      ret << [ "Žádný tým", nil]
+      ret << [ I18n.t("messages.base.no_team"), nil]
     end
     return ret
   end
@@ -20,7 +20,7 @@ module ApplicationHelper
       ret << [league.name, league.id]
     end
     if ret.length == 0
-      ret << [ "Žádná liga", nil ]
+      ret << [ I18n.t("messages.base.no_league"), nil ]
     end
     return ret
   end
@@ -32,7 +32,7 @@ module ApplicationHelper
       ret << [match.start_date + ", " + match.team_home.name + " vs. " + match.team_away.name, match.id]
     end
     if ret.length == 0
-      ret << [ "Žádný zápas", nil ]
+      ret << [ I18n.t("messages.base.no_match"), nil ]
     end
     return ret
   end
@@ -44,17 +44,17 @@ module ApplicationHelper
       ret << [get_player_name(player), player.id]
     end
     if ret.length == 0
-      ret << [ "Žádný hráč", nil ]
+      ret << [ I18n.t("messages.base.no_player"), nil ]
     end
     return ret
   end
 
   def get_game_type_options
     ret = Array.new
-    ret << [ GAME_TYPE_STR[GAME_TYPE_SINGLE], GAME_TYPE_SINGLE.to_s ]
-    ret << [ GAME_TYPE_STR[GAME_TYPE_DOUBLE], GAME_TYPE_DOUBLE.to_s ]
-    ret << [ GAME_TYPE_STR[GAME_TYPE_TWO_BALL], GAME_TYPE_TWO_BALL.to_s ]
-    ret << [ GAME_TYPE_STR[GAME_TYPE_FOURS], GAME_TYPE_FOURS.to_s ]
+    ret << [ I18n.t(GAME_TYPE_STR[GAME_TYPE_SINGLE]), GAME_TYPE_SINGLE.to_s ]
+    ret << [ I18n.t(GAME_TYPE_STR[GAME_TYPE_DOUBLE]), GAME_TYPE_DOUBLE.to_s ]
+    ret << [ I18n.t(GAME_TYPE_STR[GAME_TYPE_TWO_BALL]), GAME_TYPE_TWO_BALL.to_s ]
+    ret << [ I18n.t(GAME_TYPE_STR[GAME_TYPE_FOURS]), GAME_TYPE_FOURS.to_s ]
     return ret
   end
 
@@ -82,5 +82,25 @@ module ApplicationHelper
         end
       end
     end
+  end
+
+  def link_to_new(title, link)
+    title = title ? title : I18n.t('messages.'+params[:controller]+'.'+params[:action]+'.new')
+    return link_to title, link, :class => "btn"
+  end
+
+  def link_to_show(title, link)
+    title = title ? title : I18n.t('messages.base.show')
+    return link_to title, link, :class => "btn"
+  end
+
+  def link_to_edit(title, link)
+    title = title ? title : I18n.t('messages.base.edit')
+    return link_to title, link, :class => "btn"
+  end
+
+  def link_to_delete(title, link)
+    title = title ? title : I18n.t('messages.base.delete')
+    return link_to title, link, :class => "btn", method: :delete, data: { confirm: I18n.t('messages.base.are_you_sure') }
   end
 end

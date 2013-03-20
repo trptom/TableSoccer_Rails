@@ -16,12 +16,18 @@ class LeaguesController < ApplicationController
     @league = League.find(params[:id])
     @teams_list = @league.league_teams.order(:season).all
     @teams = Hash.new
+    @new_team = LeagueTeam.new
+
+    @new_team.league = @league
+    @new_team.season = Time.now.month <= 6 ? Time.now.year-1 : Time.now.year;
 
     for lt in @teams_list
-      if (@teams[lt.season])
-        @teams[lt.season] = Array.new
+      if (!@teams || !@teams[lt.season])
+        @teams[lt.season] = Hash.new
+        @teams[lt.season][:season] = lt.season
+        @teams[lt.season][:lt] = Array.new
       end
-      @teams[lt.season] << lt;
+      @teams[lt.season][:lt] << lt;
     end
 
     respond_to do |format|

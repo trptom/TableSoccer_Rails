@@ -1,3 +1,7 @@
+# coding:utf-8
+
+include StatsHelper
+
 class StatsController < ApplicationController
   skip_before_filter :require_login
 
@@ -62,6 +66,11 @@ class StatsController < ApplicationController
   end
 
   def player
+    @player = params[:id] ? Player.find(params[:id]) : (current_user && current_user.player ? Player.find(current_user.player) : nil)
+
+    if @player
+      @stats = create_player_stats @player
+    end
   end
 
   def team

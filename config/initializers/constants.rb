@@ -4,10 +4,10 @@ GAME_TYPE_TWO_BALL = 2;
 GAME_TYPE_FOURS = 3;
 
 GAME_TYPE_STR = Array.new
-GAME_TYPE_STR[GAME_TYPE_SINGLE] = "Jednotlivci"
-GAME_TYPE_STR[GAME_TYPE_DOUBLE] = "Dvojice"
-GAME_TYPE_STR[GAME_TYPE_TWO_BALL] = "Two-ball"
-GAME_TYPE_STR[GAME_TYPE_FOURS] = "4 na 4"
+GAME_TYPE_STR[GAME_TYPE_SINGLE] = "messages.base.game_type_single"
+GAME_TYPE_STR[GAME_TYPE_DOUBLE] = "messages.base.game_type_double"
+GAME_TYPE_STR[GAME_TYPE_TWO_BALL] = "messages.base.game_type_two_ball"
+GAME_TYPE_STR[GAME_TYPE_FOURS] = "messages.base.game_type_fours"
 
 GAME_PLAYERS_COUNT = Array.new
 GAME_PLAYERS_COUNT[GAME_TYPE_SINGLE] = 1

@@ -1,2 +1,31 @@
-<h1>Stats#player</h1>
-<p>Find me in app/views/stats/player.html.erb</p>
+<% if @player %>
+  <div class="content-wrapper">
+    <div class="stats players">
+      <h1><%= I18n.t('messages.stats.player.title_game_types') %></h1>
+      <div class="table-wrapper">
+        <table class="list">
+          <tr>
+            <th><%= I18n.t('messages.base.game_type') %></th>
+            <th><%= I18n.t('messages.base.games_played') %></th>
+            <th><%= I18n.t('messages.base.w') %></th>
+            <th><%= I18n.t('messages.base.l') %></th>
+            <th><%= I18n.t('messages.base.score') %></th>
+            <th><%= I18n.t('messages.base.percentage') %></th>
+          </tr>
+          <% for game_type in @stats.sort{|e1, e2| e2[:rate] <=> e1[:rate]} %>
+            <tr>
+              <td><%= I18n.t(game_type[:game_type] < GAME_TYPE_STR.length ? GAME_TYPE_STR[game_type[:game_type]] : "messages.base.total") %></td>
+              <td><%= game_type[:gp] %></td>
+              <td><%= game_type[:w] %></td>
+              <td><%= game_type[:l] %></td>
+              <td><%= game_type[:gf].to_s+":"+game_type[:ga].to_s %></td>
+              <td><%= game_type[:percentage] %> %</td>
+            </tr>
+          <% end %>
+        </table>
+      </div>
+    </div>
+  </div>
+<% else %>
+  <h1><%= I18n.t('messages.stats.player.player_not_selected') %></h1>
+<% end %>

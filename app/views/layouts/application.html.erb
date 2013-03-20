@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>TableSoccer</title>
+    <title><%= I18n.t('messages.application.title') %></title>
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" />
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "application" %>
@@ -18,51 +18,51 @@
     <% if current_user %>
       <ul id="menu">
         <li>
-          <a href="#">Statistiky</a>
+          <a href="#"><%= I18n.t('messages.menu.stats.title') %></a>
           <ul>
-            <li><a href="/stats/players">Porovnání hráčů</a></li>
-            <li><a href="/stats/player">Statistika hráče</a></li>
-            <li><a href="/stats/team">Statistika týmu</a></li>
+            <li><%= link_to I18n.t('messages.menu.stats.players'), "/stats/players" %></li>
+            <li><%= link_to I18n.t('messages.menu.stats.player'), "/stats/player" %></li>
+            <li><%= link_to I18n.t('messages.menu.stats.team'), "/stats/team" %></li>
           </ul>
         </li>
         <li>
-          <a href="#">Admin zóna</a>
+          <a href="#"><%= I18n.t('messages.menu.admin.title') %></a>
           <ul>
-            <li><%= link_to "Ligy", leagues_path %></li>
-            <li><%= link_to "Týmy", teams_path %></li>
-            <li><%= link_to "Hráči", players_path %></li>
-            <li><%= link_to "Zápasy", matches_path %></li>
+            <li><%= link_to I18n.t('messages.menu.admin.leagues'), leagues_path %></li>
+            <li><%= link_to I18n.t('messages.menu.admin.teams'), teams_path %></li>
+            <li><%= link_to I18n.t('messages.menu.admin.players'), players_path %></li>
+            <li><%= link_to I18n.t('messages.menu.admin.matches'), matches_path %></li>
           </ul>
         </li>
         <li>
-          <a href="#">Uživatel</a>
+          <a href="#"><%= I18n.t('messages.menu.user.title') %></a>
           <ul>
-            <li><%= link_to "Editovat profil", edit_user_path(current_user.id) %></li>
-            <li><%= link_to "Přidat nového", new_user_path %></li>
-            <li><%= link_to "Odhlásit", :logout %></li>
+            <li><%= link_to I18n.t('messages.menu.user.edit'), edit_user_path(current_user.id) %></li>
+            <li><%= link_to I18n.t('messages.menu.user.add'), new_user_path %></li>
+            <li><%= link_to I18n.t('messages.menu.user.logout'), :logout %></li>
           </ul>
         </li>
       </ul>
     <% else %>
       <ul id="menu">
         <li>
-          <a href="#">Statistiky</a>
+          <a href="#"><%= I18n.t('messages.menu.stats.title') %></a>
           <ul>
-            <li><%= link_to "Porovnání hráčů", {:controller => "stats", :action => "players"} %></li>
-            <li><%= link_to "Porovnání hráče", {:controller => "stats", :action => "player"} %></li>
-            <li><%= link_to "Porovnání týmu", {:controller => "stats", :action => "team"} %></li>
+            <li><%= link_to I18n.t('messages.menu.stats.players'), "/stats/players" %></li>
+            <li><%= link_to I18n.t('messages.menu.stats.player'), "/stats/player" %></li>
+            <li><%= link_to I18n.t('messages.menu.stats.team'), "/stats/team" %></li>
           </ul>
         </li>
         <li>
-          <a href="#">Uživatel</a>
+          <a href="#"><%= I18n.t('messages.menu.user.title') %></a>
           <ul>
-            <li><%= link_to "Přihlásit", :login %></li>
+            <li><%= link_to I18n.t('messages.menu.user.login'), :login %></li>
           </ul>
         </li>
       </ul>
     <% end %>
 
-    <div id="header">Stolní fotbálek - statistiky</div>
+    <div id="header"><%= I18n.t('messages.application.header') %></div>
 
     <div id="content">
       <div>
