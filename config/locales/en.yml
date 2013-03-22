@@ -37,5 +37,12 @@ en:
         title_games:
         title_wins:
         title_score:
+        team_not_selected:
       player:
+        title_game_types:
+        player_not_selected:
       team:
+    leagues:
+      index:
+        title:
+        new: 

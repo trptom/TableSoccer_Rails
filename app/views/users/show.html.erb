@@ -15,7 +15,8 @@
     <b>Hráč:</b>
     <%= @user.player ? get_player_name(@user.player) : "žádný" %>
   </p>
-
+  <%= @user.crypted_password %><br />
+  <%= @user.salt %>
 
   <%= link_to 'Edit', edit_user_path(@user) %>
 </div>
