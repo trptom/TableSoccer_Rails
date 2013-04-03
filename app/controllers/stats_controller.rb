@@ -6,7 +6,15 @@ class StatsController < ApplicationController
   skip_before_filter :require_login
 
   def players
-    @team = current_user && current_user.player ? current_user.player.team : Team.first
+    #load all teams
+    @teams = Team.order(:name).all
+    #load selected team
+    if params[:id]
+      @team = Team.find(params[:id])
+    else
+      @team = current_user && current_user.player && current_user.player.team ? current_user.player.team : Team.first
+    end
+
     if @team
       @players = Player.find_all_by_team_id @team.id
       @player_info = Array.new
@@ -66,7 +74,16 @@ class StatsController < ApplicationController
   end
 
   def player
-    @player = params[:id] ? Player.find(params[:id]) : (current_user && current_user.player ? Player.find(current_user.player) : nil)
+    #load all players
+    @players = Player.all.sort{
+      |a, b| get_player_name(a) <=> get_player_name(b)
+    }
+    #load selected player
+    if params[:id]
+      @player = Player.find(params[:id])
+    else
+      @player = current_user && current_user.player ? Player.find(current_user.player) : nil
+    end
 
     if @player
       @stats = create_player_stats @player
@@ -74,6 +91,13 @@ class StatsController < ApplicationController
   end
 
   def team
-    @team = params[:id] ? Team.find(params[:id]) : get_current_user_team
+    #load all teams
+    @teams = Team.order(:name).all
+    #load selected team
+    if params[:id]
+      @team = Team.find(params[:id])
+    else
+      @team = current_user && current_user.player && current_user.player.team ? current_user.player.team : Team.first
+    end
   end
 end

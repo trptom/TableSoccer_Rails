@@ -9,3 +9,7 @@ function filterChildsByClass(element, className) {
         element.removeChild(rem[index]);
     }
 }
+
+function redirect(url) {
+    location.href = url;
+}

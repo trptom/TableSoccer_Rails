@@ -1,4 +1,16 @@
 <% if @player %>
+  <div class="page-title">
+    <%= get_player_name @player %>
+    <div class="selector">
+      Hráč:
+      <select id="player-select">
+        <% for player in @players %>
+          <option value="<%= player.id %>"<%= @player == player ? " selected" : nil %>><%= get_player_name(player) %></option>
+        <% end %>
+      </select>
+      <input type="button" class="btn" value="Zobrazit" onclick="Stats.Player.changePlayer()" />
+    </div>
+  </div>
   <div class="content-wrapper">
     <div class="stats players">
       <h1><%= I18n.t('messages.stats.player.title_game_types') %></h1>

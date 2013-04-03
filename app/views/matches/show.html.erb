@@ -25,7 +25,7 @@
       <% for game in @match.games.order(:game_number).all %>
       <tr>
         <td>#<%= game.game_number %></td>
-        <td><%= GAME_TYPE_STR[game.game_type] %></td>
+        <td><%= I18n.t(GAME_TYPE_STR[game.game_type]) %></td>
         <td>
           <% for game_player in game.game_players.where(:team => TEAM_HOME).all %>
             <div class="player"><%= get_player_name game_player.player %></div>

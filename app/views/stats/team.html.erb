@@ -1,2 +1,19 @@
-<h1>Stats#team</h1>
-<p>Find me in app/views/stats/team.html.erb</p>
+<% if @team %>
+  <div class="page-title">
+    <%= @team.name %>
+    <div class="selector">
+      Tým:
+      <select id="team-select">
+        <% for team in @teams %>
+          <option value="<%= team.id %>"<%= @team == team ? " selected" : nil %>><%= team.name %></option>
+        <% end %>
+      </select>
+      <input type="button" class="btn" value="Zobrazit" onclick="Stats.Team.changeTeam()" />
+    </div>
+  </div>
+  <div class="content-wrapper">
+    Obsah se připravuje...
+  </div>
+<% else %>
+  <h1><%= I18n.t('messages.stats.players.team_not_selected') %></h1>
+<% end %>

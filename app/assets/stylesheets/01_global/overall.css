@@ -17,7 +17,9 @@
     background-color: #dddddd;
 }
 
-.btn-group { /* skupina tlacitek */ }
+.btn-group {
+    padding: 5px 10px 5px 10px;
+}
 
 .btn-group > .btn {
     border-right: none;
@@ -36,12 +38,34 @@
 }
 
 /*******************************************************************************
+ * SELEKTOR V HORNI CASTI
+ ******************************************************************************/
+
+.page-title {
+    width: auto;
+    padding: 10px;
+    border: #999999 solid 1px;
+    border-radius: 10px;
+    text-align: left;
+    margin-bottom: 20px;
+    font-size: 150%;
+    font-weight: bold;
+}
+
+.page-title > .selector {
+    float: right;
+    font-weight: normal;
+    font-size: medium;
+}
+
+/*******************************************************************************
  * OBSAH
  ******************************************************************************/
 
 .content-wrapper {
     display: block;
     width: auto;
+    text-align: center;
 }
 
 .content-wrapper > .stats {

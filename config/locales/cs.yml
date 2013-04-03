@@ -52,6 +52,7 @@ cs:
         teams: Týmy
         players: Hráči
         matches: Zápasy
+        users: Uživatelé
       user:
         title: Uživatel
         edit: Editovat

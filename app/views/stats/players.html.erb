@@ -1,4 +1,16 @@
 <% if @team %>
+  <div class="page-title">
+    <%= @team.name %>
+    <div class="selector">
+      Tým:
+      <select id="team-select">
+        <% for team in @teams %>
+          <option value="<%= team.id %>"<%= @team == team ? " selected" : nil %>><%= team.name %></option>
+        <% end %>
+      </select>
+      <input type="button" class="btn" value="Zobrazit" onclick="Stats.Players.changeTeam()" />
+    </div>
+  </div>
   <div class="content-wrapper">
     <div class="stats players">
       <h1><%= I18n.t('messages.stats.players.title_total') %></h1>

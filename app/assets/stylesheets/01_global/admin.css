@@ -59,7 +59,7 @@
 .admin > .footer {
     display: block;
     width: auto;
-    margin-bottom: 20px;
+    margin: 20px 0px 20px 0px;
 }
 
 /*******************************************************************************

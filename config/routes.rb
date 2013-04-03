@@ -1,14 +1,10 @@
 TableSoccer::Application.routes.draw do
   get "stats/players"
-
   get "stats/player"
-
   get "stats/team"
 
   get "user_sessions/new"
-
   get "user_sessions/create"
-
   get "user_sessions/destroy"
 
   get "home/index"
@@ -35,6 +31,9 @@ TableSoccer::Application.routes.draw do
   match 'logout' => 'user_sessions#destroy', :as => :logout
 
   match 'matches/:id/add_game' => 'matches#add_game'
+  match 'players/:id/stats' => 'stats#player'
+  match 'teams/:id/playersstats' => 'stats#players'
+  match 'teams/:id/stats' => 'stats#team'
 
   root :to => 'home#index'
 

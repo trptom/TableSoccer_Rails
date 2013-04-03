@@ -12,8 +12,8 @@
       <% @players.each do |player| %>
         <tr>
           <td><%= get_player_name(player) %></td>
-          <td><%= player.team ? player.team.name : nil %></td>
-          <td>
+          <td><%= player.team ? link_to(player.team.name, player.team) : nil %></td>
+          <td class="btn-group">
             <%= link_to 'Zobrazit', player, :class => "btn" %>
             <%= link_to 'Editovat', edit_player_path(player), :class => "btn" %>
             <%= link_to 'Smazat', player, method: :delete, data: { confirm: 'Jste si jistý(á)?' }, :class => "btn" %>
