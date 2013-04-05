@@ -21,7 +21,7 @@
   </div>
   <div class="field">
      <%= f.label :player_id %><br />
-     <%= f.select :player_id, options_for_select(get_player_options(nil), @user.player_id.to_s) %>
+     <%= f.select :player_id, options_for_select(get_player_options(nil) << ["Žádný", nil], @user.player_id.to_s) %>
   </div>
   <div class="actions">
     <%= f.submit :value => "Upravit nastavení" %>
