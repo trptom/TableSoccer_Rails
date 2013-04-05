@@ -33,12 +33,12 @@ module StatsHelper
       if (gp.game && gp.game.score_home && gp.game.score_away)
         stats[GAME_TYPE_STR.length][:gp] += 1;
         stats[gp.game.game_type][:gp] += 1;
+        diff = gp.game.score_home - gp.game.score_away
         if gp.team == TEAM_HOME
           stats[GAME_TYPE_STR.length][:gf] += gp.game.score_home;
           stats[GAME_TYPE_STR.length][:ga] += gp.game.score_away;
           stats[gp.game.game_type][:gf] += gp.game.score_home;
           stats[gp.game.game_type][:ga] += gp.game.score_away;
-          diff = gp.game.score_home - gp.game.score_away
           if diff > 0
             stats[GAME_TYPE_STR.length][:w] += 1
             stats[gp.game.game_type][:w] += 1
@@ -76,7 +76,7 @@ module StatsHelper
     stats[GAME_TYPE_STR.length][:rate] = stats[GAME_TYPE_STR.length][:gp] > 0 ? stats[GAME_TYPE_STR.length][:w].to_f/stats[GAME_TYPE_STR.length][:gp].to_f : 0;
     stats[GAME_TYPE_SINGLE][:rate] = stats[GAME_TYPE_SINGLE][:gp] > 0 ? stats[GAME_TYPE_SINGLE][:w].to_f/stats[GAME_TYPE_SINGLE][:gp].to_f : 0;
     stats[GAME_TYPE_DOUBLE][:rate] = stats[GAME_TYPE_DOUBLE][:gp] > 0 ? stats[GAME_TYPE_DOUBLE][:w].to_f/stats[GAME_TYPE_DOUBLE][:gp].to_f : 0;
-    stats[GAME_TYPE_FOURS][:rate] = stats[GAME_TYPE_FOURS][:gp] > 0 ? stats[][:w].to_f/stats[GAME_TYPE_FOURS][:gp].to_f : 0;
+    stats[GAME_TYPE_FOURS][:rate] = stats[GAME_TYPE_FOURS][:gp] > 0 ? stats[GAME_TYPE_FOURS][:w].to_f/stats[GAME_TYPE_FOURS][:gp].to_f : 0;
     stats[GAME_TYPE_TWO_BALL][:rate] = stats[GAME_TYPE_TWO_BALL][:gp] > 0 ? stats[GAME_TYPE_TWO_BALL][:w].to_f/stats[GAME_TYPE_TWO_BALL][:gp].to_f : 0;
 
     stats[GAME_TYPE_STR.length][:percentage] = sprintf('%.2f', stats[GAME_TYPE_STR.length][:rate]*100)
