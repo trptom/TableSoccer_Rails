@@ -82,7 +82,7 @@ class StatsController < ApplicationController
     if params[:id]
       @player = Player.find(params[:id])
     else
-      @player = current_user && current_user.player ? Player.find(current_user.player) : nil
+      @player = current_user && current_user.player ? Player.find(current_user.player) : Player.first
     end
 
     if @player
