@@ -1,0 +1,107 @@
+<%# TODO komplet prava strana %>
+<div id="right-side-panel">
+  <% if Game.past.count > 0 %>
+    <div class="last-games">
+      <div class="title">
+        <%= I18n.t "messages.base.last_games" %>
+      </div>
+      <div class="content">
+        <% for past_game in Game.past.order("start DESC").limit(RIGHTSIDE_PANEL[:last_games_count]) %>
+          <div class="line" title="<%= I18n.l past_game.start %>">
+            <div class="result">
+              <%= past_game.cfbu_profile_link ? link_to(past_game.result_str, past_game.cfbu_profile_link, :target => "_blank") : past_game.result_str %>
+            </div>
+            <div class="team1">
+              <%= past_game.home_team.cfbu_profile_link ? link_to(past_game.home_team.short_name, past_game.home_team.cfbu_profile_link, :target => "_blank") :  past_game.home_team.short_name %>
+            </div>
+            <div class="team2">
+              <%= past_game.away_team.cfbu_profile_link ? link_to(past_game.away_team.short_name, past_game.away_team.cfbu_profile_link, :target => "_blank") :  past_game.away_team.short_name %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+  
+  <% if Game.future.count > 0 %>
+    <div class="next-games">
+      <div class="title">
+        <%= I18n.t "messages.base.following_games" %>
+      </div>
+      <div class="content">
+        <% for future_game in Game.future.order(:start).limit(RIGHTSIDE_PANEL[:next_games_count]) %>
+        <div class="line" title="<%= I18n.l future_game.start %>">
+            <div class="result">
+              <%= future_game.cfbu_profile_link ? link_to(future_game.result_str, future_game.cfbu_profile_link, :target => "_blank") : future_game.result_str %>
+            </div>
+            <div class="team1">
+              <%= future_game.home_team.cfbu_profile_link ? link_to(future_game.home_team.short_name, future_game.home_team.cfbu_profile_link, :target => "_blank") :  future_game.home_team.short_name %>
+            </div>
+            <div class="team2">
+              <%= future_game.away_team.cfbu_profile_link ? link_to(future_game.away_team.short_name, future_game.away_team.cfbu_profile_link, :target => "_blank") :  future_game.away_team.short_name %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+  
+  <% if Player.birthday.count > 0 %>
+    <div class="birthdays">
+      <div class="title">
+        <%= I18n.t "messages.base.today_celebrates" %>
+      </div>
+      <div class="content">
+        <% for celebrator in Player.birthday %>
+          <div class="line">
+            <%= link_to celebrator.get_name do %>
+              <div>
+                <%= image_tag celebrator.icon_url %>
+              </div>
+              <div>
+                <%= celebrator.get_name %>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+  
+  <div class="random-players">
+    <div class="title">
+      <%= I18n.t "messages.base.random_players" %>
+    </div>
+    <div class="content">
+      <% for random_player in Player.randomize.limit(RIGHTSIDE_PANEL[:random_players_count]) %>
+        <div class="line">
+          <%= link_to random_player.get_name, random_player %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  
+  <div class="sponsors">
+    <div class="title">
+      <%= I18n.t "messages.base.sponsors" %>
+    </div>
+    <div class="content">
+      <div class="line">
+        <%= image_tag "sponsors/mlekarny.gif" %>
+      </div>
+    </div>
+
+    <div class="content">
+      <div class="line">
+    <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,29,0" width="100%" height="100">
+        <param name="movie" value="http://www.fler.cz/applications/ultrabanner.swf?uid=98974&w=130&h=100&col=FFFFFF">
+        <param name="quality" value="high">
+        <param name="scale" value="noscale" />
+        <param name="wmode" value="transparent" />
+        <embed src="http://www.fler.cz/applications/ultrabanner.swf?uid=98974&w=130&h=100&col=FFFFFF" quality="high" scale="noscale" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" width="100%" height="100" wmode="transparent">
+        </embed>
+    </object>
+      </div>
+    </div>
+  </div>
+</div>

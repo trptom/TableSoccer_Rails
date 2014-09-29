@@ -2,7 +2,7 @@
 # The default is nothing which will include only core features (password encryption, login/logout).
 # Available submodules are: :user_activation, :http_basic_auth, :remember_me,
 # :reset_password, :session_timeout, :brute_force_protection, :activity_logging, :external
-Rails.application.config.sorcery.submodules = []
+Rails.application.config.sorcery.submodules = [:user_activation, :reset_password, :external]
 
 # Here you can configure each submodule's features.
 Rails.application.config.sorcery.configure do |config|
@@ -70,7 +70,26 @@ Rails.application.config.sorcery.configure do |config|
   # What providers are supported by this app, i.e. [:twitter, :facebook, :github, :google, :liveid] .
   # Default: `[]`
   #
-  # config.external_providers =
+  config.external_providers = [:twitter, :facebook]
+
+  config.twitter.key = "VZv2peE7IVR6IOiVvOJt6g"
+  config.twitter.secret = "ke51gj1zT1coI6zopBeXavR9bXX2Zzh8VmVQB5ks4"
+  config.twitter.callback_url = "http://fbksedlcany.cz/oauth/callback?provider=twitter"
+  config.twitter.user_info_mapping = {
+    :username => "screen_name",
+    :email => "screen_name"
+  }
+
+  config.facebook.key = "131410173606"
+  config.facebook.secret = "3bbae143add139e71bd34bf4668358d1"
+  config.facebook.callback_url = "http://fbksedlcany.herokuapp.com/oauth/callback?provider=facebook"
+  config.facebook.user_info_mapping = {
+    :email => "email",
+    :username => "username",
+    :first_name => "first_name",
+    :second_name => "last_name"
+  }
+  config.facebook.scope = "email"
 
 
   # You can change it by your local ca_file. i.e. '/etc/pki/tls/certs/ca-bundle.crt'
@@ -131,7 +150,7 @@ Rails.application.config.sorcery.configure do |config|
     # downcase the username before trying to authenticate, default is false
     # Default: `false`
     #
-    # user.downcase_username_before_authenticating =
+    user.downcase_username_before_authenticating = true
 
 
     # change default email attribute.
@@ -217,7 +236,7 @@ Rails.application.config.sorcery.configure do |config|
     # your mailer class. Required.
     # Default: `nil`
     #
-    # user.user_activation_mailer =
+    user.user_activation_mailer = UserMailer
 
 
     # when true sorcery will not automatically
@@ -268,7 +287,7 @@ Rails.application.config.sorcery.configure do |config|
     # mailer class. Needed.
     # Default: `nil`
     #
-    # user.reset_password_mailer =
+    user.reset_password_mailer = UserMailer
 
 
     # reset password email method on your mailer class.
@@ -371,7 +390,7 @@ Rails.application.config.sorcery.configure do |config|
     # Class which holds the various external provider data for this user.
     # Default: `nil`
     #
-    # user.authentications_class =
+    user.authentications_class = Authentication
 
 
     # User's identifier in authentications class.

@@ -1,9 +1,0 @@
-.admin.matches.add_all_games .players .players_home,
-.admin.matches.add_all_games .players .players_away {
-    display: inline-block;
-    width: 40%;
-}
-
-.admin.matches.add_all_games .player * {
-    display: inline;
-}

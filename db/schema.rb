@@ -11,7 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130314142900) do
+ActiveRecord::Schema.define(:version => 20140929000000) do
+
+  create_table "authentications", :force => true do |t|
+    t.integer  "user_id",    :null => false
+    t.string   "provider",   :null => false
+    t.string   "uid",        :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "game_players", :force => true do |t|
     t.integer  "game_id",    :null => false
@@ -96,13 +104,21 @@ ActiveRecord::Schema.define(:version => 20130314142900) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "username",         :null => false
+    t.string   "username",                                           :null => false
     t.string   "email"
     t.string   "crypted_password"
     t.string   "salt"
     t.integer  "player_id"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.boolean  "blocked",                         :default => false, :null => false
+    t.boolean  "is_admin",                        :default => false, :null => false
+    t.string   "activation_state"
+    t.string   "activation_token"
+    t.datetime "activation_token_expires_at"
+    t.string   "reset_password_token"
+    t.datetime "reset_password_token_expires_at"
+    t.datetime "reset_password_email_sent_at"
+    t.datetime "created_at",                                         :null => false
+    t.datetime "updated_at",                                         :null => false
   end
 
   add_index "users", ["player_id"], :name => "index_users_on_player_id"

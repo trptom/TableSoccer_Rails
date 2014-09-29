@@ -39,6 +39,17 @@ TableSoccer::Application.routes.draw do
   match 'players/:id/stats' => 'stats#player'
   match 'teams/:id/playersstats' => 'stats#players'
   match 'teams/:id/stats' => 'stats#team'
+  
+  match 'login' => 'user_sessions#create', :as => :login
+  match 'logout' => 'user_sessions#destroy', :as => :logout
+  match 'register' => 'users#new', :as => :register
+  match 'current_user' => 'users#show', :as => :current_user
+  match 'home' => 'home#index', :as => :current_user
+  
+  get "oauths/oauth"
+  get "oauths/callback"
+  match "oauth/callback" => "oauths#callback"
+  match "oauth/:provider" => "oauths#oauth", :as => :auth_at_provider
 
   root :to => 'home#index'
 

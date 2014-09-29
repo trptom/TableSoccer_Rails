@@ -12,4 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
+//= require ckeditor/init
+//= require_tree ./bootstrap
+//= require_tree ./ckeditor
+//= require bootstrap-datepicker
+//= require bootstrap-timepicker
+//= require_tree ./global

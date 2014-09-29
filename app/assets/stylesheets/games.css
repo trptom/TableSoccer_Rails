@@ -1,9 +1,0 @@
-.list.players td {
-    height: auto;
-}
-
-.list.players .player {
-    height: 30px;
-    line-height: 30px;
-    margin: 5px 0px 5px 0px;
-}

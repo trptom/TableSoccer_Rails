@@ -1,0 +1,85 @@
+<div class="navbar navbar-fixed-top navbar-inverse">
+  <div class="navbar-inner">
+    <div class="container">
+      <a id="counter" href="http://pocitadlo.abz.cz/" title="potadlo pstup: pocitadlo.abz.cz">
+        <img src="http://pocitadlo.abz.cz/aip.php?tp=bt" alt="potadlo" border="0" />
+      </a>
+      
+      <a class="brand" href="/"><%= I18n.t("messages.application.header") %></a>
+
+      <ul class="nav">
+        <%# stats %>
+        <li>
+          <div class="btn-toolbar">
+            <div class="btn-group">
+              <div class="btn btn-warning" data-toggle="dropdown">
+                <%= I18n.t("messages.menu.stats.title") %>
+              </div>
+              <div class="btn dropdown-toggle btn-warning" data-toggle="dropdown">
+                <span class="caret"></span>
+              </div>
+              <ul class="dropdown-menu">
+                <li>
+                  <%= link_to I18n.t('messages.menu.stats.players'), "/stats/players" %>
+                </li>
+                <li>
+                  <%= link_to I18n.t('messages.menu.stats.player'), "/stats/player" %>
+                </li>
+                <li>
+                  <%= link_to I18n.t('messages.menu.stats.team'), "/stats/team" %>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </li>
+        
+        <%# admin %>
+        <li>
+          <div class="btn-toolbar">
+            <div class="btn-group">
+              <div class="btn btn-warning" data-toggle="dropdown">
+                <%= I18n.t("messages.menu.admin.title") %>
+              </div>
+              <div class="btn dropdown-toggle btn-warning" data-toggle="dropdown">
+                <span class="caret"></span>
+              </div>
+              <ul class="dropdown-menu">
+                <li>
+                  <%= link_to I18n.t('messages.menu.admin.leagues'), leagues_path %>
+                </li>
+                <li>
+                  <%= link_to I18n.t('messages.menu.admin.teams'), teams_path %>
+                </li>
+                <li>
+                  <%= link_to I18n.t('messages.menu.admin.players'), players_path %>
+                </li>
+                <li>
+                  <%= link_to I18n.t('messages.menu.admin.matches'), matches_path %>
+                </li>
+                <li>
+                  <%= link_to I18n.t('messages.menu.admin.users'), users_path %>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </li>
+      </ul>
+      
+      <div class="pull-right">
+        <% if current_user %>
+          <%= link_to I18n.t("messages.base.logout"), logout_url, :class => "btn" %>
+        <% else %>
+          <%= link_to I18n.t("messages.base.register"), register_url, :class => "btn" %>
+          <div class="btn-group">
+            <a class="btn" href="#login" role="button" data-toggle="modal">
+              <%= I18n.t("messages.base.login") %>
+            </a>
+            <%#= link_to image_tag(asset_path("twitter_icon.jpg")), auth_at_provider_path(:provider => :twitter), :class => "btn", :title => I18n.t("messages.base.login_via_twitter") %>
+            <%= link_to image_tag(asset_path("facebook_icon.jpg")), auth_at_provider_path(:provider => :facebook), :class => "btn", :title => I18n.t("messages.base.login_via_facebook") %>
+          </div>
+        <% end %>
+      </div>
+      <div class="nav-collapse collapse"><!-- hidden when 940px or less --></div>
+    </div>
+  </div>
+</div>

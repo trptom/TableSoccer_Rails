@@ -1,3 +1,9 @@
+MAILER_ADDRESS = "no-reply@fotbalek.herokuapp.com"
+
+ROOT_ACCOUNT_USERNAME = "admin"
+ROOT_ACCOUNT_EMAIL = "admin@fotbalek.herokuapp.com"
+ROOT_ACCOUNT_PASSWORD = "root"
+
 GAME_TYPE_SINGLE = 0;
 GAME_TYPE_DOUBLE = 1;
 GAME_TYPE_TWO_BALL = 2;

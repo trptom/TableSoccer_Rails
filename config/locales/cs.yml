@@ -58,12 +58,29 @@ cs:
         players: Hráči
         matches: Zápasy
         users: Uživatelé
-      user:
-        title: Uživatel
-        edit: Editovat
-        add: Přidat nového
+      base:
         login: Přihlásit
         logout: Odhlásit
+        register: Zaregistrovat
+        login_via_facebook: Přihlásit přes Facebook
+        
+    login_form:
+      title: Přihlášení
+      username: Uživatelské jméno
+      password: Heslo
+      lost_password: Zapomněl jsem heslo
+      login: Přihlásit se
+      
+    mailers:
+      user_mailer:
+        welcome: Vítejte na stránkách %{url}
+        account_activated: Účet aktivován
+        password_updated: Vaše heslo bylo resetováno
+
+    oauths:
+      callback:
+        logged_in: Přihlašování pomocí %{provider} účtu proběhlo úspěšně.
+        created: První přihlášení pomocí %{provider} účtu proběhlo úspěšně. Byl pro Vás vytvořen nový účet s názvem %{username}.
 
     stats:
       players:

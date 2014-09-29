@@ -2,76 +2,53 @@
 <html>
   <head>
     <title><%= I18n.t('messages.application.title') %></title>
-    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" />
     <%= stylesheet_link_tag    "application" %>
-    <%= javascript_include_tag "application" %>
-    <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
-    <%= csrf_meta_tags %>
-    <script type="text/javascript">
-      $(function() {
-        $( "#menu" ).menu();
-      });
-    </script>
-  </head>
-  <body>
-
-    <% if current_user %>
-      <ul id="menu">
-        <li>
-          <a href="#"><%= I18n.t('messages.menu.stats.title') %></a>
-          <ul>
-            <li><%= link_to I18n.t('messages.menu.stats.players'), "/stats/players" %></li>
-            <li><%= link_to I18n.t('messages.menu.stats.player'), "/stats/player" %></li>
-            <li><%= link_to I18n.t('messages.menu.stats.team'), "/stats/team" %></li>
-          </ul>
-        </li>
-        <li>
-          <a href="#"><%= I18n.t('messages.menu.admin.title') %></a>
-          <ul>
-            <li><%= link_to I18n.t('messages.menu.admin.leagues'), leagues_path %></li>
-            <li><%= link_to I18n.t('messages.menu.admin.teams'), teams_path %></li>
-            <li><%= link_to I18n.t('messages.menu.admin.players'), players_path %></li>
-            <li><%= link_to I18n.t('messages.menu.admin.matches'), matches_path %></li>
-            <li><%= link_to I18n.t('messages.menu.admin.users'), users_path %></li>
-          </ul>
-        </li>
-        <li>
-          <a href="#"><%= I18n.t('messages.menu.user.title') %></a>
-          <ul>
-            <li><%= link_to I18n.t('messages.menu.user.edit'), edit_user_path(current_user.id) %></li>
-            <li><%= link_to I18n.t('messages.menu.user.logout'), :logout %></li>
-          </ul>
-        </li>
-      </ul>
-    <% else %>
-      <ul id="menu">
-        <li>
-          <a href="#"><%= I18n.t('messages.menu.stats.title') %></a>
-          <ul>
-            <li><%= link_to I18n.t('messages.menu.stats.players'), "/stats/players" %></li>
-            <li><%= link_to I18n.t('messages.menu.stats.player'), "/stats/player" %></li>
-            <li><%= link_to I18n.t('messages.menu.stats.team'), "/stats/team" %></li>
-          </ul>
-        </li>
-        <li>
-          <a href="#"><%= I18n.t('messages.menu.user.title') %></a>
-          <ul>
-            <li><%= link_to I18n.t('messages.menu.user.login'), :login %></li>
-          </ul>
-        </li>
-      </ul>
+    <% for file_css in get_additional_styles %>
+      <%= stylesheet_link_tag file_css, :media => "all" %>
     <% end %>
+    <%= javascript_include_tag "application" %>
+    <% for file_js in get_additional_scripts %>
+      <%= javascript_include_tag file_js %>
+    <% end %>
+    <%= csrf_meta_tags %>
+  </head>
+  
+  <body>
+    <% if current_user %>
+      <%= render "menu_loggedIn" %>
+    <% else %>
+      <%= render "menu_notLoggedIn" %>
+    <% end %>
+    <%= render "login_form" %>
+    
+    <div id="page" class="container">
+      <%# title just when I have message for it %>
+      <% if !(I18n.t "messages.titles." + params[:controller] + "." + params[:action]).starts_with?("translation missing: ") %>
+        <div id="page-title">
+          <%= I18n.t "messages.titles." + params[:controller] + "." + params[:action], @title_params ? @title_params : nil %>
+        </div>
+      <% end %>
+      
+      
+      <%= render "notes" %>
+      <%= render "errors" %>
 
-    <div id="header"><%= I18n.t('messages.application.header') %></div>
-
-    <div id="content">
-      <div>
-        <p id="notice"><%= notice %></p>
-        <p id="alert"><%= alert %></p>
+      <div id="page-data">
+        <%= yield %>
       </div>
-
-      <%= yield %>
     </div>
+    
+	<script>
+      // TODO analytics
+      /*
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
+	  ga('create', 'UA-52309443-1', 'auto');
+	  ga('send', 'pageview');
+      */
+	</script>
   </body>
 </html>
