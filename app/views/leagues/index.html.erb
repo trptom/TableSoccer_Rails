@@ -29,5 +29,15 @@
         </tr>
       <% end %>
     </tbody>
+    
+    <tfoot>
+      <tr>
+        <td colspan="6">
+          <div class="btn-group">
+              <%= link_to I18n.t("messages.leagues.index.new"), new_league_path, :class => "btn btn-primary" %>
+          </div>
+        </td>
+      </tr>
+    </tfoot>
   </table>
 </div>

@@ -29,6 +29,15 @@
     border-bottom: solid #000000 1px;
 }
 
+.list > table tfoot td {
+    padding: 5px;
+}
+
+.list > table tfoot tr:first-of-type td {
+    border-top: solid #000000 1px;
+    text-align: center;
+}
+
 /*******************************************************************************
  * item detail
  ******************************************************************************/
