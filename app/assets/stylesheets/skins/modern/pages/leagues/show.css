@@ -1,0 +1,13 @@
+table {
+    width: 100%;
+}
+
+.season {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.season .title {
+    font-weight: bold;
+    margin-bottom: 5px;
+}

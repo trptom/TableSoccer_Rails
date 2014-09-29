@@ -1,37 +1,54 @@
-<%= form_for(@league) do |f| %>
-  <% if @league.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@league.errors.count, "error") %> prohibited this league from being saved:</h2>
-
-      <ul>
-      <% @league.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+<%= form_for(@league, :html => { :class => "form-horizontal" }) do |f| %>
+  <div class="control-group">
+    <%= f.label I18n.t("messages.leagues.form.name"), :class => "control-label", :for => "league_name" %>
+    <div class="controls">
+      <%= f.text_field :name %>
     </div>
-  <% end %>
+  </div>
+  <div class="control-group">
+    <%= f.label I18n.t("messages.leagues.form.short_name"), :class => "control-label", :for => "league_short_name" %>
+    <div class="controls">
+      <%= f.text_field :short_name %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label I18n.t("messages.leagues.form.shortcut"), :class => "control-label", :for => "league_shortcut" %>
+    <div class="controls">
+      <%= f.text_field :shortcut %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label I18n.t("messages.leagues.form.level"), :class => "control-label", :for => "league_level" %>
+    <div class="controls">
+      <%= f.number_field :level, :min => 1, :max => 100 %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label I18n.t("messages.leagues.form.division"), :class => "control-label", :for => "league_division" %>
+    <div class="controls">
+      <%= f.number_field :division, :min => 1, :max => 100 %>
+    </div>
+  </div>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :short_name %><br />
-    <%= f.text_field :short_name %>
-  </div>
-  <div class="field">
-    <%= f.label :shortcut %><br />
-    <%= f.text_field :shortcut %>
-  </div>
-  <div class="field">
-    <%= f.label :level %><br />
-    <%= f.number_field :level, :min => 1, :max => 100 %>
-  </div>
-  <div class="field">
-    <%= f.label :division %><br />
-    <%= f.number_field :division, :min => 1, :max => 100 %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="control-group">
+    <div class="controls">
+      <%= f.submit :value => I18n.t("messages.leagues.#{params[:action]}.submit"), :class => "btn btn-primary" %>
+
+      <% if @buttons %>
+        <div class="btn-group">
+          <button class="btn dropdown-toggle" data-toggle="dropdown">
+            <%= I18n.t("messages.base.navigation") %>
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu">
+            <% for btn in @buttons %>
+              <li>
+                <%= link_to btn[:body], btn[:url], btn[:html_options] %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+    </div>
   </div>
 <% end %>

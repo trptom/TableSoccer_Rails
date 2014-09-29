@@ -17,10 +17,12 @@ cs:
       game_type_fours: 4 na 4
       game_type_two_ball: Two-ball
       games_played: Zápasy
+      go_to_list: Jít na seznam
       l: P
       level: Úroveň
       match: Zápas
       name: Název
+      navigation: Navigace
       nick: Přezdívka
       no_game: Žádná hra
       no_league: Žádná liga
@@ -105,10 +107,37 @@ cs:
         title_game_types: Typy her
         player_not_selected: Není vybrán žádný hráč
       team:
+    
     leagues:
+      base:
+        name: Název
+        short_name: Krátký název
+        shortcut: Zkratka
+        level: Úroveň
+        level_hint: v hierarchii lig
+        division: Skupina
+        division_hint: pro více lig na stejné úrovni
+      form:
+        back_to_list: Zpět na seznam lig
+      new:
+        title: Nová liga
+        submit: Vytvořit ligu
+      edit:
+        title: Editace ligy
+        submit: Upravit ligu
+        back_to_detail: Zpět na detail ligy
+      create:
+        success: Liga byla úspěšně vytvořena.
+      update:
+        success: Liga byla úspěšně upravena.
       index:
         title: Seznam lig
         new: Nová liga
+      show:
+        delete_lt_confirmation: Jste si jistý, že chcete odstranit tým z ligy?
+        form_team: Tým
+        form_season: Sezóna
+        form_submit: Přidat tým
     
     matches:
       create:
