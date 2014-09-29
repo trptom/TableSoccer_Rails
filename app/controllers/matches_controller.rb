@@ -1,4 +1,6 @@
 class MatchesController < ApplicationController
+  before_filter :require_login, except: [:show]
+  
   # GET /matches
   def index
     @matches = Match.all

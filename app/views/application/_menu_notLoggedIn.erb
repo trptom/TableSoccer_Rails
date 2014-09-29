@@ -31,23 +31,22 @@
                 </li>
               </ul>
             </div>
+            
           </div>
         </li>
       </ul>
       
       <div class="pull-right">
-        <% if current_user %>
-          <%= link_to I18n.t("messages.menu.user.login"), logout_url, :class => "btn" %>
-        <% else %>
-          <%= link_to I18n.t("messages.menu.base.register"), register_url, :class => "btn" %>
-          <div class="btn-group">
-            <a class="btn" href="#login" role="button" data-toggle="modal">
-              <%= I18n.t("messages.menu.base.login") %>
-            </a>
-            <%= link_to image_tag(asset_path("facebook_icon.jpg")), auth_at_provider_path(:provider => :facebook), :class => "btn", :title => I18n.t("messages.menu.base.login_via_facebook") %>
-          </div>
-        <% end %>
+        <%= link_to I18n.t("messages.menu.base.register"), register_url, :class => "btn" %>
+          
+        <div class="btn-group">
+          <a class="btn" href="#login" role="button" data-toggle="modal">
+            <%= I18n.t("messages.menu.base.login") %>
+          </a>
+          <%= link_to image_tag(asset_path("facebook_icon.jpg")), auth_at_provider_path(:provider => :facebook), :class => "btn", :title => I18n.t("messages.menu.base.login_via_facebook") %>
+        </div>
       </div>
+      
       <div class="nav-collapse collapse"><!-- hidden when 940px or less --></div>
     </div>
   </div>

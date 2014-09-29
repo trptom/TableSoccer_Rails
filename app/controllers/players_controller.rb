@@ -1,4 +1,6 @@
 class PlayersController < ApplicationController
+  before_filter :require_login, except: [:show]
+  
   # GET /players
   # GET /players.json
   def index

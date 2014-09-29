@@ -1,6 +1,8 @@
 # coding:utf-8
 
 class GamesController < ApplicationController
+  before_filter :require_login, except: [:show]
+  
   def show
     @game = Game.find(params[:id])
 

@@ -1,24 +1,23 @@
 class UserSessionsController < ApplicationController
+  before_filter :require_login, only: [:destroy]
+  
 #  skip_before_filter :check_permissions, :except => [:destroy]
-
-  def new
-    @user = User.new
-  end
-
   def create
     respond_to do |format|
       if @user = login(params[:username],params[:password])
-        format.html { redirect_back_or_to("/", :notice => 'Login successful.') }
-        format.xml { render :xml => @user, :status => :created, :location => @user }
+        format.html {
+          redirect_back_or_to("/", :notice => I18n.t("messages.user_sessions.create.succesfull"))
+        }
       else
-        format.html { flash.now[:alert] = "Login failed."; render :action => "new" }
-        format.xml { render :xml => @user.errors, :status => :unprocessable_entity }
+        format.html {
+          redirect_back_or_to("/", :notice => I18n.t('messages.user_sessions.create.failed'))
+        }
       end
     end
   end
 
   def destroy
     logout
-    redirect_to(:users, :notice => 'Logged out!')
+    redirect_back_or_to("/", :notice => I18n.t('messages.user_sessions.destroy.succesfull'))
   end
 end

@@ -2,8 +2,7 @@ TableSoccer::Application.routes.draw do
   get "stats/players"
   get "stats/player"
   get "stats/team"
-
-  get "user_sessions/new"
+  
   get "user_sessions/create"
   get "user_sessions/destroy"
 
@@ -31,9 +30,6 @@ TableSoccer::Application.routes.draw do
   resources :user_sessions
 
   resources :users
-
-  match 'login' => 'user_sessions#new', :as => :login
-  match 'logout' => 'user_sessions#destroy', :as => :logout
 
   match 'matches/:id/add_game' => 'matches#add_game'
   match 'players/:id/stats' => 'stats#player'

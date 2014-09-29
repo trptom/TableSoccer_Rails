@@ -1,4 +1,6 @@
 class TeamsController < ApplicationController
+  before_filter :require_login, except: [:show]
+  
   # GET /teams
   # GET /teams.json
   def index

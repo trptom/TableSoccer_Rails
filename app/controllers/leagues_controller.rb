@@ -1,4 +1,6 @@
 class LeaguesController < ApplicationController
+  before_filter :require_login, except: [:show]
+  
   # GET /leagues
   # GET /leagues.json
   def index

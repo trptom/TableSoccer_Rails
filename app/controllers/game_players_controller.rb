@@ -1,6 +1,8 @@
 # coding:utf-8
 
 class GamePlayersController < ActionController::Base
+  before_filter :require_login
+  
   def create
     @game_player = GamePlayer.new(params[:game_player])
     @game_player.save

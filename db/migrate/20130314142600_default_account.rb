@@ -5,7 +5,8 @@ class DefaultAccount < ActiveRecord::Migration
       :username => ROOT_ACCOUNT_USERNAME,
       :email => ROOT_ACCOUNT_EMAIL,
       :password => ROOT_ACCOUNT_PASSWORD,
-      :password_confirmation => ROOT_ACCOUNT_PASSWORD)
+      :password_confirmation => ROOT_ACCOUNT_PASSWORD,
+      :is_admin => true)
     @user.save
     @user.activate!
   end

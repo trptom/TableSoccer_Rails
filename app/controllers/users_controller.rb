@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-
+  before_filter :require_login, except: [:show, :activate]
+  
   def index
     @users = User.all
   end
@@ -73,5 +74,9 @@ class UsersController < ApplicationController
     else
       not_authenticated
     end
+  end
+  
+  def reset_password
+    # just render form
   end
 end
