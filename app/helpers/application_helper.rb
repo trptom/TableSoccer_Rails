@@ -37,15 +37,33 @@ module ApplicationHelper
     return ret
   end
 
-  def get_player_options(team_id)
-    tmp = team_id ? Player.where(:team_id => team_id).order(:nick).all : Player.order(:nick).all
+  def get_player_options(atts)
+    tmp = atts && atts[:team_id] ? Player.where(:team_id => atts[:team_id]).order(:nick).all : Player.order(:nick).all
     ret = Array.new
+
+    if (atts && atts[:before])
+      for item in atts[:before]
+        ret << item
+      end
+    end
+
+    if (atts && atts[:empty_allowed])
+      ret << [I18n.t("messages.base.no_player"), nil]
+    end
+
     for player in tmp
       ret << [get_player_name(player), player.id]
     end
-    if ret.length == 0
-      ret << [ I18n.t("messages.base.no_player"), nil ]
+    if ret.length == 0 && (atts && atts[:add_item_when_empty] && !atts[:empty_allowed])
+      ret << [ atts[:add_item_when_empty].kind_of?(String) ? atts[:add_item_when_empty] : I18n.t("messages.base.no_player"), nil ]
     end
+
+    if (atts && atts[:after])
+      for item in atts[:after]
+        ret << item
+      end
+    end
+
     return ret
   end
 

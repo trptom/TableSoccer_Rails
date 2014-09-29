@@ -1,3 +1,5 @@
+# coding:utf-8
+
 cs:
   messages:
     base:
@@ -17,6 +19,7 @@ cs:
       games_played: Zápasy
       l: P
       level: Úroveň
+      match: Zápas
       name: Název
       nick: Přezdívka
       no_game: Žádná hra
@@ -29,10 +32,12 @@ cs:
       player_name: Jméno hráče
       score: Skóre
       second_name: Příjmení
+      set: Nastavit
       short_name: Krátký název
       shortcut: Zkratka
       show: Zobrazit
       total: Celkem
+      vs: vs.
       w: V
       wins: Výhry
       
@@ -75,6 +80,17 @@ cs:
       index:
         title: Seznam lig
         new: Nová liga
+    matches:
+      create:
+        soccess: Zápas byl úspěšně vytvořen.
+      update:
+        success: Zápas byl úspěšně upraven.
+      add_all_games_form:
+        params_error: Chybné ID zápasu!
+        overwrite_existing: Přepsat již zadané zápasy
+      add_all_games:
+        params_error: Chybné ID zápasu nebo některého z hráčů!
+
   date:
     abbr_day_names:
       - Ne
@@ -168,74 +184,75 @@ cs:
             jej uložit
           other: Při ukládání objektu %{model} došlo ke %{count} chybám a nebylo možné
             jej uložit
-    helpers:
-      select:
-        prompt: Prosím vyberte si
-      submit:
-        create: Vytvořit %{model}
-        submit: Uložit %{model}
-        update: Aktualizovat %{model}
-    number:
-      currency:
-        format:
-          delimiter: ! ' '
-          format: ! '%n %u'
-          precision: 2
-          separator: ! ','
-          significant: false
-          strip_insignificant_zeros: false
-          unit: Kč
+  helpers:
+    select:
+      prompt: Prosím vyberte si
+    submit:
+      create: Vytvořit %{model}
+      submit: Uložit %{model}
+      update: Aktualizovat %{model}
+  number:
+    currency:
       format:
-        delimiter: ! ','
-        precision: 3
-        separator: .
+        delimiter: ! ' '
+        format: ! '%n %u'
+        precision: 2
+        separator: ! ','
         significant: false
         strip_insignificant_zeros: false
-      human:
-        decimal_units:
-          format: ! '%n %u'
-          units:
-            billion: Miliarda
-            million: Milion
-            quadrillion: Kvadrilion
-            thousand: Tisíc
-            trillion: Bilion
-            unit: ''
-        format:
-          delimiter: ''
-          precision: 1
-          significant: false
-          strip_insignificant_zeros: false
-        storage_units:
-          format: ! '%n %u'
-          units:
-            byte: B
-            gb: GB
-            kb: KB
-            mb: MB
-            tb: TB
-      percentage:
-        format:
-          delimiter: ''
-      precision:
-        format:
-          delimiter: ''
-    support:
-      array:
-        last_word_connector: ! ' a '
-        two_words_connector: ! ' a '
-        words_connector: ! ', '
-    time:
-      am: am
-      formats:
-        default: ! '%a %d. %B %Y %H:%M %z'
-        long: ! '%A %d. %B %Y %H:%M'
-        short: ! '%d. %m. %H:%M'
-      pm: pm
-    # remove these aliases after 'activemodel' and 'activerecord' namespaces are removed from Rails repository
-    activemodel:
-      errors:
-        <<: *errors
-    activerecord:
-      errors:
-        <<: *errors
+        unit: Kč
+    format:
+      delimiter: ! ','
+      precision: 3
+      separator: .
+      significant: false
+      strip_insignificant_zeros: false
+    human:
+      decimal_units:
+        format: ! '%n %u'
+        units:
+          billion: Miliarda
+          million: Milion
+          quadrillion: Kvadrilion
+          thousand: Tisíc
+          trillion: Bilion
+          unit: ''
+      format:
+        delimiter: ''
+        precision: 1
+        significant: false
+        strip_insignificant_zeros: false
+      storage_units:
+        format: ! '%n %u'
+        units:
+          byte: B
+          gb: GB
+          kb: KB
+          mb: MB
+          tb: TB
+    percentage:
+      format:
+        delimiter: ''
+    precision:
+      format:
+        delimiter: ''
+  support:
+    array:
+      last_word_connector: ! ' a '
+      two_words_connector: ! ' a '
+      words_connector: ! ', '
+  time:
+    am: am
+    formats:
+      default: ! '%a %d. %B %Y %H:%M %z'
+      long: ! '%A %d. %B %Y %H:%M'
+      short: ! '%d. %m. %H:%M'
+      logger: "%d.%m.%Y, %H:%M:%S"
+    pm: pm
+  # remove these aliases after 'activemodel' and 'activerecord' namespaces are removed from Rails repository
+  activemodel:
+    errors:
+      <<: *errors
+  activerecord:
+    errors:
+      <<: *errors

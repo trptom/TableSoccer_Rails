@@ -1,13 +1,22 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  first_name: MyString
-  second_name: MyString
-  nick: MyString
-  team: 
+  id: 1
+  first_name: Player
+  second_name: One
+  nick: p1
+  team_id: 1
 
 two:
-  first_name: MyString
-  second_name: MyString
-  nick: MyString
-  team: 
+  id: 2
+  first_name: Player
+  second_name: two
+  nick: p2
+  team_id: 1
+
+trptom:
+  id: 10
+  first_name: Tomáš
+  second_name: Přasličák
+  nick: trptom
+  team_id: 1

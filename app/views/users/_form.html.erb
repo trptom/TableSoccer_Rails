@@ -13,7 +13,7 @@
 <%= form_for(@user) do |f| %>
   <div class="field">
      <%= f.label :username %><br />
-     <%= f.text_field :username %>
+     <%= f.text_field :username, :disabled => (params[:action] == "edit") %>
   </div>
   <div class="field">
      <%= f.label :email %><br />
@@ -21,23 +21,25 @@
   </div>
   <div class="field">
      <%= f.label :player_id %><br />
-     <%= f.select :player_id, options_for_select(get_player_options(nil) << ["Žádný", nil], @user.player_id.to_s) %>
+     <%= f.select :player_id, options_for_select(get_player_options({:empty_allowed => true}), @user.player_id.to_s) %>
   </div>
   <div class="actions">
     <%= f.submit :value => "Upravit nastavení" %>
   </div>
 <% end %>
 
-<%= form_for(@user) do |f| %>
-  <div class="field">
-     <%= f.label :password %><br />
-     <%= f.password_field :password %>
-  </div>
-  <div class="field">
-     <%= f.label :password_confirmation %><br />
-     <%= f.password_field :password_confirmation %>
-  </div>
-  <div class="actions">
-    <%= f.submit :value => "Změnit heslo" %>
-  </div>
+<% if current_user = @user || current_user = User.order(:id).first %>
+  <%= form_for(@user) do |f| %>
+    <div class="field">
+       <%= f.label :password %><br />
+       <%= f.password_field :password %>
+    </div>
+    <div class="field">
+       <%= f.label :password_confirmation %><br />
+       <%= f.password_field :password_confirmation %>
+    </div>
+    <div class="actions">
+      <%= f.submit :value => "Změnit heslo" %>
+    </div>
+  <% end %>
 <% end %>

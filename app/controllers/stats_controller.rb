@@ -3,7 +3,7 @@
 include StatsHelper
 
 class StatsController < ApplicationController
-  skip_before_filter :require_login
+  skip_before_filter :check_permissions
 
   def players
     #load all teams

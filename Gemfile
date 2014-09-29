@@ -26,17 +26,21 @@ end
 gem 'jquery-rails'
 gem 'test-unit'
 
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
+# + Image uploading
+gem 'carrierwave'
+gem 'cloudinary'
 
-# To use Jbuilder templates for JSON
-# gem 'jbuilder'
+# + Graphical components
+gem 'bootstrap-datepicker-rails' #datum
+gem 'bootstrap-timepicker-rails' #cas
 
-# Use unicorn as the app server
-# gem 'unicorn'
+# + Testing
+gem 'simplecov', :require => false, :group => :test
+group :test do
+  gem 'selenium-webdriver'
+  gem 'test-unit'
+  gem 'capybara'
+end
 
-# Deploy with Capistrano
-# gem 'capistrano'
-
-# To use debugger
-# gem 'debugger'
+# + Simple text editor
+gem 'ckeditor', '4.0.6'

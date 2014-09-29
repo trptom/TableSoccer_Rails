@@ -11,7 +11,12 @@ TableSoccer::Application.routes.draw do
 
   resources :games
 
-  resources :matches
+  resources :matches do
+    member do
+      get :add_all_games_form
+      get :add_all_games
+    end
+  end
 
   resources :league_teams
 

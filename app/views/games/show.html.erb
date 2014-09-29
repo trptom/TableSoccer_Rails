@@ -52,7 +52,7 @@
             <%= form_for @new_home_player do |f| %>
               <%= f.hidden_field :team %>
               <%= f.hidden_field :game_id %>
-              <%= f.select :player_id, options_for_select(get_player_options(@game.match.team_home_id)) %>
+              <%= f.select :player_id, options_for_select(get_player_options({ :team_id => @game.match.team_home_id })) %>
               <%= f.submit :value => "+", :class => "btn" %>
             <% end %>
           <% end %>
@@ -62,7 +62,7 @@
             <%= form_for @new_away_player do |f| %>
               <%= f.hidden_field :team %>
               <%= f.hidden_field :game_id %>
-              <%= f.select :player_id, options_for_select(get_player_options(@game.match.team_away_id)) %>
+              <%= f.select :player_id, options_for_select(get_player_options({ :team_id => @game.match.team_away_id })) %>
               <%= f.submit :value => "+", :class => "btn" %>
             <%  end %>
           <% end %>

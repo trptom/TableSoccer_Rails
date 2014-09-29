@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  name: MyString
-  short_name: MyString
-  shortcut: MyString
-  logo: MyString
+  id: 1
+  name: Mortal
+  short_name: Mortal
+  shortcut: MOR
 
 two:
-  name: MyString
-  short_name: MyString
-  shortcut: MyString
-  logo: MyString
+  id: 2
+  name: Inarabu
+  short_name: Inarabu
+  shortcut: INA

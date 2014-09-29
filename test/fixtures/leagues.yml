@@ -1,15 +1,33 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  name: MyString
-  short_name: MyString
-  shortcut: MyString
+  id: 1
+  name: 1. liga
+  short_name: 1. liga
+  shortcut: L1
   level: 1
   division: 1
 
 two:
-  name: MyString
-  short_name: MyString
-  shortcut: MyString
-  level: 1
+  id: 2
+  name: 2. liga
+  short_name: 2. liga
+  shortcut: L2
+  level: 2
   division: 1
+
+three:
+  id: 3
+  name: 3. liga, skupina A
+  short_name: 3. liga (A)
+  shortcut: L3A
+  level: 3
+  division: 1
+
+four:
+  id: 4
+  name: 3. liga, skupina B
+  short_name: 3. liga (B)
+  shortcut: L3B
+  level: 3
+  division: 2

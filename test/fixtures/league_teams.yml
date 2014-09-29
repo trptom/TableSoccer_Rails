@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  league: 
-  team: 
-  season: 1
+  league_id: 3
+  team_id: 1
+  season: 2012
 
 two:
-  league: 
-  team: 
-  season: 1
+  league_id: 3
+  team_id: 2
+  season: 2012

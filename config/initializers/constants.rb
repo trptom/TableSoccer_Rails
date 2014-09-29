@@ -24,3 +24,5 @@ PLAYER_POSITION_TICK_3 = 32;
 
 TEAM_HOME = 0;
 TEAM_AWAY = 1;
+
+ERROR_PAGE = "/home/error"
