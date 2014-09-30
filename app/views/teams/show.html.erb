@@ -1,27 +1,32 @@
-<div class="admin teams show">
-  <p id="notice"><%= notice %></p>
+<div class="detail">
+  <div class="content">
+    <div class="line">
+      <span><%= I18n.t("messages.teams.base.name") %></span>
+      <span><%= @team.name %></span>
+    </div>
+    
+    <div class="line">
+      <span><%= I18n.t("messages.teams.base.short_name") %></span>
+      <span><%= @team.short_name %></span>
+    </div>
+    
+    <div class="line">
+      <span><%= I18n.t("messages.teams.base.shortcut") %></span>
+      <span><%= @team.shortcut %></span>
+    </div>
+    
+    <% if @team.logo != nil && @team.logo != "" %>
+      <div class="line">
+        <span><%= I18n.t("messages.teams.base.logo") %></span>
+        <span><%= image_tag @team.logo %></span>
+      </div>
+    <% end %>
+  </div>
 
-  <p>
-    <b>Name:</b>
-    <%= @team.name %>
-  </p>
-
-  <p>
-    <b>Short name:</b>
-    <%= @team.short_name %>
-  </p>
-
-  <p>
-    <b>Shortcut:</b>
-    <%= @team.shortcut %>
-  </p>
-
-  <p>
-    <b>Logo:</b>
-    <%= @team.logo %>
-  </p>
-
-
-  <%= link_to 'Edit', edit_team_path(@team) %> |
-  <%= link_to 'Back', teams_path %>
+  <div class="footer">
+    <div class="btn-group">
+      <%= link_to I18n.t("messages.base.edit"), edit_team_path(@team), :class => "btn" %>
+      <%= link_to I18n.t("messages.base.go_to_list"), teams_path, :class => "btn" %>
+    </div>
+  </div>
 </div>

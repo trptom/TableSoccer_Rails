@@ -1,33 +1,48 @@
-<%= form_for(@team) do |f| %>
-  <% if @team.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@team.errors.count, "error") %> prohibited this team from being saved:</h2>
-
-      <ul>
-      <% @team.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+<%= form_for(@team, :html => { :class => "form-horizontal" }) do |f| %>
+  <div class="control-group">
+    <%= f.label I18n.t("messages.teams.base.name"), :class => "control-label", :for => "team_name" %>
+    <div class="controls">
+      <%= f.text_field :name %>
     </div>
-  <% end %>
+  </div>
+  <div class="control-group">
+    <%= f.label I18n.t("messages.teams.base.short_name"), :class => "control-label", :for => "team_short_name" %>
+    <div class="controls">
+      <%= f.text_field :short_name %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label I18n.t("messages.teams.base.shortcut"), :class => "control-label", :for => "team_shortcut" %>
+    <div class="controls">
+      <%= f.text_field :shortcut %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label I18n.t("messages.teams.base.logo"), :class => "control-label", :for => "team_logo" %>
+    <div class="controls">
+      <%= f.text_field :logo %>
+    </div>
+  </div>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :short_name %><br />
-    <%= f.text_field :short_name %>
-  </div>
-  <div class="field">
-    <%= f.label :shortcut %><br />
-    <%= f.text_field :shortcut %>
-  </div>
-  <div class="field">
-    <%= f.label :logo %><br />
-    <%= f.text_field :logo %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="control-group">
+    <div class="controls">
+      <%= f.submit :value => I18n.t("messages.teams.#{params[:action]}.submit"), :class => "btn btn-primary" %>
+
+      <% if @buttons %>
+        <div class="btn-group">
+          <button class="btn dropdown-toggle" data-toggle="dropdown">
+            <%= I18n.t("messages.base.navigation") %>
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu">
+            <% for btn in @buttons %>
+              <li>
+                <%= link_to btn[:body], btn[:url], btn[:html_options] %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+    </div>
   </div>
 <% end %>

@@ -139,6 +139,29 @@ cs:
         form_season: Sezóna
         form_submit: Přidat tým
     
+    teams:
+      base:
+        name: Název
+        short_name: Krátký název
+        shortcut: Zkratka
+        logo: Logo
+      form:
+        back_to_list: Zpět na seznam týmů
+      new:
+        title: Nový tým
+        submit: Vytvořit tým
+      edit:
+        title: Editace týmu
+        submit: Upravit tým
+        back_to_detail: Zpět na detail týmu
+      create:
+        success: Tým byl úspěšně vytvořen.
+      update:
+        success: Tým byl úspěšně upraven.
+      index:
+        title: Seznam týmů
+        new: Nový tým
+    
     matches:
       create:
         soccess: Zápas byl úspěšně vytvořen.

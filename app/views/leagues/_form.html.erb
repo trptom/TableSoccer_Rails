@@ -1,30 +1,30 @@
 <%= form_for(@league, :html => { :class => "form-horizontal" }) do |f| %>
   <div class="control-group">
-    <%= f.label I18n.t("messages.leagues.form.name"), :class => "control-label", :for => "league_name" %>
+    <%= f.label I18n.t("messages.leagues.base.name"), :class => "control-label", :for => "league_name" %>
     <div class="controls">
       <%= f.text_field :name %>
     </div>
   </div>
   <div class="control-group">
-    <%= f.label I18n.t("messages.leagues.form.short_name"), :class => "control-label", :for => "league_short_name" %>
+    <%= f.label I18n.t("messages.leagues.base.short_name"), :class => "control-label", :for => "league_short_name" %>
     <div class="controls">
       <%= f.text_field :short_name %>
     </div>
   </div>
   <div class="control-group">
-    <%= f.label I18n.t("messages.leagues.form.shortcut"), :class => "control-label", :for => "league_shortcut" %>
+    <%= f.label I18n.t("messages.leagues.base.shortcut"), :class => "control-label", :for => "league_shortcut" %>
     <div class="controls">
       <%= f.text_field :shortcut %>
     </div>
   </div>
   <div class="control-group">
-    <%= f.label I18n.t("messages.leagues.form.level"), :class => "control-label", :for => "league_level" %>
+    <%= f.label I18n.t("messages.leagues.base.level"), :class => "control-label", :for => "league_level" %>
     <div class="controls">
       <%= f.number_field :level, :min => 1, :max => 100 %>
     </div>
   </div>
   <div class="control-group">
-    <%= f.label I18n.t("messages.leagues.form.division"), :class => "control-label", :for => "league_division" %>
+    <%= f.label I18n.t("messages.leagues.base.division"), :class => "control-label", :for => "league_division" %>
     <div class="controls">
       <%= f.number_field :division, :min => 1, :max => 100 %>
     </div>

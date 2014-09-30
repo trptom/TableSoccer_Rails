@@ -1,31 +1,39 @@
-<div class="admin teams index">
-  <h1>Seznam týmů</h1>
-
-  <div class="list">
-    <table>
+<div class="list">
+  <table>
+    <thead>
       <tr>
-        <th>Název</th>
-        <th>Krátký název</th>
-        <th>Zkratka</th>
-        <th>Akce</th>
+        <td><%= I18n.t('messages.teams.base.name') %></td>
+        <td><%= I18n.t('messages.teams.base.short_name') %></td>
+        <td><%= I18n.t('messages.teams.base.shortcut') %></td>
+        <td><%= I18n.t('messages.base.action') %></td>
       </tr>
+    </thead>
 
+    <tbody>
       <% @teams.each do |team| %>
         <tr>
           <td><%= team.name %></td>
           <td><%= team.short_name %></td>
           <td><%= team.shortcut %></td>
-          <td class="btn-group">
-            <%= link_to 'Zobrazit', team, :class => "btn" %>
-            <%= link_to 'Editovat', edit_team_path(team), :class => "btn" %>
-            <%= link_to 'Smazat', team, method: :delete, data: { confirm: 'Jste si jistý(á)?' }, :class => "btn" %>
+          <td>
+            <div class="btn-group">
+              <%= link_to_show nil, team %>
+              <%= link_to_edit nil, edit_team_path(team) %>
+              <%= link_to_delete nil, team %>
+            </div>
           </td>
         </tr>
       <% end %>
-    </table>
-  </div>
+    </tbody>
 
-  <div class="footer btn-group">
-    <%= link_to 'Nový tým', new_team_path, :class => "btn" %>
-  </div>
+    <tfoot>
+      <tr>
+        <td colspan="6">
+          <div class="btn-group">
+            <%= link_to I18n.t("messages.teams.index.new"), new_team_path, :class => "btn btn-primary" %>
+          </div>
+        </td>
+      </tr>
+    </tfoot>
+  </table>
 </div>
