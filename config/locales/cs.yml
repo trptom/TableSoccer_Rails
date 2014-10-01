@@ -45,6 +45,7 @@ cs:
       short_name: Krátký název
       shortcut: Zkratka
       show: Zobrazit
+      surname: Příjmení
       team: Tým
       total: Celkem
       vs: vs.
@@ -217,6 +218,23 @@ cs:
         success: Mistrák byl úspěšně upraven.
       add_all_games:
         success: Všechny zápasy byly úspěšně přidány.
+
+    players:
+      form:
+        back_to_list: Zpět na seznam hráčů
+        back_to_detail: Zpět na detail hráče
+      index:
+        new: Nový hráč
+      new:
+        submit: Vytvořit hráče
+      edit:
+        submit: Upravit hráče
+      create:
+        submit: Vytvořit hráče
+        success: Hráč byl úspěšně vytvořen.
+      update:
+        submit: Upravit hráče
+        success: Hráč byl úspěšně upraven.
 
   date:
     abbr_day_names:

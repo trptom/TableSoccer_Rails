@@ -1,27 +1,30 @@
-<div class="admin players show">
-  <p id="notice"><%= notice %></p>
+<div class="detail">
+  <div class="content">
+    <div class="line">
+      <span><%= I18n.t("messages.base.first_name") %></span>
+      <span><%= @player.first_name %></span>
+    </div>
+      
+    <div class="line">
+      <span><%= I18n.t("messages.base.surname") %></span>
+      <span><%= @player.second_name %></span>
+    </div>
+      
+    <div class="line">
+      <span><%= I18n.t("messages.base.nick") %></span>
+      <span><%= @player.nick %></span>
+    </div>
 
-  <p>
-    <b>Jméno:</b>
-    <%= @player.first_name %>
-  </p>
+    <div class="line">
+      <span><%= I18n.t("messages.base.team") %></span>
+      <span><%= @player.team ? (link_to @player.team.name, @player.team) : "žádný" %></span>
+    </div>
+  </div>
 
-  <p>
-    <b>Příjmení:</b>
-    <%= @player.second_name %>
-  </p>
-
-  <p>
-    <b>Přezdívka:</b>
-    <%= @player.nick %>
-  </p>
-
-  <p>
-    <b>Tým:</b>
-    <%= @player.team ? (link_to @player.team.name, @player.team) : "žádný" %>
-  </p>
-
-
-  <%= link_to 'Edit', edit_player_path(@player) %> |
-  <%= link_to 'Back', players_path %>
+  <div class="footer">
+    <div class="btn-group">
+      <%= link_to I18n.t("messages.base.edit"), edit_player_path(@player), :class => "btn" %>
+      <%= link_to I18n.t("messages.base.go_to_list"), players_path, :class => "btn" %>
+    </div>
+  </div>
 </div>

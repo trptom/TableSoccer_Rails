@@ -1,33 +1,48 @@
-<%= form_for(@player) do |f| %>
-  <% if @player.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@player.errors.count, "error") %> prohibited this player from being saved:</h2>
-
-      <ul>
-      <% @player.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+<%= form_for(@player, :html => { :class => "form-horizontal" }) do |f| %>
+  <div class="control-group">
+    <%= f.label I18n.t("messages.base.first_name"), :class => "control-label", :for => "player_first_name" %>
+    <div class="controls">
+      <%= f.text_field :first_name %>
     </div>
-  <% end %>
+  </div>
+  <div class="control-group">
+    <%= f.label I18n.t("messages.base.surname"), :class => "control-label", :for => "player_second_name" %>
+    <div class="controls">
+      <%= f.text_field :second_name %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label I18n.t("messages.base.nick"), :class => "control-label", :for => "player_nick" %>
+    <div class="controls">
+      <%= f.text_field :nick %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label I18n.t("messages.base.team"), :class => "control-label", :for => "player_team_id" %>
+    <div class="controls">
+      <%= f.select :team_id, options_for_select(get_team_options) %>
+    </div>
+  </div>
 
-  <div class="field">
-    Jméno<br />
-    <%= f.text_field :first_name %>
-  </div>
-  <div class="field">
-    Příjmení<br />
-    <%= f.text_field :second_name %>
-  </div>
-  <div class="field">
-    Přezdívka<br />
-    <%= f.text_field :nick %>
-  </div>
-  <div class="field">
-    Tým<br />
-    <%= f.select :team_id, options_for_select(get_team_options) %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="control-group">
+    <div class="controls">
+      <%= f.submit :value => I18n.t("messages.players.#{params[:action]}.submit"), :class => "btn btn-primary" %>
+
+      <% if @buttons %>
+        <div class="btn-group">
+          <button class="btn dropdown-toggle" data-toggle="dropdown">
+            <%= I18n.t("messages.base.navigation") %>
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu">
+            <% for btn in @buttons %>
+              <li>
+                <%= link_to btn[:body], btn[:url], btn[:html_options] %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+    </div>
   </div>
 <% end %>

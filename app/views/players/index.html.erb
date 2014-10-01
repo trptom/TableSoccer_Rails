@@ -1,29 +1,37 @@
-<div class="admin players index">
-  <h1>Seznam hráčů</h1>
-
-  <div class="list">
-    <table>
+<div class="list">
+  <table>
+    <thead>
       <tr>
-        <th>Jméno</th>
-        <th>Tým</th>
-        <th>Akce</th>
+        <td><%= I18n.t('messages.base.player_name') %></td>
+        <td><%= I18n.t('messages.base.team') %></td>
+        <td><%= I18n.t('messages.base.action') %></td>
       </tr>
+    </thead>
 
+    <tbody>
       <% @players.each do |player| %>
         <tr>
           <td><%= get_player_name(player) %></td>
           <td><%= player.team ? link_to(player.team.name, player.team) : nil %></td>
-          <td class="btn-group">
-            <%= link_to 'Zobrazit', player, :class => "btn" %>
-            <%= link_to 'Editovat', edit_player_path(player), :class => "btn" %>
-            <%= link_to 'Smazat', player, method: :delete, data: { confirm: 'Jste si jistý(á)?' }, :class => "btn" %>
+          <td>
+            <div class="btn-group">
+              <%= link_to_show nil, player %>
+              <%= link_to_edit nil, edit_player_path(player) %>
+              <%= link_to_delete nil, player %>
+            </div>
           </td>
         </tr>
       <% end %>
-    </table>
-  </div>
+    </tbody>
 
-  <div class="footer btn-group">
-    <%= link_to 'Nový hráč', new_player_path, :class => "btn" %>
-  </div>
+    <tfoot>
+      <tr>
+        <td colspan="6">
+          <div class="btn-group">
+            <%= link_to I18n.t("messages.players.index.new"), new_team_path, :class => "btn btn-primary" %>
+          </div>
+        </td>
+      </tr>
+    </tfoot>
+  </table>
 </div>
