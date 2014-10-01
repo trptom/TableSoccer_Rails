@@ -35,6 +35,7 @@ TableSoccer::Application.routes.draw do
   match 'players/:id/stats' => 'stats#player'
   match 'teams/:id/playersstats' => 'stats#players'
   match 'teams/:id/stats' => 'stats#team'
+  match 'leagues/:id/draw' => 'leagues#draw', :as => :draw_league
   
   match 'login' => 'user_sessions#create', :as => :login
   match 'logout' => 'user_sessions#destroy', :as => :logout

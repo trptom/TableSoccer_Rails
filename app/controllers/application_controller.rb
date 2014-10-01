@@ -2,7 +2,7 @@ include ApplicationHelper
 
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  before_filter :log_page_request
+#  before_filter :log_page_request
   
   private
   def not_authenticated

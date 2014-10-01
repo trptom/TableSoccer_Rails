@@ -26,4 +26,19 @@ class League < ActiveRecord::Base
   validates :division,
     :numericality => { :only_integer => true, :greater_than_or_equal_to => 1, :less_than_or_equal_to  => 100, :message => "divize není celé číslo v rozmezí 1-100" },
   :if => :division
+  
+  def teams(season)
+    arr = self.league_teams
+    ret = []
+    
+    if (season != nil)
+      arr = arr.where(:season => season)
+    end
+    
+    for item in arr.all
+      ret << item.team
+    end
+    
+    return ret
+  end
 end

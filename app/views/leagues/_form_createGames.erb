@@ -1,0 +1,44 @@
+<%= javascript_include_tag asset_path("pages/leagues/form_createGames.js") %>
+
+<%= form_tag "/leagues/#{@league.id}/draw", :method => :post do %>
+  <div id="draw_league" class="modal hide fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+      <h3 id="myModalLabel">
+        <%= I18n.t("messages.leagues.form_createGames.title") %>
+      </h3>
+    </div>
+    <div class="modal-body">
+      <div class="controls controls-row">
+        <div>
+          <div class="span2 offset1">
+              <%= I18n.t("messages.leagues.form_createGames.season") %>
+          </div>
+          <div>
+              <input type="text" id="createGames_season_str" disabled="" />
+              <input type="hidden" id="createGames_season" name="season" value="" />
+          </div>
+        </div>
+        <div>
+          <div class="span2 offset1">
+            <%= I18n.t("messages.leagues.form_createGames.team") %>
+          </div>
+          
+          <select id="createGames_type" name="type" onchange="FormCreateGames.changed();">
+            <option value="0"><%= I18n.t("messages.leagues.form_createGames.teams_all") %></option>
+            <option value="1" selected><%= I18n.t("messages.leagues.form_createGames.teams_one") %></option>
+          </select>
+            
+          <select id="createGames_team" name="team">
+            <% for team in Team.order(:name).all %>
+              <option value="<%= team.id %>"><%= team.name %></option>
+            <% end %>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <%= submit_tag I18n.t("messages.leagues.form_createGames.submit"), :class => "btn btn-primary" %>
+    </div>
+  </div>
+<% end %>

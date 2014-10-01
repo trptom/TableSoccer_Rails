@@ -1,3 +1,5 @@
+include LeaguesHelper
+
 class LeaguesController < ApplicationController
   before_filter :require_login, except: [:show]
   
@@ -104,6 +106,22 @@ class LeaguesController < ApplicationController
       format.html {
         redirect_to leagues_url
       }
+    end
+  end
+  
+  def draw
+    @league = League.find(params[:id])
+    
+    if (params[:type] == "0")
+      @team = nil
+    else
+      @team = Team.find(params[:team])
+    end
+    
+    if LeaguesHelper::draw(@league, params[:season].to_i, @team)
+      redirect_to @league, notice: I18n.t("messages.leagues.create.success")
+    else
+      redirect_to @league
     end
   end
 end

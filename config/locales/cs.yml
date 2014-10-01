@@ -119,6 +119,13 @@ cs:
         division_hint: pro více lig na stejné úrovni
       form:
         back_to_list: Zpět na seznam lig
+      form_createGames:
+        title: Rozlosování ligy
+        season: Sezóna
+        team: Tým
+        teams_all: všechny
+        teams_one: pouze
+        submit: Rozlosovat
       new:
         title: Nová liga
         submit: Vytvořit ligu
@@ -138,6 +145,7 @@ cs:
         form_team: Tým
         form_season: Sezóna
         form_submit: Přidat tým
+        draw: Rozlosovat...
     
     teams:
       base:
