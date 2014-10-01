@@ -4,14 +4,18 @@ cs:
   messages:
     base:
       action: Akce
+      active: Aktivní
+      admin: Administrátor
       add: Přidat
       all_types: Všechny typy
       are_you_sure: Jste si jistý(á)?
       away: Hosté
+      change_password: Změnit heslo
       date: Datum
       delete: Smazat
       division: Divize
       edit: Editovat
+      email: Email
       first_name: Jméno
       game_type: Typ hry
       game_type_single: Jednotlivci
@@ -21,18 +25,23 @@ cs:
       games_played: Zápasy
       go_to_list: Jít na seznam
       home: Domácí
+      id: ID
       l: P
       league: Liga
       level: Úroveň
+      login: Přihlašovací jméno
       match: Zápas
       name: Název
       navigation: Navigace
       nick: Přezdívka
+      _no: Ne
       no_game: Žádná hra
       no_league: Žádná liga
       no_match: Žádný zápas
       no_player: Žádný hráč
       no_team: Žádný tým
+      password: Heslo
+      password_confirmation: Kontrola hesla
       percentage: Procenta
       place: Místo
       player: Hráč
@@ -48,9 +57,11 @@ cs:
       surname: Příjmení
       team: Tým
       total: Celkem
+      user_activated: Uživatel byl úspěšně aktivován!
       vs: vs.
       w: V
       wins: Výhry
+      _yes: Ano
       
     application:
       title: TableSoccer
@@ -235,6 +246,28 @@ cs:
       update:
         submit: Upravit hráče
         success: Hráč byl úspěšně upraven.
+        
+    users:
+      base:
+        connected_player: Propojený hráč
+      form:
+        back_to_list: Zpět na seznam uživatel
+        back_to_detail: Zpět na detail uživatele
+      index:
+      show:
+        no_player: žádný
+      new:
+        submit: Zaregistrovat
+      edit:
+        submit: Upravit údaje
+      create:
+        submit: Zaregistrovat
+        success:
+          Registrace proběhla úspěšně. Na adresu, zadanou při registraci,
+          Vám byl poslán email, nutný pro aktivaci účtu.
+      update:
+        submit: Upravit hráče
+        success: Úprava údajů proběhla úspěšně.
 
   date:
     abbr_day_names:

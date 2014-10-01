@@ -1,25 +1,35 @@
-<div class="admin users show">
-  <p id="notice"><%= notice %></p>
-
-  <p>
-    <b>Uživatelské jméno:</b>
-    <%= @user.username %>
-  </p>
-
-  <p>
-    <b>Email:</b>
-    <%= @user.email %>
-  </p>
-
-  <p>
-    <b>Hráč:</b>
-    <%= @user.player ? get_player_name(@user.player) : "žádný" %>
-  </p>
-
-  <% if current_user %>
-    <div class="footer btn-group">
-      <%= link_to 'Editovat', edit_user_path(@user), :class => "btn" %>
-      <%= link_to 'Zobrazit seznam', users_path, :class => "btn" %>
+<div class="detail">
+  <div class="content">
+    <div class="line">
+      <span><%= I18n.t("messages.base.login") %></span>
+      <span><%= @user.username %></span>
     </div>
-  <% end %>
+      
+    <div class="line">
+      <span><%= I18n.t("messages.base.email") %></span>
+      <span><%= @user.email %></span>
+    </div>
+      
+    <div class="line">
+      <span><%= I18n.t("messages.users.base.connected_player") %></span>
+      <span><%= @user.player ? get_player_name(@user.player) : I18n.t("messages.users.show.no_player") %></span>
+    </div>
+      
+    <div class="line">
+      <span><%= I18n.t("messages.base.active") %></span>
+      <span><%= I18n.t(@user.activation_state == "active" ? "messages.base._yes" : "messages.base._no") %></span>
+    </div>
+      
+    <div class="line">
+      <span><%= I18n.t("messages.base.admin") %></span>
+      <span><%= I18n.t(@user.is_admin ? "messages.base._yes" : "messages.base._no") %></span>
+    </div>
+  </div>
+    
+  <div class="footer">
+    <div class="btn-group">
+      <%= link_to I18n.t("messages.base.edit"), edit_user_path(@user), :class => "btn" %>
+      <%= link_to I18n.t("messages.base.go_to_list"), users_path, :class => "btn" %>
+    </div>
+  </div>
 </div>

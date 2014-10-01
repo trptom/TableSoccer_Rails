@@ -1,45 +1,84 @@
-<% if @user.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+<%= form_for(@user, :html => { :class => "form-horizontal" }) do |f| %>
+  <div class="control-group">
+    <%= f.label I18n.t("messages.base.login"), :class => "control-label", :for => "user_username" %>
+    <div class="controls">
+      <%= f.text_field :username, :disabled => (params[:action] == "edit") %>
+    </div>
+  </div>
 
-    <ul>
-    <% @user.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
+  <div class="control-group">
+    <%= f.label I18n.t("messages.base.email"), :class => "control-label", :for => "user_email" %>
+    <div class="controls">
+      <%= f.text_field :email %>
+    </div>
+  </div>
+
+  <% if current_user && current_user.is_admin %>
+    <div class="control-group">
+      <%= f.label I18n.t("messages.users.base.connected_player"), :class => "control-label", :for => "user_player_id" %>
+      <div class="controls">
+        <%= f.select :player_id, options_for_select(get_player_options({:empty_allowed => true}), @user.player_id.to_s) %>
+      </div>
+    </div>
+  <% end %>
+
+  <% if current_user == nil %>
+    <div class="control-group">
+      <%= f.label I18n.t("messages.base.password"), :class => "control-label", :for => "user_password" %>
+      <div class="controls">
+        <%= f.password_field :password %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label I18n.t("messages.base.password_confirmation"), :class => "control-label", :for => "user_password_confirmation" %>
+      <div class="controls">
+        <%= f.password_field :password_confirmation %>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="control-group">
+    <div class="controls">
+      <%= f.submit :value => I18n.t("messages.users.#{params[:action]}.submit"), :class => "btn btn-primary" %>
+
+      <% if @buttons %>
+        <div class="btn-group">
+          <button class="btn dropdown-toggle" data-toggle="dropdown">
+            <%= I18n.t("messages.base.navigation") %>
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu">
+            <% for btn in @buttons %>
+              <li>
+                <%= link_to btn[:body], btn[:url], btn[:html_options] %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+    </div>
   </div>
 <% end %>
 
-<%= form_for(@user) do |f| %>
-  <div class="field">
-     <%= f.label :username %><br />
-     <%= f.text_field :username, :disabled => (params[:action] == "edit") %>
-  </div>
-  <div class="field">
-     <%= f.label :email %><br />
-     <%= f.text_field :email %>
-  </div>
-  <div class="field">
-     <%= f.label :player_id %><br />
-     <%= f.select :player_id, options_for_select(get_player_options({:empty_allowed => true}), @user.player_id.to_s) %>
-  </div>
-  <div class="actions">
-    <%= f.submit :value => "Upravit nastavení" %>
-  </div>
-<% end %>
-
-<% if current_user = @user || current_user = User.order(:id).first %>
-  <%= form_for(@user) do |f| %>
-    <div class="field">
-       <%= f.label :password %><br />
-       <%= f.password_field :password %>
+<% if current_user && (current_user == @user || current_user == User.order(:id).first) %>
+  <%= form_for(@user, :html => { :class => "form-horizontal" }) do |f| %>
+    <div class="control-group">
+      <%= f.label I18n.t("messages.base.password"), :class => "control-label", :for => "user_password" %>
+      <div class="controls">
+        <%= f.password_field :password %>
+      </div>
     </div>
-    <div class="field">
-       <%= f.label :password_confirmation %><br />
-       <%= f.password_field :password_confirmation %>
+    <div class="control-group">
+      <%= f.label I18n.t("messages.base.password_confirmation"), :class => "control-label", :for => "user_password_confirmation" %>
+      <div class="controls">
+        <%= f.password_field :password_confirmation %>
+      </div>
     </div>
-    <div class="actions">
-      <%= f.submit :value => "Změnit heslo" %>
+    
+    <div class="control-group">
+      <div class="controls">
+        <%= f.submit :value => I18n.t("messages.base.change_password"), :class => "btn btn-primary" %>
+      </div>
     </div>
   <% end %>
 <% end %>

@@ -6,6 +6,6 @@ class ApplicationController < ActionController::Base
   
   private
   def not_authenticated
-    redirect_to login_url, notice: "messages.application.login"
+    redirect_to need_login_url, notice: "messages.application.login" # TODO need login url
   end
 end

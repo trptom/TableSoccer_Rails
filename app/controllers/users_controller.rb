@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :require_login, except: [:show, :activate]
+  before_filter :require_login, except: [:new, :create, :show, :activate]
   
   def index
     @users = User.all
@@ -10,7 +10,6 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @user }
     end
   end
 
@@ -19,12 +18,22 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @user }
     end
   end
 
   def edit
     @user = User.find(params[:id])
+    
+    respond_to do |format|
+      format.html {
+        if current_user && current_user.is_admin
+          @buttons = [
+            { :body => I18n.t("messages.users.form.back_to_detail"), :url => @user , :html_options => {} },
+            { :body => I18n.t("messages.users.form.back_to_list"), :url => users_path, :html_options => {} }
+          ]
+        end
+      }
+    end
   end
 
   def create
@@ -32,11 +41,18 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
-        format.json { render json: @user, status: :created, location: @user }
+        format.html {
+          if (current_user)
+            redirect_to @user, notice: I18n.t("messages.users.create.success")
+          else
+            redirect_to "/", notice: I18n.t("messages.users.create.success")
+          end
+        }
       else
-        format.html { render action: "new" }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+        format.html {
+          @errors = @user.errors
+          render action: "new"
+        }
       end
     end
   end
@@ -46,11 +62,14 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
-        format.json { head :no_content }
+        format.html {
+          redirect_to @user, notice: I18n.t("messages.users.update.success")
+        }
       else
-        format.html { render action: "edit" }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+        format.html {
+          @errors = @user.errors
+          render action: "edit"
+        }
       end
     end
   end
@@ -60,8 +79,9 @@ class UsersController < ApplicationController
     @user.destroy
 
     respond_to do |format|
-      format.html { redirect_to "/" }
-      format.json { head :no_content }
+      format.html {
+        redirect_to "/"
+      }
     end
   end
   
