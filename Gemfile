@@ -31,8 +31,9 @@ gem 'carrierwave'
 gem 'cloudinary'
 
 # + Graphical components
-gem 'bootstrap-datepicker-rails' #datum
-gem 'bootstrap-timepicker-rails' #cas
+gem 'bootstrap-datepicker-rails' # date
+gem 'bootstrap-timepicker-rails' # time
+gem 'bootstrap-datetimepicker-rails' # date and time
 
 # + Testing
 gem 'simplecov', :require => false, :group => :test

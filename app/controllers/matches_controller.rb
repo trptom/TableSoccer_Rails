@@ -26,13 +26,26 @@ class MatchesController < ApplicationController
     @match = Match.new
 
     respond_to do |format|
-      format.html # new.html.erb
+      format.html {
+        @buttons = [
+          { :body => I18n.t("messages.matches.form.back_to_list"), :url => matches_path, :html_options => {} }
+        ]
+      }
     end
   end
 
   # GET /matches/1/edit
   def edit
     @match = Match.find(params[:id])
+    
+    respond_to do |format|
+      format.html {
+        @buttons = [
+          { :body => I18n.t("messages.matches.edit.back_to_detail"), :url => @match , :html_options => {} },
+          { :body => I18n.t("messages.matches.form.back_to_list"), :url => matches_path, :html_options => {} }
+        ]
+      }
+    end
   end
 
   # POST /matches
@@ -43,7 +56,10 @@ class MatchesController < ApplicationController
       if @match.save
         format.html { redirect_to @match, notice: I18n.t('messages.matches.create.success') }
       else
-        format.html { render action: "new" }
+        format.html {
+          @errors = @match.errors
+          render action: "new"
+        }
       end
     end
   end
@@ -56,7 +72,10 @@ class MatchesController < ApplicationController
       if @match.update_attributes(params[:match])
         format.html { redirect_to @match, notice: I18n.t('messages.matches.update.success') }
       else
-        format.html { render action: "edit" }
+        format.html {
+          @errors = @match.errors
+          render action: "edit"
+        }
       end
     end
   end
@@ -125,7 +144,7 @@ class MatchesController < ApplicationController
     end
     
     if @res
-      redirect_to @match, notice: "TODO"
+      redirect_to @match, notice: "messages.matches.add_all_games.success"
     else
       redirect_to @match
     end

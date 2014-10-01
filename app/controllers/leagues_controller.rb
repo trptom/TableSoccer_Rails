@@ -43,7 +43,7 @@ class LeaguesController < ApplicationController
     respond_to do |format|
       format.html {
         @buttons = [
-          { :body => I18n.t("messages.leagues.form.back_to_list"), :url => leagues_path, :html_options => {} }
+          { :body => I18n.t("messages.leagues.form.back_to_list"), :url => matches_path, :html_options => {} }
         ]
       }
     end
@@ -74,6 +74,7 @@ class LeaguesController < ApplicationController
         }
       else
         format.html {
+          @errors = @league.errors
           render action: "new"
         }
       end
@@ -91,6 +92,7 @@ class LeaguesController < ApplicationController
         }
       else
         format.html {
+          @errors = @league.errors
           render action: "edit"
         }
       end

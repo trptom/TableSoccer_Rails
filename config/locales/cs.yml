@@ -8,6 +8,7 @@ cs:
       all_types: Všechny typy
       are_you_sure: Jste si jistý(á)?
       away: Hosté
+      date: Datum
       delete: Smazat
       division: Divize
       edit: Editovat
@@ -21,6 +22,7 @@ cs:
       go_to_list: Jít na seznam
       home: Domácí
       l: P
+      league: Liga
       level: Úroveň
       match: Zápas
       name: Název
@@ -32,9 +34,11 @@ cs:
       no_player: Žádný hráč
       no_team: Žádný tým
       percentage: Procenta
+      place: Místo
       player: Hráč
       player_name: Jméno hráče
       score: Skóre
+      season: Sezóna
       second_name: Příjmení
       set: Nastavit
       short_name: Krátký název
@@ -121,6 +125,7 @@ cs:
         division_hint: pro více lig na stejné úrovni
       form:
         back_to_list: Zpět na seznam lig
+        back_to_detail: Zpět na detail ligy
       form_createGames:
         title: Rozlosování ligy
         season: Sezóna
@@ -136,8 +141,12 @@ cs:
         submit: Upravit ligu
         back_to_detail: Zpět na detail ligy
       create:
+        title: Nová liga
+        submit: Vytvořit ligu
         success: Liga byla úspěšně vytvořena.
       update:
+        title: Editace ligy
+        submit: Upravit ligu
         success: Liga byla úspěšně upravena.
       index:
         title: Seznam lig
@@ -157,6 +166,7 @@ cs:
         logo: Logo
       form:
         back_to_list: Zpět na seznam týmů
+        back_to_detail: Zpět na detail týmu
       new:
         title: Nový tým
         submit: Vytvořit tým
@@ -165,8 +175,12 @@ cs:
         submit: Upravit tým
         back_to_detail: Zpět na detail týmu
       create:
+        title: Nový tým
+        submit: Vytvořit tým
         success: Tým byl úspěšně vytvořen.
       update:
+        title: Editace týmu
+        submit: Upravit tým
         success: Tým byl úspěšně upraven.
       index:
         title: Seznam týmů
@@ -174,16 +188,33 @@ cs:
     
     matches:
       form:
+        date: Datum a čas začátku
+        place: Místo konání
+        back_to_list: Zpět na seznam mistráků
+        back_to_detail: Zpět na detail mistráku
       form_addAllGames:
         title: Automatické přidávání zápasů
         overwrite_existing: Přepsat již zadané zápasy
+        overwrite_existing_hint:
+          Pokud je zaškrtnuto, smaže všechny zápasy které jsou u mistráku již
+          přidány. Pokud ne, nové zápasy se pouze přidají k těm stávajícím.
         submit: Přidat zápasy
-      create:
-        soccess: Zápas byl úspěšně vytvořen.
-      update:
-        success: Zápas byl úspěšně upraven.
       add_all_games:
-        params_error: Chybné ID zápasu nebo některého z hráčů!
+        success: Zápasy byly úspěšně přidány.
+      index:
+        new: Nový mistrák
+      new:
+        submit: Vytvořit mistrák
+      edit:
+        submit: Upravit mistrák
+      create:
+        submit: Vytvořit mistrák
+        success: Mistrák byl úspěšně vytvořen.
+      update:
+        submit: Upravit mistrák
+        success: Mistrák byl úspěšně upraven.
+      add_all_games:
+        success: Všechny zápasy byly úspěšně přidány.
 
   date:
     abbr_day_names:

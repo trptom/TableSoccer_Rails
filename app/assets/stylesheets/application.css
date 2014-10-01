@@ -12,5 +12,6 @@
  *= require_tree ./bootstrap
  *= require bootstrap-datepicker
  *= require bootstrap-timepicker
+ *= require bootstrap-datetimepicker
  *= require_tree ./skins/modern/global
  */

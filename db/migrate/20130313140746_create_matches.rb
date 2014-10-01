@@ -5,7 +5,7 @@ class CreateMatches < ActiveRecord::Migration
       t.column "team_away_id", :integer,  :null => false
       t.references :league,               :null => false
       t.integer :season,                  :null => false
-      t.datetime :start_date,             :null => false
+      t.datetime :start_date,             :null => true,    :default => nil
       t.string :place,                    :null => true,    :default => nil
 
       t.timestamps

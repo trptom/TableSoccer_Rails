@@ -57,6 +57,7 @@ class TeamsController < ApplicationController
         }
       else
         format.html {
+          @errors = @team.errors
           render action: "new"
         }
       end
@@ -74,6 +75,7 @@ class TeamsController < ApplicationController
         }
       else
         format.html {
+          @errors = @team.errors
           render action: "edit"
         }
       end

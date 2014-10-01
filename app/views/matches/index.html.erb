@@ -1,37 +1,45 @@
-<div class="admin matches index">
-  <h1>Seznam zápasů</h1>
-
-  <div class="list">
-    <table>
+<div class="list">
+  <table>
+    <thead>
       <tr>
-        <th>Domácí</th>
-        <th>Hosté</th>
-        <th>Liga</th>
-        <th>Sezóna</th>
-        <th>Datum</th>
-        <th>Místo</th>
-        <th>Akce</th>
+        <td><%= I18n.t('messages.base.home') %></td>
+        <td><%= I18n.t('messages.base.away') %></td>
+        <td><%= I18n.t('messages.base.league') %></td>
+        <td><%= I18n.t('messages.base.season') %></td>
+        <td><%= I18n.t('messages.base.date') %></td>
+        <td><%= I18n.t('messages.base.place') %></td>
+        <td><%= I18n.t('messages.base.action') %></td>
       </tr>
+    </thead>
 
+    <tbody>
       <% @matches.each do |match| %>
         <tr>
           <td><%= match.team_home ? match.team_home.short_name : nil %></td>
           <td><%= match.team_away ? match.team_away.short_name : nil %></td>
           <td><%= match.league ? match.league.short_name : nil %></td>
           <td><%= match.season %></td>
-          <td><%= match.start_date %></td>
+          <td><%= match.start_date ? I18n.l(match.start_date, :format => :short) : "" %></td>
           <td><%= match.place %></td>
-          <td class="btn-group">
-            <%= link_to 'Zobrazit', match, :class => "btn" %>
-            <%= link_to 'Editovat', edit_match_path(match), :class => "btn" %>
-            <%= link_to 'Smazat', match, method: :delete, data: { confirm: 'Jste si jistý(á)?' }, :class => "btn" %>
+          <td>
+            <div class="btn-group">
+              <%= link_to_show nil, match %>
+              <%= link_to_edit nil, edit_match_path(match) %>
+              <%= link_to_delete nil, match %>
+            </div>
           </td>
         </tr>
       <% end %>
-    </table>
-  </div>
-
-  <div class="footer btn-group">
-    <%= link_to 'Nový zápas', new_match_path, :class => "btn" %>
-  </div>
+    </tbody>
+    
+    <tfoot>
+      <tr>
+        <td colspan="7">
+          <div class="btn-group">
+              <%= link_to I18n.t("messages.matches.index.new"), new_match_path, :class => "btn btn-primary" %>
+          </div>
+        </td>
+      </tr>
+    </tfoot>
+  </table>
 </div>

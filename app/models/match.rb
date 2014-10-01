@@ -14,6 +14,7 @@ class Match < ActiveRecord::Base
   validates :place,
     :length => { :minimum => 3, :maximum => 255, :message => "špatná délka názvu místa (3-255)" },
     :allow_nil => true,
+    :allow_blank => true,
   :if => :place
 
   validates :season,

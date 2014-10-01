@@ -1,42 +1,66 @@
-<%= form_for(@match) do |f| %>
-  <% if @match.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@match.errors.count, "error") %> prohibited this match from being saved:</h2>
-
-      <ul>
-      <% @match.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+<%= form_for(@match, :html => { :class => "form-horizontal" }) do |f| %>
+  <div class="control-group">
+    <%= f.label I18n.t("messages.base.home"), :class => "control-label", :for => "match_team_home_id" %>
+    <div class="controls">
+        <%= f.select :team_home_id, options_for_select(get_team_options) %>
     </div>
-  <% end %>
+  </div>
+  <div class="control-group">
+    <%= f.label I18n.t("messages.base.away"), :class => "control-label", :for => "match_team_away_id" %>
+    <div class="controls">
+        <%= f.select :team_away_id, options_for_select(get_team_options) %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label I18n.t("messages.base.league"), :class => "control-label", :for => "match_league_id" %>
+    <div class="controls">
+        <%= f.select :league_id, options_for_select(get_league_options) %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label I18n.t("messages.base.season"), :class => "control-label", :for => "match_season" %>
+    <div class="controls">
+        <%= f.number_field :season, :min => 2000, :max => 2100 %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label I18n.t("messages.matches.form.date"), :class => "control-label", :for => "match_start_date" %>
+    <div class="controls">
+      <div class="datetimepicker input-append date" data-behaviour="datetimepicker">
+      <%= f.text_field :start_date, :class => "input-small", "data-format" => "yyyy-MM-dd hh:mm:ss" %>
+      <span class="add-on">
+        <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+        </i>
+      </span>
+      </div>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label I18n.t("messages.matches.form.place"), :class => "control-label", :for => "match_place" %>
+    <div class="controls">
+        <%= f.text_field :place %>
+    </div>
+  </div>
 
-  <div class="field">
-    Domácí<br />
-    <%= f.select :team_home_id, options_for_select(get_team_options) %>
-  </div>
-  <div class="field">
-    Hosté<br />
-    <%= f.select :team_away_id, options_for_select(get_team_options) %>
-  </div>
-  <div class="field">
-    Liga<br />
-    <%= f.select :league_id, options_for_select(get_league_options) %>
-  </div>
-  <div class="field">
-    Sezona<br />
-    <%= f.select :season, 2000..2100 %>
-  </div>
-  <div class="field">
-    Datum a čas začátku<br />
-    Dočasně staženo
-    <%= f.datetime_select :start_date %>
-  </div>
-  <div class="field">
-    <%= f.label :place %><br />
-    <%= f.text_field :place %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="control-group">
+    <div class="controls">
+      <%= f.submit :value => I18n.t("messages.matches.#{params[:action]}.submit"), :class => "btn btn-primary" %>
+
+      <% if @buttons %>
+        <div class="btn-group">
+          <button class="btn dropdown-toggle" data-toggle="dropdown">
+            <%= I18n.t("messages.base.navigation") %>
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu">
+            <% for btn in @buttons %>
+              <li>
+                <%= link_to btn[:body], btn[:url], btn[:html_options] %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+    </div>
   </div>
 <% end %>

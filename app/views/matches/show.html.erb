@@ -1,62 +1,84 @@
 <%= render "form_addAllGames" %>
 
-<div class="admin matches show">
-  <div class="teams">
-    <div class="home"><%= link_to @match.team_home.name, @match.team_home %></div>
-    <div class="score"><%= @match.score_home && @match.score_away ? (@match.score_home.to_s + ":" + @match.score_away.to_s) : "vs." %></div>
-    <div class="away"><%= link_to @match.team_away.name, @match.team_away %></div>
-  </div>
-  <div class="info">
-    <div class="league"><%= link_to @match.league.name, @match.league %></div>
-    <div class="season"><%= @match.season %></div>
-    <div class="time"><%= @match.start_date %></div>
-    <div class="place"><%= @match.place %></div>
-  </div>
-  <div class="list games">
-    <table>
-      <tr>
-        <th>Číslo</th>
-        <th>Typ</th>
-        <th>Domácí</th>
-        <th>Hosté</th>
-        <th>Skóre</th>
-        <% if current_user %>
-          <th>Akce</th>
-        <% end %>
-      </tr>
-      <% for game in @match.games.order(:game_number).all %>
-      <tr>
-        <td>#<%= game.game_number %></td>
-        <td><%= I18n.t(GAME_TYPE_STR[game.game_type]) %></td>
-        <td>
-          <% for game_player in game.game_players.where(:team => TEAM_HOME).all %>
-            <div class="player"><%= get_player_name game_player.player %></div>
-          <% end %>
-        </td>
-        <td>
-          <% for game_player in game.game_players.where(:team => TEAM_AWAY).all %>
-            <div class="player"><%= get_player_name game_player.player %></div>
-          <% end %>
-        </td>
-        <td><%= game.score_home && game.score_away ? (game.score_home.to_s + ":" + game.score_away.to_s) : "-:-" %></td>
-        <% if current_user %>
-          <td class="btn-group">
-            <%= link_to "Zobrazit", game, :class => "btn" %>
-            <%= link_to "Editovat", edit_game_path(game), :class => "btn" %>
-            <%= link_to "Smazat", game, method: :delete, data: { confirm: 'Jste si jistý(á)?' }, :class => "btn" %>
-          </td>
-        <% end %>
-      </tr>
-      <% end %>
-    </table>
-  </div>
+<div class="detail">
+  <div class="content">
+    <div class="line">
+      <span><%= I18n.t("messages.base.home") %></span>
+      <span><%= link_to @match.team_home.name, @match.team_home %></span>
+    </div>
+    <div class="line">
+      <span><%= I18n.t("messages.base.away") %></span>
+      <span><%= link_to @match.team_away.name, @match.team_away %></span>
+    </div>
+    <div class="line">
+      <span><%= I18n.t("messages.base.score") %></span>
+      <span>
+        <%=
+          @match.score_home && @match.score_away ?
+            (@match.score_home.to_s + ":" + @match.score_away.to_s) :
+            "-:-"
+        %>
+      </span>
+    </div>
+    <div class="line">
+      <span><%= I18n.t("messages.base.season") %></span>
+      <span><%= @match.season %></span>
+    </div>
+    <div class="line">
+      <span><%= I18n.t("messages.base.date") %></span>
+      <span><%= @match.start_date ? I18n.l(@match.start_date) : "" %></span>
+    </div>
+    <div class="line">
+      <span><%= I18n.t("messages.base.place") %></span>
+      <span><%= @match.place %></span>
+    </div>
 
-  <div class="footer btn-group">
-    <%= current_user ? (link_to 'Editovat', edit_match_path(@match), :class => "btn") + " | " : nil %>
-    <%= current_user ? (link_to 'Přidat hru', "/matches/"+@match.id.to_s+"/add_game", :class => "btn") + " | " : nil %>
-    <a class="btn" href="#add_all_games" role="button" data-toggle="modal">
-      Přidat všechny hry
-    </a>
-    <%= link_to 'Seznam', matches_path, :class => "btn" %>
+    <div class="list games">
+      <table>
+        <tr>
+          <th>Číslo</th>
+          <th>Typ</th>
+          <th>Domácí</th>
+          <th>Hosté</th>
+          <th>Skóre</th>
+          <% if current_user %>
+            <th>Akce</th>
+          <% end %>
+        </tr>
+        <% for game in @match.games.order(:game_number).all %>
+        <tr>
+          <td>#<%= game.game_number %></td>
+          <td><%= I18n.t(GAME_TYPE_STR[game.game_type]) %></td>
+          <td>
+            <% for game_player in game.game_players.where(:team => TEAM_HOME).all %>
+              <div class="player"><%= get_player_name game_player.player %></div>
+            <% end %>
+          </td>
+          <td>
+            <% for game_player in game.game_players.where(:team => TEAM_AWAY).all %>
+              <div class="player"><%= get_player_name game_player.player %></div>
+            <% end %>
+          </td>
+          <td><%= game.score_home && game.score_away ? (game.score_home.to_s + ":" + game.score_away.to_s) : "-:-" %></td>
+          <% if current_user %>
+            <td class="btn-group">
+              <%= link_to "Zobrazit", game, :class => "btn" %>
+              <%= link_to "Editovat", edit_game_path(game), :class => "btn" %>
+              <%= link_to "Smazat", game, method: :delete, data: { confirm: 'Jste si jistý(á)?' }, :class => "btn" %>
+            </td>
+          <% end %>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+
+    <div class="footer btn-group">
+      <%= current_user ? (link_to 'Editovat', edit_match_path(@match), :class => "btn") + " | " : nil %>
+      <%= current_user ? (link_to 'Přidat hru', "/matches/"+@match.id.to_s+"/add_game", :class => "btn") + " | " : nil %>
+      <a class="btn" href="#add_all_games" role="button" data-toggle="modal">
+        Přidat všechny hry
+      </a>
+      <%= link_to 'Seznam', matches_path, :class => "btn" %>
+    </div>
   </div>
 </div>
