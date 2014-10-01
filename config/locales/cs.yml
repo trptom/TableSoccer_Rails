@@ -37,6 +37,7 @@ cs:
       place: Místo
       player: Hráč
       player_name: Jméno hráče
+      prepairing_content: Obsah se připravuje...
       score: Skóre
       season: Sezóna
       second_name: Příjmení
@@ -44,6 +45,7 @@ cs:
       short_name: Krátký název
       shortcut: Zkratka
       show: Zobrazit
+      team: Tým
       total: Celkem
       vs: vs.
       w: V

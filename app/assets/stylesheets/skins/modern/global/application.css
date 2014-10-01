@@ -20,6 +20,25 @@ form .controls {
  * tables
  ******************************************************************************/
 
+table.stats {
+    width: 100%;
+    border: solid #d0d0d0 1px;
+    
+}
+
+table.stats td {
+    text-align: center;
+}
+
+table.stats thead td {
+    font-weight: bold;
+    border-bottom: solid #d0d0d0 1px;
+}
+
+table.stats tbody tr:hover td {
+    background-color: #f0f0f0;
+}
+
 .list > table {
     border: solid #000000 1px;
     width: 100%;

@@ -1,0 +1,8 @@
+.prepend-wrapper {
+    margin-bottom: 50px;
+}
+
+.input-prepend {
+    display: inline;
+    margin-right: 20px;
+}

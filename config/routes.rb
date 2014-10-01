@@ -2,6 +2,9 @@ TableSoccer::Application.routes.draw do
   get "stats/players"
   get "stats/player"
   get "stats/team"
+  match "stats/players/:id" => 'stats#players'
+  match "stats/player/:id" => 'stats#player'
+  match "stats/team/:id" => 'stats#team'
   
   get "user_sessions/create"
   get "user_sessions/destroy"

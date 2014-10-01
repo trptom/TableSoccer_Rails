@@ -1,101 +1,140 @@
-<% if @team %>
-  <div class="page-title">
-    <%= @team.name %>
-    <div class="selector">
-      Tým:
-      <select id="team-select">
-        <% for team in @teams %>
-          <option value="<%= team.id %>"<%= @team == team ? " selected" : nil %>><%= team.name %></option>
-        <% end %>
-      </select>
-      <input type="button" class="btn" value="Zobrazit" onclick="Stats.Players.changeTeam()" />
+<div class="prepend-wrapper">
+  <div class="input-prepend">
+    <span class="add-on"><%= I18n.t "messages.base.team" %></span>
+    <select id="team_select" class="form-control">
+      <% for team in @teams %>
+        <option value="<%= team.id %>"<%= @team == team ? " selected" : nil %>><%= team.name %></option>
+      <% end %>
+    </select>
+  </div>
+
+  <button class="btn btn-default" type="button" onclick="changeTeam();">
+    <%= I18n.t "messages.base.show" %>
+  </button>
+</div>
+
+<div class="tabbable">
+  <ul class="nav nav-tabs">
+    <li class="active">
+      <a href="#tab1" data-toggle="tab">
+        <%= I18n.t('messages.stats.players.title_total') %>
+      </a>
+    </li>
+    
+    <li>
+      <a href="#tab2" data-toggle="tab">
+        <%= I18n.t('messages.stats.players.title_games') %>
+      </a>
+    </li>
+    
+    <li>
+      <a href="#tab3" data-toggle="tab">
+        <%= I18n.t('messages.stats.players.title_wins') %>
+      </a>
+    </li>
+    
+    <li>
+      <a href="#tab4" data-toggle="tab">
+        <%= I18n.t('messages.stats.players.title_score') %>
+      </a>
+    </li>
+  </ul>
+  
+  <div class="tab-content">
+    <div class="tab-pane active" id="tab1">
+      <p>
+        <table class="stats">
+          <thead>
+            <tr>
+              <td><%= I18n.t('messages.base.player') %></td>
+              <td><%= I18n.t('messages.base.games_played') %></td>
+              <td><%= I18n.t('messages.base.w') %></td>
+              <td><%= I18n.t('messages.base.l') %></td>
+              <td><%= I18n.t('messages.base.score') %></td>
+              <td><%= I18n.t('messages.base.percentage') %></td>
+            </tr>
+          </thead>
+          <tbody>
+            <% for player in @player_info.sort{|e1, e2| e2[:rate] <=> e1[:rate]} %>
+              <tr>
+                <td><%= link_to get_player_name(player[:player]), player[:player] %></td>
+                <td><%= player[:gp] %></td>
+                <td><%= player[:w] %></td>
+                <td><%= player[:l] %></td>
+                <td><%= player[:gf].to_s+":"+player[:ga].to_s %></td>
+                <td><%= player[:percentage] %> %</td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </p>
+    </div>
+    
+    <div class="tab-pane" id="tab2">
+      <p>
+        <table class="stats">
+          <thead>
+            <tr>
+              <td><%= I18n.t('messages.base.player') %></td>
+              <td><%= I18n.t('messages.base.games_played') %></td>
+            </tr>
+          </thead>
+          <tbody>
+            <% for player in @player_info.sort{|e1, e2| e2[:gp] <=> e1[:gp]} %>
+              <tr>
+                <td><%= link_to get_player_name(player[:player]), player[:player] %></td>
+                <td><%= player[:gp] %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </p>
+    </div>
+      
+    <div class="tab-pane" id="tab3">
+      <p>
+        <table class="stats">
+          <thead>
+            <tr>
+              <td><%= I18n.t('messages.base.player') %></td>
+              <td><%= I18n.t('messages.base.games_played') %></td>
+              <td><%= I18n.t('messages.base.wins') %></td>
+            </tr>
+          </thead>
+          <tbody>
+            <% for player in @player_info.sort{|e1, e2| e2[:w] <=> e1[:w]} %>
+              <tr>
+                <td><%= link_to get_player_name(player[:player]), player[:player] %></td>
+                <td><%= player[:gp] %></td>
+                <td><%= player[:w] %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </p>
+    </div>
+      
+    <div class="tab-pane" id="tab4">
+      <p>
+        <table class="stats">
+          <thead>
+            <tr>
+              <td><%= I18n.t('messages.base.player') %></td>
+              <td><%= I18n.t('messages.base.games_played') %></td>
+              <td><%= I18n.t('messages.base.score') %></td>
+            </tr>
+          </thead>
+          <tbody>
+            <% for player in @player_info.sort{|e1, e2| e2[:score_diff] <=> e1[:score_diff]} %>
+              <tr>
+                <td><%= link_to get_player_name(player[:player]), player[:player] %></td>
+                <td><%= player[:gp] %></td>
+                <td><%= player[:score_diff] > 0 ? "+" : nil %><%= player[:score_diff] %> (<%= player[:gf] %>:<%= player[:ga] %>)</td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </p>
     </div>
   </div>
-  <div class="content-wrapper">
-    <div class="stats players">
-      <h1><%= I18n.t('messages.stats.players.title_total') %></h1>
-      <div class="table-wrapper">
-        <table class="list">
-          <tr>
-            <th><%= I18n.t('messages.base.player') %></th>
-            <th><%= I18n.t('messages.base.games_played') %></th>
-            <th><%= I18n.t('messages.base.w') %></th>
-            <th><%= I18n.t('messages.base.l') %></th>
-            <th><%= I18n.t('messages.base.score') %></th>
-            <th><%= I18n.t('messages.base.percentage') %></th>
-          </tr>
-          <% for player in @player_info.sort{|e1, e2| e2[:rate] <=> e1[:rate]} %>
-            <tr>
-              <td><%= link_to get_player_name(player[:player]), player[:player] %></td>
-              <td><%= player[:gp] %></td>
-              <td><%= player[:w] %></td>
-              <td><%= player[:l] %></td>
-              <td><%= player[:gf].to_s+":"+player[:ga].to_s %></td>
-              <td><%= player[:percentage] %> %</td>
-            </tr>
-          <% end %>
-        </table>
-      </div>
-    </div>
-
-    <div class="stats players">
-      <h1><%= I18n.t('messages.stats.players.title_games') %></h1>
-      <div class="table-wrapper">
-        <table class="list">
-          <tr>
-            <th><%= I18n.t('messages.base.player') %></th>
-            <th><%= I18n.t('messages.base.games_played') %></th>
-          </tr>
-          <% for player in @player_info.sort{|e1, e2| e2[:gp] <=> e1[:gp]} %>
-            <tr>
-              <td><%= link_to get_player_name(player[:player]), player[:player] %></td>
-              <td><%= player[:gp] %></td>
-            </tr>
-          <% end %>
-        </table>
-      </div>
-    </div>
-
-    <div class="stats players">
-      <h1><%= I18n.t('messages.stats.players.title_wins') %></h1>
-      <div class="table-wrapper">
-        <table class="list">
-          <tr>
-            <th><%= I18n.t('messages.base.player') %></th>
-            <th><%= I18n.t('messages.base.games_played') %></th>
-            <th><%= I18n.t('messages.base.wins') %></th>
-          </tr>
-          <% for player in @player_info.sort{|e1, e2| e2[:w] <=> e1[:w]} %>
-            <tr>
-              <td><%= link_to get_player_name(player[:player]), player[:player] %></td>
-              <td><%= player[:gp] %></td>
-              <td><%= player[:w] %></td>
-            </tr>
-          <% end %>
-        </table>
-      </div>
-    </div>
-
-    <div class="stats players">
-      <h1><%= I18n.t('messages.stats.players.title_score') %></h1>
-      <div class="table-wrapper">
-        <table class="list">
-          <tr>
-            <th><%= I18n.t('messages.base.player') %></th>
-            <th><%= I18n.t('messages.base.games_played') %></th>
-            <th><%= I18n.t('messages.base.score') %></th>
-          </tr>
-          <% for player in @player_info.sort{|e1, e2| e2[:score_diff] <=> e1[:score_diff]} %>
-            <tr>
-              <td><%= link_to get_player_name(player[:player]), player[:player] %></td>
-              <td><%= player[:gp] %></td>
-              <td><%= player[:score_diff] > 0 ? "+" : nil %><%= player[:score_diff] %> (<%= player[:gf] %>:<%= player[:ga] %>)</td>
-            </tr>
-          <% end %>
-        </table>
-      </div>
-    </div>
-  </div>
-<% else %>
-  <h1><%= I18n.t('messages.stats.players.team_not_selected') %></h1>
-<% end %>
+</div>

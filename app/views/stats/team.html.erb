@@ -1,19 +1,32 @@
-<% if @team %>
-  <div class="page-title">
-    <%= @team.name %>
-    <div class="selector">
-      Tým:
-      <select id="team-select">
-        <% for team in @teams %>
-          <option value="<%= team.id %>"<%= @team == team ? " selected" : nil %>><%= team.name %></option>
-        <% end %>
-      </select>
-      <input type="button" class="btn" value="Zobrazit" onclick="Stats.Team.changeTeam()" />
+<div class="prepend-wrapper">
+  <div class="input-prepend">
+    <span class="add-on"><%= I18n.t "messages.base.team" %></span>
+    <select id="team_select" class="form-control">
+      <% for team in @teams %>
+        <option value="<%= team.id %>"<%= @team == team ? " selected" : nil %>><%= team.name %></option>
+      <% end %>
+    </select>
+  </div>
+
+  <button class="btn btn-default" type="button" onclick="changeTeam();">
+    <%= I18n.t "messages.base.show" %>
+  </button>
+</div>
+
+<div class="tabbable">
+  <ul class="nav nav-tabs">
+    <li class="active">
+      <a href="#tab1" data-toggle="tab">
+        <%= I18n.t('messages.stats.players.title_total') %>
+      </a>
+    </li>
+  </ul>
+  
+  <div class="tab-content">
+    <div class="tab-pane active" id="tab1">
+      <p>
+        <%= I18n.t "messages.base.prepairing_content" %>
+      </p>
     </div>
   </div>
-  <div class="content-wrapper">
-    Obsah se připravuje...
-  </div>
-<% else %>
-  <h1><%= I18n.t('messages.stats.players.team_not_selected') %></h1>
-<% end %>
+</div>
