@@ -24,7 +24,6 @@ group :assets do
 end
 
 gem 'jquery-rails'
-gem 'test-unit'
 
 # + Image uploading
 gem 'carrierwave'
