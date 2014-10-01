@@ -7,6 +7,7 @@ cs:
       add: Přidat
       all_types: Všechny typy
       are_you_sure: Jste si jistý(á)?
+      away: Hosté
       delete: Smazat
       division: Divize
       edit: Editovat
@@ -18,6 +19,7 @@ cs:
       game_type_two_ball: Two-ball
       games_played: Zápasy
       go_to_list: Jít na seznam
+      home: Domácí
       l: P
       level: Úroveň
       match: Zápas
@@ -171,13 +173,15 @@ cs:
         new: Nový tým
     
     matches:
+      form:
+      form_addAllGames:
+        title: Automatické přidávání zápasů
+        overwrite_existing: Přepsat již zadané zápasy
+        submit: Přidat zápasy
       create:
         soccess: Zápas byl úspěšně vytvořen.
       update:
         success: Zápas byl úspěšně upraven.
-      add_all_games_form:
-        params_error: Chybné ID zápasu!
-        overwrite_existing: Přepsat již zadané zápasy
       add_all_games:
         params_error: Chybné ID zápasu nebo některého z hráčů!
 

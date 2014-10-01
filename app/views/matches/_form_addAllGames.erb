@@ -1,0 +1,88 @@
+<%= javascript_include_tag asset_path("pages/matches/form_addAllGames.js") %>
+
+<%= form_tag "/matches/#{@match.id}/add_all_games", :method => :post do %>
+  <div id="add_all_games" class="modal hide fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+      <h3 id="myModalLabel">
+        <%= I18n.t("messages.matches.form_addAllGames.title") %>
+      </h3>
+    </div>
+    <div class="modal-body">
+      <div class="controls controls-row">
+          <table>
+              <thead>
+                  <tr>
+                      <td><%= I18n.t("messages.base.home") %></td>
+                      <td><%= I18n.t("messages.base.away") %></td>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                      <td>
+                        <% for i in ["1", "2", "3", "4"] do %>
+                          <div>
+                            <%= i %>:
+                            <%= select_tag "player["+i+"]", options_for_select(get_player_options({ :team_id => @match.team_away_id, :empty_allowed => true})) %>
+                          </div>
+                        <% end %>
+                      </td>
+                      <td>
+                        <% for i in ["A", "B", "C", "D"] do %>
+                          <div>
+                            <%= i %>
+                            <%= select_tag "player["+i+"]", options_for_select(get_player_options({ :team_id => @match.team_away_id, :empty_allowed => true})) %>
+                          </div>
+                        <% end %>
+                      </td>
+                  </tr>
+              </tbody>
+          </table>
+          <div>
+              <label>
+                  <input type="checkbox" name="overwrite_existing" />
+                <%= I18n.t('messages.matches.form_addAllGames.overwrite_existing') %>
+              </label>
+          </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <%= submit_tag I18n.t("messages.matches.form_addAllGames.submit"), :class => "btn btn-primary" %>
+    </div>
+  </div>
+<% end %>
+
+<!--
+<div class="admin matches add_all_games">
+  <form action="/matches/<%= @match.id %>/">
+    <div class="match"><%= I18n.t('messages.base.match') %>: <%= @match.team_home.name %> <%= I18n.t('messages.base.vs') %> <%= @match.team_away.name %></div>
+    <div class="overwrite">
+      <%= check_box_tag(:overwrite_existing) %>
+      <%= label_tag(:overwrite_existing, I18n.t('messages.matches.add_all_games_form.overwrite_existing'))%>
+    </div>
+    <div class="players">
+      <div class="players_home">
+        <% for i in 1..4 do %>
+          <div class="player">
+            <div class="caption"><%= I18n.t('messages.base.player') %> <%= i %></div>
+            <div class="selector">
+              <%= select_tag "player["+i.to_s+"]", options_for_select(get_player_options({ :team_id => @match.team_home_id, :empty_allowed => true})) %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <div class="players_away">
+        <% for i in ["A", "B", "C", "D"] do %>
+          <div class="player">
+            <div class="caption"><%= I18n.t('messages.base.player') %> <%= i %></div>
+            <div class="selector">
+              <%= select_tag "player["+i+"]", options_for_select(get_player_options({ :team_id => @match.team_away_id, :empty_allowed => true})) %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <%= submit_tag(I18n.t('messages.base.set'), :class => "btn") %>
+  </form>
+</div>
+//-->

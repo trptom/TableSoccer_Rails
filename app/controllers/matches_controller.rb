@@ -1,3 +1,5 @@
+include GamesHelper
+
 class MatchesController < ApplicationController
   before_filter :require_login, except: [:show]
   
@@ -98,39 +100,34 @@ class MatchesController < ApplicationController
 
     redirect_to @match
   end
-
-  def add_all_games_form
-    @match = Match.find(params[:id])
-
-    if !@match
-      redirect_to ERROR_PAGE, notice: I18n.t('messages.matches.add_all_games_form.params_error')
-    end
-  end
-
+  
   def add_all_games
     @match = Match.find(params[:id])
+    @res = true
 
-    if !@match
-      if (params[:overwrite_existing])
-        for game in @match.games
-          game.destroy
-        end
+    if (params[:overwrite_existing])
+      for game in @match.games
+        game.destroy
       end
+    end
 
-      @games = Array.new
-      for a in 1..10
-        @games[a] = Game.new(
-          :game_number => a,
-          :match_id => @match.id,
-          :game_type => get_preferred_game_type({ :game_number => a }),
-          :score_home => 0,
-          :score_away => 0
-        )
+    @games = Array.new
+    for a in 1..10
+      @games[a] = Game.new(
+        :game_number => a,
+        :match_id => @match.id,
+        :game_type => GamesHelper::get_preferred_game_type({ :game_number => a }),
+        :score_home => 0,
+        :score_away => 0
+      )
 
-        
-      end
-
-      redirect_to ERROR_PAGE, notice: I18n.t('messages.matches.add_all_games.params_error')
+      @res = @games[a].save && @res
+    end
+    
+    if @res
+      redirect_to @match, notice: "TODO"
+    else
+      redirect_to @match
     end
   end
 end

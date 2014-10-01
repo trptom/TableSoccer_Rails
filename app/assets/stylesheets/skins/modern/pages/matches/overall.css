@@ -1,0 +1,12 @@
+#add_all_games table {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+#add_all_games table td {
+    text-align: center;
+}
+
+#add_all_games table thead td {
+    font-weight: bold;
+}

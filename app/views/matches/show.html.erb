@@ -1,3 +1,5 @@
+<%= render "form_addAllGames" %>
+
 <div class="admin matches show">
   <div class="teams">
     <div class="home"><%= link_to @match.team_home.name, @match.team_home %></div>
@@ -52,7 +54,9 @@
   <div class="footer btn-group">
     <%= current_user ? (link_to 'Editovat', edit_match_path(@match), :class => "btn") + " | " : nil %>
     <%= current_user ? (link_to 'Přidat hru', "/matches/"+@match.id.to_s+"/add_game", :class => "btn") + " | " : nil %>
-    <%= current_user ? (link_to 'Přidat všechny hry', "/matches/"+@match.id.to_s+"/add_all_games_form", :class => "btn") + " | " : nil %>
+    <a class="btn" href="#add_all_games" role="button" data-toggle="modal">
+      Přidat všechny hry
+    </a>
     <%= link_to 'Seznam', matches_path, :class => "btn" %>
   </div>
 </div>
