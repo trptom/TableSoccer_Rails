@@ -179,6 +179,6 @@ DEPENDENCIES
   sass-rails (~> 3.2.3)
   selenium-webdriver
   simplecov
-  sorcery
+  sorcery (= 0.7.13)
   test-unit
   uglifier (>= 1.0.3)

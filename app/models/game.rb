@@ -27,4 +27,10 @@ class Game < ActiveRecord::Base
 
   validates :match_id, :presence => { :message => "chybný zápas" }
   validates :match, :associated => { :message => "chybný zápas" }
+  
+  scope :by_season, ->(season) {
+    select("games.*, matches.season")
+        .joins("LEFT OUTER JOIN matches ON matches.id = games.match_id")
+        .where("matches.season = ?", season)
+  }
 end

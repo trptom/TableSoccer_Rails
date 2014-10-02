@@ -144,7 +144,7 @@ class MatchesController < ApplicationController
     end
     
     if @res
-      redirect_to @match, notice: "messages.matches.add_all_games.success"
+      redirect_to @match, notice: I18n.t("messages.matches.add_all_games.success")
     else
       redirect_to @match
     end

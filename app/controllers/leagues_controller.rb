@@ -121,7 +121,7 @@ class LeaguesController < ApplicationController
     end
     
     if LeaguesHelper::draw(@league, params[:season].to_i, @team)
-      redirect_to @league, notice: I18n.t("messages.leagues.create.success")
+      redirect_to @league, notice: I18n.t("messages.leagues.draw.success")
     else
       redirect_to @league
     end

@@ -8,6 +8,11 @@
     </select>
   </div>
 
+  <div class="input-prepend">
+    <span class="add-on"><%= I18n.t "messages.base.season" %></span>
+    <%= number_field_tag "season_select", "season_select", :min => 2000, :max => 2100, :class => "form-control", :value => params[:season] %>
+  </div>
+  
   <button class="btn btn-default" type="button" onclick="changeTeam();">
     <%= I18n.t "messages.base.show" %>
   </button>

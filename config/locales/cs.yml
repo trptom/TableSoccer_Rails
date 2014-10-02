@@ -171,6 +171,8 @@ cs:
         form_season: Sezóna
         form_submit: Přidat tým
         draw: Rozlosovat...
+      draw:
+        success: Liga byla úspěšně rozlosována.
     
     teams:
       base:

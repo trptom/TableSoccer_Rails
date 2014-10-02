@@ -1,6 +1,6 @@
 module StatsHelper
   def generate_player_stats_model
-    stat_types = [:gp, :w, :l, :gf, :ga, :percentage, :rate]
+    stat_types = [:gp, :w, :t, :l, :gf, :ga, :percentage, :rate]
 
     stats = Array.new
     stats[GAME_TYPE_SINGLE] = {}
@@ -26,10 +26,14 @@ module StatsHelper
     return stats
   end
 
-  def create_player_stats(player)
+  def create_player_stats(player, season = nil)
     stats = generate_player_stats_model
 
-    for gp in player.game_players.all
+    @source = params[:season] == nil || params[:season] == "" ?
+      player.game_players.all :
+      player.game_players.by_season(season).all
+    
+    for gp in @source
       if (gp.game && gp.game.score_home && gp.game.score_away)
         stats[GAME_TYPE_STR.length][:gp] += 1;
         stats[gp.game.game_type][:gp] += 1;

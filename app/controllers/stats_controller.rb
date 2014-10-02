@@ -18,9 +18,13 @@ class StatsController < ApplicationController
       @player_info = Array.new
 
       for player in @players
+        gp_list = params[:season] && params[:season] != "" ?
+          player.game_players.by_season(params[:season].to_i) :
+          player.game_players
+        
         tmp = Hash.new
         tmp[:player] = player;
-        tmp[:games_count] = player.game_players.length
+        tmp[:games_count] = gp_list.length
 
         tmp[:gp] = 0;
         tmp[:gf] = 0;
@@ -29,7 +33,7 @@ class StatsController < ApplicationController
         tmp[:t] = 0;
         tmp[:l] = 0;
         tmp[:rate] = 0;
-        for gp in player.game_players
+        for gp in gp_list
           if (gp.game && gp.game.score_home && gp.game.score_away)
             tmp[:gp] += 1
             if (gp.team == TEAM_HOME)
@@ -84,7 +88,7 @@ class StatsController < ApplicationController
     end
 
     if @player
-      @stats = create_player_stats @player
+      @stats = create_player_stats @player, params[:season].to_i
     end
   end
 

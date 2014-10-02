@@ -27,4 +27,13 @@ class GamePlayer < ActiveRecord::Base
 
 #  validates :player,
 #  :if => :player
+
+  
+  scope :by_season, ->(season) {
+      select("game_players.*")
+        .from("game_players, games, matches")
+        .where("matches.season = ?", season)
+        .where("game_players.game_id = games.id")
+        .where("games.match_id = matches.id")
+  }
 end

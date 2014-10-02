@@ -2,8 +2,11 @@ TableSoccer::Application.routes.draw do
   get "stats/players"
   get "stats/player"
   get "stats/team"
+  match 'stats/players/:id/:season' => 'stats#players'
   match "stats/players/:id" => 'stats#players'
+  match 'stats/player/:id/:season' => 'stats#player'
   match "stats/player/:id" => 'stats#player'
+  match 'stats/team/:id/:season' => 'stats#team'
   match "stats/team/:id" => 'stats#team'
   
   get "user_sessions/create"
@@ -38,9 +41,6 @@ TableSoccer::Application.routes.draw do
   end
 
   match 'matches/:id/add_game' => 'matches#add_game'
-  match 'players/:id/stats' => 'stats#player'
-  match 'teams/:id/playersstats' => 'stats#players'
-  match 'teams/:id/stats' => 'stats#team'
   match 'leagues/:id/draw' => 'leagues#draw', :as => :draw_league
   
   match 'login' => 'user_sessions#create', :as => :login
