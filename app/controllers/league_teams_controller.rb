@@ -1,7 +1,7 @@
 # coding:utf-8
 
 class LeagueTeamsController < ApplicationController
-  before_filter :require_login
+  before_filter :require_admin
   
   def create
     @league_team = LeagueTeam.new(params[:league_team])

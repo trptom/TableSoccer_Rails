@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :require_login, except: [:new, :create, :show, :activate]
+  before_filter :require_admin, except: [:new, :create, :show, :activate, :login]
   
   def index
     @users = User.all
@@ -90,7 +90,7 @@ class UsersController < ApplicationController
       @user.activate!
       UserMailer.activation_success_email(@user).deliver
       # presmeruju na seznam uzivatelu, pokud neni zdrojem aktivace email
-      redirect_to "/home", notice: I18n.t("messages.base.user_activated")
+      redirect_to "/", notice: I18n.t("messages.base.user_activated")
     else
       not_authenticated
     end
@@ -98,5 +98,16 @@ class UsersController < ApplicationController
   
   def reset_password
     # just render form
+  end
+  
+  def login
+    # just render form
+  end
+  
+  def activate_manually
+    @user = User.find(params[:id])
+    @user.activate!
+
+    redirect_to @user
   end
 end

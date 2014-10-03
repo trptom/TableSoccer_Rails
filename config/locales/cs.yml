@@ -4,12 +4,14 @@ cs:
   messages:
     base:
       action: Akce
+      activate: Aktivovat
       active: Aktivní
       admin: Administrátor
       add: Přidat
       all_types: Všechny typy
       are_you_sure: Jste si jistý(á)?
       away: Hosté
+      blocked: Blokován
       change_password: Změnit heslo
       date: Datum
       delete: Smazat
@@ -29,6 +31,7 @@ cs:
       l: P
       league: Liga
       level: Úroveň
+      log_in: Přihlásit
       login: Přihlašovací jméno
       match: Zápas
       name: Název
@@ -67,6 +70,7 @@ cs:
       title: TableSoccer
       header: TODO
       login: Pro prohlížení této stránky se musíte nejdříve přihlásit.
+      unauthorized: Nemáte dostatečná oprávnění pro ořístup na požadovanou stránku!
 
     menu:
       user:

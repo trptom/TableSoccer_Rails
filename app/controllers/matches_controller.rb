@@ -1,7 +1,7 @@
 include GamesHelper
 
 class MatchesController < ApplicationController
-  before_filter :require_login, except: [:show]
+  before_filter :require_admin
   
   # GET /matches
   def index

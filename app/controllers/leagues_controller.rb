@@ -1,7 +1,7 @@
 include LeaguesHelper
 
 class LeaguesController < ApplicationController
-  before_filter :require_login, except: [:show]
+  before_filter :require_admin
   
   # GET /leagues
   def index

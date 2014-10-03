@@ -6,6 +6,9 @@
         <td><%= I18n.t('messages.base.login') %></td>
         <td><%= I18n.t('messages.base.email') %></td>
         <td><%= I18n.t('messages.users.base.connected_player') %></td>
+        <td><%= I18n.t('messages.base.active') %></td>
+        <td><%= I18n.t('messages.base.admin') %></td>
+        <td><%= I18n.t('messages.base.blocked') %></td>
         <td><%= I18n.t('messages.base.action') %></td>
       </tr>
     </thead>
@@ -17,6 +20,9 @@
           <td><%= user.username %></td>
           <td><%= user.email %></td>
           <td><%= user.player ? link_to(get_player_name(user.player), user.player) : "Žádný" %></td>
+          <td><%= user.activation_state == "active" ? I18n.t("messages.base._yes") : I18n.t("messages.base._no") %></td>
+          <td><%= user.is_admin ? I18n.t("messages.base._yes") : I18n.t("messages.base._no") %></td>
+          <td><%= user.blocked ? I18n.t("messages.base._yes") : I18n.t("messages.base._no") %></td>
           <td>
             <div class="btn-group">
               <%= link_to_show nil, user %>

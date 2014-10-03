@@ -35,8 +35,12 @@ TableSoccer::Application.routes.draw do
   resources :user_sessions
 
   resources :users do
+    collection do
+      get :login
+    end
     member do
       get :activate
+      get :activate_manually
     end
   end
 
@@ -47,7 +51,7 @@ TableSoccer::Application.routes.draw do
   match 'logout' => 'user_sessions#destroy', :as => :logout
   match 'register' => 'users#new', :as => :register
   match 'current_user' => 'users#show', :as => :current_user
-  match 'home' => 'home#index', :as => :current_user
+  match 'home' => 'home#index', :as => :home
   
   get "oauths/oauth"
   get "oauths/callback"

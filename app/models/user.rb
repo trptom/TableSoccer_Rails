@@ -51,6 +51,8 @@ class User < ActiveRecord::Base
       name = origin + (++id).to_s
       logger.info "changing name to " + name
     end
+    
+    logger.info "used name: " + name
     return name
   end
 end
