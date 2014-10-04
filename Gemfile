@@ -12,7 +12,7 @@ gem 'rails_12factor'
 gem 'pg'
 #gem 'mysql2'
 # autentizace
-gem 'sorcery', '0.7.13'
+gem 'sorcery', '0.8.6'
 
 # Gems used only for assets and not required
 # in production environments by default.
