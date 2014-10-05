@@ -9,8 +9,10 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :authentications
   belongs_to :player
 
+  attr_accessor :password, :password_confirmation
+  
   attr_accessible :username, :email,
-    :password, :password_confirmation, :salt,
+    :crypted_password, :salt,
     :player, :player_id,
     :activation_expires_at, :activation_state, :activation_token, :authentications_attributes,
     :blocked, :is_admin,

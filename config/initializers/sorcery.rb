@@ -85,7 +85,7 @@ Rails.application.config.sorcery.configure do |config|
   config.facebook.callback_url = "http://fotbalek.herokuapp.com/oauth/callback?provider=facebook"
   config.facebook.user_info_mapping = {
     :email => "email",
-    :username => "username"
+    :username => "name"
   }
   config.facebook.scope = "email"
 
