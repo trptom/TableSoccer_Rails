@@ -10,7 +10,7 @@
             <div class="btn-group">
               <%= link_to current_user, :class => "btn btn-warning" do %>
                 <span class="icon-user"></span>
-                <%= current_user.username %>
+                <%= current_user.get_name %>
               <% end %>
               <div class="btn dropdown-toggle btn-warning" data-toggle="dropdown">
                 <span class="caret"></span>

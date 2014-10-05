@@ -4,6 +4,7 @@
       <tr>
         <td><%= I18n.t('messages.base.id') %></td>
         <td><%= I18n.t('messages.base.login') %></td>
+        <td><%= I18n.t('messages.base.users_name') %></td>
         <td><%= I18n.t('messages.base.email') %></td>
         <td><%= I18n.t('messages.users.base.connected_player') %></td>
         <td><%= I18n.t('messages.base.active') %></td>
@@ -18,6 +19,7 @@
         <tr>
           <td><%= user.id %></td>
           <td><%= user.username %></td>
+          <td><%= user.name %></td>
           <td><%= user.email %></td>
           <td><%= user.player ? link_to(get_player_name(user.player), user.player) : "Žádný" %></td>
           <td><%= user.activation_state == "active" ? I18n.t("messages.base._yes") : I18n.t("messages.base._no") %></td>

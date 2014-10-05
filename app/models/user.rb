@@ -9,10 +9,10 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :authentications
   belongs_to :player
 
-  attr_accessor :password, :password_confirmation
+  #attr_accessor :password, :password_confirmation
   
-  attr_accessible :username, :email,
-    :crypted_password, :salt,
+  attr_accessible :username, :email, :name,
+    :password, :password_confirmation, :crypted_password, :salt,
     :player, :player_id,
     :activation_expires_at, :activation_state, :activation_token, :authentications_attributes,
     :blocked, :is_admin,
@@ -39,7 +39,9 @@ class User < ActiveRecord::Base
   # instance functions
   ##############################################################################
   
-  # nothing yet
+  def get_name
+    return (name == nil || name == "") ? username : name;
+  end
   
   ##############################################################################
   # static functions
