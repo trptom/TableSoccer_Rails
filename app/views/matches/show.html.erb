@@ -33,52 +33,132 @@
       <span><%= @match.place %></span>
     </div>
 
-    <div class="list games">
+    <div class="list">
       <table>
-        <tr>
-          <th>Číslo</th>
-          <th>Typ</th>
-          <th>Domácí</th>
-          <th>Hosté</th>
-          <th>Skóre</th>
-          <% if current_user %>
-            <th>Akce</th>
+        <thead>
+          <tr>
+            <td><%= I18n.t('messages.base.date') %></td>
+            <td><%= I18n.t('messages.base.action') %></td>
+          </tr>
+        </thead>
+        <tbody>
+          <% for possible_date in @match.possible_dates %>
+            <tr>
+              <td>
+                <div class="datetimepicker input-append date" data-behaviour="datetimepicker">
+                  <input type="text" class="form-control" id="start_<%= possible_date.id %>" value="<%= possible_date.start_time %>" data-format="yyyy-MM-dd hh:mm:ss" />
+                  <span class="add-on">
+                    <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+                    </i>
+                  </span>
+                </div>
+
+                <div class="datetimepicker input-append date" data-behaviour="datetimepicker">
+                  <input type="text" class="form-control" id="end_<%= possible_date.id %>" value="<%= possible_date.end_time %>" data-format="yyyy-MM-dd hh:mm:ss" />
+                  <span class="add-on">
+                    <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+                    </i>
+                  </span>
+                </div>
+              </td>
+              <td>
+                <div class="btn-group">
+                  <button class="btn"
+                          onclick="updatePossibleDate(<%= possible_date.id %>);">
+                    <%= I18n.t "messages.base.update" %>
+                  </button>
+                  <a class="btn" href="/matches/remove_possible_date/<%= possible_date.id %>">
+                    <%= I18n.t "messages.base.delete" %>
+                  </a>
+                </div>
+              </td>
+            </tr>
           <% end %>
-        </tr>
-        <% for game in @match.games.order(:game_number).all %>
-        <tr>
-          <td>#<%= game.game_number %></td>
-          <td><%= I18n.t(GAME_TYPE_STR[game.game_type]) %></td>
-          <td>
-            <% for game_player in game.game_players.where(:team => TEAM_HOME).all %>
-              <div class="player"><%= get_player_name game_player.player %></div>
-            <% end %>
-          </td>
-          <td>
-            <% for game_player in game.game_players.where(:team => TEAM_AWAY).all %>
-              <div class="player"><%= get_player_name game_player.player %></div>
-            <% end %>
-          </td>
-          <td><%= game.score_home && game.score_away ? (game.score_home.to_s + ":" + game.score_away.to_s) : "-:-" %></td>
-          <% if current_user %>
-            <td class="btn-group">
-              <%= link_to "Zobrazit", game, :class => "btn" %>
-              <%= link_to "Editovat", edit_game_path(game), :class => "btn" %>
-              <%= link_to "Smazat", game, method: :delete, data: { confirm: 'Jste si jistý(á)?' }, :class => "btn" %>
+          <tr>
+            <td>
+              <div class="datetimepicker input-append date" data-behaviour="datetimepicker">
+                <input type="text" class="form-control" id="start_new" data-format="yyyy-MM-dd hh:mm:ss" />
+                <span class="add-on">
+                  <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+                  </i>
+                </span>
+              </div>
+
+              <div class="datetimepicker input-append date" data-behaviour="datetimepicker">
+                <input type="text" class="form-control" id="end_new" data-format="yyyy-MM-dd hh:mm:ss" />
+                <span class="add-on">
+                  <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+                  </i>
+                </span>
+              </div>
             </td>
-          <% end %>
-        </tr>
-        <% end %>
+            <td>
+              <div class="btn-group">
+                <button class="btn btn-primary"
+                        onclick="addNewPossibleDate(<%= @match.id %>);">
+                  <%= I18n.t "messages.base.add" %>
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
       </table>
     </div>
-
-    <div class="footer btn-group">
-      <%= current_user ? (link_to 'Editovat', edit_match_path(@match), :class => "btn") + " | " : nil %>
-      <%= current_user ? (link_to 'Přidat hru', "/matches/"+@match.id.to_s+"/add_game", :class => "btn") + " | " : nil %>
-      <a class="btn" href="#add_all_games" role="button" data-toggle="modal">
-        Přidat všechny hry
-      </a>
-      <%= link_to 'Seznam', matches_path, :class => "btn" %>
+    
+    <div class="list">
+      <table>
+        <thead>
+          <tr>
+            <td><%= I18n.t('messages.base.number') %></td>
+            <td><%= I18n.t('messages.base.type') %></td>
+            <td><%= I18n.t('messages.base.home_players') %></td>
+            <td><%= I18n.t('messages.base.away_players') %></td>
+            <td><%= I18n.t('messages.base.score') %></td>
+            <td><%= I18n.t('messages.base.action') %></td>
+          </tr>
+        </thead>
+        <tbody>
+          <% for game in @match.games.order(:game_number).all %>
+            <tr>
+              <td>#<%= game.game_number %></td>
+              <td><%= I18n.t(GAME_TYPE_STR[game.game_type]) %></td>
+              <td>
+                <% for game_player in game.game_players.where(:team => TEAM_HOME).all %>
+                  <div class="player"><%= get_player_name game_player.player %></div>
+                <% end %>
+              </td>
+              <td>
+                <% for game_player in game.game_players.where(:team => TEAM_AWAY).all %>
+                  <div class="player"><%= get_player_name game_player.player %></div>
+                <% end %>
+              </td>
+              <td><%= game.score_home && game.score_away ? (game.score_home.to_s + ":" + game.score_away.to_s) : "-:-" %></td>
+              <td>
+                <div class="btn-group">
+                  <%= link_to I18n.t("messages.base.show"), game, :class => "btn" %>
+                  <%= link_to I18n.t("messages.base.edit"), edit_game_path(game), :class => "btn" %>
+                  <%= link_to I18n.t("messages.base.delete"), game, method: :delete, data: { confirm: 'Jste si jistý(á)?' }, :class => "btn" %>
+                </div>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+        
+        <tfoot>
+          <tr>
+            <td colspan="6">
+              <div class="btn-group">
+                <%= link_to I18n.t("messages.base.edit"), edit_match_path(@match), :class => "btn" %>
+                <%= link_to I18n.t("messages.matches.show.add_game"), "/matches/"+@match.id.to_s+"/add_game", :class => "btn" %>
+                <a class="btn" href="#add_all_games" role="button" data-toggle="modal">
+                  <%= I18n.t "messages.matches.show.add_all_games" %>
+                </a>
+                <%= link_to I18n.t('messages.base.go_to_list'), matches_path, :class => "btn" %>
+              </div>
+            </td>
+          </tr>
+        </tfoot>
+      </table>
     </div>
   </div>
 </div>

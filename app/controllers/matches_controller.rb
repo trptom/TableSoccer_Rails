@@ -149,4 +149,46 @@ class MatchesController < ApplicationController
       redirect_to @match
     end
   end
+  
+  def add_possible_date
+    @date = PossibleDate.new(
+      :start_time => params[:start],
+      :end_time => params[:end],
+      :match_id => params[:id]
+    )
+    @date.save
+    
+    respond_to do |format|
+      @match = Match.find(params[:id])
+      format.html {
+        redirect_to @match
+      }
+    end
+  end
+  
+  def update_possible_date
+    @date = PossibleDate.find(params[:id])
+    @date.start_time = params[:start]
+    @date.end_time = params[:end]
+    @date.save
+    
+    respond_to do |format|
+      format.html {
+        redirect_to @date.match
+      }
+    end
+  end
+  
+  def remove_possible_date
+    @date = PossibleDate.find(params[:id])
+    @match = @date.match
+    
+    @date.destroy
+    
+    respond_to do |format|
+      format.html {
+        redirect_to @match
+      }
+    end
+  end
 end

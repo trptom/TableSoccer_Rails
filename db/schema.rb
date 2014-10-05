@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140929000000) do
+ActiveRecord::Schema.define(:version => 20141005164032) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -93,6 +93,29 @@ ActiveRecord::Schema.define(:version => 20140929000000) do
   end
 
   add_index "players", ["team_id"], :name => "index_players_on_team_id"
+
+  create_table "possible_date_selections", :force => true do |t|
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.integer  "priority"
+    t.integer  "possible_date_id"
+    t.integer  "player_id"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  add_index "possible_date_selections", ["player_id"], :name => "index_possible_date_selections_on_player_id"
+  add_index "possible_date_selections", ["possible_date_id"], :name => "index_possible_date_selections_on_possible_date_id"
+
+  create_table "possible_dates", :force => true do |t|
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.integer  "match_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "possible_dates", ["match_id"], :name => "index_possible_dates_on_match_id"
 
   create_table "teams", :force => true do |t|
     t.string   "name",       :null => false
