@@ -44,4 +44,12 @@ class Match < ActiveRecord::Base
 #    :allow_blank => false,
 #    :allow_nil => false,
 #  :if => :start_date
+
+  def title
+    str = "#{team_home.name} vs. #{team_away.name}#"
+    if (score_home > 0 && score_away > 0)
+      str = "#{str} (#{score_home}:#{score_away})"
+    end
+    return str
+  end
 end

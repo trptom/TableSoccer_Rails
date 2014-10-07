@@ -6,17 +6,18 @@
         <group name="MSDS Profi Manager"/>
         <group name="Github"/>
         <group name="GitHub">
-            <file>file:/C:/Users/tomas.praslicak/Documents/GitHub/TableSoccer_Rails/app/views/user_mailer/_activation_needed_email_cs_text.erb</file>
-            <file>file:/C:/Users/tomas.praslicak/Documents/GitHub/TableSoccer_Rails/app/assets/javascripts/pages/stats/team.js</file>
-            <file>file:/C:/Users/tomas.praslicak/Documents/GitHub/TableSoccer_Rails/app/helpers/players_helper.rb</file>
-            <file>file:/C:/Users/tomas.praslicak/Documents/GitHub/TableSoccer_Rails/app/views/stats/players.html.erb</file>
+            <file>file:/C:/Users/tomas.praslicak/Documents/GitHub/TableSoccer_Rails/app/models/user.rb</file>
+            <file>file:/C:/Users/tomas.praslicak/Documents/GitHub/TableSoccer_Rails/app/views/users/index.html.erb</file>
+            <file>file:/C:/Users/tomas.praslicak/Documents/GitHub/TableSoccer_Rails/app/controllers/users_controller.rb</file>
+            <file>file:/C:/Users/tomas.praslicak/Documents/GitHub/TableSoccer_Rails/Gemfile</file>
+            <file>file:/C:/Users/tomas.praslicak/Documents/GitHub/TableSoccer_Rails/config/locales/cs.yml</file>
+            <file>file:/C:/Users/tomas.praslicak/Documents/GitHub/TableSoccer_Rails/app/controllers/oauths_controller.rb</file>
+            <file>file:/C:/Users/tomas.praslicak/Documents/GitHub/TableSoccer_Rails/app/views/users/show.html.erb</file>
+            <file>file:/C:/Users/tomas.praslicak/Documents/GitHub/TableSoccer_Rails/config/initializers/sorcery.rb</file>
             <file>file:/C:/Users/tomas.praslicak/Documents/GitHub/TableSoccer_Rails/config/routes.rb</file>
-            <file>file:/C:/Users/tomas.praslicak/Documents/GitHub/TableSoccer_Rails/app/views/user_mailer/_activation_success_email_cs_text.erb</file>
-            <file>file:/C:/Users/tomas.praslicak/Documents/GitHub/TableSoccer_Rails/app/controllers/stats_controller.rb</file>
-            <file>file:/C:/Users/tomas.praslicak/Documents/GitHub/TableSoccer_Rails/app/helpers/stats_helper.rb</file>
-            <file>file:/C:/Users/tomas.praslicak/Documents/GitHub/TableSoccer_Rails/app/views/user_mailer/_reset_password_email_cs_text.erb</file>
-            <file>file:/C:/Users/tomas.praslicak/Documents/GitHub/TableSoccer_Rails/app/assets/javascripts/pages/stats/player.js</file>
-            <file>file:/C:/Users/tomas.praslicak/Documents/GitHub/TableSoccer_Rails/app/assets/javascripts/pages/stats/players.js</file>
+            <file>file:/C:/Users/tomas.praslicak/Documents/GitHub/TableSoccer_Rails/app/models/authentication.rb</file>
+            <file>file:/C:/Users/tomas.praslicak/Documents/GitHub/TableSoccer_Rails/db/migrate/20130314093434_sorcery_core.rb</file>
+            <file>file:/C:/Users/tomas.praslicak/Documents/GitHub/TableSoccer_Rails/app/views/users/_form.html.erb</file>
         </group>
     </open-files>
 </project-private>

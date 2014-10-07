@@ -1,0 +1,16 @@
+<div class="tabbable"> <!-- Only required for left/right tabs -->
+  <ul class="nav nav-tabs">
+    <li class="active">
+      <%= for match in @matches %>
+        <a href="#tab_<%= match.id %>" data-toggle="tab"><%= match.title %></a>
+      <% end  %>
+    </li>
+  </ul>
+  <div class="tab-content">
+    <%= for match in @matches %>
+      <div class="tab-pane<%= match == @matches.first ? " active" : "" %>" id="tab_<%= match.id %>">
+        TODO
+      </div>
+    <% end %>
+  </div>
+</div>

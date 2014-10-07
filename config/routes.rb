@@ -19,6 +19,7 @@ TableSoccer::Application.routes.draw do
   resources :matches do
     member do
       post :add_all_games
+      get :fill_attendance
     end
   end
 

@@ -110,4 +110,8 @@ class UsersController < ApplicationController
 
     redirect_to @user
   end
+  
+  def fill_attendance
+    @matches = Match.all
+  end
 end
