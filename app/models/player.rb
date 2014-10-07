@@ -5,6 +5,7 @@ class Player < ActiveRecord::Base
 
   has_many :game_players
   has_many :users
+  has_many :possible_date_selections
 
   attr_accessible :first_name, :second_name, :nick, :team, :team_id, :game_players
 

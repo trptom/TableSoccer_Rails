@@ -19,7 +19,12 @@ TableSoccer::Application.routes.draw do
   resources :matches do
     member do
       post :add_all_games
-      get :fill_attendance
+      get :add_possible_date
+    end
+    
+    collection do
+      get :update_possible_date
+      get :remove_possible_date
     end
   end
 
@@ -42,9 +47,13 @@ TableSoccer::Application.routes.draw do
     member do
       get :activate
       get :activate_manually
+      get :fill_attendance
     end
   end
 
+  match 'matches/remove_possible_date/:id' => 'matches#remove_possible_date'
+  match 'matches/update_possible_date/:id' => 'matches#update_possible_date'
+  
   match 'matches/:id/add_game' => 'matches#add_game'
   match 'leagues/:id/draw' => 'leagues#draw', :as => :draw_league
   

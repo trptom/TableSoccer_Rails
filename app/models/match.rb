@@ -8,6 +8,7 @@ class Match < ActiveRecord::Base
     :class_name => 'Team', :foreign_key => 'team_away_id'
 
   has_many :games
+  has_many :possible_dates
 
   attr_accessible :place, :season, :start_date, :team_away, :team_home, :team_away_id, :team_home_id, :score_home, :score_away, :league_id
 

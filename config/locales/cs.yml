@@ -11,6 +11,7 @@ cs:
       all_types: Všechny typy
       are_you_sure: Jste si jistý(á)?
       away: Hosté
+      away_players: Hráči hostů
       blocked: Blokován
       change_password: Změnit heslo
       date: Datum
@@ -27,6 +28,7 @@ cs:
       games_played: Zápasy
       go_to_list: Jít na seznam
       home: Domácí
+      home_players: Hráči domácích
       id: ID
       l: P
       league: Liga
@@ -43,6 +45,7 @@ cs:
       no_match: Žádný zápas
       no_player: Žádný hráč
       no_team: Žádný tým
+      number: Číslo
       password: Heslo
       password_confirmation: Kontrola hesla
       percentage: Procenta
@@ -60,6 +63,8 @@ cs:
       surname: Příjmení
       team: Tým
       total: Celkem
+      type: Typ
+      update: Upravit
       user_activated: Uživatel byl úspěšně aktivován!
       users_name: Jméno
       vs: vs.
@@ -224,6 +229,9 @@ cs:
         success: Zápasy byly úspěšně přidány.
       index:
         new: Nový mistrák
+      show:
+        add_game: Přidat zápas
+        add_all_games: Přidat všechny zápasy
       new:
         submit: Vytvořit mistrák
       edit:
