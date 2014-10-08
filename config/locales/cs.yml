@@ -20,6 +20,7 @@ cs:
       edit: Editovat
       email: Email
       first_name: Jméno
+      from: Od
       game_type: Typ hry
       game_type_single: Jednotlivci
       game_type_double: Dvojice
@@ -53,6 +54,7 @@ cs:
       player: Hráč
       player_name: Jméno hráče
       prepairing_content: Obsah se připravuje...
+      priority: Priorita
       score: Skóre
       season: Sezóna
       second_name: Příjmení
@@ -62,6 +64,7 @@ cs:
       show: Zobrazit
       surname: Příjmení
       team: Tým
+      to: Do
       total: Celkem
       type: Typ
       update: Upravit
@@ -78,10 +81,18 @@ cs:
       login: Pro prohlížení této stránky se musíte nejdříve přihlásit.
       unauthorized: Nemáte dostatečná oprávnění pro ořístup na požadovanou stránku!
 
+    priority:
+      p1: jen když bude nouze
+      p2: radši ne
+      p3: snad přijdu
+      p4: docela se mi to hodí
+      p5: super termín, 100% jdu
+    
     menu:
       user:
         edit: Editovat
         change_password: Změnit heslo
+        fill_attendance: Vyplnit docházku
       stats:
         title: Statistiky
         players: Porovnání hráčů
@@ -437,7 +448,7 @@ cs:
   time:
     am: am
     formats:
-      default: ! '%a %d. %B %Y %H:%M %z'
+      default: ! '%a %d. %B %Y, %H:%M'
       long: ! '%A %d. %B %Y %H:%M'
       short: ! '%d. %m. %H:%M'
       logger: "%d.%m.%Y, %H:%M:%S"

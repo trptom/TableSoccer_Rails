@@ -1,0 +1,50 @@
+<%= javascript_include_tag asset_path("pages/matches/form_addAllGames.js") %>
+<div id="fill_attendance" class="modal hide fade" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">
+      <%= I18n.t("messages.matches.form_addAllGames.title") %>
+    </h3>
+  </div>
+  <div class="modal-body">
+    <form class="form-horizontal">
+      <div class="control-group">
+        <%= label_tag "", I18n.t("messages.base.from"), :class => "control-label", :for => "attendance_start_new" %>
+        <div class="controls">
+          <div class="datetimepicker input-append date" data-behaviour="datetimepicker">
+            <input type="text" class="form-control" id="attendance_start_new" data-format="yyyy-MM-dd hh:mm:ss" />
+            <span class="add-on">
+              <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+              </i>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= label_tag "", I18n.t("messages.base.to"), :class => "control-label", :for => "attendance_end_new" %>
+        <div class="controls">
+          <div class="datetimepicker input-append date" data-behaviour="datetimepicker">
+            <input type="text" class="form-control" id="attendance_end_new" data-format="yyyy-MM-dd hh:mm:ss" />
+            <span class="add-on">
+              <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+              </i>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= label_tag "", I18n.t("messages.base.priority"), :class => "control-label", :for => "attendance_priority" %>
+        <div class="controls">
+          <select id="attendance_priority">
+            <% for a in 1..5 %>
+              <option value="<%= a %>"<%= a == 5 ? " selected" : "" %>><%= I18n.t "messages.priority.p#{a}" %></option>
+            <% end %>
+          </select>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <%= submit_tag I18n.t("messages.matches.form_addAllGames.submit"), :class => "btn btn-primary" %>
+  </div>
+</div>

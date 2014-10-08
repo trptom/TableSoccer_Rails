@@ -1,15 +1,38 @@
+<%= render "form_fillAttendance" %>
+
 <div class="tabbable"> <!-- Only required for left/right tabs -->
   <ul class="nav nav-tabs">
-    <li class="active">
-      <%= for match in @matches %>
+    <% for match in @matches %>
+      <li class="<%= match == @matches.first ? "active" : "" %>">
         <a href="#tab_<%= match.id %>" data-toggle="tab"><%= match.title %></a>
-      <% end  %>
-    </li>
+      </li>
+    <% end %>
   </ul>
   <div class="tab-content">
-    <%= for match in @matches %>
-      <div class="tab-pane<%= match == @matches.first ? " active" : "" %>" id="tab_<%= match.id %>">
-        TODO
+    <% for match in @matches %>
+      <div class="list tab-pane<%= match == @matches.first ? " active" : "" %>" id="tab_<%= match.id %>">
+        <table>
+          <thead>
+            <tr>
+              <td></td>
+              <td></td>
+            </tr>
+          </thead>
+          <tbody>
+            <% for date in match.possible_dates %>
+              <tr>
+                <td>
+                  <%= I18n.l(date.start_time) %>
+                  ...
+                  <%= I18n.l(date.end_time) %>
+                </td>
+                <td>
+                  <a class="btn" href="#fill_attendance" role="button" data-toggle="modal">+</a>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
       </div>
     <% end %>
   </div>

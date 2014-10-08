@@ -46,6 +46,10 @@ class Match < ActiveRecord::Base
 #    :allow_nil => false,
 #  :if => :start_date
 
+  scope :by_player, ->(player) {
+    where("(team_home_id = ?) OR (team_away_id = ?)", player.team.id, player.team.id);
+  }
+  
   def title
     str = "#{team_home.name} vs. #{team_away.name}#"
     if (score_home > 0 && score_away > 0)

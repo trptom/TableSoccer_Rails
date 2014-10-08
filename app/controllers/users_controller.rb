@@ -112,6 +112,10 @@ class UsersController < ApplicationController
   end
   
   def fill_attendance
-    @matches = Match.all
+    if (!current_user || current_user.player == nil)
+      @matches = []
+    else
+      @matches = Match.by_player(current_user.player)
+    end
   end
 end
