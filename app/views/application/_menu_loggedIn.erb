@@ -24,6 +24,10 @@
                 </li>
                 <li class="divider"></li>
                 <li>
+                  <%= link_to I18n.t("messages.menu.base.fill_attendance"), "/users/#{current_user.id}/fill_attendance" %>
+                </li>
+                <li class="divider"></li>
+                <li>
                   <%= link_to I18n.t("messages.menu.base.logout"), logout_url %>
                 </li>
               </ul>
