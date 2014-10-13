@@ -3,37 +3,51 @@
 <div class="tabbable"> <!-- Only required for left/right tabs -->
   <ul class="nav nav-tabs">
     <% for match in @matches %>
-      <li class="<%= match == @matches.first ? "active" : "" %>">
-        <a href="#tab_<%= match.id %>" data-toggle="tab"><%= match.title %></a>
-      </li>
+      <% if !match.started && match.possible_dates.count > 0 %>
+        <li class="<%= match == @matches.first ? "active" : "" %>">
+          <a href="#tab_<%= match.id %>" data-toggle="tab"><%= match.title %></a>
+        </li>
+      <% end %>
     <% end %>
   </ul>
   <div class="tab-content">
     <% for match in @matches %>
-      <div class="list tab-pane<%= match == @matches.first ? " active" : "" %>" id="tab_<%= match.id %>">
-        <table>
-          <thead>
-            <tr>
-              <td></td>
-              <td></td>
-            </tr>
-          </thead>
-          <tbody>
-            <% for date in match.possible_dates %>
+      <% if !match.started && match.possible_dates.count > 0 %>
+        <div class="list tab-pane<%= match == @matches.first ? " active" : "" %>" id="tab_<%= match.id %>">
+          <table>
+            <thead>
               <tr>
-                <td>
-                  <%= I18n.l(date.start_time) %>
-                  ...
-                  <%= I18n.l(date.end_time) %>
-                </td>
-                <td>
-                  <a class="btn" href="#fill_attendance" role="button" data-toggle="modal">+</a>
-                </td>
+                <td></td>
+                <td></td>
               </tr>
-            <% end %>
-          </tbody>
-        </table>
-      </div>
+            </thead>
+            <tbody>
+              <% for date in match.possible_dates %>
+                <tr>
+                  <td>
+                    <%= I18n.l(date.start_time) %>
+                    ...
+                    <%= I18n.l(date.end_time) %>
+                  </td>
+                  <td id="attendances_list_<%= date.id %>" data-min="<%= date.start_time %>" data-max="<%= date.end_time %>">
+                    <div id="selected_<%= date.id %>">
+                      <% for my_date in date.possible_date_selections %>
+                        <span id="remove_btn_<%= date.id %>" class="btn" onclick="FillAttendance.remove(<%= date.id %>, <%= my_date.id %>);">
+                          <%= I18n.l(my_date.start_time) %>
+                          ...
+                          <%= I18n.l(my_date.end_time) %>
+                        </span>
+                      <% end %>
+                    </div>
+                    <img id="loader_<%= date.id %>" src="<%= asset_path("icons/ajax-loader.gif") %>" class="hidden" />
+                    <a id="plus_button_<%= date.id %>" class="btn" href="#fill_attendance" role="button" data-toggle="modal" onclick="FillAttendance.plusClicked(<%= date.id %>)">+</a>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      <% end %>
     <% end %>
   </div>
 </div>

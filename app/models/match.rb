@@ -46,15 +46,38 @@ class Match < ActiveRecord::Base
 #    :allow_nil => false,
 #  :if => :start_date
 
+  scope :by_team_id, ->(team_id) {
+    where("(team_home_id = ?) OR (team_away_id = ?)", team_id, team_id);
+  }
+  
+  scope :by_team, ->(team) {
+    where("(team_home_id = ?) OR (team_away_id = ?)", team.id, team.id);
+  }
+  
   scope :by_player, ->(player) {
     where("(team_home_id = ?) OR (team_away_id = ?)", player.team.id, player.team.id);
   }
   
+  def started
+    return !(score_home == nil || score_away == nil || (score_home == 0 && score_away == 0))
+  end
+  
   def title
     str = "#{team_home.name} vs. #{team_away.name}#"
-    if (score_home > 0 && score_away > 0)
-      str = "#{str} (#{score_home}:#{score_away})"
+    if started
+      return "#{str} (#{result})"
+    else
+      return str
     end
-    return str
+  end
+  
+  # Returns score string. When some of scores not set (is nil) or both scores
+  # are 0, returns "-:-".
+  def result
+    if started
+      return "#{score_home}:#{score_away}"
+    else
+      return "-:-"
+    end
   end
 end

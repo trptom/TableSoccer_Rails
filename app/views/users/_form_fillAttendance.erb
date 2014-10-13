@@ -3,7 +3,7 @@
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
     <h3 id="myModalLabel">
-      <%= I18n.t("messages.matches.form_addAllGames.title") %>
+      <%= I18n.t("messages.users.form_fillAttendance.title") %>
     </h3>
   </div>
   <div class="modal-body">
@@ -11,8 +11,8 @@
       <div class="control-group">
         <%= label_tag "", I18n.t("messages.base.from"), :class => "control-label", :for => "attendance_start_new" %>
         <div class="controls">
-          <div class="datetimepicker input-append date" data-behaviour="datetimepicker">
-            <input type="text" class="form-control" id="attendance_start_new" data-format="yyyy-MM-dd hh:mm:ss" />
+          <div class="datetimepicker input-append date" id="attendance_start" data-behaviour="datetimepicker">
+            <input type="text" class="form-control" data-format="yyyy-MM-dd hh:mm:ss" />
             <span class="add-on">
               <i data-time-icon="icon-time" data-date-icon="icon-calendar">
               </i>
@@ -23,8 +23,8 @@
       <div class="control-group">
         <%= label_tag "", I18n.t("messages.base.to"), :class => "control-label", :for => "attendance_end_new" %>
         <div class="controls">
-          <div class="datetimepicker input-append date" data-behaviour="datetimepicker">
-            <input type="text" class="form-control" id="attendance_end_new" data-format="yyyy-MM-dd hh:mm:ss" />
+          <div class="datetimepicker input-append date" id="attendance_end" data-behaviour="datetimepicker">
+            <input type="text" class="form-control" data-format="yyyy-MM-dd hh:mm:ss" />
             <span class="add-on">
               <i data-time-icon="icon-time" data-date-icon="icon-calendar">
               </i>
@@ -45,6 +45,9 @@
     </form>
   </div>
   <div class="modal-footer">
-    <%= submit_tag I18n.t("messages.matches.form_addAllGames.submit"), :class => "btn btn-primary" %>
+    <input type="button" id="fillAttendance_submit"
+           value="<%= I18n.t("messages.users.form_fillAttendance.submit") %>"
+           class="btn btn-primary"
+           onclick="FillAttendance.add();" />
   </div>
 </div>

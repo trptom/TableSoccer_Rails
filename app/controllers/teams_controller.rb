@@ -93,4 +93,8 @@ class TeamsController < ApplicationController
       }
     end
   end
+  
+  def matches
+    @matches = Match.by_team_id(params[:id]).order(:start_date)
+  end
 end

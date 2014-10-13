@@ -41,7 +41,7 @@ class MatchesController < ApplicationController
     respond_to do |format|
       format.html {
         @buttons = [
-          { :body => I18n.t("messages.matches.edit.back_to_detail"), :url => @match , :html_options => {} },
+          { :body => I18n.t("messages.matches.form.back_to_detail"), :url => @match , :html_options => {} },
           { :body => I18n.t("messages.matches.form.back_to_list"), :url => matches_path, :html_options => {} }
         ]
       }
@@ -190,5 +190,9 @@ class MatchesController < ApplicationController
         redirect_to @match
       }
     end
+  end
+  
+  def view
+    
   end
 end

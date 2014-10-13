@@ -118,4 +118,37 @@ class UsersController < ApplicationController
       @matches = Match.by_player(current_user.player)
     end
   end
+  
+  def add_attendance
+    @date = PossibleDateSelection.new(
+      :possible_date_id => params[:dateId],
+      :player_id => current_user.player.id,
+      :start_time => params[:from],
+      :end_time => params[:to],
+      :priority => params[:priority]
+    )
+    @status = @date.save
+    
+    respond_to do |format|
+      format.json {
+        render json: {
+          :date => @date,
+          :status => @status,
+          :formatted_start => I18n.l(@date.start_time),
+          :formatted_end => I18n.l(@date.end_time)
+        }
+      }
+    end
+  end
+  
+  def remove_attendance
+    @date = PossibleDateSelection.find(params[:id])
+    @date.destroy
+
+    respond_to do |format|
+      format.json {
+        render json: {}
+      }
+    end
+  end
 end

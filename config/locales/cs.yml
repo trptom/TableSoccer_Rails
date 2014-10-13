@@ -55,6 +55,7 @@ cs:
       player_name: Jméno hráče
       prepairing_content: Obsah se připravuje...
       priority: Priorita
+      result: Výsledek
       score: Skóre
       season: Sezóna
       second_name: Příjmení
@@ -93,6 +94,8 @@ cs:
         edit: Editovat
         change_password: Změnit heslo
         fill_attendance: Vyplnit docházku
+      team:
+        games: Zápasy
       stats:
         title: Statistiky
         players: Porovnání hráčů
@@ -294,6 +297,9 @@ cs:
       update:
         submit: Upravit hráče
         success: Úprava údajů proběhla úspěšně.
+      form_fillAttendance:
+        title: Vyplňování docházky
+        submit: Přidat termín
 
   date:
     abbr_day_names:

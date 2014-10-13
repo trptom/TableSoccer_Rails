@@ -70,15 +70,15 @@ Rails.application.config.sorcery.configure do |config|
   # What providers are supported by this app, i.e. [:twitter, :facebook, :github, :google, :liveid] .
   # Default: `[]`
   #
-  config.external_providers = [:twitter, :facebook]
+  config.external_providers = [:facebook]
 
-  config.twitter.key = "VZv2peE7IVR6IOiVvOJt6g"
-  config.twitter.secret = "ke51gj1zT1coI6zopBeXavR9bXX2Zzh8VmVQB5ks4"
-  config.twitter.callback_url = "http://fbksedlcany.cz/oauth/callback?provider=twitter"
-  config.twitter.user_info_mapping = {
-    :username => "screen_name",
-    :email => "screen_name"
-  }
+  #config.twitter.key = "VZv2peE7IVR6IOiVvOJt6g"
+  #config.twitter.secret = "ke51gj1zT1coI6zopBeXavR9bXX2Zzh8VmVQB5ks4"
+  #config.twitter.callback_url = "http://fbksedlcany.cz/oauth/callback?provider=twitter"
+  #config.twitter.user_info_mapping = {
+  #  :username => "screen_name",
+  #  :email => "screen_name"
+  #}
 
   config.facebook.key = "1499430940311742"
   config.facebook.secret = "29d9cc719d2f733fc03ff02a3a8af2e1"
@@ -88,7 +88,7 @@ Rails.application.config.sorcery.configure do |config|
     :username => "id",
     :name => "name"
   }
-  config.facebook.scope = "email"
+  config.facebook.scope = "public_profile, email"
 
 
   # You can change it by your local ca_file. i.e. '/etc/pki/tls/certs/ca-bundle.crt'

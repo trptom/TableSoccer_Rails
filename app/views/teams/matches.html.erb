@@ -1,0 +1,22 @@
+<div class="list">
+    <table>
+        <thead>
+            <tr>
+                <td><%= I18n.t "messages.base.date" %></td>
+                <td><%= I18n.t "messages.base.home" %></td>
+                <td><%= I18n.t "messages.base.away" %></td>
+                <td><%= I18n.t "messages.base.result" %></td>
+            </tr>
+        </thead>
+        <tbody>
+          <% for match in @matches %>
+            <tr>
+                <td><%= I18n.l match.start_date %></td>
+                <td><%= match.team_home.name %></td>
+                <td><%= match.team_away.name %></td>
+                <td><%= match.result %></td>
+            </tr>
+          <% end %>
+        </tbody>
+    </table>
+</div>

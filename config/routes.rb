@@ -20,6 +20,7 @@ TableSoccer::Application.routes.draw do
     member do
       post :add_all_games
       get :add_possible_date
+      get :view, :as => :view_match
     end
     
     collection do
@@ -34,7 +35,11 @@ TableSoccer::Application.routes.draw do
 
   resources :game_players
 
-  resources :teams
+  resources :teams do
+    member do
+      get :matches, :as => :matches_of_team
+    end
+  end
 
   resources :leagues
 
@@ -43,6 +48,8 @@ TableSoccer::Application.routes.draw do
   resources :users do
     collection do
       get :login
+      post :add_attendance
+      post :remove_attendance
     end
     member do
       get :activate

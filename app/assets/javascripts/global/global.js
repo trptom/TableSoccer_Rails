@@ -32,3 +32,20 @@ function filterChildsByClass(element, className) {
 function redirect(url) {
     location.href = url;
 }
+
+function dateFromDb(dbDateStr) {
+    dbDateStr = dbDateStr.replace(/ UTC$/, "");
+    
+    var tmp1 = dbDateStr.split(" ");
+    var tmpYMD = tmp1[0].split("-");
+    var tmpHMS = tmp1[1].split(":");
+    
+    return new Date(
+            parseInt(tmpYMD[0], 10),
+            parseInt(tmpYMD[1], 10)-1,
+            parseInt(tmpYMD[2], 10),
+            parseInt(tmpHMS[0], 10),
+            parseInt(tmpHMS[1], 10),
+            parseInt(tmpHMS[2], 10),
+            0);
+}
