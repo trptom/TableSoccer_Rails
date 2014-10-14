@@ -18,7 +18,7 @@
                                 <% for s in date[:sequence] %>
                                 <% if s[:duration] > 0 %>
                                 <td class="<%= s[:class] %>" style="width: <%= "#{s[:perc]}%" %>" title="<%= s[:title] %>">
-                                  &nbsp;<%= s[:players].size %>&nbsp;
+                                  &nbsp;<%= s[:total_players] %>&nbsp;
                                 </td>
                                 <% end %>
                                 <% end %>

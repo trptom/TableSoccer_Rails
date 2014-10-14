@@ -140,8 +140,9 @@ class UsersController < ApplicationController
         render json: {
           :date => @date,
           :status => @status,
-          :formatted_start => I18n.l(@date.start_time),
-          :formatted_end => I18n.l(@date.end_time)
+          :formatted_start => I18n.l(@date.start_time, :format => :short),
+          :formatted_end => I18n.l(@date.end_time, :format => :short),
+          :priority => "(#{I18n.t('messages.priority.short.p' + @date.priority.to_s)})"
         }
       }
     end

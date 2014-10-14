@@ -6,6 +6,7 @@ module MatchesHelper
     for date in dates
       Rails.logger.info "DATE OK : " + date.to_s
       
+      p_sum = 0
       last_players = []
       total_duration = (date.end_time - date.start_time)
       
@@ -19,18 +20,20 @@ module MatchesHelper
         obj[:change] << {
           :selection => selection,
           :ts => selection.start_time,
-          :dir => 1
+          :dir => selection.priority
         }
         
         obj[:change] << {
           :selection => selection,
           :ts => selection.end_time,
-          :dir => -1
+          :dir => -selection.priority
         }
       end
       
       # sort all changes by their timestamp to allow easilly count sequences
-      obj[:change].sort_by{|e| e[:ts]}
+      #obj[:change].sort_by{|e| e[:ts]}
+      
+      obj[:change].sort! { |a,b| a[:ts].to_i <=> b[:ts].to_i }
       
       # count all sequences (sequence means some part of time with constant attendance)
       for change in obj[:change]
@@ -38,14 +41,18 @@ module MatchesHelper
           last_players << change[:selection].player
         end
         if (change[:dir] < 0)
-          last_players.delete(change[:selection].player)
+          id = last_players.find_index(change[:selection].player)
+          last_players.slice!(id)
         end
         
+        p_sum += change[:dir]
         p = last_players.clone
         
         obj[:sequence] << {
           :offset => (change[:ts] - date.start_time),
-          :players => p
+          :sum => p_sum,
+          :players => p,
+          :total_players => (p_sum.to_f / 5.to_f).ceil
         }
       end
       
@@ -63,7 +70,7 @@ module MatchesHelper
       # count percentage, element class and title
       for s in obj[:sequence]
         s[:perc] = s[:duration].to_i / total_duration * 100
-        s[:class] = s[:players].size >= 6 ? "p6plus" : "p#{s[:players].size}"
+        s[:class] = s[:total_players] >= 6 ? "p6plus" : "p#{s[:total_players]}"
         s[:title] = I18n.l(date.start_time + s[:offset], :format => :short) + " ... " + I18n.l(date.start_time + s[:offset] + s[:duration], :format => :short) + " - "
         if (s[:players].size == 0)
           s[:title] += I18n.t("messages.base.nobody")

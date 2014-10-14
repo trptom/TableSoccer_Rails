@@ -91,6 +91,12 @@ cs:
       p3: snad přijdu
       p4: docela se mi to hodí
       p5: super termín, 100% jdu
+      short:
+        p1: nechci
+        p2: radši ne
+        p3: možná
+        p4: rád bych
+        p5: super
     
     menu:
       user:

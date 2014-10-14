@@ -52,7 +52,7 @@ var FillAttendance = {
                 }
             });
             
-            this.dialog.hide();
+            this.dialog.modal('hide');
         }
     },
     
