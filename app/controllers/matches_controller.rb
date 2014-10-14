@@ -1,4 +1,5 @@
 include GamesHelper
+include MatchesHelper
 
 class MatchesController < ApplicationController
   before_filter :require_admin
@@ -193,6 +194,14 @@ class MatchesController < ApplicationController
   end
   
   def view
+    @match = Match.find(params[:id])
+    @dates = MatchesHelper::preprocess_attendance(@match)
+    Rails.logger.info "dates finished"
     
+    respond_to do |format|
+      format.html {
+        # just render
+      }
+    end
   end
 end

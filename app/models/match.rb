@@ -63,7 +63,7 @@ class Match < ActiveRecord::Base
   end
   
   def title
-    str = "#{team_home.name} vs. #{team_away.name}#"
+    str = "#{team_home.name} vs. #{team_away.name}"
     if started
       return "#{str} (#{result})"
     else

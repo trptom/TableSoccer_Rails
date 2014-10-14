@@ -20,7 +20,7 @@ TableSoccer::Application.routes.draw do
     member do
       post :add_all_games
       get :add_possible_date
-      get :view, :as => :view_match
+      get :view
     end
     
     collection do

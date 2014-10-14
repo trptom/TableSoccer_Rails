@@ -6,6 +6,7 @@
                 <td><%= I18n.t "messages.base.home" %></td>
                 <td><%= I18n.t "messages.base.away" %></td>
                 <td><%= I18n.t "messages.base.result" %></td>
+                <td></td>
             </tr>
         </thead>
         <tbody>
@@ -15,6 +16,9 @@
                 <td><%= match.team_home.name %></td>
                 <td><%= match.team_away.name %></td>
                 <td><%= match.result %></td>
+                <td>
+                    <a href="/matches/<%= match.id %>/view" class="icon-tasks" title="<%= I18n.t "messages.base.attendance" %>"></a>
+                </td>
             </tr>
           <% end %>
         </tbody>

@@ -1,10 +1,10 @@
 <%= render "form_fillAttendance" %>
-
+<%= @selected == nil ? "nil" : "not nil"%>
 <div class="tabbable"> <!-- Only required for left/right tabs -->
   <ul class="nav nav-tabs">
     <% for match in @matches %>
       <% if !match.started && match.possible_dates.count > 0 %>
-        <li class="<%= match == @matches.first ? "active" : "" %>">
+        <li class="<%= (match == @selected) ? "active" : "" %>">
           <a href="#tab_<%= match.id %>" data-toggle="tab"><%= match.title %></a>
         </li>
       <% end %>
@@ -13,7 +13,7 @@
   <div class="tab-content">
     <% for match in @matches %>
       <% if !match.started && match.possible_dates.count > 0 %>
-        <div class="list tab-pane<%= match == @matches.first ? " active" : "" %>" id="tab_<%= match.id %>">
+        <div class="list tab-pane<%= (match == @selected) ? " active" : "" %>" id="tab_<%= match.id %>">
           <table>
             <thead>
               <tr>

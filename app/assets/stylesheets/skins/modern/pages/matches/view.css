@@ -1,0 +1,56 @@
+.attendance-line {
+    width: auto;
+}
+
+.attendance-line > table {
+    width: 100%;
+}
+
+.attendance-line > table .left {
+    width: 200px;
+    text-align: right;
+    padding-right: 15px;
+}
+
+.attendance-line > table .right {
+    width: 200px;
+    text-align: left;
+    padding-left: 15px;
+}
+
+.attendance-line > table td > table {
+    width: 100%;
+    background-color: #efefef;
+}
+
+.attendance-line > table td > table td {
+    text-align: center;
+}
+
+.attendance-line > table td > table td.p0 {
+    background-color: #e0e0e0;
+}
+
+.attendance-line > table td > table td.p1 {
+    background-color: #ffc0c0;
+}
+
+.attendance-line > table td > table td.p2 {
+    background-color: #efd2d2;
+}
+
+.attendance-line > table td > table td.p3 {
+    background-color: #efefd0;
+}
+
+.attendance-line > table td > table td.p4 {
+    background-color: #c0f0c0;
+}
+
+.attendance-line > table td > table td.p5 {
+     background-color: #a0f0a0;
+}
+
+.attendance-line > table td > table td.p6plus {
+     background-color: #80f080;
+}

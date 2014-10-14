@@ -1,0 +1,34 @@
+<h3>
+    <%= I18n.t "messages.base.attendance" %>
+    <a href="/users/<%= current_user.id %>/fill_attendance?selected=<%= @match.id %>" class="label label-primary">
+      <%= I18n.t "messages.base.fill_in" %>
+    </a>
+</h3>
+
+<div class="attendance-line">
+    <table>
+        <tbody>
+            <% for date in @dates %>
+            <tr>
+                <td class="left"><%= I18n.l date[:date].start_time %></td>
+                <td class="center">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <% for s in date[:sequence] %>
+                                <% if s[:duration] > 0 %>
+                                <td class="<%= s[:class] %>" style="width: <%= "#{s[:perc]}%" %>" title="<%= s[:title] %>">
+                                  &nbsp;<%= s[:players].size %>&nbsp;
+                                </td>
+                                <% end %>
+                                <% end %>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+                <td class="right"><%= I18n.l date[:date].end_time %></td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+</div>

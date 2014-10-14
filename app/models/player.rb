@@ -27,4 +27,20 @@ class Player < ActiveRecord::Base
   validates :team, :associated => { :message => "chybný tým" }
 
   ##############################################################################
+  
+  def nick_or_name
+    if (nick != nil && nick != "")
+      return nick
+    end
+    
+    if (first_name == nil || first_name == "")
+      return second_name
+    end
+    
+    if (second_name == nil || second_name == "")
+      return first_name
+    end
+    
+    return "#{first_name} #{second_name}"
+  end
 end
