@@ -7,8 +7,8 @@ class Match < ActiveRecord::Base
   belongs_to :team_away,
     :class_name => 'Team', :foreign_key => 'team_away_id'
 
-  has_many :games
-  has_many :possible_dates
+  has_many :games, :dependent => :destroy
+  has_many :possible_dates, :dependent => :destroy
 
   attr_accessible :place, :season, :start_date, :team_away, :team_home, :team_away_id, :team_home_id, :score_home, :score_away, :league_id
 

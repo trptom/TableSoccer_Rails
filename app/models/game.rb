@@ -3,7 +3,7 @@
 class Game < ActiveRecord::Base
   belongs_to :match
 
-  has_many :game_players
+  has_many :game_players, :dependent => :destroy
 
   attr_accessible :game_number, :game_type, :score_home, :score_away, :game_players, :match, :match_id
 

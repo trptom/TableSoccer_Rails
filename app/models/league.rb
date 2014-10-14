@@ -1,8 +1,8 @@
 # coding:utf-8
 
 class League < ActiveRecord::Base
-  has_many :league_teams
-  has_many :matches
+  has_many :league_teams, :dependent => :destroy
+  has_many :matches, :dependent => :destroy
 
   attr_accessible :name, :short_name, :shortcut, :level, :division, :league_teams, :matches
 

@@ -3,9 +3,9 @@
 class Player < ActiveRecord::Base
   belongs_to :team
 
-  has_many :game_players
+  has_many :game_players, :dependent => :destroy
   has_many :users
-  has_many :possible_date_selections
+  has_many :possible_date_selections, :dependent => :destroy
 
   attr_accessible :first_name, :second_name, :nick, :team, :team_id, :game_players
 
