@@ -84,11 +84,11 @@ Rails.application.config.sorcery.configure do |config|
   config.facebook.secret = "29d9cc719d2f733fc03ff02a3a8af2e1"
   config.facebook.callback_url = "http://fotbalek.herokuapp.com/oauth/callback?provider=facebook"
   config.facebook.user_info_mapping = {
-    :email => "email",
+  #  :email => "email",
     :username => "id",
     :name => "name"
   }
-  config.facebook.scope = "public_profile, email"
+  #config.facebook.scope = "public_profile, email"
 
 
   # You can change it by your local ca_file. i.e. '/etc/pki/tls/certs/ca-bundle.crt'
