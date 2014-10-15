@@ -140,8 +140,14 @@ class MatchesController < ApplicationController
         :score_home => 0,
         :score_away => 0
       )
+      
+      if params["game_#{a}_type"]
+        @games[a].game_type = params["game_#{a}_type"].to_i
+      end
 
       @res = @games[a].save && @res
+      
+      @res = set_preferred_players(@games[a], params[:player]) && @res
     end
     
     if @res

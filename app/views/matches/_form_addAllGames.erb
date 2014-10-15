@@ -20,15 +20,15 @@
               <tbody>
                   <tr>
                       <td>
-                        <% for i in ["1", "2", "3", "4"] do %>
+                        <% for i in ["A", "B", "C", "D", "sA", "sB", "sC"] do %>
                           <div>
                             <%= i %>:
-                            <%= select_tag "player["+i+"]", options_for_select(get_player_options({ :team_id => @match.team_away_id, :empty_allowed => true})) %>
+                            <%= select_tag "player["+i+"]", options_for_select(get_player_options({ :team_id => @match.team_home_id, :empty_allowed => true})) %>
                           </div>
                         <% end %>
                       </td>
                       <td>
-                        <% for i in ["A", "B", "C", "D"] do %>
+                        <% for i in ["1", "2", "3", "4", "s1", "s2", "s3"] do %>
                           <div>
                             <%= i %>
                             <%= select_tag "player["+i+"]", options_for_select(get_player_options({ :team_id => @match.team_away_id, :empty_allowed => true})) %>
@@ -38,6 +38,13 @@
                   </tr>
               </tbody>
           </table>
+          <div>
+              <%= I18n.t('messages.matches.form_addAllGames.game_5_type') %>
+              <select name="game_5_type" id="game_5_type">
+                  <option value="<%= GAME_TYPE_TWO_BALL %>"><%= I18n.t GAME_TYPE_STR[GAME_TYPE_TWO_BALL] %></option>
+                  <option value="<%= GAME_TYPE_FOURS %>"><%= I18n.t GAME_TYPE_STR[GAME_TYPE_FOURS] %></option>
+              </select>
+          </div>
           <div>
               <label>
                   <input type="checkbox" name="overwrite_existing" checked="" />

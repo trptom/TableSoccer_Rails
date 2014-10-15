@@ -249,6 +249,7 @@ cs:
         back_to_detail: Zpět na detail mistráku
       form_addAllGames:
         title: Automatické přidávání zápasů
+        game_5_type: Typ 5. zápasu
         overwrite_existing: Přepsat již zadané zápasy
         overwrite_existing_hint:
           Pokud je zaškrtnuto, smaže všechny zápasy které jsou u mistráku již
