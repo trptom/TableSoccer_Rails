@@ -1,0 +1,7 @@
+.list .label {
+    margin: 10px;
+}
+
+.list tbody tr:first-of-type td {
+    padding: 10px;
+}

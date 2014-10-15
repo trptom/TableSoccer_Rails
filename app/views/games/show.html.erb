@@ -16,71 +16,78 @@
 
   <div class="list">
     <table>
-      <tr>
-        <th>Hráči domácích</th>
-        <th>Hráči hostů</th>
-      </tr>
-      <tr>
-        <td>
-          <% for gp in @home_players %>
-            <div class="form-search">
-              <div class="input-append">
-                <%= text_field_tag "gp_#{gp.id.to_s}", gp.player.nick_or_name, :disabled => "disabled" %>
-                <%= link_to "-", gp, method: :delete, data: { confirm: I18n.t('messages.base.are_you_sure') }, :class => "btn btn-primary" %>
-              </div>
-            </div>
-          <% end %>
-          <% if @home_players.length < GAME_PLAYERS_COUNT[@game.game_type] %>
-            <div class="label label-warning"><%= I18n.t "messages.games.show.not_enough_players", :count => GAME_PLAYERS_COUNT[@game.game_type] %></div>
-          <% end %>
-        </td>
-        <td>
-          <% for gp in @away_players %>
-            <div class="form-search">
-              <div class="input-append">
-                <%= text_field_tag "gp_#{gp.id.to_s}", gp.player.nick_or_name, :disabled => "disabled" %>
-                <%= link_to "-", gp, method: :delete, data: { confirm: I18n.t('messages.base.are_you_sure') }, :class => "btn btn-primary" %>
-              </div>
-            </div>
-          <% end %>
-          <% if @away_players.length < GAME_PLAYERS_COUNT[@game.game_type] %>
-            <div class="label label-warning"><%= I18n.t "messages.games.show.not_enough_players", :count => GAME_PLAYERS_COUNT[@game.game_type] %></div>
-          <% end %>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <% if @home_players.length < GAME_PLAYERS_COUNT[@game.game_type] %>
-            <%= form_for(@new_home_player, :html => { :class => "form-search" }) do |f| %>
-              <%= f.hidden_field :team %>
-              <%= f.hidden_field :game_id %>
-              <div class="input-append">
-                <%= f.select :player_id, options_for_select(get_player_options({ :team_id => @game.match.team_home_id })), :class => "span2 search-query" %>
-                <%= f.submit :value => "+", :class => "btn btn-primary" %>
-              </div>
-            <% end %>
-          <% end %>
-        </td>
-        <td>
-          <% if @away_players.length < GAME_PLAYERS_COUNT[@game.game_type] %>
-            <%= form_for(@new_away_player, :html => { :class => "form-search" }) do |f| %>
-              <%= f.hidden_field :team %>
-              <%= f.hidden_field :game_id %>
-              <div class="input-append">
-                <%= f.select :player_id, options_for_select(get_player_options({ :team_id => @game.match.team_away_id })), :class => "span2 search-query" %>
-                <%= f.submit :value => "+", :class => "btn btn-primary" %>
-              </div>
-            <% end %>
-          <% end %>
-        </td>
-      </tr>
+        <thead>
+            <tr>
+                <td><%= I18n.t "messages.base.home_players" %></td>
+                <td><%= I18n.t "messages.base.away_players" %></td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+              <td>
+                <% for gp in @home_players %>
+                  <div class="form-search">
+                    <div class="input-append">
+                      <%= text_field_tag "gp_#{gp.id.to_s}", gp.player.nick_or_name, :disabled => "disabled" %>
+                      <%= link_to "-", gp, method: :delete, data: { confirm: I18n.t('messages.base.are_you_sure') }, :class => "btn btn-primary" %>
+                    </div>
+                  </div>
+                <% end %>
+                <% if @home_players.length < GAME_PLAYERS_COUNT[@game.game_type] %>
+                  <div class="label label-warning"><%= I18n.t "messages.games.show.not_enough_players", :count => GAME_PLAYERS_COUNT[@game.game_type] %></div>
+                <% end %>
+              </td>
+              <td>
+                <% for gp in @away_players %>
+                  <div class="form-search">
+                    <div class="input-append">
+                      <%= text_field_tag "gp_#{gp.id.to_s}", gp.player.nick_or_name, :disabled => "disabled" %>
+                      <%= link_to "-", gp, method: :delete, data: { confirm: I18n.t('messages.base.are_you_sure') }, :class => "btn btn-primary" %>
+                    </div>
+                  </div>
+                <% end %>
+                <% if @away_players.length < GAME_PLAYERS_COUNT[@game.game_type] %>
+                  <div class="label label-warning"><%= I18n.t "messages.games.show.not_enough_players", :count => GAME_PLAYERS_COUNT[@game.game_type] %></div>
+                <% end %>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <% if @home_players.length < GAME_PLAYERS_COUNT[@game.game_type] %>
+                  <%= form_for(@new_home_player, :html => { :class => "form-search" }) do |f| %>
+                    <%= f.hidden_field :team %>
+                    <%= f.hidden_field :game_id %>
+                    <div class="input-append">
+                      <%= f.select :player_id, options_for_select(get_player_options({ :team_id => @game.match.team_home_id })), :class => "span2 search-query" %>
+                      <%= f.submit :value => "+", :class => "btn btn-primary" %>
+                    </div>
+                  <% end %>
+                <% end %>
+              </td>
+              <td>
+                <% if @away_players.length < GAME_PLAYERS_COUNT[@game.game_type] %>
+                  <%= form_for(@new_away_player, :html => { :class => "form-search" }) do |f| %>
+                    <%= f.hidden_field :team %>
+                    <%= f.hidden_field :game_id %>
+                    <div class="input-append">
+                      <%= f.select :player_id, options_for_select(get_player_options({ :team_id => @game.match.team_away_id })), :class => "span2 search-query" %>
+                      <%= f.submit :value => "+", :class => "btn btn-primary" %>
+                    </div>
+                  <% end %>
+                <% end %>
+              </td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="2">
+                    <div class="btn-group">
+                        <%= link_to I18n.t("messages.base.edit"), edit_game_path(@game), :class => "btn" %>
+                        <%= link_to I18n.t('messages.base.go_to_list'), games_path, :class => "btn" %>
+                    </div>
+                </td>
+            </tr>
+        </tfoot>
     </table>
   </div>
-
-  <% if current_user %>
-    <div class="footer btn-group">
-      <%= link_to 'Editovat', edit_game_path(@game), :class => "btn" %>
-      <%= link_to 'Zpět na zápas', @game.match, :class => "btn" %>
-    </div>
-  <% end %>
 </div>
