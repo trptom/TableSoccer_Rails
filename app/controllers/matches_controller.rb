@@ -195,7 +195,7 @@ class MatchesController < ApplicationController
   
   def view
     @match = Match.find(params[:id])
-    @dates = MatchesHelper::preprocess_attendance(@match)
+    @attendance = MatchesHelper::preprocess_attendance(@match)
     Rails.logger.info "dates finished"
     
     respond_to do |format|
