@@ -2,19 +2,19 @@
   <div class="control-group">
     <%= f.label I18n.t("messages.base.home"), :class => "control-label", :for => "match_team_home_id" %>
     <div class="controls">
-        <%= f.select :team_home_id, options_for_select(get_team_options) %>
+        <%= f.select :team_home_id, options_for_select(get_team_options,  @match.team_home_id) %>
     </div>
   </div>
   <div class="control-group">
     <%= f.label I18n.t("messages.base.away"), :class => "control-label", :for => "match_team_away_id" %>
     <div class="controls">
-        <%= f.select :team_away_id, options_for_select(get_team_options) %>
+        <%= f.select :team_away_id, options_for_select(get_team_options, @match.team_away_id) %>
     </div>
   </div>
   <div class="control-group">
     <%= f.label I18n.t("messages.base.league"), :class => "control-label", :for => "match_league_id" %>
     <div class="controls">
-        <%= f.select :league_id, options_for_select(get_league_options) %>
+        <%= f.select :league_id, options_for_select(get_league_options, @match.league_id) %>
     </div>
   </div>
   <div class="control-group">
