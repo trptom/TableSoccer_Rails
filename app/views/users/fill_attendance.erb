@@ -1,54 +1,55 @@
 <%= render "form_fillAttendance" %>
-<%= @selected == nil ? "nil" : "not nil"%>
-<div class="tabbable"> <!-- Only required for left/right tabs -->
-  <ul class="nav nav-tabs">
-    <% for match in @matches %>
-      <% if !match.started && match.possible_dates.count > 0 %>
-        <li class="<%= (match == @selected) ? "active" : "" %>">
-          <a href="#tab_<%= match.id %>" data-toggle="tab"><%= match.title %></a>
-        </li>
-      <% end %>
-    <% end %>
-  </ul>
-  <div class="tab-content">
-    <% for match in @matches %>
-      <% if !match.started && match.possible_dates.count > 0 %>
-        <div class="list tab-pane<%= (match == @selected) ? " active" : "" %>" id="tab_<%= match.id %>">
-          <table>
-            <thead>
-              <tr>
-                <td><%= I18n.t "messages.base.possible_date" %></td>
-                <td><%= I18n.t "messages.base.my_attendance" %></td>
-              </tr>
-            </thead>
-            <tbody>
-              <% for date in match.possible_dates %>
-                <tr>
-                  <td>
-                    <%= I18n.l(date.start_time) %>
-                    ...
-                    <%= I18n.l(date.end_time) %>
-                  </td>
-                  <td id="attendances_list_<%= date.id %>" data-min="<%= date.start_time %>" data-max="<%= date.end_time %>">
-                    <div id="selected_<%= date.id %>">
-                      <% for my_date in date.possible_date_selections %>
-                        <span id="remove_btn_<%= my_date.id %>" class="btn" onclick="FillAttendance.remove(<%= date.id %>, <%= my_date.id %>);">
-                          <%= I18n.l(my_date.start_time, :format => :short) %>
-                          ...
-                          <%= I18n.l(my_date.end_time, :format => :short) %>
-                          <%= "(#{I18n.t('messages.priority.short.p' + my_date.priority.to_s)})" %>
-                        </span>
-                      <% end %>
-                    </div>
-                    <img id="loader_<%= date.id %>" src="<%= asset_path("icons/ajax-loader.gif") %>" class="hidden" />
-                    <a id="plus_button_<%= date.id %>" class="btn" href="#fill_attendance" role="button" data-toggle="modal" onclick="FillAttendance.plusClicked(<%= date.id %>)">+</a>
-                  </td>
-                </tr>
-              <% end %>
-            </tbody>
-          </table>
+
+<div class="accordion" id="accordion">
+  <% for match in @matches %>
+    <% if !match.started && match.possible_dates.count > 0 %>
+      <div class="accordion-group">
+        <a href="/matches/<%= match.id %>/view" class="pull-right label label-primary">
+          <%= I18n.t "messages.base.detail" %>
+        </a>
+        <div class="accordion-heading">
+          <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse<%= match.id %>">
+            <%= match.title %> (<%= I18n.l match.start_date %>)
+          </a>
         </div>
-      <% end %>
+        <div id="collapse<%= match.id %>" class="accordion-body collapse<%= (match == @selected) ? " in" : "" %>">
+          <div class="accordion-inner">
+            <table class="attendance-table">
+              <thead>
+                <tr>
+                  <td><%= I18n.t "messages.base.possible_date" %></td>
+                  <td><%= I18n.t "messages.base.my_attendance" %></td>
+                </tr>
+              </thead>
+              <tbody>
+                <% for date in match.possible_dates %>
+                  <tr>
+                    <td>
+                      <%= I18n.l(date.start_time, :format => :short) %>
+                      -
+                      <%= I18n.l(date.end_time, :format => :short) %>
+                    </td>
+                    <td id="attendances_list_<%= date.id %>" data-min="<%= date.start_time %>" data-max="<%= date.end_time %>">
+                      <span id="selected_<%= date.id %>">
+                        <% for my_date in date.possible_date_selections %>
+                          <span id="remove_btn_<%= my_date.id %>" class="btn" onclick="FillAttendance.remove(<%= date.id %>, <%= my_date.id %>);">
+                            <%= I18n.l(my_date.start_time, :format => :short) %>
+                            -
+                            <%= I18n.l(my_date.end_time, :format => :short) %>
+                            <%= "(#{I18n.t('messages.priority.short.p' + my_date.priority.to_s)})" %>
+                          </span>
+                        <% end %>
+                      </span>
+                      <img id="loader_<%= date.id %>" src="<%= asset_path("icons/ajax-loader.gif") %>" class="hidden" />
+                      <a id="plus_button_<%= date.id %>" class="btn" href="#fill_attendance" role="button" data-toggle="modal" onclick="FillAttendance.plusClicked(<%= date.id %>)">+</a>
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
     <% end %>
-  </div>
+  <% end %>
 </div>
