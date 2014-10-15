@@ -21,7 +21,7 @@
                   <tr>
                       <td>
                         <% for i in ["A", "B", "C", "D", "sA", "sB", "sC"] do %>
-                          <div>
+                          <div data-behaviour="tooltip" data-placement="right" title="<%= I18n.t "messages.matches.form_addAllGames.player_#{i}_tooltip" %>">
                             <%= i %>:
                             <%= select_tag "player["+i+"]", options_for_select(get_player_options({ :team_id => @match.team_home_id, :empty_allowed => true})) %>
                           </div>
@@ -29,8 +29,8 @@
                       </td>
                       <td>
                         <% for i in ["1", "2", "3", "4", "s1", "s2", "s3"] do %>
-                          <div>
-                            <%= i %>
+                          <div data-behaviour="tooltip" data-placement="left" title="<%= I18n.t "messages.matches.form_addAllGames.player_#{i}_tooltip" %>">
+                            <%= i %>:
                             <%= select_tag "player["+i+"]", options_for_select(get_player_options({ :team_id => @match.team_away_id, :empty_allowed => true})) %>
                           </div>
                         <% end %>

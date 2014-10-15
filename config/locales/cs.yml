@@ -255,6 +255,20 @@ cs:
           Pokud je zaškrtnuto, smaže všechny zápasy které jsou u mistráku již
           přidány. Pokud ne, nové zápasy se pouze přidají k těm stávajícím.
         submit: Přidat zápasy
+        player_A_tooltip: Hráč A
+        player_B_tooltip: Hráč B
+        player_C_tooltip: Hráč C
+        player_D_tooltip: Hráč D
+        player_1_tooltip: Hráč 1
+        player_2_tooltip: Hráč 2
+        player_3_tooltip: Hráč 3
+        player_4_tooltip: Hráč 4
+        player_sA_tooltip: Jednotlivci - hráč A
+        player_sB_tooltip: Jednotlivci - hráč B
+        player_sC_tooltip: Jednotlivci - hráč C
+        player_s1_tooltip: Jednotlivci - hráč 1
+        player_s2_tooltip: Jednotlivci - hráč 2
+        player_s3_tooltip: Jednotlivci - hráč 3
       add_all_games:
         success: Zápasy byly úspěšně přidány.
         error:

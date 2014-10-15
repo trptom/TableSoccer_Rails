@@ -15,6 +15,9 @@ $(document).ready(function() {
     
     $('[data-behaviour~=datetimepicker]').datetimepicker({
     });
+
+    $('[data-behaviour~=tooltip]').tooltip({
+    });
     
     $('[data-behaviour~=popover]').popover({
     });
