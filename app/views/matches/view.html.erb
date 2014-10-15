@@ -1,26 +1,51 @@
-<div class="accordion" id="accordion2">
+<div class="accordion" id="accordion">
   <div class="accordion-group">
     <div class="accordion-heading">
-      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
-        Collapsible Group Item #1
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseDetail">
+        <%= I18n.t "messages.base.detail" %>
       </a>
     </div>
-    <div id="collapseOne" class="accordion-body collapse in">
+    <div id="collapseDetail" class="accordion-body collapse in">
       <div class="accordion-inner">
-        Anim pariatur cliche...
+        TODO overview
       </div>
     </div>
   </div>
   
-  
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseGames">
+        <%= I18n.t "messages.base.games" %>
+      </a>
+    </div>
+    <div id="collapseGames" class="accordion-body collapse">
+      <div class="accordion-inner">
+          <table class="games">
+              <thead>
+                
+              </thead>
+              <tbody>
+                <% for game in @match.games %>
+                  <tr>
+                      <td><%= game.type_str %></td>
+                      <td><%= game.home_players_str %></td>
+                      <td><%= game.away_players_str %></td>
+                      <td><%= game.score_str %></td>
+                  </tr>
+                <% end %>
+              </tbody>
+          </table>
+      </div>
+    </div>
+  </div>
   
   <div class="accordion-group">
     <div class="accordion-heading">
-      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseAttendance">
         <%= I18n.t "messages.base.attendance" %>
       </a>
     </div>
-    <div id="collapseTwo" class="accordion-body collapse">
+    <div id="collapseAttendance" class="accordion-body collapse">
       <div class="accordion-inner">
         <div class="attendance-line">
             <table>

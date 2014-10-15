@@ -36,4 +36,12 @@ class GamePlayer < ActiveRecord::Base
         .where("game_players.game_id = games.id")
         .where("games.match_id = matches.id")
   }
+  
+  scope :home, -> {
+      where(:team => TEAM_HOME)
+  }
+  
+  scope :away, -> {
+      where(:team => TEAM_AWAY)
+  }
 end

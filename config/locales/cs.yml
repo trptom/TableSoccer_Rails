@@ -30,6 +30,7 @@ cs:
       game_type_double: Dvojice
       game_type_fours: 4 na 4
       game_type_two_ball: Two-ball
+      games: Zápasy
       games_played: Zápasy
       go_to_list: Jít na seznam
       home: Domácí
@@ -50,6 +51,7 @@ cs:
       no_league: Žádná liga
       no_match: Žádný zápas
       no_player: Žádný hráč
+      no_player_presented: Není uveden žádný hráč
       no_team: Žádný tým
       nobody: Nikdo
       number: Číslo

@@ -33,4 +33,51 @@ class Game < ActiveRecord::Base
         .joins("LEFT OUTER JOIN matches ON matches.id = games.match_id")
         .where("matches.season = ?", season)
   }
+  
+  def home_game_players
+    return game_players.home
+  end
+  
+  def away_game_players
+    return game_players.away
+  end
+  
+  def players_str(game_players, separator = ", ")
+    if game_players.count == 0
+      return I18n.t "messages.base.no_player_presented"
+    end
+    
+    ret = ""
+    for player in game_players
+      ret += player.player.nick_or_name
+      if (player != game_players.last)
+        ret += separator
+      end
+    end
+    return ret    
+  end
+  
+  def home_players_str(separator = ", ")
+    return players_str(home_game_players, separator)
+  end
+  
+  def away_players_str(separator = ", ")
+    return players_str(away_game_players, separator)
+  end
+  
+  def started
+    return !(score_home == nil || score_away == nil || (score_home == 0 && score_away == 0))
+  end
+  
+  def score_str
+    if (started)
+      return "#{score_home}:#{score_away}"
+    else
+      return "-:-"
+    end
+  end
+  
+  def type_str
+    return I18n.t GAME_TYPE_STR[game_type]
+  end
 end
