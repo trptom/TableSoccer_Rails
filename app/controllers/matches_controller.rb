@@ -6,7 +6,7 @@ class MatchesController < ApplicationController
   
   # GET /matches
   def index
-    @matches = Match.all
+    @matches = Match.order(:start_date).all
 
     respond_to do |format|
       format.html # index.html.erb
