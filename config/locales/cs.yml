@@ -88,7 +88,7 @@ cs:
       
     application:
       title: TableSoccer
-      header: TODO
+      header: Malík Urvi
       login: Pro prohlížení této stránky se musíte nejdříve přihlásit.
       unauthorized: Nemáte dostatečná oprávnění pro ořístup na požadovanou stránku!
 
