@@ -17,8 +17,14 @@
                             <tr>
                                 <% for s in date[:sequence] %>
                                 <% if s[:duration] > 0 %>
-                                <td class="<%= s[:class] %>" style="width: <%= "#{s[:perc]}%" %>" title="<%= s[:title] %>">
-                                  &nbsp;<%= s[:total_players] %>&nbsp;
+                                <td class="<%= s[:class] %>" style="width: <%= "#{s[:perc]}%" %>">
+                                  <a href="#"
+                                     data-behaviour="popover"
+                                     data-placement="bottom"
+                                     title="<%= s[:popover_title] %>"
+                                     data-content="<%= s[:popover_content] %>">
+                                      &nbsp;<%= s[:total_players] %>&nbsp;
+                                  </a>
                                 </td>
                                 <% end %>
                                 <% end %>

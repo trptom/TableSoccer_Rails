@@ -27,6 +27,18 @@
     text-align: center;
 }
 
+.attendance-line > table td > table td a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    color: #000000;
+}
+
+.attendance-line > table td > table td a:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
 .attendance-line > table td > table td.p0 {
     background-color: #e0e0e0;
 }

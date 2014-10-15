@@ -38,10 +38,10 @@ module MatchesHelper
       # count all sequences (sequence means some part of time with constant attendance)
       for change in obj[:change]
         if (change[:dir] > 0)
-          last_players << change[:selection].player
+          last_players << change[:selection]
         end
         if (change[:dir] < 0)
-          id = last_players.find_index(change[:selection].player)
+          id = last_players.find_index(change[:selection])
           last_players.slice!(id)
         end
         
@@ -69,23 +69,6 @@ module MatchesHelper
         end
       end
       
-      # count percentage, element class and title
-      for s in obj[:sequence]
-        s[:perc] = s[:duration].to_i / total_duration * 100
-        s[:class] = s[:total_players] >= 6 ? "p6plus" : "p#{s[:total_players]}"
-        s[:title] = I18n.l(date.start_time + s[:offset], :format => :short) + " ... " + I18n.l(date.start_time + s[:offset] + s[:duration], :format => :short) + " - "
-        if (s[:players].size == 0)
-          s[:title] += I18n.t("messages.base.nobody")
-        else
-          for p in s[:players]
-            s[:title] += p.nick_or_name
-            if p != s[:players].last
-              s[:title] += ", "
-            end
-          end
-        end
-      end
-      
       if obj[:sequence].size == 0
         obj[:sequence] << {
           :offset => 0,
@@ -103,6 +86,24 @@ module MatchesHelper
             :duration => ofs_0.to_i,
             :total_players => 0
           })
+        end
+      end
+      
+      # count percentage, element class and title
+      for s in obj[:sequence]
+        s[:perc] = s[:duration].to_i / total_duration * 100
+        s[:class] = s[:total_players] >= 6 ? "p6plus" : "p#{s[:total_players]}"
+        s[:popover_title] = I18n.l(date.start_time + s[:offset], :format => :short) + " ... " + I18n.l(date.start_time + s[:offset] + s[:duration], :format => :short)
+        s[:popover_content] = ""
+        if (s[:players].size == 0)
+          s[:popover_content] += I18n.t("messages.base.nobody")
+        else
+          for p in s[:players]
+            s[:popover_content] += "#{p.player.nick_or_name} (#{p.priority * 100 / 5}%)"
+            if p != s[:players].last
+              s[:popover_content] += ", "
+            end
+          end
         end
       end
       

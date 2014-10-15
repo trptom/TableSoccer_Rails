@@ -43,6 +43,17 @@ class User < ActiveRecord::Base
     return (name == nil || name == "") ? username : name;
   end
   
+  def has_team(team)
+    if team.kind_of?(Team)
+      return player != nil && player.team.id == team.id
+    end
+    if team.kind_of?(Integer)
+      return player != nil && player.team.id == team
+    end
+    
+    return false
+  end
+  
   ##############################################################################
   # static functions
   ##############################################################################

@@ -15,6 +15,9 @@ $(document).ready(function() {
     
     $('[data-behaviour~=datetimepicker]').datetimepicker({
     });
+    
+    $('[data-behaviour~=popover]').popover({
+    });
 });
 
 function filterChildsByClass(element, className) {
