@@ -56,7 +56,7 @@ class LeaguesController < ApplicationController
     respond_to do |format|
       format.html {
         @buttons = [
-          { :body => I18n.t("messages.leagues.edit.back_to_detail"), :url => @league , :html_options => {} },
+          { :body => I18n.t("messages.leagues.form.back_to_detail"), :url => @league , :html_options => {} },
           { :body => I18n.t("messages.leagues.form.back_to_list"), :url => leagues_path, :html_options => {} }
         ]
       }

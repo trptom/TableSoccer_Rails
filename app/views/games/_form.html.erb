@@ -1,37 +1,54 @@
-<%= form_for(@game) do |f| %>
-  <% if @game.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@game.errors.count, "error") %> prohibited this game from being saved:</h2>
-
-      <ul>
-      <% @game.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+<%= form_for(@game, :html => { :class => "form-horizontal" }) do |f| %>
+  <div class="control-group">
+    <%= f.label I18n.t("messages.base.match"), :class => "control-label" %>
+    <div class="controls">
+        <input type="text" value="<%= @game.match.title %>" disabled="disabled" />
     </div>
-  <% end %>
+  </div>
+  <div class="control-group">
+    <%= f.label I18n.t("messages.base.game_number"), :class => "control-label", :for => "game_game_number" %>
+    <div class="controls">
+        <%= f.number_field :game_number, :min => 1, :max => 11 %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label I18n.t("messages.base.game_type"), :class => "control-label", :for => "game_game_type" %>
+    <div class="controls">
+        <%= f.select :game_type, options_for_select(get_game_type_options, @game.game_type.to_s) %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label I18n.t("messages.base.score_home"), :class => "control-label", :for => "game_score_home" %>
+    <div class="controls">
+        <%= f.number_field :score_home, :min => 0, :max => 2 %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label I18n.t("messages.base.score_home"), :class => "control-label", :for => "game_score_away" %>
+    <div class="controls">
+        <%= f.number_field :score_away, :min => 0, :max => 2 %>
+    </div>
+  </div>
 
-  <div class="field">
-    Zápas<br />
-    #<%= @game.match.id %>
-  </div>
-  <div class="field">
-    Pořadové číslo hry<br />
-    <%= f.select :game_number, 1..11, :selected => @game.game_number %>
-  </div>
-  <div class="field">
-    Typ hry<br />
-    <%= f.select :game_type, options_for_select(get_game_type_options, @game.game_type.to_s) %>
-  </div>
-  <div class="field">
-    Skóre domácích<br />
-    <%= f.select :score_home, options_for_select([["Neuvedeno", nil], 0, 1, 2], @game.score_home) %>
-  </div>
-  <div class="field">
-    Skóre hostů<br />
-    <%= f.select :score_away, options_for_select([["Neuvedeno", nil], 0, 1, 2], @game.score_away) %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="control-group">
+    <div class="controls">
+      <%= f.submit :value => I18n.t("messages.games.#{params[:action]}.submit"), :class => "btn btn-primary" %>
+
+      <% if @buttons %>
+        <div class="btn-group">
+          <button class="btn dropdown-toggle" data-toggle="dropdown">
+            <%= I18n.t("messages.base.navigation") %>
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu">
+            <% for btn in @buttons %>
+              <li>
+                <%= link_to btn[:body], btn[:url], btn[:html_options] %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+    </div>
   </div>
 <% end %>

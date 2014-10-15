@@ -18,10 +18,22 @@ class GamesController < ApplicationController
     @new_home_player.team = TEAM_HOME;
     @new_away_player.game = @game
     @new_away_player.team = TEAM_AWAY;
+    
+    respond_to do |format|
+      format.html # show.html.erb
+    end
   end
 
   def edit
     @game = Game.find(params[:id])
+    
+    respond_to do |format|
+      format.html {
+        @buttons = [
+          { :body => I18n.t("messages.games.form.back_to_detail"), :url => @game , :html_options => {} }
+        ]
+      }
+    end
   end
 
   def update
@@ -29,9 +41,14 @@ class GamesController < ApplicationController
 
     respond_to do |format|
       if @game.update_attributes(params[:game])
-        format.html { redirect_to @game, notice: 'Hra byla úspěšně upravena.' }
+        format.html {
+          redirect_to @game, notice: I18n.t("messages.games.update.success")
+        }
       else
-        format.html { render action: "edit" }
+        format.html {
+          @errors = @game.errors
+          render action: "edit"
+        }
       end
     end
   end

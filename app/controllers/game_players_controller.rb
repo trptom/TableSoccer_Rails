@@ -1,6 +1,6 @@
 # coding:utf-8
 
-class GamePlayersController < ActionController::Base
+class GamePlayersController < ApplicationController
   before_filter :require_admin
   
   def create

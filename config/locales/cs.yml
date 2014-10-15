@@ -25,6 +25,7 @@ cs:
       fill_in: Vyplnit
       first_name: Jméno
       from: Od
+      game_number: Pořadové číslo hry
       game_type: Typ hry
       game_type_single: Jednotlivci
       game_type_double: Dvojice
@@ -334,6 +335,16 @@ cs:
       form_fillAttendance:
         title: Vyplňování docházky
         submit: Přidat termín
+        
+    games:
+      form:
+        back_to_detail: Zpět na detail zápasu
+      edit:
+        submit: Upravit zápas
+      update:
+        success: Zápas byl úspěšně upraven.
+      show:
+        not_enough_players: "Příliš málo hráčů, mělo by být: %{count}"
 
   date:
     abbr_day_names:

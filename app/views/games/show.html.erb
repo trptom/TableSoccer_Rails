@@ -1,22 +1,20 @@
-<div class="admin games show">
-  <p id="notice"><%= notice %></p>
-
-  <div class="detail">
-    <div class="home-team line">
-      <span>Domácí:</span>
-      <span><%= @game.match.team_home.name %></span>
+<div class="detail">
+  <div class="content">
+    <div class="line">
+      <span><%= I18n.t("messages.base.home") %></span>
+      <span><%= link_to @game.match.team_home.name, @game.match.team_home %></span>
     </div>
-    <div class="away-team line">
-      <span>Hosté:</span>
-      <span><%= @game.match.team_away.name %></span>
+    <div class="line">
+      <span><%= I18n.t("messages.base.away") %></span>
+      <span><%= link_to @game.match.team_away.name, @game.match.team_away %></span>
     </div>
-    <div class="result line">
-      <span>Výsledek</span>
-      <span><%= @game.score_home && @game.score_away ? @game.score_home.to_s+":"+@game.score_away.to_s : "-:-" %></span>
+    <div class="line">
+      <span><%= I18n.t("messages.base.result") %></span>
+      <span><%= @game.score_str %></span>
     </div>
   </div>
 
-  <div class="list last-bordered players">
+  <div class="list">
     <table>
       <tr>
         <th>Hráči domácích</th>
@@ -25,46 +23,54 @@
       <tr>
         <td>
           <% for gp in @home_players %>
-            <div class="player">
-              <%= get_player_name gp.player %>
-              <%= link_to "-", gp, method: :delete, data: { confirm: 'Jste si jistý(á)?' }, :class => "btn" %>
+            <div class="form-search">
+              <div class="input-append">
+                <%= text_field_tag "gp_#{gp.id.to_s}", gp.player.nick_or_name, :disabled => "disabled" %>
+                <%= link_to "-", gp, method: :delete, data: { confirm: I18n.t('messages.base.are_you_sure') }, :class => "btn btn-primary" %>
+              </div>
             </div>
           <% end %>
           <% if @home_players.length < GAME_PLAYERS_COUNT[@game.game_type] %>
-            <div class="icon warning" title="Příliš málo hráčů - melo by být <%= GAME_PLAYERS_COUNT[@game.game_type] %>"></div>
+            <div class="label label-warning"><%= I18n.t "messages.games.show.not_enough_players", :count => GAME_PLAYERS_COUNT[@game.game_type] %></div>
           <% end %>
         </td>
         <td>
           <% for gp in @away_players %>
-            <div class="player">
-              <%= get_player_name gp.player %>
-              <%= link_to "-", gp, method: :delete, data: { confirm: 'Jste si jistý(á)?' }, :class => "btn" %>
+            <div class="form-search">
+              <div class="input-append">
+                <%= text_field_tag "gp_#{gp.id.to_s}", gp.player.nick_or_name, :disabled => "disabled" %>
+                <%= link_to "-", gp, method: :delete, data: { confirm: I18n.t('messages.base.are_you_sure') }, :class => "btn btn-primary" %>
+              </div>
             </div>
           <% end %>
           <% if @away_players.length < GAME_PLAYERS_COUNT[@game.game_type] %>
-            <div class="icon warning" title="Příliš málo hráčů - melo by být <%= GAME_PLAYERS_COUNT[@game.game_type] %>"></div>
+            <div class="label label-warning"><%= I18n.t "messages.games.show.not_enough_players", :count => GAME_PLAYERS_COUNT[@game.game_type] %></div>
           <% end %>
         </td>
       </tr>
       <tr>
         <td>
           <% if @home_players.length < GAME_PLAYERS_COUNT[@game.game_type] %>
-            <%= form_for @new_home_player do |f| %>
+            <%= form_for(@new_home_player, :html => { :class => "form-search" }) do |f| %>
               <%= f.hidden_field :team %>
               <%= f.hidden_field :game_id %>
-              <%= f.select :player_id, options_for_select(get_player_options({ :team_id => @game.match.team_home_id })) %>
-              <%= f.submit :value => "+", :class => "btn" %>
+              <div class="input-append">
+                <%= f.select :player_id, options_for_select(get_player_options({ :team_id => @game.match.team_home_id })), :class => "span2 search-query" %>
+                <%= f.submit :value => "+", :class => "btn btn-primary" %>
+              </div>
             <% end %>
           <% end %>
         </td>
         <td>
           <% if @away_players.length < GAME_PLAYERS_COUNT[@game.game_type] %>
-            <%= form_for @new_away_player do |f| %>
+            <%= form_for(@new_away_player, :html => { :class => "form-search" }) do |f| %>
               <%= f.hidden_field :team %>
               <%= f.hidden_field :game_id %>
-              <%= f.select :player_id, options_for_select(get_player_options({ :team_id => @game.match.team_away_id })) %>
-              <%= f.submit :value => "+", :class => "btn" %>
-            <%  end %>
+              <div class="input-append">
+                <%= f.select :player_id, options_for_select(get_player_options({ :team_id => @game.match.team_away_id })), :class => "span2 search-query" %>
+                <%= f.submit :value => "+", :class => "btn btn-primary" %>
+              </div>
+            <% end %>
           <% end %>
         </td>
       </tr>
