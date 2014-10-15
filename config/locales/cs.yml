@@ -257,6 +257,10 @@ cs:
         submit: Přidat zápasy
       add_all_games:
         success: Zápasy byly úspěšně přidány.
+        error:
+          Při přidávání zápasů došlo k chybě! Prosím zkontrolujte uložená data
+          (je možné že byla vygenerována pouze část zápasů nebo u zápasů chybí
+          někteří hráči).
       index:
         new: Nový mistrák
       show:

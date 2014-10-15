@@ -153,7 +153,7 @@ class MatchesController < ApplicationController
     if @res
       redirect_to @match, notice: I18n.t("messages.matches.add_all_games.success")
     else
-      redirect_to @match
+      redirect_to @match, notice: I18n.t("messages.matches.add_all_games.error")
     end
   end
   
