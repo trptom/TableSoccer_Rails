@@ -60,11 +60,13 @@ module MatchesHelper
       for a in 1..obj[:sequence].size-1
         obj[:sequence][a-1][:duration] = obj[:sequence][a][:offset] - obj[:sequence][a-1][:offset]
       end
-      # last sequence durates until end time
-      if obj[:sequence][obj[:sequence].size-1][:offset] < total_duration
-        obj[:sequence][obj[:sequence].size-1][:duration] = total_duration - obj[:sequence][obj[:sequence].size-1][:offset]
-      else
-        obj[:sequence][obj[:sequence].size-1][:duration] = 0
+      # last sequence (if has at least 1 sequence) durates until end time
+      if obj[:sequence].size > 0
+        if obj[:sequence][obj[:sequence].size-1][:offset] < total_duration
+          obj[:sequence][obj[:sequence].size-1][:duration] = total_duration - obj[:sequence][obj[:sequence].size-1][:offset]
+        else
+          obj[:sequence][obj[:sequence].size-1][:duration] = 0
+        end
       end
       
       # count percentage, element class and title
@@ -88,7 +90,8 @@ module MatchesHelper
         obj[:sequence] << {
           :offset => 0,
           :players => [],
-          :duration => total_duration
+          :duration => total_duration,
+          :total_players => 0
         }
       else
         ofs_0 = obj[:sequence][0][:offset]
@@ -97,7 +100,8 @@ module MatchesHelper
           obj[:sequence].insert(0, {
             :offset => 0,
             :players => [],
-            :duration => ofs_0.to_i
+            :duration => ofs_0.to_i,
+            :total_players => 0
           })
         end
       end
