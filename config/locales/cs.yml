@@ -39,6 +39,7 @@ cs:
       log_in: Přihlásit
       login: Přihlašovací jméno
       match: Zápas
+      my_attendance: Moje docházka
       name: Název
       navigation: Navigace
       nick: Přezdívka
@@ -56,6 +57,7 @@ cs:
       place: Místo
       player: Hráč
       player_name: Jméno hráče
+      possible_date: Možné datum
       prepairing_content: Obsah se připravuje...
       priority: Priorita
       result: Výsledek

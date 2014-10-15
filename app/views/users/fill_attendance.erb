@@ -17,8 +17,8 @@
           <table>
             <thead>
               <tr>
-                <td></td>
-                <td></td>
+                <td><%= I18n.t "messages.base.possible_date" %></td>
+                <td><%= I18n.t "messages.base.my_attendance" %></td>
               </tr>
             </thead>
             <tbody>
@@ -32,7 +32,7 @@
                   <td id="attendances_list_<%= date.id %>" data-min="<%= date.start_time %>" data-max="<%= date.end_time %>">
                     <div id="selected_<%= date.id %>">
                       <% for my_date in date.possible_date_selections %>
-                        <span id="remove_btn_<%= date.id %>" class="btn" onclick="FillAttendance.remove(<%= date.id %>, <%= my_date.id %>);">
+                        <span id="remove_btn_<%= my_date.id %>" class="btn" onclick="FillAttendance.remove(<%= date.id %>, <%= my_date.id %>);">
                           <%= I18n.l(my_date.start_time, :format => :short) %>
                           ...
                           <%= I18n.l(my_date.end_time, :format => :short) %>

@@ -57,6 +57,9 @@ var FillAttendance = {
     },
     
     remove: function(id1, id2) {
+        console.log("id1 = " + id1);
+        console.log("id2 = " + id2);
+        
         $.ajax({
             url: "/users/remove_attendance.json",
             type: "POST",
