@@ -32,6 +32,7 @@ var FillAttendance = {
                 url: "/users/add_attendance.json",
                 type: "POST",
                 dataType: "json",
+                async: true,
                 data: {
                     dateId: id,
                     from: _this.fromInputData.val(),
@@ -64,6 +65,7 @@ var FillAttendance = {
             url: "/users/remove_attendance.json",
             type: "POST",
             dataType: "json",
+            async: false,
             data: {
                 id: id2
             },
@@ -83,7 +85,7 @@ var FillAttendance = {
     addToSelectedList: function(id, responseObj) {
         var elem = document.createElement("span");
         
-        elem.innerHTML = responseObj.formatted_start + " ... " + responseObj.formatted_end;
+        elem.innerHTML = responseObj.formatted_start + " - " + responseObj.formatted_end + " " + responseObj.priority;
         elem.id = "remove_btn_" + responseObj.date.id;
         elem.className = "btn";
         elem.onclick = function() {
