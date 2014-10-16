@@ -1,12 +1,15 @@
 class UsersController < ApplicationController
-  before_filter :require_admin, :except => [ :new, :create, :show, :activate, :login, :fill_attendance, :add_attendance, :remove_attendance, :edit, :update ]
-  before_filter :require_login, :only => [ :fill_attendance, :add_attendance, :remove_attendance, :edit, :update ]
+  before_filter :require_admin, :only => [ :index, :destroy, :activate_manually ]
+  before_filter :require_login, :only => [ :fill_attendance, :add_attendance, :remove_attendance, :edit, :update , :show ]
+  before_filter :require_not_logged, :only => [ :new, :create, :activate, :reset_password, :login ]
   
   def index
     @users = User.all
   end
 
   def show
+    filter(current_user.id == params[:id].to_i || current_user.is_admin)
+    
     @user = User.find(params[:id])
 
     respond_to do |format|
@@ -23,6 +26,8 @@ class UsersController < ApplicationController
   end
 
   def edit
+    filter(current_user.id == params[:id].to_i || current_user.is_admin)
+    
     @user = User.find(params[:id])
     
     respond_to do |format|
@@ -59,6 +64,8 @@ class UsersController < ApplicationController
   end
 
   def update
+    filter(current_user.id == params[:id].to_i || current_user.is_admin)
+    
     @user = User.find(params[:id])
 
     respond_to do |format|
@@ -90,7 +97,6 @@ class UsersController < ApplicationController
     if (@user = User.load_from_activation_token(params[:id]))
       @user.activate!
       UserMailer.activation_success_email(@user).deliver
-      # presmeruju na seznam uzivatelu, pokud neni zdrojem aktivace email
       redirect_to "/", notice: I18n.t("messages.base.user_activated")
     else
       not_authenticated
@@ -113,20 +119,19 @@ class UsersController < ApplicationController
   end
   
   def fill_attendance
-    if (!current_user || current_user.player == nil)
-      @matches = []
-      @selected = nil
+    filter(current_user.player != nil)
+    
+    @matches = Match.by_player(current_user.player)
+    if (params[:selected])
+      @selected = Match.find(params[:selected])
     else
-      @matches = Match.by_player(current_user.player)
-      if (params[:selected])
-        @selected = Match.find(params[:selected])
-      else
-        @selected = @matches.first
-      end
+      @selected = @matches.first
     end
   end
   
   def add_attendance
+    filter(current_user.player != nil)
+    
     @date = PossibleDateSelection.new(
       :possible_date_id => params[:dateId],
       :player_id => current_user.player.id,
@@ -150,6 +155,8 @@ class UsersController < ApplicationController
   end
   
   def remove_attendance
+    filter(current_user.player != nil)
+    
     @date = PossibleDateSelection.find(params[:id])
     @date.destroy
 

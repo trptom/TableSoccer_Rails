@@ -3,7 +3,14 @@ include ApplicationHelper
 
 class ApplicationController < ActionController::Base
   protect_from_forgery
-
+  
+  private
+  def filter(condition)
+    if !condition
+      redirect_to "/", :notice => I18n.t('messages.application.unauthorized')
+    end
+  end
+  
   private
   def not_authenticated
     if !current_user
@@ -13,6 +20,7 @@ class ApplicationController < ActionController::Base
     end
   end
   
+  private
   def require_admin
     if current_user
       if !current_user.is_admin
@@ -21,6 +29,13 @@ class ApplicationController < ActionController::Base
     else
       session[:return_to_url] = request.url if Config.save_return_to_url
       self.send(Config.not_authenticated_action)
+    end
+  end
+  
+  private
+  def require_not_logged
+    if current_user
+      redirect_to "/", :notice => I18n.t('messages.application.unauthorized')
     end
   end
 end
