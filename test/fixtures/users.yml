@@ -4,7 +4,7 @@ admin:
   email: tablesoccer-root@email.cz
   salt: <%= salt = "asdasdastr4325234324sdfds" %>
   crypted_password: <%= Sorcery::CryptoProviders::BCrypt.encrypt("root", salt) %>
-
+  is_admin: true
 
 one:
   id: 2
@@ -12,4 +12,30 @@ one:
   email: one@send-no-email.cz
   salt: <%= salt = "asdasdastr4325234324sdfds" %>
   crypted_password: <%= Sorcery::CryptoProviders::BCrypt.encrypt("password", salt) %>
-  player_id: 1
+  player_id: 
+  is_admin: false
+  
+trptom:
+  id: 10
+  username: one
+  email: one@send-no-email.cz
+  salt: <%= salt = "asdasdastr4325234324sdfds" %>
+  crypted_password: <%= Sorcery::CryptoProviders::BCrypt.encrypt("password", salt) %>
+  player_id: 10
+  is_admin: true
+  
+without_player:
+  username: without_player
+  email: without_player@send-no-email.cz
+  salt: <%= salt = "asdasdastr4325234324sdfds" %>
+  crypted_password: <%= Sorcery::CryptoProviders::BCrypt.encrypt("password", salt) %>
+  player_id: 
+  is_admin: false
+  
+with_player_without_team:
+  username: without_player
+  email: without_player@send-no-email.cz
+  salt: <%= salt = "asdasdastr4325234324sdfds" %>
+  crypted_password: <%= Sorcery::CryptoProviders::BCrypt.encrypt("password", salt) %>
+  player_id: 11
+  is_admin: false

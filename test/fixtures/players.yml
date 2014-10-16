@@ -20,3 +20,10 @@ trptom:
   second_name: Přasličák
   nick: trptom
   team_id: 1
+  
+without_team:
+  id: 11
+  first_name: Without
+  second_name: Team
+  nick: trptom
+  team_id: 

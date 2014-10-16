@@ -1,9 +1,19 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
+  id: 1
   team_home_id: 1
   team_away_id: 2
   league_id: 3
   season: 2012
   start_date: 2013-03-13 20:00:00
   place: Woodoo
+
+two:
+  id: 2
+  team_home_id: 2
+  team_away_id: 1
+  league_id: 3
+  season: 2012
+  start_date: 2013-06-13 20:00:00
+  place: Skabetka

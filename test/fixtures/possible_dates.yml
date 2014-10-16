@@ -1,11 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  start_time: 2014-10-05 18:38:06
-  end_time: 2014-10-05 18:38:06
-  match: 
+  id: 1
+  start_time: 2014-10-05 10:00:00
+  end_time: 2014-10-05 22:00:00
+  match_id: 1
 
 two:
-  start_time: 2014-10-05 18:38:06
-  end_time: 2014-10-05 18:38:06
-  match: 
+  id: 2
+  start_time: 2014-10-06 10:00:00
+  end_time: 2014-10-06 18:00:00
+  match_id: 1

@@ -1,0 +1,39 @@
+one:
+  id: 1
+  game_number: 1
+  game_type: <%= GAME_TYPE_DOUBLE %>
+  score_home: 0
+  score_away: 0
+  match_id: 1
+  
+two:
+  id: 2
+  game_number: 1
+  game_type: <%= GAME_TYPE_DOUBLE %>
+  score_home: 0
+  score_away: 0
+  match_id: 1
+  
+three:
+  id: 3
+  game_number: 1
+  game_type: <%= GAME_TYPE_SINGLE %>
+  score_home: 0
+  score_away: 0
+  match_id: 1
+  
+four:
+  id: 4
+  game_number: 1
+  game_type: <%= GAME_TYPE_SINGLE %>
+  score_home: 0
+  score_away: 0
+  match_id: 1
+  
+five:
+  id: 5
+  game_number: 1
+  game_type: <%= GAME_TYPE_FOURS %>
+  score_home: 0
+  score_away: 0
+  match_id: 1

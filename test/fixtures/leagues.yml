@@ -31,3 +31,11 @@ four:
   shortcut: L3B
   level: 3
   division: 2
+
+five:
+  id: 5
+  name: Divize
+  short_name: Divize
+  shortcut: DIV
+  level: 4
+  division: 1

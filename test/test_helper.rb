@@ -1,5 +1,9 @@
 # coding:utf-8
 
+def current_user
+  nil
+end
+
 require 'simplecov'
 SimpleCov.start do
   # odfiltruju testy, aby mi to nekazilo celkovy vysledky
@@ -26,9 +30,8 @@ end
 ENV["RAILS_ENV"] = "test"
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
-require 'capybara/rspec'
 
-# helper pro prihlasovani/odhlasovani pri funkcnich testech - jinak bz vetsina
+# helper pro prihlasovani/odhlasovani pri funkcnich testech - jinak by vetsina
 # akci nefungovala, protoze by na ne neprihlaseny uzivatel nemel pristup
 include Sorcery::TestHelpers::Rails
 

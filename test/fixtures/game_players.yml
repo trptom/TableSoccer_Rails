@@ -1,0 +1,11 @@
+one:
+  position: 
+  team: <%= TEAM_HOME %>
+  game_id: 1
+  player_id: 1
+  
+two:
+  position: 
+  team: <%= TEAM_HOME %>
+  game_id: 1
+  player_id: 10

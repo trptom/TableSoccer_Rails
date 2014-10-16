@@ -1,19 +1,41 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  user: 
-  match: 
-  game: 
+  id: 1
+  user_id: 1
+  match_id: 1
+  game_id: 
   comment: 
-  title: MyString
-  content: MyText
-  visible: false
+  title: Komentar 1
+  content: Obsah komentare zapasu
+  visible: true
 
 two:
-  user: 
-  match: 
-  game: 
-  comment: 
-  title: MyString
-  content: MyText
-  visible: false
+  id: 2
+  user_id: 1
+  match_id: 2
+  game_id: 
+  comment_id: 1
+  title: Komentar 2
+  content: Obsah komentare zapasu
+  visible: true
+
+three:
+  id: 3
+  user_id: 1
+  match_id: 
+  game_id: 1
+  comment_id: 
+  title: Komentar 2
+  content: Obsah komentare zapasu
+  visible: true
+  
+four:
+  id: 4
+  user_id: 1
+  match_id: 
+  game_id: 2
+  comment_id: 3
+  title: Komentar 2
+  content: Obsah komentare zapasu
+  visible: true

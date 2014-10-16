@@ -34,4 +34,8 @@ TableSoccer::Application.configure do
 
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
+  
+  # Nastaveni capybara frameworku pro integracni testy
+  require 'capybara/rails'
+  Capybara.default_driver = :selenium
 end
