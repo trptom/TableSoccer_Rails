@@ -2,6 +2,7 @@
   <table>
     <thead>
       <tr>
+        <td></td>
         <td><%= I18n.t('messages.teams.base.name') %></td>
         <td><%= I18n.t('messages.teams.base.short_name') %></td>
         <td><%= I18n.t('messages.teams.base.shortcut') %></td>
@@ -12,6 +13,7 @@
     <tbody>
       <% @teams.each do |team| %>
         <tr>
+          <td><%= team.logo_image(:icon) %></td>
           <td><%= team.name %></td>
           <td><%= team.short_name %></td>
           <td><%= team.shortcut %></td>
@@ -28,7 +30,7 @@
 
     <tfoot>
       <tr>
-        <td colspan="4">
+        <td colspan="5">
           <div class="btn-group">
             <%= link_to I18n.t("messages.teams.index.new"), new_team_path, :class => "btn btn-primary" %>
           </div>

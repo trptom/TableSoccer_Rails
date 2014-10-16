@@ -18,7 +18,7 @@
     <% if @team.logo != nil && @team.logo != "" %>
       <div class="line">
         <span><%= I18n.t("messages.teams.base.logo") %></span>
-        <span><%= image_tag @team.logo %></span>
+        <span><%= @team.logo_image(:small) %></span>
       </div>
     <% end %>
   </div>

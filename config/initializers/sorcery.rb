@@ -89,6 +89,7 @@ Rails.application.config.sorcery.configure do |config|
     :name => "name"
   }
   #config.facebook.scope = "public_profile, email"
+  config.facebook.display = "popup"
 
 
   # You can change it by your local ca_file. i.e. '/etc/pki/tls/certs/ca-bundle.crt'

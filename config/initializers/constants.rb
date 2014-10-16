@@ -32,3 +32,9 @@ TEAM_HOME = 0;
 TEAM_AWAY = 1;
 
 ERROR_PAGE = "/home/error"
+
+DEFAULT_IMAGES = {
+  :team_logo => {
+    # no default logos for teams
+  }
+}

@@ -7,7 +7,50 @@
     </div>
     <div id="collapseDetail" class="accordion-body collapse in">
       <div class="accordion-inner">
-        TODO overview
+          <table class="overview">
+              <tbody>
+                  <tr>
+                      <td class="logo home" rowspan="2">
+                        <%= @match.team_home.logo_image(:large) %>
+                      </td>
+                      <td class="header" colspan="2">
+                          <div>
+                              <span><%= I18n.t "messages.base.competition" %>:</span>
+                              <span><%= @match.league.short_name %></span>
+                          </div>
+                          <div>
+                              <span><%= I18n.t "messages.base.season" %>:</span>
+                              <span><%= @match.season %></span>
+                          </div>
+                          <div>
+                              <span><%= I18n.t "messages.base.place" %>:</span>
+                              <span><%= @match.place %></span>
+                          </div>
+                          <div>
+                              <span><%= I18n.t "messages.base.start_date" %>:</span>
+                              <span><%= I18n.l @match.start_date %></span>
+                          </div>
+                      </td>
+                      <td class="logo away" rowspan="2">
+                        <%= @match.team_away.logo_image(:large) %>
+                      </td>
+                  </tr>
+                  <tr>
+                      <td class="score home">
+                          <div><%= @match.team_home.name %></div>
+                          <%  if @match.started %>
+                          <div><%= @match.score_home %></div>
+                          <% end %>
+                      </td>
+                      <td class="score away">
+                          <div><%= @match.team_away.name %></div>
+                          <%  if @match.started %>
+                          <div><%= @match.score_away %></div>
+                          <% end %>
+                      </td>
+                  </tr>
+              </tbody>
+          </table>
       </div>
     </div>
   </div>

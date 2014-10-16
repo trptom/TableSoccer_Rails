@@ -6,9 +6,9 @@
         <group name="MSDS Profi Manager"/>
         <group name="Github"/>
         <group name="GitHub">
-            <file>file:/C:/Users/tomas.praslicak/Documents/GitHub/TableSoccer_Rails/app/assets/javascripts/pages/users/fill_attendance.js</file>
-            <file>file:/C:/Users/tomas.praslicak/Documents/GitHub/TableSoccer_Rails/app/views/users/_form_fillAttendance.erb</file>
-            <file>file:/C:/Users/tomas.praslicak/Documents/GitHub/TableSoccer_Rails/app/controllers/users_controller.rb</file>
+            <file>file:/C:/Users/tomas.praslicak/Documents/GitHub/TableSoccer_Rails/app/controllers/teams_controller.rb</file>
+            <file>file:/C:/Users/tomas.praslicak/Documents/GitHub/TableSoccer_Rails/app/uploaders/team_logo_uploader.rb</file>
+            <file>file:/C:/Users/tomas.praslicak/Documents/GitHub/TableSoccer_Rails/app/models/team.rb</file>
         </group>
     </open-files>
 </project-private>

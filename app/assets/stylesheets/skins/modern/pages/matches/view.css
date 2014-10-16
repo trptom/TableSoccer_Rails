@@ -95,3 +95,44 @@
     width: 10%;
     text-align: center;
 }
+
+.overview {
+    width: 100%;
+}
+
+.overview td {
+    text-align: center;
+}
+
+.overview td.logo {
+    width: 15%;
+}
+
+.overview td.header {
+    padding-bottom: 40px;
+}
+
+.overview td.header > div {
+    display: inline-block;
+    font-size: 80%;
+}
+
+.overview td.header > div > span:first-of-type {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.overview td.header > div > span:last-of-type {
+    margin-right: 30px;
+}
+
+.overview .score div:nth-of-type(1) {
+    font-weight: bold;
+    font-size: 105%;
+}
+
+.overview .score div:nth-of-type(2) {
+    font-weight: bold;
+    font-size: 125%;
+    color: #550000;
+}

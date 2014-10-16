@@ -8,8 +8,10 @@ class Team < ActiveRecord::Base
   has_many :league_teams
   has_many :players
 
-  attr_accessible :name, :short_name, :shortcut, :logo, :matches_home, :matches_away, :league_teams, :players
+  attr_accessible :name, :short_name, :shortcut, :logo, :logo_cache, :matches_home, :matches_away, :league_teams, :players
 
+  mount_uploader :logo, TeamLogoUploader
+  
   validates :name,
     :length => { :minimum => 3, :maximum => 255, :message => "špatná délka názvu (3-255)" },
     :uniqueness => { :case_sensitive => false, :message => "liga s daným názvem již existuje" },
@@ -28,4 +30,18 @@ class Team < ActiveRecord::Base
     :allow_nil => true,
     :allow_blank => true,
   :if => :logo
+
+
+  def logo_image(type = :large)
+    url = logo_url(type)
+    if url != nil && url != ""
+      return ActionController::Base.helpers.image_tag(url)
+    else
+      if DEFAULT_IMAGES[:team_logo][type]
+        return ActionController::Base.helpers.image_tag(ActionController::Base.helpers.asset_path(DEFAULT_IMAGES[:team_logo][type]))
+      else
+        return nil
+      end
+    end
+  end
 end

@@ -15,6 +15,7 @@ cs:
       away_players: Hráči hostů
       blocked: Blokován
       change_password: Změnit heslo
+      competition: Soutěž
       date: Datum
       delete: Smazat
       detail: Detail
@@ -73,6 +74,7 @@ cs:
       short_name: Krátký název
       shortcut: Zkratka
       show: Zobrazit
+      start_date: Datum začátku
       surname: Příjmení
       team: Tým
       to: Do
