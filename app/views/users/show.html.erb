@@ -34,6 +34,21 @@
       <span><%= I18n.t("messages.base.blocked") %></span>
       <span><%= I18n.t(@user.blocked ? "messages.base._yes" : "messages.base._no") %></span>
     </div>
+      
+    <div class="line">
+      <span><%= I18n.t("messages.base.last_login") %></span>
+      <span><%= @user.last_login_at ? I18n.l(@user.last_login_at, :format => :default_with_secs) : "" %></span>
+    </div>
+      
+    <div class="line">
+      <span><%= I18n.t("messages.base.last_logout") %></span>
+      <span><%= @user.last_logout_at ? I18n.l(@user.last_logout_at, :format => :default_with_secs) : "" %></span>
+    </div>
+      
+    <div class="line">
+      <span><%= I18n.t("messages.base.last_activity") %></span>
+      <span><%= @user.last_activity_at ? I18n.l(@user.last_activity_at, :format => :default_with_secs) : "" %></span>
+    </div>
   </div>
     
   <div class="footer">

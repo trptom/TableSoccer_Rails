@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20141005164032) do
+ActiveRecord::Schema.define(:version => 20141016091317) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -143,8 +143,12 @@ ActiveRecord::Schema.define(:version => 20141005164032) do
     t.datetime "reset_password_email_sent_at"
     t.datetime "created_at",                                         :null => false
     t.datetime "updated_at",                                         :null => false
+    t.datetime "last_login_at"
+    t.datetime "last_logout_at"
+    t.datetime "last_activity_at"
   end
 
+  add_index "users", ["last_logout_at", "last_activity_at"], :name => "index_users_on_last_logout_at_and_last_activity_at"
   add_index "users", ["player_id"], :name => "index_users_on_player_id"
 
 end

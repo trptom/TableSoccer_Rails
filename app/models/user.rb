@@ -16,7 +16,8 @@ class User < ActiveRecord::Base
     :player, :player_id,
     :activation_expires_at, :activation_state, :activation_token, :authentications_attributes,
     :blocked, :is_admin,
-    :reset_password_token, :reset_password_token_expires_at, :reset_password_email_sent_at
+    :reset_password_token, :reset_password_token_expires_at, :reset_password_email_sent_at,
+    :last_login_at, :last_logout_at, :last_activity_at
 
 
   validates :username,

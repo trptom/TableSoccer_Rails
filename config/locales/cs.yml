@@ -39,6 +39,9 @@ cs:
       home_players: Hráči domácích
       id: ID
       l: P
+      last_activity: Poslední aktivita
+      last_login: Poslední přihlášení
+      last_logout: Poslední odhlášení
       league: Liga
       level: Úroveň
       log_in: Přihlásit
@@ -502,6 +505,7 @@ cs:
     am: am
     formats:
       default: ! '%a %d. %B %Y, %H:%M'
+      default_with_secs: ! '%a %d. %B %Y, %H:%M:%S'
       long: ! '%A %d. %B %Y %H:%M'
       short: ! '%d. %m. %H:%M'
       logger: "%d.%m.%Y, %H:%M:%S"
