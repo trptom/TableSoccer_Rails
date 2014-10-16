@@ -17,6 +17,7 @@
     <%= f.label I18n.t("messages.base.users_name"), :class => "control-label", :for => "user_name" %>
     <div class="controls">
       <%= f.text_field :name %>
+      <span class="icon icon-question-sign" data-behaviour="tooltip" data-placement="right" title="<%= I18n.t "messages.users.form.name_title" %>">&nbsp;</span>
     </div>
   </div>
 

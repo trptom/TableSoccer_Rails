@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_filter :require_admin, :except => [ :new, :create, :show, :activate, :login, :fill_attendance, :add_attendance, :remove_attendance ]
-  before_filter :require_login, :only => [ :fill_attendance, :add_attendance, :remove_attendance ]
+  before_filter :require_admin, :except => [ :new, :create, :show, :activate, :login, :fill_attendance, :add_attendance, :remove_attendance, :edit, :update ]
+  before_filter :require_login, :only => [ :fill_attendance, :add_attendance, :remove_attendance, :edit, :update ]
   
   def index
     @users = User.all

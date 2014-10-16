@@ -324,6 +324,7 @@ cs:
       base:
         connected_player: Propojený hráč
       form:
+        name_title: Pokud je jm0no uvedeno, bude se na většině míst zobrazovat místo loginu. Vhodné zejména pro uživatele, přihlášené přes facebook, kteří mají číselný login.
         back_to_list: Zpět na seznam uživatel
         back_to_detail: Zpět na detail uživatele
       index:
