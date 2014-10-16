@@ -136,3 +136,67 @@
     font-size: 125%;
     color: #550000;
 }
+
+#collapseComments > div, #collapseComments > div * {
+    text-align: left;
+}
+/*
+#collapseComments > div .comment {
+    width: auto;
+    margin-left: 50px;
+}
+
+#collapseComments > div .comment.root {
+    margin-left: 0px;
+}*/
+
+
+#collapseComments > div > .comments {
+    padding: 10px;
+}
+
+#collapseComments > div > .comments .comment > .title {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+#collapseComments > div > .comments .comment > .title > .icons > * {
+    cursor: pointer;
+}
+
+#collapseComments > div > .comments > .comment {
+    padding: 10px 0px 10px 0px;
+}
+
+#collapseComments > div > .comments > .comment .comment,
+#collapseComments > div > .comments > .comment form {
+    padding-top: 20px;
+}
+
+#collapseComments > div > .comments > .comment:not(:first-of-type) {
+    border-top: solid #e0e0e0 1px;
+}
+
+#collapseComments > div > .comments > .comment .subcomments {
+    padding-left: 20px;
+}
+
+#collapseComments > div > .new-comment {
+    padding: 10px;
+}
+
+#collapseComments > div > .new-comment.spacer {
+    padding-top: 30px;
+}
+
+#collapseComments > div > .new-comment > form,
+#collapseComments > div > .comments > .comment > .subcomments > form {
+    width: auto;
+}
+
+#collapseComments > div > .new-comment input[type=text],
+#collapseComments > div > .new-comment textArea,
+#collapseComments > div > .comments > .comment > .subcomments input[type=text],
+#collapseComments > div > .comments > .comment > .subcomments textArea {
+    width: 90%;
+}

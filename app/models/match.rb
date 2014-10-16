@@ -9,6 +9,7 @@ class Match < ActiveRecord::Base
 
   has_many :games, :dependent => :destroy
   has_many :possible_dates, :dependent => :destroy
+  has_many :comments, :dependent => :destroy
 
   attr_accessible :place, :season, :start_date, :team_away, :team_home, :team_away_id, :team_home_id, :score_home, :score_away, :league_id
 

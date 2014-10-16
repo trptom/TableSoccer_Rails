@@ -1,0 +1,33 @@
+<div class="comment<%= comment.comment ? nil : " root" %> comment-<%= comment.id %>">
+  <div class="title">
+    <%= comment.title %>
+    (<%= link_to comment.user.username, comment.user %>, <%= l comment.updated_at %>)
+    <div class="pull-right icons"
+         onmouseover="$(this.parentNode.parentNode.parentNode.parentNode).addClass('active');"
+         onmouseout="$(this.parentNode.parentNode.parentNode.parentNode).removeClass('active');">
+      <% if current_user %>
+        <span class="icon-retweet"
+              title="<%= I18n.t("messages.base.answer_comment") %>"
+              onclick="$('#react-<%= comment.id %>-form').toggle();"></span>
+      <% end %>
+      <% if current_user && current_user.is_admin %>
+        <%= link_to "", "/comments/#{comment.id}/hide", :class => "icon-trash", :title => I18n.t("messages.base.delete_comment") %>
+      <% end %>
+    </div>
+  </div>
+  <div class="content">
+    <%= comment.content %>
+  </div>
+  <div class="subcomments">
+    <%= form_for @comment, :html => { :class => 'non-displayed', :id => "react-"+comment.id.to_s+"-form" } do |f| %>
+      <%= hidden_field_tag "comment[title]", "RE: "+comment.title.to_s, :id => "reaction-"+comment.id.to_s+"-title" %>
+      <%= f.text_area :content, :id => "reaction-"+comment.id.to_s+"-content", :rows => 2 %>
+      <%= f.hidden_field :match_id, :id => "reaction-"+comment.id.to_s+"-match" %>
+      <%= hidden_field_tag "comment[comment_id]", comment.id, :id => "reaction-"+comment.id.to_s+"-comment" %>
+      <%= f.submit I18n.t("messages.base.add_comment"), :class => "btn btn-primary" %>
+    <% end %>
+    <% for item in comment.comments.order(:created_at).all %>
+      <%= render :partial => 'comment', :locals => {:comment => item} %>
+    <% end %>
+  </div>
+</div>

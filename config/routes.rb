@@ -58,6 +58,12 @@ TableSoccer::Application.routes.draw do
     end
   end
 
+  resources :comments do
+    member do
+      get :hide
+    end
+  end
+  
   match 'matches/remove_possible_date/:id' => 'matches#remove_possible_date'
   match 'matches/update_possible_date/:id' => 'matches#update_possible_date'
   

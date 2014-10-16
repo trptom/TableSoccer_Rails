@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20141016091317) do
+ActiveRecord::Schema.define(:version => 20141016094807) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -20,6 +20,23 @@ ActiveRecord::Schema.define(:version => 20141016091317) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "comments", :force => true do |t|
+    t.integer  "user_id",                      :null => false
+    t.integer  "match_id"
+    t.integer  "game_id"
+    t.integer  "comment_id"
+    t.string   "title"
+    t.text     "content",                      :null => false
+    t.boolean  "visible",    :default => true, :null => false
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
+  end
+
+  add_index "comments", ["comment_id"], :name => "index_comments_on_comment_id"
+  add_index "comments", ["game_id"], :name => "index_comments_on_game_id"
+  add_index "comments", ["match_id"], :name => "index_comments_on_match_id"
+  add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
   create_table "game_players", :force => true do |t|
     t.integer  "game_id",    :null => false

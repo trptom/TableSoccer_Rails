@@ -129,4 +129,32 @@
       </div>
     </div>
   </div>
+    
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseComments">
+        <%= I18n.t "messages.base.comments_with_count", :count => @match.comments.count %>
+      </a>
+    </div>
+    <div id="collapseComments" class="accordion-body collapse">
+      <div class="accordion-inner">
+        <div class="comments">
+          <% for comment in @match.comments.where(:comment_id => nil).order(:created_at).all %>
+            <%= render :partial => 'comment', :locals => {:comment => comment} %>
+          <% end %>
+        </div>
+
+        <% if current_user %>
+          <div class="new-comment<%= @match.comments.count > 0 ? " spacer" : "" %>">
+            <%= form_for @comment do |f| %>
+              <%= f.text_field :title %>
+              <%= f.text_area :content, :rows => 3 %>
+              <%= f.hidden_field :match_id %>
+              <%= f.submit I18n.t("messages.base.add_comment"), :class => "btn btn-primary" %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>

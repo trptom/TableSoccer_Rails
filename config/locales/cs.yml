@@ -8,16 +8,20 @@ cs:
       active: Aktivní
       admin: Administrátor
       add: Přidat
+      add_comment: Přidat komentář
       all_types: Všechny typy
+      answer_comment: Reagovat na komentář
       are_you_sure: Jste si jistý(á)?
       attendance: Docházka
       away: Hosté
       away_players: Hráči hostů
       blocked: Blokován
       change_password: Změnit heslo
+      comments_with_count: Komentáře (%{count})
       competition: Soutěž
       date: Datum
       delete: Smazat
+      delete_comment: Smazat komentář
       detail: Detail
       division: Divize
       edit: Editovat
@@ -92,7 +96,7 @@ cs:
       _yes: Ano
       
     application:
-      title: TableSoccer
+      title: Malík Urvi - foosball web
       header: Malík Urvi
       login: Pro prohlížení této stránky se musíte nejdříve přihlásit.
       unauthorized: Nemáte dostatečná oprávnění pro ořístup na požadovanou stránku!
@@ -351,6 +355,9 @@ cs:
       show:
         not_enough_players: "Příliš málo hráčů, mělo by být: %{count}"
 
+    comments:
+      create:
+        success: Komentář byl úspěšně přidán.
   date:
     abbr_day_names:
       - Ne

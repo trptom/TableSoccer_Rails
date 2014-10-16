@@ -2,7 +2,8 @@ include GamesHelper
 include MatchesHelper
 
 class MatchesController < ApplicationController
-  before_filter :require_admin
+  before_filter :require_admin, :except => [ :view ]
+  before_filter :require_login, :only => [ :view ]
   
   # GET /matches
   def index
@@ -202,7 +203,9 @@ class MatchesController < ApplicationController
   def view
     @match = Match.find(params[:id])
     @attendance = MatchesHelper::preprocess_attendance(@match)
-    Rails.logger.info "dates finished"
+    
+    @comment = Comment.new
+    @comment.match = @match
     
     respond_to do |format|
       format.html {

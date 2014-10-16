@@ -1,5 +1,6 @@
 class TeamsController < ApplicationController
-  before_filter :require_admin
+  before_filter :require_admin, :except => [ :matches ]
+  before_filter :require_login, :only => [ :matches ]
   
   # GET /teams
   def index
