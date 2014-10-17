@@ -45,11 +45,15 @@ class User < ActiveRecord::Base
   end
   
   def has_team(team)
+    if (player == nil || player.team == nil)
+      return false
+    end
+    
     if team.kind_of?(Team)
-      return player != nil && player.team.id == team.id
+      return player.team.id == team.id
     end
     if team.kind_of?(Integer)
-      return player != nil && player.team.id == team
+      return player.team.id == team
     end
     
     return false
@@ -61,10 +65,11 @@ class User < ActiveRecord::Base
   
   def self.get_first_free_name(origin)
     name = origin
-    id = 1
+    id = 2
     while User.where(:username => name).all.count > 0
       logger.info "name " + name + " already in use"
-      name = origin + (++id).to_s
+      name = origin + id.to_s
+      id += 1
       logger.info "changing name to " + name
     end
     

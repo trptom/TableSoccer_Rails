@@ -17,7 +17,7 @@ one:
   
 trptom:
   id: 10
-  username: one
+  username: trptom
   email: one@send-no-email.cz
   salt: <%= salt = "asdasdastr4325234324sdfds" %>
   crypted_password: <%= Sorcery::CryptoProviders::BCrypt.encrypt("password", salt) %>
@@ -33,7 +33,7 @@ without_player:
   is_admin: false
   
 with_player_without_team:
-  username: without_player
+  username: with_player_without_team
   email: without_player@send-no-email.cz
   salt: <%= salt = "asdasdastr4325234324sdfds" %>
   crypted_password: <%= Sorcery::CryptoProviders::BCrypt.encrypt("password", salt) %>
