@@ -30,21 +30,33 @@
   <div class="tab-content">
     <div class="tab-pane active" id="tab1">
       <p>
-        <table class="stats">
+        <table id="player-stats" class="stats">
           <thead>
             <tr>
-              <td><%= I18n.t('messages.base.game_type') %></td>
-              <td><%= I18n.t('messages.base.games_played') %></td>
-              <td><%= I18n.t('messages.base.w') %></td>
-              <td><%= I18n.t('messages.base.l') %></td>
-              <td><%= I18n.t('messages.base.score') %></td>
-              <td><%= I18n.t('messages.base.percentage') %></td>
+              <td onclick="sortTable(this, 'player-stats', 0);" data-sortType="ASC">
+                <%= I18n.t('messages.base.game_type') %>
+              </td>
+              <td onclick="sortTable(this, 'player-stats', 1, Comparator.number);" data-sort-type="DESC">
+                <%= I18n.t('messages.base.games_played') %>
+              </td>
+              <td onclick="sortTable(this, 'player-stats', 2, Comparator.number);" data-sort-type="DESC">
+                <%= I18n.t('messages.base.w') %>
+              </td>
+              <td onclick="sortTable(this, 'player-stats', 3, Comparator.number);" data-sort-type="ASC">
+                <%= I18n.t('messages.base.l') %>
+              </td>
+              <td onclick="sortTable(this, 'player-stats', 4);" data-sortType="DESC">
+                <%= I18n.t('messages.base.score') %>
+              </td>
+              <td onclick="sortTable(this, 'player-stats', 5, Comparator.percentage);" data-sort-type="DESC">
+                <%= I18n.t('messages.base.percentage') %>
+              </td>
             </tr>
           </thead>
           <tbody>
-            <% for game_type in @stats.sort{|e1, e2| e2[:rate] <=> e1[:rate]} %>
+            <% for game_type in @stats[:gt].sort{|e1, e2| e2[:rate] <=> e1[:rate]} %>
               <tr>
-                <td><%= I18n.t(game_type[:game_type] < GAME_TYPE_STR.length ? GAME_TYPE_STR[game_type[:game_type]] : "messages.base.total") %></td>
+                <td><%= I18n.t(GAME_TYPE_STR[game_type[:game_type]]) %></td>
                 <td><%= game_type[:gp] %></td>
                 <td><%= game_type[:w] %></td>
                 <td><%= game_type[:l] %></td>
@@ -53,6 +65,16 @@
               </tr>
             <% end %>
           </tbody>
+          <tfoot>
+            <tr>
+              <td><%= I18n.t("messages.base.total") %></td>
+              <td><%= @stats[:total][:gp] %></td>
+              <td><%= @stats[:total][:w] %></td>
+              <td><%= @stats[:total][:l] %></td>
+              <td><%= @stats[:total][:gf].to_s+":"+@stats[:total][:ga].to_s %></td>
+              <td><%= @stats[:total][:percentage] %> %</td>
+            </tr>
+          </tfoot>
         </table>
       </p>
     </div>
