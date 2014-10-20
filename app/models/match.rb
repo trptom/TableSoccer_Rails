@@ -73,7 +73,7 @@ class Match < ActiveRecord::Base
   end
   
   def can_fill_attendance
-    return !started && start_date < DateTime.now
+    return !started && start_date > DateTime.now
   end
   
   # Returns score string. When some of scores not set (is nil) or both scores
