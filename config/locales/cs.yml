@@ -20,6 +20,7 @@ cs:
       comments_with_count: Komentáře (%{count})
       competition: Soutěž
       date: Datum
+      date_of_attendance: Datum docházky
       delete: Smazat
       delete_comment: Smazat komentář
       detail: Detail
@@ -39,6 +40,7 @@ cs:
       games: Zápasy
       games_played: Zápasy
       go_to_list: Jít na seznam
+      go_to_match: Jít na mistrák
       home: Domácí
       home_players: Hráči domácích
       id: ID
@@ -75,6 +77,8 @@ cs:
       priority: Priorita
       result: Výsledek
       score: Skóre
+      score_away: Skóre hosté
+      score_home: Skóre domácí
       season: Sezóna
       second_name: Příjmení
       set: Nastavit
@@ -131,7 +135,7 @@ cs:
         leagues: Ligy
         teams: Týmy
         players: Hráči
-        matches: Zápasy
+        matches: Mistráky
         users: Uživatelé
       base:
         login: Přihlásit

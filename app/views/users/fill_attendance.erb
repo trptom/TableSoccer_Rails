@@ -2,14 +2,14 @@
 
 <div class="accordion" id="accordion">
   <% for match in @matches %>
-    <% if !match.started && match.possible_dates.count > 0 %>
+    <% if match.can_fill_attendance && match.possible_dates.count > 0 %>
       <div class="accordion-group">
         <a href="/matches/<%= match.id %>/view" class="pull-right label label-primary">
           <%= I18n.t "messages.base.detail" %>
         </a>
         <div class="accordion-heading">
           <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse<%= match.id %>">
-            <%= match.title %> (<%= I18n.l match.start_date %>)
+            <%= match.title %> - <%= I18n.l match.start_date %> (<%= match.possible_dates.count %>)
           </a>
         </div>
         <div id="collapse<%= match.id %>" class="accordion-body collapse<%= (match == @selected) ? " in" : "" %>">

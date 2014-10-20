@@ -13,11 +13,7 @@
     <div class="line">
       <span><%= I18n.t("messages.base.score") %></span>
       <span>
-        <%=
-          @match.score_home && @match.score_away ?
-            (@match.score_home.to_s + ":" + @match.score_away.to_s) :
-            "-:-"
-        %>
+        <%= @match.result %>
       </span>
     </div>
     <div class="line">
@@ -37,7 +33,7 @@
       <table>
         <thead>
           <tr>
-            <td><%= I18n.t('messages.base.date') %></td>
+            <td><%= I18n.t('messages.base.date_of_attendance') %></td>
             <td><%= I18n.t('messages.base.action') %></td>
           </tr>
         </thead>
@@ -45,8 +41,55 @@
           <% for possible_date in @match.possible_dates %>
             <tr>
               <td>
+                <% if @match.can_fill_attendance %>
+                  <div class="datetimepicker input-append date" data-behaviour="datetimepicker">
+                    <input type="text"
+                           class="form-control"
+                           id="start_<%= possible_date.id %>"
+                           value="<%= possible_date.start_time %>"
+                           data-format="yyyy-MM-dd hh:mm:ss" />
+                    <span class="add-on">
+                      <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+                      </i>
+                    </span>
+                  </div>
+
+                  <div class="datetimepicker input-append date" data-behaviour="datetimepicker">
+                    <input type="text"
+                           class="form-control"
+                           id="end_<%= possible_date.id %>"
+                           value="<%= possible_date.end_time %>" data-format="yyyy-MM-dd hh:mm:ss" />
+                    <span class="add-on">
+                      <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+                      </i>
+                    </span>
+                  </div>
+                <% else %>
+                  <%= I18n.l possible_date.start_time %>
+                  -
+                  <%= I18n.l possible_date.end_time %>
+                <% end %>
+              </td>
+              <td>
+                <% if @match.can_fill_attendance %>
+                  <div class="btn-group">
+                    <button class="btn"
+                            onclick="updatePossibleDate(<%= possible_date.id %>);">
+                      <%= I18n.t "messages.base.update" %>
+                    </button>
+                    <a class="btn" href="/matches/remove_possible_date/<%= possible_date.id %>">
+                      <%= I18n.t "messages.base.delete" %>
+                    </a>
+                  </div>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+          <% if @match.can_fill_attendance %>
+            <tr>
+              <td>
                 <div class="datetimepicker input-append date" data-behaviour="datetimepicker">
-                  <input type="text" class="form-control" id="start_<%= possible_date.id %>" value="<%= possible_date.start_time %>" data-format="yyyy-MM-dd hh:mm:ss" />
+                  <input type="text" class="form-control" id="start_new" data-format="yyyy-MM-dd hh:mm:ss" />
                   <span class="add-on">
                     <i data-time-icon="icon-time" data-date-icon="icon-calendar">
                     </i>
@@ -54,7 +97,7 @@
                 </div>
 
                 <div class="datetimepicker input-append date" data-behaviour="datetimepicker">
-                  <input type="text" class="form-control" id="end_<%= possible_date.id %>" value="<%= possible_date.end_time %>" data-format="yyyy-MM-dd hh:mm:ss" />
+                  <input type="text" class="form-control" id="end_new" data-format="yyyy-MM-dd hh:mm:ss" />
                   <span class="add-on">
                     <i data-time-icon="icon-time" data-date-icon="icon-calendar">
                     </i>
@@ -63,44 +106,14 @@
               </td>
               <td>
                 <div class="btn-group">
-                  <button class="btn"
-                          onclick="updatePossibleDate(<%= possible_date.id %>);">
-                    <%= I18n.t "messages.base.update" %>
+                  <button class="btn btn-primary"
+                          onclick="addNewPossibleDate(<%= @match.id %>);">
+                    <%= I18n.t "messages.base.add" %>
                   </button>
-                  <a class="btn" href="/matches/remove_possible_date/<%= possible_date.id %>">
-                    <%= I18n.t "messages.base.delete" %>
-                  </a>
                 </div>
               </td>
             </tr>
           <% end %>
-          <tr>
-            <td>
-              <div class="datetimepicker input-append date" data-behaviour="datetimepicker">
-                <input type="text" class="form-control" id="start_new" data-format="yyyy-MM-dd hh:mm:ss" />
-                <span class="add-on">
-                  <i data-time-icon="icon-time" data-date-icon="icon-calendar">
-                  </i>
-                </span>
-              </div>
-
-              <div class="datetimepicker input-append date" data-behaviour="datetimepicker">
-                <input type="text" class="form-control" id="end_new" data-format="yyyy-MM-dd hh:mm:ss" />
-                <span class="add-on">
-                  <i data-time-icon="icon-time" data-date-icon="icon-calendar">
-                  </i>
-                </span>
-              </div>
-            </td>
-            <td>
-              <div class="btn-group">
-                <button class="btn btn-primary"
-                        onclick="addNewPossibleDate(<%= @match.id %>);">
-                  <%= I18n.t "messages.base.add" %>
-                </button>
-              </div>
-            </td>
-          </tr>
         </tbody>
       </table>
     </div>
