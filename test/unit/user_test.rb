@@ -44,6 +44,7 @@ class UserTest < ActiveSupport::TestCase
   end
   
   test "has_team" do
+    assert !users(:trptom).has_team(nil), "should return false when wrong team (not id or Team) presented"
     assert users(:trptom).has_team(teams(:one))
     assert users(:trptom).has_team(teams(:one).id)
     assert !(users(:trptom).has_team(teams(:two)))

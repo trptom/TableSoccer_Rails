@@ -29,6 +29,10 @@ class Player < ActiveRecord::Base
   ##############################################################################
   
   def nick_or_name
+    if (nick == nil && first_name == nil && second_name == nil)
+      return nil
+    end
+    
     if (nick != nil && nick != "")
       return nick
     end

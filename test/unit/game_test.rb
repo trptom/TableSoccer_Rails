@@ -3,7 +3,7 @@ require 'test_helper'
 class GameTest < ActiveSupport::TestCase
   test "scope by season dummy" do
     @match = Match.new(
-      :season => 1,
+      :season => 2099,
       :team_home_id => 2,
       :team_away_id => 1,
       :league_id => 3,
@@ -21,7 +21,7 @@ class GameTest < ActiveSupport::TestCase
     )
     assert @game.save
     
-    assert_equal 1, Game.by_season(1).count
+    assert_equal 1, Game.by_season(2099).count
   end
    
   test "scope by season advanced" do

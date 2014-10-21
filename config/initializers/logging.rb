@@ -1,7 +1,11 @@
-LOGGER = {
-  :page_requests => Logger.new(Rails.root.join("log", Rails.env + "_page_requests.log")),
-  :dev_notes => Logger.new(Rails.root.join("log", Rails.env + "_dev_notes.log"))
-}
+# PG logs lot of rubbish so I want to avoid it in TST/DEV environment
+if Rails.env.development? || Rails.env.test?
+  ActiveRecord::Base.logger.level = 1
+end
+
+if Rails.env.test?
+  Rails.logger.level = 2
+end
 
 def get_log_prefix
   return current_user ?
@@ -11,20 +15,4 @@ end
 
 def get_current_url
   return "#{request.method} #{request.protocol}#{request.host_with_port}#{request.fullpath}"
-end
-
-def log_message(logger, type, message)
-  message = get_log_prefix + message
-  case type
-  when :debug
-    logger.debug message
-  when :info
-    logger.info message
-  when :fatal
-    logger.fatal message
-  end
-end
-
-def log_page_request
-  log_message LOGGER[:page_requests], :info, "\"#{get_current_url}\" (params: #{params})"
 end
