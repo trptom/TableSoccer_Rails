@@ -31,7 +31,7 @@ class GamePlayerTest < ActiveSupport::TestCase
     )
     @game_player3 = GamePlayer.new(
       :game => @game,
-      :player => players(:two),
+      :player => players(:pol),
       :team => TEAM_AWAY
     )
     

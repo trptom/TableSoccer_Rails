@@ -1,13 +1,37 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+# coding:utf-8
 
-one:
+mortal:
   id: 1
   league_id: 3
   team_id: 1
-  season: 2012
+  season: 2014
 
-two:
+inarabu:
   id: 2
   league_id: 3
   team_id: 2
-  season: 2012
+  season: 2014
+
+k2a:
+  id: 3
+  league_id: 3
+  team_id: 3
+  season: 2014
+
+k2b:
+  id: 4
+  league_id: 3
+  team_id: 4
+  season: 2014
+  
+kacenkaastrasidla:
+  id: 5
+  league_id: 3
+  team_id: 5
+  season: 2014
+  
+fantasmagory:
+  id: 6
+  league_id: 3
+  team_id: 6
+  season: 2014

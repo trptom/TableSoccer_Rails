@@ -45,15 +45,15 @@ class UserTest < ActiveSupport::TestCase
   
   test "has_team" do
     assert !users(:trptom).has_team(nil), "should return false when wrong team (not id or Team) presented"
-    assert users(:trptom).has_team(teams(:one))
-    assert users(:trptom).has_team(teams(:one).id)
-    assert !(users(:trptom).has_team(teams(:two)))
-    assert !(users(:trptom).has_team(teams(:two).id))
-    assert !(users(:without_player).has_team(teams(:one)))
-    assert !(users(:without_player).has_team(teams(:one).id))
-    assert !(users(:with_player_without_team).has_team(teams(:one)))
-    assert !(users(:with_player_without_team).has_team(teams(:one).id))
-    assert !(users(:with_player_without_team).has_team("just some string rubbish"))
+    assert users(:trptom).has_team(teams(:mortal))
+    assert users(:trptom).has_team(teams(:mortal).id)
+    assert !(users(:trptom).has_team(teams(:kacenkaastrasidla)))
+    assert !(users(:trptom).has_team(teams(:kacenkaastrasidla).id))
+    assert !(users(:admin).has_team(teams(:mortal)))
+    assert !(users(:admin).has_team(teams(:mortal).id))
+    assert !(users(:offususer).has_team(teams(:mortal)))
+    assert !(users(:offususer).has_team(teams(:mortal).id))
+    assert !(users(:offususer).has_team("just some string rubbish"))
   end
   
   test "get_first_free_name" do

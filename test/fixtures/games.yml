@@ -1,41 +1,171 @@
-one:
+# coding:utf-8
+
+round_1_game_1:
   id: 1
   game_number: 1
   game_type: <%= GAME_TYPE_DOUBLE %>
-  score_home: 0
+  score_home: 2
+  score_away: 0
+  match_id: 1
+
+round_1_game_2:
+  id: 2
+  game_number: 2
+  game_type: <%= GAME_TYPE_DOUBLE %>
+  score_home: 2
+  score_away: 1
+  match_id: 1
+  
+round_1_game_3:
+  id: 3
+  game_number: 3
+  game_type: <%= GAME_TYPE_SINGLE %>
+  score_home: 1
+  score_away: 2
+  match_id: 1
+  
+round_1_game_4:
+  id: 4
+  game_number: 4
+  game_type: <%= GAME_TYPE_SINGLE %>
+  score_home: 2
   score_away: 0
   match_id: 1
   
-two:
-  id: 2
+round_1_game_5:
+  id: 5
+  game_number: 5
+  game_type: <%= GAME_TYPE_FOURS %>
+  score_home: 2
+  score_away: 1
+  match_id: 1
+  
+round_1_game_6:
+  id: 6
+  game_number: 6
+  game_type: <%= GAME_TYPE_DOUBLE %>
+  score_home: 0
+  score_away: 2
+  match_id: 1
+  
+round_1_game_7:
+  id: 7
+  game_number: 7
+  game_type: <%= GAME_TYPE_DOUBLE %>
+  score_home: 0
+  score_away: 2
+  match_id: 1
+  
+round_1_game_8:
+  id: 8
+  game_number: 8
+  game_type: <%= GAME_TYPE_DOUBLE %>
+  score_home: 2
+  score_away: 0
+  match_id: 1
+  
+round_1_game_9:
+  id: 9
+  game_number: 9
+  game_type: <%= GAME_TYPE_DOUBLE %>
+  score_home: 2
+  score_away: 1
+  match_id: 1
+  
+round_1_game_10:
+  id: 10
+  game_number: 10
+  game_type: <%= GAME_TYPE_SINGLE %>
+  score_home: 2
+  score_away: 1
+  match_id: 1
+  
+# 2nd match
+
+round_2_game_1:
+  id: 11
   game_number: 1
   game_type: <%= GAME_TYPE_DOUBLE %>
   score_home: 0
-  score_away: 0
+  score_away: 2
+  match_id: 1
+
+round_2_game_2:
+  id: 12
+  game_number: 2
+  game_type: <%= GAME_TYPE_DOUBLE %>
+  score_home: 2
+  score_away: 1
   match_id: 1
   
-three:
-  id: 3
-  game_number: 1
+round_2_game_3:
+  id: 13
+  game_number: 3
   game_type: <%= GAME_TYPE_SINGLE %>
-  score_home: 0
-  score_away: 0
+  score_home: 1
+  score_away: 2
   match_id: 1
   
-four:
-  id: 4
-  game_number: 1
+round_2_game_4:
+  id: 14
+  game_number: 4
   game_type: <%= GAME_TYPE_SINGLE %>
-  score_home: 0
+  score_home: 2
   score_away: 0
   match_id: 1
   
-five:
-  id: 5
-  game_number: 1
-  game_type: <%= GAME_TYPE_FOURS %>
-  score_home: 0
-  score_away: 0
+round_2_game_5:
+  id: 15
+  game_number: 5
+  game_type: <%= GAME_TYPE_TWO_BALL %>
+  score_home: 2
+  score_away: 1
   match_id: 1
   
-# WITHOUT ID
+round_2_game_6:
+  id: 16
+  game_number: 6
+  game_type: <%= GAME_TYPE_DOUBLE %>
+  score_home: 0
+  score_away: 2
+  match_id: 1
+  
+round_2_game_7:
+  id: 17
+  game_number: 7
+  game_type: <%= GAME_TYPE_DOUBLE %>
+  score_home: 0
+  score_away: 2
+  match_id: 1
+  
+round_2_game_8:
+  id: 18
+  game_number: 8
+  game_type: <%= GAME_TYPE_DOUBLE %>
+  score_home: 1
+  score_away: 2
+  match_id: 1
+  
+round_2_game_9:
+  id: 19
+  game_number: 9
+  game_type: <%= GAME_TYPE_DOUBLE %>
+  score_home: 2
+  score_away: 1
+  match_id: 1
+  
+round_2_game_10:
+  id: 20
+  game_number: 10
+  game_type: <%= GAME_TYPE_SINGLE %>
+  score_home: 2
+  score_away: 1
+  match_id: 1
+  
+round_2_game_11:
+  id: 21
+  game_number: 11
+  game_type: <%= GAME_TYPE_SINGLE %>
+  score_home: 2
+  score_away: 0
+  match_id: 1

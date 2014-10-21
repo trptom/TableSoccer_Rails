@@ -1,15 +1,8 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+# coding:utf-8
 
-one:
-  start_time: 2014-10-05 12:00:00
-  end_time: 2014-10-05 14:00:00
-  priority: 1
-  possible_date_id: 1
-  player_id: 1
-
-two:
-  start_time: 2014-10-05 18:00:00
-  end_time: 2014-10-05 20:00:00
-  priority: 5
-  possible_date_id: 1
-  player_id: 1
+#one:
+#  start_time: 2014-10-05 12:00:00
+#  end_time: 2014-10-05 14:00:00
+#  priority: 1
+#  possible_date_id: 1
+#  player_id: 1

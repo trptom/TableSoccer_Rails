@@ -1,19 +1,95 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+# coding:utf-8
 
-one:
+round_1:
   id: 1
   team_home_id: 1
   team_away_id: 2
-  league_id: 3
-  season: 2012
-  start_date: 2013-03-13 20:00:00
+  league_id: 5
+  season: 2014
+  start_date: 2014-09-10 20:00:00
+  place: Woodoo
+  score_home: 7
+  score_away: 3
+  
+round_2:
+  id: 2
+  team_home_id: 3
+  team_away_id: 1
+  league_id: 5
+  season: 2014
+  start_date: 2014-09-30 20:00:00
+  place: 
+  score_home: 6
+  score_away: 5
+  
+round_3:
+  id: 3
+  team_home_id: 1
+  team_away_id: 4
+  league_id: 5
+  season: 2014
+  start_date: 2014-10-10 20:00:00
+  place: Woodoo
+  
+round_4:
+  id: 4
+  team_home_id: 5
+  team_away_id: 1
+  league_id: 5
+  season: 2014
+  start_date: 2014-10-30 20:00:00
+  place: 
+  
+round_5:
+  id: 5
+  team_home_id: 1
+  team_away_id: 6
+  league_id: 5
+  season: 2014
+  start_date: 2014-11-15 20:00:00
   place: Woodoo
 
-two:
-  id: 2
+round_6:
+  id: 6
   team_home_id: 2
   team_away_id: 1
-  league_id: 3
-  season: 2012
-  start_date: 2013-06-13 20:00:00
-  place: Skabetka
+  league_id: 5
+  season: 2014
+  start_date: 2014-12-10 20:00:00
+  place: 
+  
+round_7:
+  id: 7
+  team_home_id: 1
+  team_away_id: 3
+  league_id: 5
+  season: 2014
+  start_date: 2015-01-15 20:00:00
+  place: Woodoo
+  
+round_8:
+  id: 8
+  team_home_id: 4
+  team_away_id: 1
+  league_id: 5
+  season: 2014
+  start_date: 2015-02-15 20:00:00
+  place: 
+  
+round_9:
+  id: 9
+  team_home_id: 1
+  team_away_id: 5
+  league_id: 5
+  season: 2014
+  start_date: 2015-03-15 20:00:00
+  place: Woodoo
+  
+round_10:
+  id: 10
+  team_home_id: 6
+  team_away_id: 1
+  league_id: 5
+  season: 2014
+  start_date: 2015-04-15 20:00:00
+  place: 

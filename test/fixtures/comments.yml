@@ -1,41 +1,41 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+# coding:utf-8
 
 one:
   id: 1
-  user_id: 1
+  user_id: 2
   match_id: 1
   game_id: 
-  comment: 
-  title: Komentar 1
-  content: Obsah komentare zapasu
+  comment_id: 
+  title: Hezky jsme to odehráli...
+  content: Takhle bych si představoval každej zápas, takže šup trénovat, ať to podle toho vypadá.
   visible: true
 
 two:
   id: 2
-  user_id: 1
-  match_id: 2
+  user_id: 4
+  match_id: 1
   game_id: 
   comment_id: 1
-  title: Komentar 2
-  content: Obsah komentare zapasu
+  title: 
+  content: Na tréninky serem, jsme hvězdy...
   visible: true
 
 three:
   id: 3
-  user_id: 1
-  match_id: 
-  game_id: 1
+  user_id: 2
+  match_id: 2
+  game_id: 
   comment_id: 
-  title: Komentar 2
-  content: Obsah komentare zapasu
+  title: Nešlo nám to
+  content: Jak je vidět, tak zas takový hvězdy nejsme. Takže tréninky budou 2x týdně...
   visible: true
-  
+
 four:
   id: 4
-  user_id: 1
+  user_id: 5
   match_id: 
-  game_id: 2
-  comment_id: 3
-  title: Komentar 2
-  content: Obsah komentare zapasu
+  game_id: 5
+  comment_id: 
+  title: Čtyřky jsou děsná prdel
+  content: Měli bysme je hrát furt :-)
   visible: true

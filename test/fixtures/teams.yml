@@ -1,13 +1,37 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+# coding:utf-8
 
-one:
+mortal:
   id: 1
   name: Mortal
   short_name: Mortal
   shortcut: MOR
 
-two:
+inarabu:
   id: 2
   name: Inarabu
   short_name: Inarabu
   shortcut: INA
+
+k2a:
+  id: 3
+  name: K2 "A"
+  short_name: K2 "A"
+  shortcut: K2A
+
+k2b:
+  id: 4
+  name: K2 "B"
+  short_name: K2 "B"
+  shortcut: K2B
+  
+kacenkaastrasidla:
+  id: 5
+  name: Kačenka a strašidla
+  short_name: Kačenka a s.
+  shortcut: KAS
+  
+fantasmagory:
+  id: 6
+  name: Fantas Magory
+  short_name: Fantas M.
+  shortcut: FMA

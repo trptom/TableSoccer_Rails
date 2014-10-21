@@ -1,11 +1,115 @@
-one:
+# coding:utf-8
+
+round_1_game_1_player_1:
   position: 
   team: <%= TEAM_HOME %>
   game_id: 1
   player_id: 1
   
-two:
+round_1_game_1_player_2:
   position: 
   team: <%= TEAM_HOME %>
   game_id: 1
-  player_id: 10
+  player_id: 2
+  
+round_1_game_2_player_1:
+  position: 
+  team: <%= TEAM_HOME %>
+  game_id: 2
+  player_id: 3
+  
+round_1_game_2_player_2:
+  position: 
+  team: <%= TEAM_HOME %>
+  game_id: 2
+  player_id: 4
+  
+round_1_game_3_player_1:
+  position: 
+  team: <%= TEAM_HOME %>
+  game_id: 3
+  player_id: 1
+  
+round_1_game_4_player_1:
+  position: 
+  team: <%= TEAM_HOME %>
+  game_id: 4
+  player_id: 2
+  
+round_1_game_5_player_1:
+  position: 
+  team: <%= TEAM_HOME %>
+  game_id: 5
+  player_id: 1
+  
+round_1_game_5_player_2:
+  position: 
+  team: <%= TEAM_HOME %>
+  game_id: 5
+  player_id: 2
+  
+round_1_game_5_player_3:
+  position: 
+  team: <%= TEAM_HOME %>
+  game_id: 5
+  player_id: 3
+  
+round_1_game_5_player_4:
+  position: 
+  team: <%= TEAM_HOME %>
+  game_id: 5
+  player_id: 4
+  
+round_1_game_6_player_1:
+  position: 
+  team: <%= TEAM_HOME %>
+  game_id: 6
+  player_id: 1
+  
+round_1_game_6_player_2:
+  position: 
+  team: <%= TEAM_HOME %>
+  game_id: 6
+  player_id: 3
+  
+round_1_game_7_player_1:
+  position: 
+  team: <%= TEAM_HOME %>
+  game_id: 7
+  player_id: 2
+  
+round_1_game_7_player_2:
+  position: 
+  team: <%= TEAM_HOME %>
+  game_id: 7
+  player_id: 4
+  
+round_1_game_8_player_1:
+  position: 
+  team: <%= TEAM_HOME %>
+  game_id: 8
+  player_id: 1
+  
+round_1_game_8_player_2:
+  position: 
+  team: <%= TEAM_HOME %>
+  game_id: 8
+  player_id: 4
+  
+round_1_game_9_player_1:
+  position: 
+  team: <%= TEAM_HOME %>
+  game_id: 9
+  player_id: 2
+  
+round_1_game_9_player_2:
+  position: 
+  team: <%= TEAM_HOME %>
+  game_id: 9
+  player_id: 3
+  
+round_1_game_10_player_1:
+  position: 
+  team: <%= TEAM_HOME %>
+  game_id: 10
+  player_id: 3

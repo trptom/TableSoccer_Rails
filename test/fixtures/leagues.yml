@@ -1,6 +1,6 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+# coding:utf-8
 
-one:
+league1:
   id: 1
   name: 1. liga
   short_name: 1. liga
@@ -8,7 +8,7 @@ one:
   level: 1
   division: 1
 
-two:
+league2:
   id: 2
   name: 2. liga
   short_name: 2. liga
@@ -16,7 +16,7 @@ two:
   level: 2
   division: 1
 
-three:
+league3A:
   id: 3
   name: 3. liga, skupina A
   short_name: 3. liga (A)
@@ -24,7 +24,7 @@ three:
   level: 3
   division: 1
 
-four:
+league3B:
   id: 4
   name: 3. liga, skupina B
   short_name: 3. liga (B)
@@ -32,7 +32,7 @@ four:
   level: 3
   division: 2
 
-five:
+division:
   id: 5
   name: Divize
   short_name: Divize

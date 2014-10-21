@@ -1,29 +1,37 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+# coding:utf-8
 
-one:
+pol:
   id: 1
-  first_name: Player
-  second_name: One
-  nick: p1
+  first_name: Pavel
+  second_name: Jarolímek
+  nick: Pól
   team_id: 1
 
-two:
+freedy:
   id: 2
-  first_name: Player
-  second_name: two
-  nick: p2
+  nick: Freedy
   team_id: 1
 
 trptom:
-  id: 10
+  id: 3
   first_name: Tomáš
   second_name: Přasličák
-  nick: trptom
+  nick: Tom P.
   team_id: 1
   
-without_team:
-  id: 11
-  first_name: Without
-  second_name: Team
-  nick: trptom
-  team_id: 
+maso:
+  id: 4
+  nick: Maso
+  team_id: 1
+  
+honzahynek:
+  id: 5
+  nick: Honza Hynek
+  team_id: 1
+  
+sarka:
+  id: 6
+  first_name: Šárka
+  second_name: Malá
+  nick: Šárka
+  team_id: 1
