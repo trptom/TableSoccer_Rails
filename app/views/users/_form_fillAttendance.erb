@@ -36,8 +36,8 @@
         <%= label_tag "", I18n.t("messages.base.priority"), :class => "control-label", :for => "attendance_priority" %>
         <div class="controls">
           <select id="attendance_priority">
-            <% for a in 1..5 %>
-              <option value="<%= a %>"<%= a == 5 ? " selected" : "" %>><%= I18n.t "messages.priority.p#{a}" %></option>
+            <% for a in ATTENDANCE_PRIORITY_MIN..ATTENDANCE_PRIORITY_MAX %>
+              <option value="<%= a %>"<%= a == ATTENDANCE_PRIORITY_MAX ? " selected" : "" %>><%= I18n.t "messages.priority.p#{a}" %></option>
             <% end %>
           </select>
         </div>

@@ -43,9 +43,9 @@ class Game < ActiveRecord::Base
     return game_players.away
   end
   
-  def players_str(game_players, separator = ", ")
+  def players_str(game_players, separator = ", ", no_player_string = I18n.t("messages.base.no_player_presented"))
     if game_players.count == 0
-      return I18n.t "messages.base.no_player_presented"
+      return no_player_string
     end
     
     ret = ""
@@ -58,12 +58,12 @@ class Game < ActiveRecord::Base
     return ret    
   end
   
-  def home_players_str(separator = ", ")
-    return players_str(home_game_players, separator)
+  def home_players_str(separator = ", ", no_player_string = I18n.t("messages.base.no_player_presented"))
+    return players_str(home_game_players, separator, no_player_string)
   end
   
-  def away_players_str(separator = ", ")
-    return players_str(away_game_players, separator)
+  def away_players_str(separator = ", ", no_player_string = I18n.t("messages.base.no_player_presented"))
+    return players_str(away_game_players, separator, no_player_string)
   end
   
   def started

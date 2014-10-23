@@ -61,6 +61,31 @@ class MatchTest < ActiveSupport::TestCase
   end
   
   test "title function" do
+    assert_equal "Mortal vs. Inarabu (7:3)", matches(:round_1).title
+    assert_equal "K2 \"A\" vs. Mortal (6:5)", matches(:round_2).title
+    assert_equal "Mortal vs. K2 \"B\"", matches(:round_3).title
+  end
+  
+  test "scope by_team and by_team_id" do
+    assert_equal Match.all.count, Match.by_team(teams(:mortal)).count, "mortal should be contained in all matches"
+    assert_equal Match.all.count, Match.by_team_id(teams(:mortal).id).count, "mortal should be contained in all matches"
     
+    @k2a_matches = Match.by_team(teams(:k2a))
+    @k2a_matches_id = Match.by_team_id(teams(:k2a).id)
+    
+    assert_equal 2, @k2a_matches.count, "K2 A should be contained in 2 matches (home and away in mortal)"
+    assert_equal 2, @k2a_matches_id.count, "K2 A should be contained in 2 matches (home and away in mortal)"
+    
+    for match in @k2a_matches do
+      assert match.team_home == teams(:k2a) || match.team_away == teams(:k2a), "K2 A should be home or away team"
+    end
+    
+    for match_id in @k2a_matches_id do
+      assert match_id.team_home == teams(:k2a) || match_id.team_away == teams(:k2a), "K2 A should be home or away team"
+    end
+  end
+  
+  test "scope by_player" do
+    assert_equal 10, Match.by_player(players(:trptom)).count, "trptom is in mortal which played all 10 games"
   end
 end

@@ -40,9 +40,15 @@ gem 'bootstrap-datetimepicker-rails' # date and time
 # + Testing
 gem 'simplecov', :require => false, :group => :test
 group :test do
+  gem 'zip-zip', '~> 0.3'
   gem 'selenium-webdriver'
   gem 'test-unit'
   gem 'capybara'
+end
+
+# + RSpec for test and dev
+group :test, :development do
+  gem "rspec-rails"
 end
 
 # + Simple text editor

@@ -52,7 +52,7 @@ module MatchesHelper
           :offset => (change[:ts] - date.start_time),
           :sum => p_sum,
           :players => p,
-          :total_players => (p_sum.to_f / 5.to_f).ceil
+          :total_players => (p_sum.to_f / ATTENDANCE_PRIORITY_MAX.to_f).ceil
         }
       end
       
@@ -99,7 +99,7 @@ module MatchesHelper
           s[:popover_content] += I18n.t("messages.base.nobody")
         else
           for p in s[:players]
-            s[:popover_content] += "#{p.player.nick_or_name} (#{p.priority * 100 / 5}%)"
+            s[:popover_content] += "#{p.player.nick_or_name} (#{p.priority * 100 / ATTENDANCE_PRIORITY_MAX}%)"
             if p != s[:players].last
               s[:popover_content] += ", "
             end

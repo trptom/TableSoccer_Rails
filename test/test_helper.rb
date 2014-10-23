@@ -35,6 +35,7 @@ require 'rails/test_help'
 # akci nefungovala, protoze by na ne neprihlaseny uzivatel nemel pristup
 include Sorcery::TestHelpers::Rails
 
+# Trida pro jednotkove a funkcni testy
 class ActiveSupport::TestCase
   fixtures :all
 end

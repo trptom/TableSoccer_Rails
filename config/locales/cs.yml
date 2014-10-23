@@ -107,12 +107,14 @@ cs:
       unauthorized: Nemáte dostatečná oprávnění pro ořístup na požadovanou stránku!
 
     priority:
+      p0: nemůžu přijít
       p1: jen když bude nouze
       p2: radši ne
       p3: snad přijdu
       p4: docela se mi to hodí
       p5: super termín, 100% jdu
       short:
+        p0: nemůžu
         p1: nechci
         p2: radši ne
         p3: možná

@@ -1,3 +1,5 @@
+# coding:utf-8
+
 require 'test_helper'
 
 class GameTest < ActiveSupport::TestCase
@@ -41,5 +43,56 @@ class GameTest < ActiveSupport::TestCase
         assert_equal a, game.match.season
       end
     end
+  end
+  
+  test "scope home and away game players" do
+    for game in Game.all
+      @home = game.home_game_players
+      @away = game.away_game_players
+      
+      for hgp in @home
+        assert_equal TEAM_HOME, hgp.team, "team of home_game_players should be TEAM_HOME"
+      end
+      for agp in @away
+        assert_equal TEAM_AWAY, agp.team, "team of away_game_players should be TEAM_AWAY"
+      end
+      
+      assert_equal game.game_players.count, (@home.count + @away.count), "sum of home and away players should match game.game_players.count"
+    end
+  end
+  
+  test "started function" do
+    # just simply test it from fixtures
+    assert games(:round_1_game_1).started
+    assert games(:round_1_game_2).started
+    assert !games(:round_3_game_1).started
+    assert !games(:round_3_game_2).started
+  end
+  
+  test "score_str function" do
+    # just simply test it from fixtures
+    assert_equal "2:0", games(:round_1_game_1).score_str
+    assert_equal "2:1", games(:round_1_game_2).score_str
+    assert_equal "-:-", games(:round_3_game_1).score_str
+    assert_equal "-:-", games(:round_3_game_2).score_str
+  end
+  
+  test "type_str functyion" do
+    for game in Game.all
+      assert_not_nil game.type_str, "type_str should never be nil"
+      assert_not_equal "", game.type_str, "type_str should never be empty string"
+    end
+  end
+  
+  test "players_str function" do
+    # home players test
+    assert_equal "Pól, Freedy", games(:round_1_game_1).home_players_str
+    assert_equal "Pól; Freedy", games(:round_1_game_1).home_players_str("; ")
+    assert_equal "Pól; Freedy", games(:round_1_game_1).home_players_str("; ", "XXX")
+    
+    # away players test (there should be no players)
+    assert_not_equal "", games(:round_1_game_1).away_players_str, "no players string should not be empty"
+    assert_not_equal "", games(:round_1_game_1).away_players_str(", "), "no players string should not be empty"
+    assert_equal "XXX", games(:round_1_game_1).away_players_str(", ", "XXX"), "no players string should be XXX"
   end
 end
