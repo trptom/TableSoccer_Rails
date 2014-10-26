@@ -3,7 +3,10 @@ include LeaguesHelper
 class LeaguesController < ApplicationController
   before_filter :require_admin
   
-  # GET /leagues
+  # Shows list of Leagues (for adimn).
+  # 
+  # ==== Format
+  # * HTML
   def index
     @leagues = League.all
 
@@ -12,7 +15,13 @@ class LeaguesController < ApplicationController
     end
   end
 
-  # GET /leagues/1
+  # Shows detail of _League_ (for adimn).
+  #
+  # ==== Required params
+  # _id_:: id of _League_ that should be shown.
+  #
+  # ==== Format
+  # * HTML
   def show
     @league = League.find(params[:id])
     @teams_list = @league.league_teams.order(:season).all
@@ -36,7 +45,10 @@ class LeaguesController < ApplicationController
     end
   end
 
-  # GET /leagues/new
+  # Shows form that serves to create the _League_.
+  #
+  # ==== Format
+  # * HTML
   def new
     @league = League.new
 
@@ -49,7 +61,13 @@ class LeaguesController < ApplicationController
     end
   end
 
-  # GET /leagues/1/edit
+  # Shows form to edit the _League_.
+  #
+  # ==== Required params
+  # _id_:: id of _League_ to be edited.
+  #
+  # ==== Format
+  # * HTML
   def edit
     @league = League.find(params[:id])
     
@@ -63,7 +81,13 @@ class LeaguesController < ApplicationController
     end
   end
 
-  # POST /leagues
+  # Creates new _League_ based of params, sent from "new form".
+  #
+  # ==== Required params
+  # _league_:: contains all attributes of _League_ which should be created.
+  #
+  # ==== Format
+  # * HTML
   def create
     @league = League.new(params[:league])
 
@@ -81,7 +105,14 @@ class LeaguesController < ApplicationController
     end
   end
 
-  # PUT /leagues/1
+  # Updates _League_ based of params, sent from "edit form".
+  #
+  # ==== Required params
+  # _id_:: id of _League_ to be updated.
+  # _leaue_:: contains all attributes of _League_ which should be updated.
+  #
+  # ==== Format
+  # * HTML
   def update
     @league = League.find(params[:id])
 
@@ -99,7 +130,13 @@ class LeaguesController < ApplicationController
     end
   end
 
-  # DELETE /leagues/1
+  # Deletes _League_.
+  #
+  # ==== Required params
+  # _id_:: id of _League_ that should be deleted.
+  #
+  # ==== Format
+  # * HTML
   def destroy
     @league = League.find(params[:id])
     @league.destroy
@@ -111,6 +148,20 @@ class LeaguesController < ApplicationController
     end
   end
   
+  # Draws a league. This means, that games for selected teams (or all teams,
+  # contained in _League_) will be created.
+  # 
+  # ==== Required params
+  # _id_:: id of _League_ that should be drawn.
+  # _type_:: when 0, all teams will be drawn, otherwise _team_ param
+  # is required.
+  # _team_:: team for which all games should be drawn. (not required when _type_
+  # is != 0)
+  # _season_:: all games should be assigned to some season. This parameter
+  # specifies the season.
+  #
+  # ==== Format
+  # * HTML
   def draw
     @league = League.find(params[:id])
     

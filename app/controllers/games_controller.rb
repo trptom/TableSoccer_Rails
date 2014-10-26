@@ -3,6 +3,13 @@
 class GamesController < ApplicationController
   before_filter :require_admin
   
+  # Shows detail of _Game_ (for adimn).
+  #
+  # ==== Required params
+  # _id_:: id of _Game_ that should be shown.
+  #
+  # ==== Format
+  # * HTML
   def show
     @game = Game.find(params[:id])
 
@@ -24,6 +31,13 @@ class GamesController < ApplicationController
     end
   end
 
+  # Shows form to edit the _Game_.
+  #
+  # ==== Required params
+  # _id_:: id of _Game_ to be edited.
+  #
+  # ==== Format
+  # * HTML
   def edit
     @game = Game.find(params[:id])
     
@@ -36,6 +50,14 @@ class GamesController < ApplicationController
     end
   end
 
+  # Updates game based of params, sent from "edit form".
+  #
+  # ==== Required params
+  # _id_:: id of _Game_ to be updated.
+  # _game_:: contains all attributes of _Game_ which should be updated.
+  #
+  # ==== Format
+  # * HTML
   def update
     @game = Game.find(params[:id])
 
@@ -53,6 +75,13 @@ class GamesController < ApplicationController
     end
   end
 
+  # Deletes _Game_.
+  #
+  # ==== Required params
+  # _id_:: id of _Game_ that should be deleted.
+  #
+  # ==== Format
+  # * HTML
   def destroy
     @game = Game.find(params[:id])
     @match = @game.match

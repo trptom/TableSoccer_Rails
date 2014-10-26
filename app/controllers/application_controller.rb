@@ -4,13 +4,27 @@ include ApplicationHelper
 class ApplicationController < ActionController::Base
   protect_from_forgery
   
+  # Filters controlled depending on condition. When condition id false, behaves
+  # as before_filter (redirects to unauthorized).
+  #
+  # ==== Params
+  # _condition_:: condition of filter. When true, controller can go on, when
+  #  false, action is redirected to "/" with unauthorized message.
+  # _allow_admin_:: when true and _current_user_ is admin (means first account
+  # created, not user with admin rights), action is always allowed (like when
+  # condition is true). True by default.
   private
-  def filter(condition)
+  def filter(condition, allow_admin = true)
+    if (allow_admin && current_user.username.downcase == "admin")
+      return
+    end
+    
     if !condition
       redirect_to "/", :notice => I18n.t('messages.application.unauthorized')
     end
   end
   
+  # TODO documentation
   private
   def not_authenticated
     if !current_user
@@ -20,6 +34,14 @@ class ApplicationController < ActionController::Base
     end
   end
   
+
+  # Serves as _before_filter_.<br />
+  # When user is not logged in, simulates behaviour of _require_login_ filter.
+  # When user is not admin (user with admin permissions) but is logged in,
+  # behaves as _filter_ function with _condition_ = false.
+  #
+  # ==== See
+  # ApplicationController#filter  
   private
   def require_admin
     if current_user
@@ -32,6 +54,11 @@ class ApplicationController < ActionController::Base
     end
   end
   
+  # Behaves similar way like _filter_ function, but _current_user_ is used as
+  # _condition_.
+  #
+  # ==== See
+  # ApplicationController#filter
   private
   def require_not_logged
     if current_user
