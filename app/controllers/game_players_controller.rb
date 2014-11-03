@@ -1,5 +1,12 @@
 # coding:utf-8
 
+# Controller containing actions for creating/deleting connections between
+# _Game_ and _Player_.
+# 
+# ==== See
+# GamePlayer,
+# Game,
+# Player
 class GamePlayersController < ApplicationController
   before_filter :require_admin
   

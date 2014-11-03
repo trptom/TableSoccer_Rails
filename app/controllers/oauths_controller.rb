@@ -1,10 +1,23 @@
+# Controller that contains actions for authorizing users via external providers
+# (facebook, ...).
 class OauthsController < ApplicationController
-  # sends the user on a trip to the provider,
-  # and after authorizing there back to the callback url.
+  
+  # Sends the user on a trip to the provider, and after authorizing there back
+  # to the callback url.
+  # 
+  # ==== Required params
+  # _provider_:: provider where user should be authorised.
   def oauth
     login_at(params[:provider])
   end
 
+  # Processes the callback of provider and redirects back to previous page.
+  # When RedirectBack error occurs, reditects to roowwt.
+  # 
+  # ==== Required params
+  # _provider_:: provider where user should be authorised.
+  # (i don't know about anything else, but provider sends some additional
+  # information. It depends on it)
   def callback
     provider = params[:provider]
     if @user = login_from(provider)

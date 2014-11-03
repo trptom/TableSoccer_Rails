@@ -1,6 +1,14 @@
 # coding:utf-8
 
+# Controller containing actions for creating/editing connections between
+# _League_ and _Team_.
+# 
+# ==== See
+# LeagueTeam,
+# League,
+# Team
 class LeagueTeamsController < ApplicationController
+  
   before_filter :require_admin
   
   # Creates new connection between _League_ and _Team_.
@@ -23,6 +31,15 @@ class LeagueTeamsController < ApplicationController
     end
   end
 
+  # Updates connection between _League_ and _Team_.
+  #
+  # ==== Required params
+  # _id_:: id of connection that should be updated.
+  # _league_team_:: contains all attributes of _LeagueTeam_ which should be
+  # updated.
+  #
+  # ==== Format
+  # * HTML
   def update
     @league_team = LeagueTeam.find(params[:id])
 

@@ -1,7 +1,14 @@
+# coding:utf-8
+
+# Controller used to creating/modyfying Players.
 class PlayersController < ApplicationController
+  
   before_filter :require_admin
   
-  # GET /players
+  # Shows list of Players (for admin).
+  # 
+  # ==== Format
+  # * HTML
   def index
     @players = Player.all
 
@@ -10,7 +17,13 @@ class PlayersController < ApplicationController
     end
   end
 
-  # GET /players/1
+  # Shows detail of _Player_ (for admin).
+  #
+  # ==== Required params
+  # _id_:: id of _Player_ that should be shown.
+  #
+  # ==== Format
+  # * HTML
   def show
     @player = Player.find(params[:id])
 
@@ -19,7 +32,10 @@ class PlayersController < ApplicationController
     end
   end
 
-  # GET /players/new
+  # Shows form that serves to create new _Player_.
+  #
+  # ==== Format
+  # * HTML
   def new
     @player = Player.new
 
@@ -32,7 +48,13 @@ class PlayersController < ApplicationController
     end
   end
 
-  # GET /players/1/edit
+  # Shows form to edit the _Player_.
+  #
+  # ==== Required params
+  # _id_:: id of _Player_ to be edited.
+  #
+  # ==== Format
+  # * HTML
   def edit
     @player = Player.find(params[:id])
     
@@ -46,7 +68,13 @@ class PlayersController < ApplicationController
     end
   end
 
-  # POST /players
+  # Creates new _Player_ based of params, sent from "new form".
+  #
+  # ==== Required params
+  # _player_:: contains all attributes of _Player_ which should be created.
+  #
+  # ==== Format
+  # * HTML
   def create
     @player = Player.new(params[:player])
 
@@ -64,7 +92,14 @@ class PlayersController < ApplicationController
     end
   end
 
-  # PUT /players/1
+  # Updates _Player_ based of params, sent from "edit form".
+  #
+  # ==== Required params
+  # _id_:: id of _Player_ to be updated.
+  # _player_:: contains all attributes of _Player_ which should be updated.
+  #
+  # ==== Format
+  # * HTML
   def update
     @player = Player.find(params[:id])
 
@@ -82,7 +117,13 @@ class PlayersController < ApplicationController
     end
   end
 
-  # DELETE /players/1
+  # Deletes _Player_.
+  #
+  # ==== Required params
+  # _id_:: id of _Player_ that should be deleted.
+  #
+  # ==== Format
+  # * HTML
   def destroy
     @player = Player.find(params[:id])
     @player.destroy

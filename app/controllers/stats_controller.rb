@@ -2,7 +2,18 @@
 
 include StatsHelper
 
+# Controller for all Stats screens.
 class StatsController < ApplicationController
+  
+  # Shows stats of all players within one team.
+  #
+  # ==== Required params
+  # _id_:: id of _Team_ for which players stats should be shown.
+  # _season_:: number of season for which stats should be shown. Not required.
+  # When not sent, summary of all seasons is shown.
+  #
+  # ==== Format
+  # * HTML
   def players
     #load all teams
     @teams = Team.order(:name).all

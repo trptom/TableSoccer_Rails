@@ -1,6 +1,11 @@
 # coding:utf-8
 
+# Controller containing actions for creating/hiding comments.
+# 
+# ==== See
+# Comment
 class CommentsController < ApplicationController
+  
   before_filter :require_login, :only => [:create]
   before_filter :require_admin, :only => [:hide]
 

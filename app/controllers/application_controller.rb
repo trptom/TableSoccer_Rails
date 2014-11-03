@@ -1,7 +1,10 @@
 # coding:utf-8
+
 include ApplicationHelper
 
+# Basic controller for whole application. All other controllers derive from it.
 class ApplicationController < ActionController::Base
+  
   protect_from_forgery
   
   # Filters controlled depending on condition. When condition id false, behaves

@@ -1,5 +1,10 @@
 include LeaguesHelper
 
+# Controller containing actions for creating/editing/viewing leagues. You can
+# also draw league (means create default matches) by them.
+# 
+# ==== See
+# League
 class LeaguesController < ApplicationController
   before_filter :require_admin
   
@@ -45,7 +50,7 @@ class LeaguesController < ApplicationController
     end
   end
 
-  # Shows form that serves to create the _League_.
+  # Shows form that serves to create new _League_.
   #
   # ==== Format
   # * HTML
@@ -109,7 +114,7 @@ class LeaguesController < ApplicationController
   #
   # ==== Required params
   # _id_:: id of _League_ to be updated.
-  # _leaue_:: contains all attributes of _League_ which should be updated.
+  # _league_:: contains all attributes of _League_ which should be updated.
   #
   # ==== Format
   # * HTML

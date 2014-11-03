@@ -1,6 +1,14 @@
 # coding:utf-8
 
+# Controller containing actions for editing/viewing games. Creating of new games
+# is realized by _MatchesController_ because of automatical filling of _Match_.
+# 
+# ==== See
+# Game,
+# Match,
+# MatchesController
 class GamesController < ApplicationController
+  
   before_filter :require_admin
   
   # Shows detail of _Game_ (for adimn).
