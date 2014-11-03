@@ -16,3 +16,6 @@
 
 # Ignore coverage
 /coverage
+
+# Ignore rDoc documentation
+/doc/rDoc
