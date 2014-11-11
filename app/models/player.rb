@@ -26,6 +26,15 @@ class Player < ActiveRecord::Base
 #  validates :team_id, :presence => { :message => "chybný tým" }
   validates :team, :associated => { :message => "chybný tým" }
 
+  scope :by_match_attendance, ->(match_id) {
+    select("players.*")
+        .from("players, possible_date_selections, possible_dates")
+        .where("(possible_dates.match_id = ?)", match_id)
+        .where("(possible_date_selections.possible_date_id = possible_dates.id)")
+        .where("(possible_date_selections.player_id = players.id)")
+        .group("players.id")
+  }
+  
   ##############################################################################
   
   def nick_or_name

@@ -59,6 +59,49 @@ class Match < ActiveRecord::Base
     where("(team_home_id = ?) OR (team_away_id = ?)", player.team.id, player.team.id);
   }
   
+  def get_players_attendance(team)
+    @att_players = Player.by_match_attendance(self.id)
+    @ret = {
+      :yes => [],
+      :no => []
+    }
+    
+    for player in team.players
+      Rails.logger.info "xxx = " + @att_players.to_s
+      Rails.logger.info "count = " + @att_players.count.to_s
+      if @att_players.where(:id => player.id).all.count > 0
+        @ret[:yes] << player
+      else
+        @ret[:no] << player
+      end
+    end
+    
+    return @ret
+  end
+  
+  def get_players_attendance_str(team)
+    @ret_src = get_players_attendance(team)
+    @ret_dest = {
+      :yes => [],
+      :no => []
+    }
+    
+    for item_yes in @ret_src[:yes]
+      @ret_dest[:yes] << item_yes.nick_or_name
+    end
+    
+    for item_no in @ret_src[:no]
+      @ret_dest[:no] << item_no.nick_or_name
+    end
+    
+    return {
+      :yes_array => @ret_src[:yes],
+      :yes => @ret_dest[:yes].join(", "),
+      :no_array => @ret_src[:no],
+      :no => @ret_dest[:no].join(", ")
+    }
+  end
+  
   def started
     return !(score_home == nil || score_away == nil || (score_home == 0 && score_away == 0))
   end

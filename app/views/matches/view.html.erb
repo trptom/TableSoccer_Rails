@@ -87,11 +87,20 @@
       <div class="accordion-heading">
         <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseAttendance">
           <%= I18n.t "messages.base.attendance" %>
+          (<%= @attendance_players[:yes_array].count %> / <%= @attendance_players[:yes_array].count + @attendance_players[:no_array].count %>)
         </a>
       </div>
       <div id="collapseAttendance" class="accordion-body collapse">
         <div class="accordion-inner">
           <div class="attendance-line">
+              <div class="attendance attendance-yes">
+                <span class="icon-ok"></span>
+                <%= @attendance_players[:yes] %>
+              </div>
+              <div class="attendance attendance-no">
+                <span class="icon-exclamation-sign"></span>
+                <%= @attendance_players[:no] %>
+              </div>
               <table>
                   <tbody>
                       <% for date in @attendance %>

@@ -317,6 +317,7 @@ class MatchesController < ApplicationController
   def view
     @match = Match.find(params[:id])
     @attendance = MatchesHelper::preprocess_attendance(@match)
+    @attendance_players = @match.get_players_attendance_str(current_user.player.team)
     
     @comment = Comment.new
     @comment.match = @match

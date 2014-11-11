@@ -2,6 +2,10 @@
     width: auto;
 }
 
+.attendance-line .attendance:last-of-type {
+    margin-bottom: 20px;
+}
+
 .attendance-line > table {
     width: 100%;
 }

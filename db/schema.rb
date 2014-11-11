@@ -125,9 +125,9 @@ ActiveRecord::Schema.define(:version => 20141021142000) do
   add_index "possible_date_selections", ["possible_date_id"], :name => "index_possible_date_selections_on_possible_date_id"
 
   create_table "possible_dates", :force => true do |t|
-    t.datetime "start_time", :null => false
-    t.datetime "end_time",   :null => false
-    t.integer  "match_id",   :null => false
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.integer  "match_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
