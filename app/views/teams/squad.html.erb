@@ -12,7 +12,7 @@
       </tr>
     </thead>
     <tbody>
-      <% for player in @team.players %>
+      <% for player in @players %>
         <tr>
           <% if current_user.has_team(@team) %>
             <td class="link" onclick="Squad.detailClicked(this, <%= player.id %>);">+</td>

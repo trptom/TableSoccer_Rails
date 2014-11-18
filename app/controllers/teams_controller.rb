@@ -105,6 +105,7 @@ class TeamsController < ApplicationController
   
   def squad
     @team = Team.find(params[:id])
+    @players = @team.players.all.sort{ |a,b| a.nick_or_name <=> b.nick_or_name }
     
     respond_to do |format|
       format.html # just render
