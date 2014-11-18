@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20141021142000) do
+ActiveRecord::Schema.define(:version => 20141115183911) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -20,6 +20,20 @@ ActiveRecord::Schema.define(:version => 20141021142000) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "black_dots", :force => true do |t|
+    t.integer  "player_id",                      :null => false
+    t.integer  "count",       :default => 1,     :null => false
+    t.integer  "reason"
+    t.text     "description"
+    t.boolean  "viewed",      :default => false, :null => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
+  end
+
+  add_index "black_dots", ["player_id"], :name => "index_black_dots_on_player_id"
+  add_index "black_dots", ["reason"], :name => "index_black_dots_on_reason"
+  add_index "black_dots", ["viewed"], :name => "index_black_dots_on_viewed"
 
   create_table "comments", :force => true do |t|
     t.integer  "user_id",                      :null => false
@@ -105,8 +119,11 @@ ActiveRecord::Schema.define(:version => 20141021142000) do
     t.string   "second_name"
     t.string   "nick"
     t.integer  "team_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+    t.integer  "beers_paid",  :default => 0, :null => false
+    t.integer  "dots_total",  :default => 0, :null => false
+    t.integer  "beer_paid",   :default => 0, :null => false
   end
 
   add_index "players", ["team_id"], :name => "index_players_on_team_id"

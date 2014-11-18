@@ -6,8 +6,9 @@ class Player < ActiveRecord::Base
   has_many :game_players, :dependent => :destroy
   has_many :users
   has_many :possible_date_selections, :dependent => :destroy
+  has_many :black_dots, :dependent => :destroy
 
-  attr_accessible :first_name, :second_name, :nick, :team, :team_id, :game_players
+  attr_accessible :first_name, :second_name, :nick, :team, :team_id, :game_players, :beer_paid, :dots_total
 
   validates :first_name,
     :length => { :minimum => 2, :maximum => 50, :message => "chybný formát jména (2-50 znaků)" },
@@ -55,5 +56,17 @@ class Player < ActiveRecord::Base
     end
     
     return "#{first_name} #{second_name}"
+  end
+  
+  def dots_grouped
+    return (dots_total / BLACK_DOTS_GROUPING).floor
+  end
+  
+  def dots_over_group
+    return dots_total % BLACK_DOTS_GROUPING
+  end
+  
+  def dots
+    return black_dots
   end
 end

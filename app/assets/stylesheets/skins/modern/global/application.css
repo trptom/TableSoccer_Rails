@@ -25,6 +25,15 @@ form .controls {
     display: none;
 }
 
+.link {
+    cursor: pointer;
+}
+
+/* for black dots in menu */
+.nav .user-button img:first-of-type {
+    margin-left: 15px;
+}
+
 /*******************************************************************************
  * tables
  ******************************************************************************/

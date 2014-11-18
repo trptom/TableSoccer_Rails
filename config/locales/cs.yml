@@ -19,12 +19,15 @@ cs:
       change_password: Změnit heslo
       comments_with_count: Komentáře (%{count})
       competition: Soutěž
+      count: Počet
       date: Datum
       date_of_attendance: Datum docházky
       delete: Smazat
       delete_comment: Smazat komentář
+      description: Popis
       detail: Detail
       division: Divize
+      dots_and_beers: Puntíky a pivka
       edit: Editovat
       email: Email
       error: Chyba!
@@ -76,6 +79,7 @@ cs:
       possible_date: Možné datum
       prepairing_content: Obsah se připravuje...
       priority: Priorita
+      reason: Důvod
       result: Výsledek
       score: Skóre
       score_away: Skóre hosté
@@ -120,6 +124,13 @@ cs:
         p3: možná
         p4: rád bych
         p5: super
+        
+    black_dot_reason:
+      reason0: Nevyplněná docházka na mistrák.
+      reason1: Neúčast na zápase i přes to, že ji přislíbil.
+      reason2: Neúčast na zápase i přes to, že ji přislíbil (omluveno).
+      reason3: Neomluvený trénink.
+      other: Jiný než výše uvedené důvody.
     
     menu:
       user:
@@ -128,6 +139,7 @@ cs:
         fill_attendance: Vyplnit docházku
       team:
         games: Zápasy
+        players: Hráči
       stats:
         title: Statistiky
         players: Porovnání hráčů
@@ -239,6 +251,9 @@ cs:
       form:
         back_to_list: Zpět na seznam týmů
         back_to_detail: Zpět na detail týmu
+      form_addBlackDot:
+        title: Přidání černého puntíku
+        submit: Přidat
       new:
         title: Nový tým
         submit: Vytvořit tým

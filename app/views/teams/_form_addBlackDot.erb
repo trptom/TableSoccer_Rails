@@ -1,0 +1,43 @@
+<%= javascript_include_tag asset_path("pages/teams/form_addBlackDot.js") %>
+
+<div id="add_black_dot" class="modal hide fade" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">
+      <%= I18n.t("messages.teams.form_addBlackDot.title") %>
+    </h3>
+  </div>
+  <div class="modal-body">
+    <form class="form-horizontal">
+      <div class="control-group">
+        <%= label_tag "", I18n.t("messages.base.count"), :class => "control-label", :for => "black_dot_count" %>
+        <div class="controls">
+          <%= number_field_tag :black_dot_count, 1, :min => 1, :max => 10 %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= label_tag "", I18n.t("messages.base.reason"), :class => "control-label", :for => "black_dot_reason" %>
+        <div class="controls">
+          <select id="black_dot_reason">
+            <% for a in 0..BLACK_DOT_REASONS_COUNT-1 %>
+              <option value="<%= a %>"><%= I18n.t("messages.black_dot_reason.reason" + a.to_s) %></option>
+            <% end %>
+            <option value=""><%= I18n.t("messages.black_dot_reason.other") %></option>
+          </select>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= label_tag "", I18n.t("messages.base.description"), :class => "control-label", :for => "black_dot_description" %>
+        <div class="controls">
+          <textarea id="black_dot_description"></textarea>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <input type="button" id="black_dot_submit"
+           value="<%= I18n.t("messages.teams.form_addBlackDot.submit") %>"
+           class="btn btn-primary"
+           onclick="Squad.BlackDot.add();" />
+  </div>
+</div>

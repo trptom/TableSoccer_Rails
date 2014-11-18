@@ -1,6 +1,6 @@
 class TeamsController < ApplicationController
-  before_filter :require_admin, :except => [ :matches ]
-  before_filter :require_login, :only => [ :matches ]
+  before_filter :require_admin, :except => [ :matches, :squad ]
+  before_filter :require_login, :only => [ :matches, :squad ]
   
   # GET /teams
   def index
@@ -97,5 +97,17 @@ class TeamsController < ApplicationController
   
   def matches
     @matches = Match.by_team_id(params[:id]).order(:start_date)
+    
+    respond_to do |format|
+      format.html # just render
+    end
+  end
+  
+  def squad
+    @team = Team.find(params[:id])
+    
+    respond_to do |format|
+      format.html # just render
+    end
   end
 end

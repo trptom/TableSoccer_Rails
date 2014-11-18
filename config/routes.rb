@@ -31,13 +31,19 @@ TableSoccer::Application.routes.draw do
 
   resources :league_teams
 
-  resources :players
+  resources :players do
+    member do
+      post :add_black_dot
+      post :pay_beer
+    end
+  end
 
   resources :game_players
 
   resources :teams do
     member do
       get :matches, :as => :matches_of_team
+      get :squad
     end
   end
 

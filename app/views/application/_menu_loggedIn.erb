@@ -8,9 +8,19 @@
           <div class="btn-toolbar">
             <%# user %>
             <div class="btn-group">
-              <%= link_to current_user, :class => "btn btn-warning" do %>
+              <%= link_to current_user, :class => "btn btn-warning user-button" do %>
                 <span class="icon-user"></span>
                 <%= current_user.get_name %>
+                
+                <%# show black dots if user has assigned player %>
+                <% if current_user.player_id != nil %>
+                  <% for a in (current_user.player.beer_paid+1)..current_user.player.dots_grouped %>
+                    <%= image_tag asset_path("icons/beer.png") %>
+                  <% end %>
+                  <% for a in 1..current_user.player.dots_over_group %>
+                    <%= image_tag asset_path("icons/black_dot.ico") %>
+                  <% end %>
+                <% end %>
               <% end %>
               <div class="btn dropdown-toggle btn-warning" data-toggle="dropdown">
                 <span class="caret"></span>
@@ -40,6 +50,8 @@
                   <li>
                     <%= link_to I18n.t('messages.menu.team.games'), "/teams/#{current_user.player.team.id}/matches" %>
                   </li>
+                  <li>
+                    <%= link_to I18n.t('messages.menu.team.players'), "/teams/#{current_user.player.team.id}/squad" %>
                   </li>
                 </ul>
               </div>

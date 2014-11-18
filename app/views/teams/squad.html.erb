@@ -1,0 +1,89 @@
+<%= render "form_addBlackDot" %>
+
+<div class="list">
+  <table>
+    <thead>
+      <tr>
+        <td></td>
+        <td><%= I18n.t "messages.base.player_name" %></td>
+        <% if current_user.has_team(@team) %>
+          <td><%= I18n.t "messages.base.dots_and_beers" %></td>
+        <% end %>
+      </tr>
+    </thead>
+    <tbody>
+      <% for player in @team.players %>
+        <tr>
+          <% if current_user.has_team(@team) %>
+            <td class="link" onclick="Squad.detailClicked(this, <%= player.id %>);">+</td>
+          <% end %>
+          <td>
+            <%= player.nick_or_name %>
+          </td>
+          <% if current_user.has_team(@team) %>
+            <td>
+              <span id="grouped_dots_<%= player.id %>" class="grouped_dots">
+                <% for a in 1..player.dots_grouped %>
+                  <% if a <= player.beer_paid %>
+                    <%= image_tag asset_path("icons/beer_completed.png") %>
+                  <% else %>
+                    <% if current_user.is_admin %>
+                      <%= image_tag asset_path("icons/beer.png"), :class => "link", :onclick => "Squad.BlackDot.markBeerAsPaid(#{player.id}, this);".html_safe %>
+                    <% else %>
+                      <%= image_tag asset_path("icons/beer.png") %>
+                    <% end %>
+                  <% end %>
+                <% end %>
+              </span>
+              
+              <span id="simple_dots_<%= player.id %>" class="simple_dots">
+                <% for b in 1..player.dots_over_group %>
+                  <%= image_tag asset_path("icons/black_dot.ico") %>
+                <% end %>
+              </span>
+              
+              <% if current_user.is_admin %>
+                <a href="#add_black_dot" role="button" data-toggle="modal" onclick="Squad.BlackDot.clicked(<%= player.id %>);" class="plus pull-right">
+                  <%= image_tag asset_path("icons/create_dot.ico"), :class => "add_dot_link" %>
+                </a>
+              <% end %>
+            </td>
+          <% end %>
+        </tr>
+        
+        <% if current_user.has_team(@team) %>
+          <tr id="detail_<%= player.id %>" class="non-displayed">
+            <td colspan="3">
+              <div class="table-wrapper">
+                <table>
+                  <tbody id="detail_body_<%= player.id %>">
+                    <% for dot in player.black_dots %>
+                      <tr>
+                        <td>
+                          <% for a in 1..dot.count %>
+                            <%= image_tag asset_path("icons/black_dot.ico") %>
+                          <% end %>
+                        </td>
+                        <td>
+                          <% if dot.reason != nil %>
+                            <%= I18n.t("messages.black_dot_reason.reason" + dot.reason.to_s) %>
+                          <% end %>
+                          <% if dot.reason != nil && dot.description != nil %>
+                            <br />
+                          <% end %>
+                          <% if dot.description != nil %>
+                            <%= dot.description %>
+                          <% end %>
+                        </td>
+                      </tr>
+                    <% end %>
+                  </tbody>
+                </table>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+</div>
