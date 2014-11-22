@@ -539,6 +539,7 @@ cs:
       long: ! '%A %d. %B %Y %H:%M'
       short: ! '%d. %m. %H:%M'
       logger: "%d.%m.%Y, %H:%M:%S"
+      database: ! '%Y-%m-%d %H:%M:%S'
     pm: pm
   # remove these aliases after 'activemodel' and 'activerecord' namespaces are removed from Rails repository
   activemodel:

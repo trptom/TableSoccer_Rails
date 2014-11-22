@@ -35,6 +35,19 @@ class MatchesController < ApplicationController
   # * HTML
   def show
     @match = Match.find(params[:id])
+    @current_time = DateTime.now
+    @attendance_from = DateTime.new(
+      @current_time.year,
+      @current_time.month,
+      @current_time.day,
+      18, 00, 00
+    )
+    @attendance_until = DateTime.new(
+      @current_time.year,
+      @current_time.month,
+      @current_time.day,
+      21, 00, 00
+    )
 
     respond_to do |format|
       format.html # show.html.erb

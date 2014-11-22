@@ -46,7 +46,7 @@
                     <input type="text"
                            class="form-control"
                            id="start_<%= possible_date.id %>"
-                           value="<%= possible_date.start_time %>"
+                           value="<%= I18n.l possible_date.start_time, :format => :database %>"
                            data-format="yyyy-MM-dd hh:mm:ss" />
                     <span class="add-on">
                       <i data-time-icon="icon-time" data-date-icon="icon-calendar">
@@ -58,16 +58,17 @@
                     <input type="text"
                            class="form-control"
                            id="end_<%= possible_date.id %>"
-                           value="<%= possible_date.end_time %>" data-format="yyyy-MM-dd hh:mm:ss" />
+                           value="<%= I18n.l possible_date.end_time, :format => :database %>"
+                           data-format="yyyy-MM-dd hh:mm:ss" />
                     <span class="add-on">
                       <i data-time-icon="icon-time" data-date-icon="icon-calendar">
                       </i>
                     </span>
                   </div>
                 <% else %>
-                  <%= I18n.l possible_date.start_time %>
+                  <%= I18n.l possible_date.start_time, :format => :database %>
                   -
-                  <%= I18n.l possible_date.end_time %>
+                  <%= I18n.l possible_date.end_time, :format => :database %>
                 <% end %>
               </td>
               <td>
@@ -89,7 +90,7 @@
             <tr>
               <td>
                 <div class="datetimepicker input-append date" data-behaviour="datetimepicker">
-                  <input type="text" class="form-control" id="start_new" data-format="yyyy-MM-dd hh:mm:ss" />
+                  <input type="text" class="form-control" id="start_new" value="<%= I18n.l @attendance_from, :format => :database %>" data-format="yyyy-MM-dd hh:mm:ss" />
                   <span class="add-on">
                     <i data-time-icon="icon-time" data-date-icon="icon-calendar">
                     </i>
@@ -97,7 +98,7 @@
                 </div>
 
                 <div class="datetimepicker input-append date" data-behaviour="datetimepicker">
-                  <input type="text" class="form-control" id="end_new" data-format="yyyy-MM-dd hh:mm:ss" />
+                  <input type="text" class="form-control" id="end_new" value="<%= I18n.l @attendance_until, :format => :database %>" data-format="yyyy-MM-dd hh:mm:ss" />
                   <span class="add-on">
                     <i data-time-icon="icon-time" data-date-icon="icon-calendar">
                     </i>
