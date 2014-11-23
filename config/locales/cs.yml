@@ -27,7 +27,7 @@ cs:
       description: Popis
       detail: Detail
       division: Divize
-      dots_and_beers: Puntíky a pivka
+      dots_and_beers: Čárky a pivka
       edit: Editovat
       email: Email
       error: Chyba!
@@ -252,7 +252,7 @@ cs:
         back_to_list: Zpět na seznam týmů
         back_to_detail: Zpět na detail týmu
       form_addBlackDot:
-        title: Přidání černého puntíku
+        title: Přidání čárky
         submit: Přidat
       new:
         title: Nový tým
