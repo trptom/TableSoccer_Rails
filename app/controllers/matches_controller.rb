@@ -26,7 +26,7 @@ class MatchesController < ApplicationController
     end
   end
 
-  # Shows detail of _Match_ (for adimn).
+  # Shows detail of _Match_ (for admin).
   #
   # ==== Required params
   # _id_:: id of _Match_ that should be shown.
@@ -46,7 +46,7 @@ class MatchesController < ApplicationController
       @current_time.year,
       @current_time.month,
       @current_time.day,
-      21, 00, 00
+      23, 00, 00
     )
 
     respond_to do |format|
