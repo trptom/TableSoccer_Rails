@@ -22,7 +22,13 @@
   <ul class="nav nav-tabs">
     <li class="active">
       <a href="#tab1" data-toggle="tab">
-        <%= I18n.t('messages.stats.players.title_total') %>
+        <%= I18n.t('messages.stats.team.title_game_types') %>
+      </a>
+    </li>
+        
+    <li>
+      <a href="#tab2" data-toggle="tab">
+        <%= I18n.t('messages.stats.team.title_combinations') %>
       </a>
     </li>
   </ul>
@@ -30,7 +36,93 @@
   <div class="tab-content">
     <div class="tab-pane active" id="tab1">
       <p>
-        <%= I18n.t "messages.base.prepairing_content" %>
+        <table class="stats">
+          <thead>
+            <tr>
+              <td onclick="sortTable(this, 'player-stats', 0);" data-sortType="ASC">
+                <%= I18n.t('messages.base.game_type') %>
+              </td>
+              <td onclick="sortTable(this, 'player-stats', 1, Comparator.number);" data-sort-type="DESC">
+                <%= I18n.t('messages.base.games_played') %>
+              </td>
+              <td onclick="sortTable(this, 'player-stats', 2, Comparator.number);" data-sort-type="DESC">
+                <%= I18n.t('messages.base.w') %>
+              </td>
+              <td onclick="sortTable(this, 'player-stats', 3, Comparator.number);" data-sort-type="ASC">
+                <%= I18n.t('messages.base.l') %>
+              </td>
+              <td onclick="sortTable(this, 'player-stats', 4);" data-sortType="DESC">
+                <%= I18n.t('messages.base.score') %>
+              </td>
+              <td onclick="sortTable(this, 'player-stats', 5, Comparator.percentage);" data-sort-type="DESC">
+                <%= I18n.t('messages.base.percentage') %>
+              </td>
+            </tr>
+          </thead>
+          <tbody>
+            <% for game_type in @stats[:gt].sort{|e1, e2| e2[:rate] <=> e1[:rate]} %>
+              <tr>
+                <td><%= I18n.t(GAME_TYPE_STR[game_type[:game_type]]) %></td>
+                <td><%= game_type[:gp] %></td>
+                <td><%= game_type[:w] %></td>
+                <td><%= game_type[:l] %></td>
+                <td><%= game_type[:gf].to_s+":"+game_type[:ga].to_s %></td>
+                <td><%= game_type[:percentage] %> %</td>
+              </tr>
+            <% end %>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td><%= I18n.t("messages.base.total") %></td>
+              <td><%= @stats[:total][:gp] %></td>
+              <td><%= @stats[:total][:w] %></td>
+              <td><%= @stats[:total][:l] %></td>
+              <td><%= @stats[:total][:gf].to_s+":"+@stats[:total][:ga].to_s %></td>
+              <td><%= @stats[:total][:percentage] %> %</td>
+            </tr>
+          </tfoot>
+        </table>
+      </p>
+    </div>
+      
+    <div class="tab-pane" id="tab2">
+      <p>
+        <table class="stats">
+          <thead>
+            <tr>
+              <td onclick="sortTable(this, 'player-stats', 0);" data-sortType="ASC">
+                <%= I18n.t('messages.base.players') %>
+              </td>
+              <td onclick="sortTable(this, 'player-stats', 1, Comparator.number);" data-sort-type="DESC">
+                <%= I18n.t('messages.base.games_played') %>
+              </td>
+              <td onclick="sortTable(this, 'player-stats', 2, Comparator.number);" data-sort-type="DESC">
+                <%= I18n.t('messages.base.w') %>
+              </td>
+              <td onclick="sortTable(this, 'player-stats', 3, Comparator.number);" data-sort-type="ASC">
+                <%= I18n.t('messages.base.l') %>
+              </td>
+              <td onclick="sortTable(this, 'player-stats', 4);" data-sortType="DESC">
+                <%= I18n.t('messages.base.score') %>
+              </td>
+              <td onclick="sortTable(this, 'player-stats', 5, Comparator.percentage);" data-sort-type="DESC">
+                <%= I18n.t('messages.base.percentage') %>
+              </td>
+            </tr>
+          </thead>
+          <tbody>
+              <% Hash[@stats[:combinations].to_a.sort{|e1, e2| e2[1][:rate] <=> e1[1][:rate]}].each do |key, val| %>
+              <tr>
+                <td><%= key %></td>
+                <td><%= val[:gp] %></td>
+                <td><%= val[:w] %></td>
+                <td><%= val[:l] %></td>
+                <td><%= val[:gf].to_s+":"+val[:ga].to_s %></td>
+                <td><%= val[:percentage] %> %</td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
       </p>
     </div>
   </div>

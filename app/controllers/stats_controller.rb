@@ -112,5 +112,9 @@ class StatsController < ApplicationController
     else
       @team = current_user && current_user.player && current_user.player.team ? current_user.player.team : Team.first
     end
+    
+    if @team
+      @stats = create_team_stats @team, params[:season].to_i
+    end
   end
 end

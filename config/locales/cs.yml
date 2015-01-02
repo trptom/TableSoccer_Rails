@@ -76,6 +76,7 @@ cs:
       place: Místo
       player: Hráč
       player_name: Jméno hráče
+      players_not_presented: Hráči neuvedeni
       possible_date: Možné datum
       prepairing_content: Obsah se připravuje...
       priority: Priorita
@@ -195,6 +196,8 @@ cs:
         title_game_types: Typy her
         player_not_selected: Není vybrán žádný hráč
       team:
+        title_game_types: Typy her
+        title_combinations: Hráčské kombinace
     
     leagues:
       base:

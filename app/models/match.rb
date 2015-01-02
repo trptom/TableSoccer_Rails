@@ -128,4 +128,16 @@ class Match < ActiveRecord::Base
       return "-:-"
     end
   end
+  
+  # Returns TEAM_HOME or TEAM_AWAY constants, depending onb whether param is
+  # home or away team. When team is not in match, returns nil.
+  def team_type(team)
+    if (team == team_home)
+      return TEAM_HOME
+    end
+    if (team == team_away)
+      return TEAM_AWAY
+    end
+    return nil
+  end
 end
