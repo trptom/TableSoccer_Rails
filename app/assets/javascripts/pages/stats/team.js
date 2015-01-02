@@ -1,9 +1,12 @@
 function changeTeam() {
+    var url = $("#url").val().replace("id", $("#team_select").val());
     var season = $("#season_select").val();
     
     if (season && parseInt(season, 10) > 0) {
-        redirect("/stats/team/" + $("#team_select").val() + "/" + season);
+        url = url.replace("season", season);
     } else {
-        redirect("/stats/team/" + $("#team_select").val());
+        url = url.replace("/season", "");
     }
+    
+    redirect(url);
 };

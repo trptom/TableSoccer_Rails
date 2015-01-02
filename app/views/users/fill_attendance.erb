@@ -1,10 +1,13 @@
 <%= render "form_fillAttendance" %>
 
+<input type="hidden" id="add_url" value="<%= url_for(:controller => 'users', :action => 'add_attendance', :format => 'json') %>" />
+<input type="hidden" id="remove_url" value="<%= url_for(:controller => 'users', :action => 'remove_attendance', :format => 'json') %>" />
+
 <div class="accordion" id="accordion">
   <% for match in @matches %>
     <% if match.can_fill_attendance && match.possible_dates.count > 0 %>
       <div class="accordion-group">
-        <a href="/matches/<%= match.id %>/view" class="pull-right label label-primary">
+        <a href="<%= url_for(:controller => 'matches', :action => 'view', :id => match.id) %>" class="pull-right label label-primary">
           <%= I18n.t "messages.base.detail" %>
         </a>
         <div class="accordion-heading">

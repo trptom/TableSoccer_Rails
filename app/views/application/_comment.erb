@@ -11,7 +11,7 @@
               onclick="$('#react-<%= comment.id %>-form').toggle();"></span>
       <% end %>
       <% if current_user && current_user.is_admin %>
-        <%= link_to "", "/comments/#{comment.id}/hide", :class => "icon-trash", :title => I18n.t("messages.base.delete_comment") %>
+        <%= link_to "", url_for(:controller => 'comments', :action => 'hide', :id => comment.id), :class => "icon-trash", :title => I18n.t("messages.base.delete_comment") %>
       <% end %>
     </div>
   </div>

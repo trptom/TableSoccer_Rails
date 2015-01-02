@@ -51,7 +51,7 @@ class UsersController < ApplicationController
           if (current_user)
             redirect_to @user, notice: I18n.t("messages.users.create.success")
           else
-            redirect_to "/", notice: I18n.t("messages.users.create.success")
+            redirect_to root_path, notice: I18n.t("messages.users.create.success")
           end
         }
       else
@@ -88,7 +88,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       format.html {
-        redirect_to "/"
+        redirect_to root_path
       }
     end
   end
@@ -97,7 +97,7 @@ class UsersController < ApplicationController
     if (@user = User.load_from_activation_token(params[:id]))
       @user.activate!
       UserMailer.activation_success_email(@user).deliver
-      redirect_to "/", notice: I18n.t("messages.base.user_activated")
+      redirect_to root_path, notice: I18n.t("messages.base.user_activated")
     else
       not_authenticated
     end

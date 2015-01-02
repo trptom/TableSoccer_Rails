@@ -29,7 +29,7 @@ var FillAttendance = {
             loader.show();
 
             $.ajax({
-                url: "/users/add_attendance.json",
+                url: $("#add_url").val(),
                 type: "POST",
                 dataType: "json",
                 async: true,
@@ -62,7 +62,7 @@ var FillAttendance = {
         console.log("id2 = " + id2);
         
         $.ajax({
-            url: "/users/remove_attendance.json",
+            url: $("#remove_url").val(),
             type: "POST",
             dataType: "json",
             async: false,

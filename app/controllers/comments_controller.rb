@@ -24,12 +24,12 @@ class CommentsController < ApplicationController
     respond_to do |format|
       if @comment.save
         format.html {
-          redirect_back_or_to "/", notice: I18n.t("messages.comments.create.success")
+          redirect_back_or_to root_path, notice: I18n.t("messages.comments.create.success")
         }
       else
         format.html {
           @errors = @comment.errors
-          redirect_back_or_to "/"
+          redirect_back_or_to root_path
         }
       end
     end
@@ -51,7 +51,7 @@ class CommentsController < ApplicationController
     
     respond_to do |format|
       format.html {
-        redirect_back_or_to "/", notice: I18n.t("messages.comments.create.#{@res ? 'success' : 'error'}")
+        redirect_back_or_to root_path, notice: I18n.t("messages.comments.create.#{@res ? 'success' : 'error'}")
       }
     end
   end

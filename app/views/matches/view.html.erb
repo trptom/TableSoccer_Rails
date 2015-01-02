@@ -132,7 +132,7 @@
                       <% end %>
                   </tbody>
               </table>
-              <a href="/users/<%= current_user.id %>/fill_attendance?selected=<%= @match.id %>" class="label label-primary">
+              <a href="<%= url_for(:controller => 'users', :action => 'fill_attendance', :id => current_user.id, :selected => @match.id) %>" class="label label-primary">
                 <%= I18n.t "messages.base.fill_attendance" %>
               </a>
           </div>

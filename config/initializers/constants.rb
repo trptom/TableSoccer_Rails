@@ -34,8 +34,6 @@ TEAM_AWAY = 1;
 ATTENDANCE_PRIORITY_MIN = 0
 ATTENDANCE_PRIORITY_MAX = 5
 
-ERROR_PAGE = "/home/error"
-
 DEFAULT_IMAGES = {
   :team_logo => {
     # no default logos for teams

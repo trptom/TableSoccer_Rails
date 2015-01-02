@@ -42,7 +42,7 @@ var Squad = {
             loader.show();
 
             $.ajax({
-                url: "/players/" + _this.playerId + "/add_black_dot.json",
+                url: $("#add_black_dot_url").val().replace("0", _this.playerId),
                 type: "POST",
                 dataType: "json",
                 async: true,
@@ -145,7 +145,7 @@ var Squad = {
         
         markBeerAsPaid: function(id, elem) {
             $.ajax({
-                url: "/players/" + id + "/pay_beer.json",
+                url: $("#pay_beer_url").val().replace("0", id),
                 type: "POST",
                 dataType: "json",
                 async: true,

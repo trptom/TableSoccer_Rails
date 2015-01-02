@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   #
   # ==== Params
   # _condition_:: condition of filter. When true, controller can go on, when
-  #  false, action is redirected to "/" with unauthorized message.
+  #  false, action is redirected to _root_path_ with unauthorized message.
   # _allow_admin_:: when true and _current_user_ is admin (means first account
   # created, not user with admin rights), action is always allowed (like when
   # condition is true). True by default.
@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
     end
     
     if !condition
-      redirect_to "/", :notice => I18n.t('messages.application.unauthorized')
+      redirect_to root_path, :notice => I18n.t('messages.application.unauthorized')
     end
   end
   
@@ -33,7 +33,7 @@ class ApplicationController < ActionController::Base
     if !current_user
       redirect_to "/users/login", notice: I18n.t("messages.application.login") # TODO need login url
     else
-      redirect_back_or_to("/", :notice => I18n.t('messages.application.unauthorized'))
+      redirect_back_or_to(root_path, :notice => I18n.t('messages.application.unauthorized'))
     end
   end
   
@@ -49,7 +49,7 @@ class ApplicationController < ActionController::Base
   def require_admin
     if current_user
       if !current_user.is_admin
-        redirect_to "/", :notice => I18n.t('messages.application.unauthorized')
+        redirect_to root_path, :notice => I18n.t('messages.application.unauthorized')
       end
     else
       session[:return_to_url] = request.url if Config.save_return_to_url
@@ -65,7 +65,7 @@ class ApplicationController < ActionController::Base
   private
   def require_not_logged
     if current_user
-      redirect_to "/", :notice => I18n.t('messages.application.unauthorized')
+      redirect_to root_path, :notice => I18n.t('messages.application.unauthorized')
     end
   end
 end

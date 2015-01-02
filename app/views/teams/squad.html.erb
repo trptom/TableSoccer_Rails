@@ -1,5 +1,8 @@
 <%= render "form_addBlackDot" %>
 
+<input type="hidden" id="pay_beer_url" value="<%= url_for(:controller => 'players', :action => 'pay_beer', :id => 0, :format => 'json') %>" />
+<input type="hidden" id="add_black_dot_url" value="<%= url_for(:controller => 'players', :action => 'add_black_dot', :id => 0, :format => 'json') %>" />
+
 <div class="list">
   <table>
     <thead>

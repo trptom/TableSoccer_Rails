@@ -17,7 +17,7 @@
                 <td><%= match.team_away.name %></td>
                 <td><%= match.result %></td>
                 <td>
-                    <a href="/matches/<%= match.id %>/view" class="icon-tasks" title="<%= I18n.t "messages.base.attendance" %>"></a>
+                    <a href="<%= url_for(:controller => 'matches', :action => 'view', :id => match.id) %>" class="icon-tasks" title="<%= I18n.t "messages.base.attendance" %>"></a>
                 </td>
             </tr>
           <% end %>

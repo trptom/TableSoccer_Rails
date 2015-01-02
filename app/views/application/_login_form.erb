@@ -23,7 +23,7 @@
       </div>
     </div>
     <div class="modal-footer">
-      <%= link_to I18n.t("messages.login_form.lost_password"), "/users/reset_password", :class => "disabled pull-left", :tabindex => "-1" %>
+      <%= link_to I18n.t("messages.login_form.lost_password"), url_for(:controller => 'users', :action => 'reset_password'), :class => "disabled pull-left", :tabindex => "-1" %>
       <%= submit_tag I18n.t("messages.login_form.login"), :class => "btn btn-primary" %>
     </div>
   </div>

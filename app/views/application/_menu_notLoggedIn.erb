@@ -1,7 +1,7 @@
 <div class="navbar navbar-fixed-top navbar-inverse">
   <div class="navbar-inner">
     <div class="container">      
-      <a class="brand" href="/"><%= I18n.t("messages.application.header") %></a>
+      <a class="brand" href="<%= root_path %>"><%= I18n.t("messages.application.header") %></a>
       
       <ul class="nav">
         <li>
@@ -17,13 +17,13 @@
               </div>
               <ul class="dropdown-menu">
                 <li>
-                  <%= link_to I18n.t('messages.menu.stats.players'), "/stats/players" %>
+                  <%= link_to I18n.t('messages.menu.stats.players'), url_for(:controller => 'stats', :action => 'players', :id => nil) %>
                 </li>
                 <li>
-                  <%= link_to I18n.t('messages.menu.stats.player'), "/stats/player" %>
+                  <%= link_to I18n.t('messages.menu.stats.player'), url_for(:controller => 'stats', :action => 'player', :id => nil) %>
                 </li>
                 <li>
-                  <%= link_to I18n.t('messages.menu.stats.team'), "/stats/team" %>
+                  <%= link_to I18n.t('messages.menu.stats.team'), url_for(:controller => 'stats', :action => 'team', :id => nil) %>
                 </li>
               </ul>
             </div>
@@ -33,7 +33,7 @@
       </ul>
       
       <div class="pull-right">
-        <%= link_to I18n.t("messages.menu.base.register"), "/register", :class => "btn" %>
+        <%= link_to I18n.t("messages.menu.base.register"), register_url, :class => "btn" %>
           
         <div class="btn-group">
           <a class="btn" href="#login" role="button" data-toggle="modal">

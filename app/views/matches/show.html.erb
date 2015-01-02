@@ -78,7 +78,7 @@
                             onclick="updatePossibleDate(<%= possible_date.id %>);">
                       <%= I18n.t "messages.base.update" %>
                     </button>
-                    <a class="btn" href="/matches/remove_possible_date/<%= possible_date.id %>">
+                    <a class="btn" href="<%= url_for(:controller => 'matches', :action => 'remove_possible_date', :id => possible_date.id) %>">
                       <%= I18n.t "messages.base.delete" %>
                     </a>
                   </div>
@@ -163,7 +163,7 @@
             <td colspan="6">
               <div class="btn-group">
                 <%= link_to I18n.t("messages.base.edit"), edit_match_path(@match), :class => "btn" %>
-                <%= link_to I18n.t("messages.matches.show.add_game"), "/matches/"+@match.id.to_s+"/add_game", :class => "btn" %>
+                <%= link_to I18n.t("messages.matches.show.add_game"), url_for(:controller => 'matches', :action => 'add_game', :id => @match.id), :class => "btn" %>
                 <a class="btn" href="#add_all_games" role="button" data-toggle="modal">
                   <%= I18n.t "messages.matches.show.add_all_games" %>
                 </a>
