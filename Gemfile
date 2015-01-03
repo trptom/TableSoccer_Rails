@@ -5,6 +5,8 @@ ruby '1.9.3'
 gem 'rails', '3.2.8'
 gem 'rails_12factor'
 
+gem 'i18n', '0.7.0'
+
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
