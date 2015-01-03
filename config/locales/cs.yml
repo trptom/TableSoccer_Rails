@@ -73,6 +73,7 @@ cs:
       percentage: Procenta
       place: Místo
       player: Hráč
+      players: Hráči
       player_name: Jméno hráče
       players_not_presented: Hráči neuvedeni
       possible_date: Možné datum
@@ -303,7 +304,7 @@ cs:
         player_s2_tooltip: Jednotlivci - hráč 2
         player_s3_tooltip: Jednotlivci - hráč 3
       add_all_games:
-        success: Zápasy byly úspěšně přidány.
+        success: Všechny zápasy byly úspěšně přidány.
         error:
           Při přidávání zápasů došlo k chybě! Prosím zkontrolujte uložená data
           (je možné že byla vygenerována pouze část zápasů nebo u zápasů chybí
@@ -323,8 +324,6 @@ cs:
       update:
         submit: Upravit mistrák
         success: Mistrák byl úspěšně upraven.
-      add_all_games:
-        success: Všechny zápasy byly úspěšně přidány.
 
     players:
       form:

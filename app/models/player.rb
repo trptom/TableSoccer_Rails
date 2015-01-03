@@ -21,7 +21,7 @@ class Player < ActiveRecord::Base
   :if => :second_name
 
   validates :nick,
-    :length => { :minimum => 2, :maximum => 50, :message => "špatná délka zkratky (2-50)" },
+    :length => { :minimum => 2, :maximum => 50, :message => "špatná délka přezdívky (2-50)" },
   :if => :nick
 
 #  validates :team_id, :presence => { :message => "chybný tým" }

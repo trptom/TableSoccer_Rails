@@ -43,27 +43,30 @@ class Game < ActiveRecord::Base
     return game_players.away
   end
   
-  def players_str(game_players, separator = ", ", no_player_string = I18n.t("messages.base.no_player_presented"))
+  def players_str(game_players, separator = ", ", no_player_string = I18n.t("messages.base.no_player_presented"), sort = false)
     if game_players.count == 0
       return no_player_string
     end
     
-    ret = ""
+    names = []
+    
     for player in game_players
-      ret += player.player.nick_or_name
-      if (player != game_players.last)
-        ret += separator
-      end
+      names << player.player.nick_or_name
     end
-    return ret    
+    
+    if sort
+      names = names.sort
+    end
+    
+    return names.join(separator)  
   end
   
-  def home_players_str(separator = ", ", no_player_string = I18n.t("messages.base.no_player_presented"))
-    return players_str(home_game_players, separator, no_player_string)
+  def home_players_str(separator = ", ", no_player_string = I18n.t("messages.base.no_player_presented"), sort = false)
+    return players_str(home_game_players, separator, no_player_string, sort)
   end
   
-  def away_players_str(separator = ", ", no_player_string = I18n.t("messages.base.no_player_presented"))
-    return players_str(away_game_players, separator, no_player_string)
+  def away_players_str(separator = ", ", no_player_string = I18n.t("messages.base.no_player_presented"), sort = false)
+    return players_str(away_game_players, separator, no_player_string, sort)
   end
   
   def started

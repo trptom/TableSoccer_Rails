@@ -168,7 +168,7 @@ module StatsHelper
         diff = game.score_home - game.score_away
         
         if (@team_type == TEAM_HOME)
-          players_str = game.home_players_str(", ", I18n.t("messages.base.players_not_presented"))
+          players_str = game.home_players_str(", ", I18n.t("messages.base.players_not_presented"), true)
           if (!stats[:combinations].has_key?(players_str))
             stats[:combinations][players_str] = {
               :gp => 0,
@@ -208,7 +208,7 @@ module StatsHelper
         end
         
         if @team_type == TEAM_AWAY
-          players_str = game.away_players_str(", ", I18n.t("messages.base.players_not_presented"))
+          players_str = game.away_players_str(", ", I18n.t("messages.base.players_not_presented"), true)
           if (!stats[:combinations].has_key?(players_str))
             stats[:combinations][players_str] = {
               :gp => 0,

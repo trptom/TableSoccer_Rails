@@ -85,7 +85,7 @@ class PlayersController < ApplicationController
         }
       else
         format.html {
-          @errors = @league.errors
+          @errors = @player.errors
           render action: "new"
         }
       end
