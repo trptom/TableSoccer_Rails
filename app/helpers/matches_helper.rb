@@ -42,7 +42,9 @@ module MatchesHelper
         end
         if (change[:dir] < 0)
           id = last_players.find_index(change[:selection])
-          last_players.slice!(id)
+          if (id != nil) # prevent errors
+            last_players.slice!(id)
+          end
         end
         
         p_sum += change[:dir]
