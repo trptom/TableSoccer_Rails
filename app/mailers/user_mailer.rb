@@ -74,7 +74,7 @@ class UserMailer < ActionMailer::Base
               @left = diff
               mail(:to => user.email,
                    :subject => I18n.t("messages.mailers.user_mailer.attendance_reminder",
-                     :team1 => match.team_home.name, :team2 => match.team_home.name))
+                     :team1 => match.team_home.name, :team2 => match.team_away.name))
             else
               puts "ERROR - don't know what to do?"
             end
