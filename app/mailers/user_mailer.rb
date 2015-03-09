@@ -5,15 +5,15 @@ class UserMailer < ActionMailer::Base
 
   def activation_needed_email(user)
     @user = user
-    @url = "http://fotbalek.herokuapp.com"
-    @url_activation  = "http://fotbalek.herokuapp.com/users/#{user.activation_token}/activate?src=email"
+    @url = WEB_URL
+    @url_activation  = "#{WEB_URL}/users/#{user.activation_token}/activate?src=email"
     mail(:to => user.email,
-         :subject => I18n.t("messages.mailers.user_mailer.welcome", :url => "http://fotbalek.herokuapp.com"))
+         :subject => I18n.t("messages.mailers.user_mailer.welcome", :url => WEB_URL))
   end
 
   def activation_success_email(user)
     @user = user
-    @url = "http://fotbalek.herokuapp.com"
+    @url = WEB_URL
     mail(:to => user.email,
          :subject => I18n.t("messages.mailers.user_mailer.account_activated"))
   end
@@ -25,14 +25,14 @@ class UserMailer < ActionMailer::Base
   #
   def reset_password_email(user)
     @user = user
-    @url = "http://fotbalek.herokuapp.com"
-    @url_reset  = edit_password_reset_url(user.reset_password_token, :host => "fotbalek.herokuapp.com")
+    @url = WEB_URL
+    @url_reset  = edit_password_reset_url(user.reset_password_token, :host => WEB_URL)
     mail(:to => user.email,
          :subject => I18n.t("messages.mailers.user_mailer.password_updated"))
   end
   
   def reminder_email
-    @url = "http://fotbalek.herokuapp.com"
+    @url = WEB_URL
     @users = User.with_reminder
     @current_date = DateTime.now
     @cache = {}

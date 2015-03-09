@@ -1,3 +1,5 @@
+WEB_URL = "http://fotbalek.herokuapp.com"
+
 MAILER_ADDRESS = "no-reply@fotbalek.herokuapp.com"
 
 ROOT_ACCOUNT_USERNAME = "admin"
