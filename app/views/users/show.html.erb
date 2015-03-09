@@ -22,7 +22,7 @@
     
     <div class="line">
       <span><%= I18n.t("messages.base.attendance_reminder") %></span>
-      <span><%= @user.attendance_reminder > 0 ? @user.attendance_reminder : I18n.t("messages.base.turned_off") %></span>
+      <span><%= @user.attendance_reminder > 0 ? @user.attendance_reminder.to_s : I18n.t("messages.base.turned_off") %></span>
     </div>
       
     <div class="line">
