@@ -17,7 +17,8 @@ class User < ActiveRecord::Base
     :activation_expires_at, :activation_state, :activation_token, :authentications_attributes,
     :blocked, :is_admin,
     :reset_password_token, :reset_password_token_expires_at, :reset_password_email_sent_at,
-    :last_login_at, :last_logout_at, :last_activity_at, :last_login_from_ip_address
+    :last_login_at, :last_logout_at, :last_activity_at, :last_login_from_ip_address,
+    :attendance_reminder
 
 
   validates :username,
@@ -28,6 +29,10 @@ class User < ActiveRecord::Base
     :format => { :with => /^.+@.+\..+$/, :message => "chybný formát emailu" },
     :allow_blank => true,
     :allow_nil => true
+  
+  validates :attendance_reminder,
+    :numericality => { :only_integer => true, :greater_than_or_equal_to => 0, :less_than_or_equal_to  => REMINDER_MAX_DAYS, :message => "neplatná hodnota připomínání docházky" },
+    :allow_nil => false
 
   validates :player_id, :presence => { :message => "chybný propojený hráč" }, :allow_blank => true, :allow_nil => true, :if => :player_id
   validates :player, :associated => { :message => "chybný propojený hráč" }, :allow_blank => true, :allow_nil => true
@@ -35,6 +40,9 @@ class User < ActiveRecord::Base
   validates_length_of :password, :minimum => 3, :message => "heslo musí mít alespoň 3 znaky", :if => :password
   validates_confirmation_of :password, :message => "heslo a jeho kontrola se liší", :if => :password
   
+  scope :with_reminder, -> {
+    where("(attendance_reminder > 0) AND (player_id IS NOT NULL)")
+  }
 
   ##############################################################################
   # instance functions

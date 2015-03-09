@@ -19,6 +19,11 @@
       <span><%= I18n.t("messages.users.base.connected_player") %></span>
       <span><%= @user.player ? get_player_name(@user.player) : I18n.t("messages.users.show.no_player") %></span>
     </div>
+    
+    <div class="line">
+      <span><%= I18n.t("messages.base.attendance_reminder") %></span>
+      <span><%= @user.attendance_reminder > 0 ? @user.attendance_reminder : I18n.t("messages.base.turned_off") %></span>
+    </div>
       
     <div class="line">
       <span><%= I18n.t("messages.base.active") %></span>
