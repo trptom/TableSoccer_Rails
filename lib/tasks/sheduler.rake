@@ -21,7 +21,7 @@ task :send_reminders => :environment do
       # check all future matches of team
       for match in Match.by_team(team).future(@current_date)
         diff = (match.start_date - @current_date).to_i / (24 * 60 * 60)
-        puts "Checking match #{match.to_s}, start is #{match.start_date} diff is #{diff}"
+        puts "Checking match #{match.title}, start is #{match.start_date} diff is #{diff}"
 
         # when date is in range for reminder, check attendance
         if (diff <= user.attendance_reminder && diff > 0)
