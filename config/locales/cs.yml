@@ -12,6 +12,7 @@ cs:
       are_you_sure: Jste si jistý(á)?
       attendance: Docházka
       attendance_reminder: Přípomínání docházky
+      attendance_overview: Posílání přehledu docházky
       away: Hosté
       away_players: Hráči hostů
       blocked: Blokován
@@ -173,6 +174,7 @@ cs:
         account_activated: Účet aktivován
         password_updated: Vaše heslo bylo resetováno
         attendance_reminder: Připomínka nevyplněné docházky na zápas %{team1} vs %{team2}
+        attendance_overview: Overview docházky na zápas %{team1} vs %{team2}
 
     oauths:
       callback:
@@ -350,6 +352,7 @@ cs:
         connected_player: Propojený hráč
       form:
         attendance_reminder_title: Pokud je hodnota >0, bude uživateli automaticky připomínána nevyplněná docházka na mistrák. Připomínání začne X dní před datem zápasu, v závislosti na nastavené hodnotě.
+        attendance_overview_title: Pokud je hodnota >0, bude uživateli automaticky odeslána sumarizace docházky na mistrák. K odeslání dojde X dní před datem zápasu, v závislosti na nastavené hodnotě. Odesílání probíhá pro všechny zápasy týmu, ve kterém je hráč propojený s uživatelem.
         name_title: Pokud je jméno uvedeno, bude se na většině míst zobrazovat místo loginu. Vhodné zejména pro uživatele, přihlášené přes facebook, kteří mají číselný login.
         back_to_list: Zpět na seznam uživatel
         back_to_detail: Zpět na detail uživatele

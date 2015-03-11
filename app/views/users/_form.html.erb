@@ -54,6 +54,14 @@
     </div>
   </div>
 
+  <div class="control-group">
+    <%= f.label I18n.t("messages.base.attendance_overview"), :class => "control-label", :for => "user_attendance_overview" %>
+    <div class="controls">
+        <%= f.number_field :attendance_overview, :min => 0, :max => OVERVIEW_MAX_DAYS %>
+      <span class="icon icon-question-sign" data-behaviour="tooltip" data-placement="right" title="<%= I18n.t "messages.users.form.attendance_overview_title" %>">&nbsp;</span>
+    </div>
+  </div>
+
   <% if current_user == nil %>
     <div class="control-group">
       <%= f.label I18n.t("messages.base.password"), :class => "control-label", :for => "user_password" %>

@@ -26,6 +26,11 @@
     </div>
       
     <div class="line">
+      <span><%= I18n.t("messages.base.attendance_overview") %></span>
+      <span><%= @user.attendance_overview > 0 ? @user.attendance_overview.to_s : I18n.t("messages.base.turned_off") %></span>
+    </div>
+      
+    <div class="line">
       <span><%= I18n.t("messages.base.active") %></span>
       <span><%= I18n.t(@user.activation_state == "active" ? "messages.base._yes" : "messages.base._no") %></span>
     </div>

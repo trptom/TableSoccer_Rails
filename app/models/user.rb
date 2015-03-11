@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
     :blocked, :is_admin,
     :reset_password_token, :reset_password_token_expires_at, :reset_password_email_sent_at,
     :last_login_at, :last_logout_at, :last_activity_at, :last_login_from_ip_address,
-    :attendance_reminder
+    :attendance_reminder, :attendance_overview
 
 
   validates :username,
@@ -42,6 +42,10 @@ class User < ActiveRecord::Base
   
   scope :with_reminder, -> {
     where("(attendance_reminder > 0) AND (player_id IS NOT NULL)")
+  }
+  
+  scope :with_attendance_overview, -> {
+    where("(attendance_overview > 0) AND (player_id IS NOT NULL)")
   }
 
   ##############################################################################

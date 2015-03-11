@@ -48,3 +48,5 @@ BLACK_DOT_REASONS_COUNT = 4
 
 # Max number of days for reminder
 REMINDER_MAX_DAYS = 50
+# Max number of days for attendance overview mailing
+OVERVIEW_MAX_DAYS = 50

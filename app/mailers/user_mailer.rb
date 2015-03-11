@@ -40,4 +40,18 @@ class UserMailer < ActionMailer::Base
          :subject => I18n.t("messages.mailers.user_mailer.attendance_reminder",
            :team1 => match.team_home.name, :team2 => match.team_away.name))
   end
+  
+  def attendance_overview_email(user, match, date, diff, yes_str, no_str)
+    @user = user
+    @match = match
+    @url = WEB_URL
+    @date = date
+    @diff = diff
+    @yes_str = yes_str
+    @no_str = no_str
+    
+    mail(:to => user.email,
+         :subject => I18n.t("messages.mailers.user_mailer.attendance_overview",
+           :team1 => match.team_home.name, :team2 => match.team_away.name))
+  end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150309203200) do
+ActiveRecord::Schema.define(:version => 20150311110200) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -121,7 +121,6 @@ ActiveRecord::Schema.define(:version => 20150309203200) do
     t.integer  "team_id"
     t.datetime "created_at",                 :null => false
     t.datetime "updated_at",                 :null => false
-    t.integer  "beers_paid",  :default => 0, :null => false
     t.integer  "dots_total",  :default => 0, :null => false
     t.integer  "beer_paid",   :default => 0, :null => false
   end
@@ -142,9 +141,9 @@ ActiveRecord::Schema.define(:version => 20150309203200) do
   add_index "possible_date_selections", ["possible_date_id"], :name => "index_possible_date_selections_on_possible_date_id"
 
   create_table "possible_dates", :force => true do |t|
-    t.datetime "start_time"
-    t.datetime "end_time"
-    t.integer  "match_id"
+    t.datetime "start_time", :null => false
+    t.datetime "end_time",   :null => false
+    t.integer  "match_id",   :null => false
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -182,6 +181,7 @@ ActiveRecord::Schema.define(:version => 20150309203200) do
     t.datetime "last_activity_at"
     t.string   "last_login_from_ip_address"
     t.integer  "attendance_reminder",             :default => 0,     :null => false
+    t.integer  "attendance_overview",             :default => 0,     :null => false
   end
 
   add_index "users", ["last_logout_at", "last_activity_at"], :name => "index_users_on_last_logout_at_and_last_activity_at"
