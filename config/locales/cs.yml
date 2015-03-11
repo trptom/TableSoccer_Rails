@@ -11,6 +11,7 @@ cs:
       answer_comment: Reagovat na komentář
       are_you_sure: Jste si jistý(á)?
       attendance: Docházka
+      attendance_reminder: Přípomínání docházky
       away: Hosté
       away_players: Hráči hostů
       blocked: Blokován
@@ -95,6 +96,7 @@ cs:
       team: Tým
       to: Do
       total: Celkem
+      turned_off: Vypnuto
       type: Typ
       update: Upravit
       user_activated: Uživatel byl úspěšně aktivován!
@@ -170,6 +172,7 @@ cs:
         welcome: Vítejte na stránkách %{url}
         account_activated: Účet aktivován
         password_updated: Vaše heslo bylo resetováno
+        attendance_reminder: Připomínka nevyplněné docházky na zápas %{team1} vs %{team2}
 
     oauths:
       callback:
@@ -346,7 +349,8 @@ cs:
       base:
         connected_player: Propojený hráč
       form:
-        name_title: Pokud je jm0no uvedeno, bude se na většině míst zobrazovat místo loginu. Vhodné zejména pro uživatele, přihlášené přes facebook, kteří mají číselný login.
+        attendance_reminder_title: Pokud je hodnota >0, bude uživateli automaticky připomínána nevyplněná docházka na mistrák. Připomínání začne X dní před datem zápasu, v závislosti na nastavené hodnotě.
+        name_title: Pokud je jméno uvedeno, bude se na většině míst zobrazovat místo loginu. Vhodné zejména pro uživatele, přihlášené přes facebook, kteří mají číselný login.
         back_to_list: Zpět na seznam uživatel
         back_to_detail: Zpět na detail uživatele
       index:

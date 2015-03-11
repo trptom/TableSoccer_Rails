@@ -59,6 +59,14 @@ class Match < ActiveRecord::Base
     where("(team_home_id = ?) OR (team_away_id = ?)", player.team.id, player.team.id);
   }
   
+  scope :past, ->(to_date = DateTime.now) {
+    where("start_date < ?", to_date)
+  }
+  
+  scope :future, ->(to_date = DateTime.now) {
+    where("start_date >= ?", to_date)
+  }
+  
   def get_players_attendance(team)
     @att_players = Player.by_match_attendance(self.id)
     @ret = {
@@ -67,8 +75,6 @@ class Match < ActiveRecord::Base
     }
     
     for player in team.players
-      Rails.logger.info "xxx = " + @att_players.to_s
-      Rails.logger.info "count = " + @att_players.count.to_s
       if @att_players.where(:id => player.id).all.count > 0
         @ret[:yes] << player
       else

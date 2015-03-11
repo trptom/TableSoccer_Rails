@@ -1,3 +1,5 @@
+WEB_URL = "http://fotbalek.herokuapp.com"
+
 MAILER_ADDRESS = "no-reply@fotbalek.herokuapp.com"
 
 ROOT_ACCOUNT_USERNAME = "admin"
@@ -43,3 +45,6 @@ DEFAULT_IMAGES = {
 # How many black dots is needed for one beer
 BLACK_DOTS_GROUPING = 3
 BLACK_DOT_REASONS_COUNT = 4
+
+# Max number of days for reminder
+REMINDER_MAX_DAYS = 50
