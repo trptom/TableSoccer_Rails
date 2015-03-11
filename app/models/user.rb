@@ -39,13 +39,17 @@ class User < ActiveRecord::Base
 
   validates_length_of :password, :minimum => 3, :message => "heslo musí mít alespoň 3 znaky", :if => :password
   validates_confirmation_of :password, :message => "heslo a jeho kontrola se liší", :if => :password
+
+  scope :with_email, -> {
+    where("(email IS NOT NULL) AND (email <> '')")
+  }
   
   scope :with_reminder, -> {
-    where("(attendance_reminder > 0) AND (player_id IS NOT NULL)")
+    with_email.where("(attendance_reminder > 0) AND (player_id IS NOT NULL)")
   }
   
   scope :with_attendance_overview, -> {
-    where("(attendance_overview > 0) AND (player_id IS NOT NULL)")
+    with_email.where("(attendance_overview > 0) AND (player_id IS NOT NULL)")
   }
 
   ##############################################################################
