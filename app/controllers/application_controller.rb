@@ -4,8 +4,17 @@ include ApplicationHelper
 
 # Basic controller for whole application. All other controllers derive from it.
 class ApplicationController < ActionController::Base
-  
   protect_from_forgery
+  
+  before_filter :set_locale
+  
+  def default_url_options(options = {})
+    { locale: I18n.locale }.merge options
+  end
+
+  def set_locale
+    I18n.locale = params[:locale] || I18n.default_locale
+  end
   
   # Filters controlled depending on condition. When condition id false, behaves
   # as before_filter (redirects to unauthorized).
