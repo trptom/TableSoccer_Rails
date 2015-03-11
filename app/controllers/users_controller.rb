@@ -121,7 +121,7 @@ class UsersController < ApplicationController
   def fill_attendance
     filter(current_user.player != nil)
     
-    @matches = Match.by_player(current_user.player)
+    @matches = Match.by_player(current_user.player).order(:start_date)
     if (params[:selected])
       @selected = Match.find(params[:selected])
     else
