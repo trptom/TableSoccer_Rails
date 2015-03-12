@@ -1,3 +1,8 @@
+# coding:utf-8
+
+APPLICATION_TITLE = "Malík Urvi - foosball web"
+APPLICATION_HEADER = "Malík Urvi"
+
 WEB_URL = "http://fotbalek.herokuapp.com"
 
 MAILER_ADDRESS = "no-reply@fotbalek.herokuapp.com"

@@ -1,0 +1,9 @@
+<% for lang in I18n.available_locales %>
+  <% if lang != I18n.locale %>
+    <%= link_to :locale=>lang do %>
+      <%= image_tag(asset_path("flags/#{lang}_grayscale.png")) %>
+    <% end %>
+  <% else %>
+    <%= image_tag(asset_path("flags/#{lang}.png")) %>
+  <% end %>
+<% end %>

@@ -1,18 +1,148 @@
 en:
   messages:
     base:
+      action: Action
+      activate: Activate
+      active: Active
+      admin: Admin
       add: Add
-      show: Show
-      edit: Edit
+      add_comment: Add comment
+      all_types: All types
+      answer_comment: Reply
+      are_you_sure: Are you sure?
+      attendance: Attendance
+      attendance_reminder: Attendance reminder
+      attendance_overview: Attendance overview
+      away: Away
+      away_players: Away players
+      blocked: Blocked
+      change_password: Change password
+      comments_with_count: Comments (%{count})
+      competition: Competition
+      count: Count
+      date: Date
+      date_of_attendance: Date of attendance
       delete: Delete
-      player: Player
+      delete_comment: Delete comment
+      description: Description
+      detail: Detail
+      division: Division
+      dots_and_beers: Dots and beers
+      edit: Edit
+      email: Email
+      error: Error!
+      fill_attendance: Fill attendance
+      fill_in: Fill in
+      first_name: Name
+      from: From
+      game_number: Game number
+      game_type: Game type
+      game_type_single: Singles
+      game_type_double: Doubles
+      game_type_fours: 4 on 4
+      game_type_two_ball: Two-ball
+      games: Games
       games_played: Games played
+      go_to_list: Go to list
+      go_to_match: Go to match
+      home: Home
+      home_players: Home players
+      id: ID
+      l: L
+      last_activity: Last activity
+      last_login: Last login
+      last_logout: Last logout
+      league: League
+      level: Level
+      log_in: Log in
+      login: Login
+      match: Match
+      my_attendance: My attendance
+      name: Name
+      navigation: Navigation
+      nick: Nickname
+      _no: No
+      no_game: No game
+      no_league: No league
+      no_match: No match
+      no_player: No player
+      no_player_presented: No player presented
+      no_team: No team
+      nobody: Nobody
+      number: Number
+      password: Password
+      password_confirmation: Password confirmation
+      percentage: Percentage
+      place: Place
+      player: Player
+      players: Players
+      player_name: Player name
+      players_not_presented: Players not presented
+      possible_date: Possible date
+      prepairing_content: Content is being prepaired...
+      priority: Priority
+      reason: Reason
+      result: Result
+      score: Score
+      score_away: Score home
+      score_home: Score away
+      season: Season
+      second_name: Last name
+      set: Set
+      short_name: Short name
+      shortcut: Shortcut
+      show: Show
+      start_date: Start date
+      surname: Last name
+      team: Team
+      to: To
+      total: Total
+      turned_off: Turned off
+      type: Type
+      update: Update
+      user_activated: user was successfully activated!
+      users_name: Name
+      vs: vs.
+      w: W
+      wins: Wins
+      _yes: Yes
 
     application:
-      title: TableSoccer
-      header: Table soccer - stats
+      title: Malík Urvi - foosball web
+      header: Malík Urvi
+      login: To have acces on this page, you need to lig in first.
+      unauthorized: You don't have acces to show this page!
+
+    priority:
+      p0: cannot come
+      p1: only when really needed
+      p2: rather no
+      p3: I should come
+      p4: it is good term for me
+      p5: super
+      short:
+        p0: cannot come
+        p1: don't want
+        p2: rather no
+        p3: maybe
+        p4: good
+        p5: super
+        
+    black_dot_reason:
+      reason0: Not filled match attendance.
+      reason1: Didn't come to match althrough he promised it.
+      reason2: Didn't come to match althrough he promised it (esxcused).
+      reason3: Unexcused training.
+      other: Other reason.
 
     menu:
+      user:
+        edit: Edit
+        change_password: Change password
+        fill_attendance: Fill attendance
+      team:
+        games: Matches
+        players: Plazers
       stats:
         title: Stats
         players: Players comparsion
@@ -24,25 +154,444 @@ en:
         teams: Teams
         players: Players
         matches: Matches
-      user:
-        title: User
-        edit: Edit
-        add: Add new
-        login: Login
-        logout: Logout
+        users: Users
+      base:
+        login: Log in
+        logout: Log off
+        register: Register
+        login_via_facebook: Log in via Facebook
+        
+    login_form:
+      title: Login form
+      username: Username
+      password: Password
+      lost_password: Forget your password?
+      login: Log in
+      
+    mailers:
+      user_mailer:
+        welcome: Welcome on %{url}
+        account_activated: Account activated
+        password_updated: Your password has been reset
+        attendance_reminder: Reminder of blank attendance for match %{team1} vs %{team2}
+        attendance_overview: Overview of attendance for match %{team1} vs %{team2}
 
+    oauths:
+      callback:
+        logged_in: Login by %{provider} was proceeded successfully.
+        created: First login by %{provider} was proceeded successfully. New account with username %{username} was created for you.
+        
+    user_sessions:
+      create:
+        banned: Login failed. User is banned.
+        succesfull: Login successful.
+        failed: Login failed.
+      destroy:
+        succesfull: User was successfully logged off.
+        
     stats:
       players:
-        title_total:
-        title_games:
-        title_wins:
-        title_score:
-        team_not_selected:
+        title_total: Total
+        title_games: Games played
+        title_wins: Wins
+        title_score: Score (legs)
+        team_not_selected: Team not selected
       player:
-        title_game_types:
-        player_not_selected:
+        title_game_types: Game types
+        player_not_selected: Player not selected
       team:
+        title_game_types: Game types
+        title_combinations: Player's combinetions
+    
     leagues:
+      base:
+        name: Name
+        short_name: Short name
+        shortcut: Shortcut
+        level: Level
+        level_hint: in league hierarchy
+        division: Group
+        division_hint: for more leagues on the same level
+      form:
+        back_to_list: Back to list of leagues
+        back_to_detail: Back to detail of league
+      form_createGames:
+        title: League draw
+        season: Season
+        team: Tým
+        teams_all: all
+        teams_one: only
+        submit: Draw
+      new:
+        title: New league
+        submit: Create league
+      edit:
+        title: League editation
+        submit: Edit league
+        back_to_detail: Back to detail of league
+      create:
+        title: New league
+        submit: Create league
+        success: League was successfully created.
+      update:
+        title: League editation
+        submit: Update league.
+        success: League was successfully updated.
       index:
-        title:
-        new: 
+        title: List of leagues
+        new: New league
+      show:
+        delete_lt_confirmation: Are you sure, that you want to delete team from league?
+        form_team: Team
+        form_season: Season
+        form_submit: Add team
+        draw: Draw...
+      draw:
+        success: League was successfully drawn.
+    
+    teams:
+      base:
+        name: Name
+        short_name: Short name
+        shortcut: Shortcut
+        logo: Logo
+      form:
+        back_to_list: Back to list of teams
+        back_to_detail: Back to detail of team
+      form_addBlackDot:
+        title: Add black dot
+        submit: Add
+      new:
+        title: New team
+        submit: Create team
+      edit:
+        title: Team editation
+        submit: Update team
+        back_to_detail: Back to detail of team
+      create:
+        title: New team
+        submit: Create team
+        success: Team was successfully created.
+      update:
+        title: Team editation
+        submit: Update team
+        success: Team was successfully updated.
+      index:
+        title: List of teams
+        new: New team
+    
+    matches:
+      form:
+        date: Date and time of start
+        place: Place
+        back_to_list: Back to list of matches
+        back_to_detail: Back to detail of match
+      form_addAllGames:
+        title: Automatical adding of games
+        game_5_type: Type of 5th game
+        overwrite_existing: Overwrite existing games
+        overwrite_existing_hint:
+          When checked, all currently existing games of match will be deleted.
+          Otherwise new games are just appended to existing.
+        submit: Add games
+        player_A_tooltip: Player A
+        player_B_tooltip: Player B
+        player_C_tooltip: Player C
+        player_D_tooltip: Player D
+        player_1_tooltip: Player 1
+        player_2_tooltip: Player 2
+        player_3_tooltip: Player 3
+        player_4_tooltip: Player 4
+        player_sA_tooltip: Singles - player A
+        player_sB_tooltip: Singles - player B
+        player_sC_tooltip: Singles - player C
+        player_s1_tooltip: Singles - player 1
+        player_s2_tooltip: Singles - player 2
+        player_s3_tooltip: Singles - player 3
+      add_all_games:
+        success: All games were successfully added.
+        error:
+          Error during adding games! Please check saved data (it is possible
+          that just some part of games was added or some players within games
+          are missing).
+      index:
+        new: New match
+      show:
+        add_game: Add game
+        add_all_games: Add all games
+      new:
+        submit: Create match
+      edit:
+        submit: Update match
+      create:
+        submit: Create match
+        success: Match was successfully created.
+      update:
+        submit: Update match
+        success: Match was successfully updated.
+
+    players:
+      form:
+        back_to_list: Back to list of players
+        back_to_detail: Back to detail of player
+      index:
+        new: New player
+      new:
+        submit: Create player
+      edit:
+        submit: Update player
+      create:
+        submit: Create player
+        success: Player was successfully created.
+      update:
+        submit: Update player
+        success: Player was successfully updated.
+        
+    users:
+      base:
+        connected_player: Connected player
+      form:
+        attendance_reminder_title: Pokud je hodnota >0, bude uživateli automaticky připomínána nevyplněná docházka na mistrák. Připomínání začne X dní před datem zápasu, v závislosti na nastavené hodnotě.
+        attendance_overview_title: Pokud je hodnota >0, bude uživateli automaticky odeslána sumarizace docházky na mistrák. K odeslání dojde X dní před datem zápasu, v závislosti na nastavené hodnotě. Odesílání probíhá pro všechny zápasy týmu, ve kterém je hráč propojený s uživatelem.
+        name_title: Pokud je jméno uvedeno, bude se na většině míst zobrazovat místo loginu. Vhodné zejména pro uživatele, přihlášené přes facebook, kteří mají číselný login.
+        back_to_list: Back to list of users
+        back_to_detail: Back to detail of user
+      index:
+      show:
+        no_player: no player
+      new:
+        submit: Register
+      edit:
+        submit: Update
+      create:
+        submit: Register
+        success:
+          Registration was proceeded successfully. Email, needed for account
+          activation, was sent to your mail address.
+      update:
+        submit: Update user
+        success: Update was proceeded successfully.
+      form_fillAttendance:
+        title: Filling of attendance
+        submit: Add term
+        
+    games:
+      form:
+        back_to_detail: Back to detail of game
+      edit:
+        submit: Update game
+      update:
+        success: Game was successfully updated.
+      show:
+        not_enough_players: "Not enough players, should be: %{count}"
+
+    comments:
+      create:
+        success: Comment was successfully added.
+  
+  date:
+    abbr_day_names:
+    - Sun
+    - Mon
+    - Tue
+    - Wed
+    - Thu
+    - Fri
+    - Sat
+    abbr_month_names:
+    - 
+    - Jan
+    - Feb
+    - Mar
+    - Apr
+    - May
+    - Jun
+    - Jul
+    - Aug
+    - Sep
+    - Oct
+    - Nov
+    - Dec
+    day_names:
+    - Sunday
+    - Monday
+    - Tuesday
+    - Wednesday
+    - Thursday
+    - Friday
+    - Saturday
+    formats:
+      default: "%Y-%m-%d"
+      long: "%B %d, %Y"
+      short: "%b %d"
+    month_names:
+    - 
+    - January
+    - February
+    - March
+    - April
+    - May
+    - June
+    - July
+    - August
+    - September
+    - October
+    - November
+    - December
+    order:
+    - :year
+    - :month
+    - :day
+  datetime:
+    distance_in_words:
+      about_x_hours:
+        one: about 1 hour
+        other: about %{count} hours
+      about_x_months:
+        one: about 1 month
+        other: about %{count} months
+      about_x_years:
+        one: about 1 year
+        other: about %{count} years
+      almost_x_years:
+        one: almost 1 year
+        other: almost %{count} years
+      half_a_minute: half a minute
+      less_than_x_minutes:
+        one: less than a minute
+        other: less than %{count} minutes
+      less_than_x_seconds:
+        one: less than 1 second
+        other: less than %{count} seconds
+      over_x_years:
+        one: over 1 year
+        other: over %{count} years
+      x_days:
+        one: 1 day
+        other: "%{count} days"
+      x_minutes:
+        one: 1 minute
+        other: "%{count} minutes"
+      x_months:
+        one: 1 month
+        other: "%{count} months"
+      x_seconds:
+        one: 1 second
+        other: "%{count} seconds"
+    prompts:
+      day: Day
+      hour: Hour
+      minute: Minute
+      month: Month
+      second: Seconds
+      year: Year
+  errors:
+    format: "%{attribute} %{message}"
+    messages:
+      accepted: must be accepted
+      blank: can't be blank
+      present: must be blank
+      confirmation: doesn't match %{attribute}
+      empty: can't be empty
+      equal_to: must be equal to %{count}
+      even: must be even
+      exclusion: is reserved
+      greater_than: must be greater than %{count}
+      greater_than_or_equal_to: must be greater than or equal to %{count}
+      inclusion: is not included in the list
+      invalid: is invalid
+      less_than: must be less than %{count}
+      less_than_or_equal_to: must be less than or equal to %{count}
+      not_a_number: is not a number
+      not_an_integer: must be an integer
+      odd: must be odd
+      record_invalid: 'Validation failed: %{errors}'
+      restrict_dependent_destroy:
+        one: Cannot delete record because a dependent %{record} exists
+        many: Cannot delete record because dependent %{record} exist
+      taken: has already been taken
+      too_long:
+        one: is too long (maximum is 1 character)
+        other: is too long (maximum is %{count} characters)
+      too_short:
+        one: is too short (minimum is 1 character)
+        other: is too short (minimum is %{count} characters)
+      wrong_length:
+        one: is the wrong length (should be 1 character)
+        other: is the wrong length (should be %{count} characters)
+      other_than: must be other than %{count}
+    template:
+      body: 'There were problems with the following fields:'
+      header:
+        one: 1 error prohibited this %{model} from being saved
+        other: "%{count} errors prohibited this %{model} from being saved"
+  helpers:
+    select:
+      prompt: Please select
+    submit:
+      create: Create %{model}
+      submit: Save %{model}
+      update: Update %{model}
+  number:
+    currency:
+      format:
+        delimiter: ","
+        format: "%u%n"
+        precision: 2
+        separator: "."
+        significant: false
+        strip_insignificant_zeros: false
+        unit: "$"
+    format:
+      delimiter: ","
+      precision: 3
+      separator: "."
+      significant: false
+      strip_insignificant_zeros: false
+    human:
+      decimal_units:
+        format: "%n %u"
+        units:
+          billion: Billion
+          million: Million
+          quadrillion: Quadrillion
+          thousand: Thousand
+          trillion: Trillion
+          unit: ''
+      format:
+        delimiter: ''
+        precision: 3
+        significant: true
+        strip_insignificant_zeros: true
+      storage_units:
+        format: "%n %u"
+        units:
+          byte:
+            one: Byte
+            other: Bytes
+          gb: GB
+          kb: KB
+          mb: MB
+          tb: TB
+    percentage:
+      format:
+        delimiter: ''
+        format: "%n%"
+    precision:
+      format:
+        delimiter: ''
+  support:
+    array:
+      last_word_connector: ", and "
+      two_words_connector: " and "
+      words_connector: ", "
+  time:
+    am: am
+    formats:
+      default: "%a, %d %b %Y %H:%M:%S %z"
+      default_with_secs: ! '%a, %d %b %Y %H:%M:%S %z'
+      long: "%B %d, %Y %H:%M"
+      short: "%d %b %H:%M"
+      logger: "%d.%m.%Y, %H:%M:%S"
+      database: ! '%Y-%m-%d %H:%M:%S'
+    pm: pm
