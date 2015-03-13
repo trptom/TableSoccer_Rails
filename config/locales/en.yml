@@ -1,3 +1,5 @@
+# coding:utf-8
+
 en:
   messages:
     base:
@@ -8,6 +10,7 @@ en:
       add: Add
       add_comment: Add comment
       all_types: All types
+      amount: Amount
       answer_comment: Reply
       are_you_sure: Are you sure?
       attendance: Attendance
@@ -261,6 +264,9 @@ en:
       form_addBlackDot:
         title: Add black dot
         submit: Add
+      form_recountMoney:
+        title: Money recounting
+        submit: Recount
       new:
         title: New team
         submit: Create team
@@ -279,6 +285,11 @@ en:
       index:
         title: List of teams
         new: New team
+      squad:
+        money: Money
+        money_not_counted: not counted yet
+        recount_money: Recount money
+        recount_amount: amount
     
     matches:
       form:
@@ -388,6 +399,12 @@ en:
     comments:
       create:
         success: Comment was successfully added.
+  
+    currency:
+      name:
+        czk: CZK
+      format:
+        czk: "%{amount} %{currency}"
   
   date:
     abbr_day_names:

@@ -45,6 +45,7 @@ TableSoccer::Application.routes.draw do
       member do
         get :matches, :as => :matches_of_team
         get :squad
+        get :recount_money
       end
     end
 

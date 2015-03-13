@@ -1,4 +1,60 @@
 var Squad = {
+    Money: {
+        dialog: null,
+        fromInput: null,
+        toInput: null,
+        amountInput: null,
+        submitButton: null,
+        
+        init: function() {
+            this.dialog = $("#recount_money");
+            this.fromInput = $("#recount_money_from");
+            this.toInput = $("#recount_money_to");
+            this.amountInput = $("#recount_money_amount");
+            this.submitButton = $("#recount_money_submit");
+        },
+        
+        recount: function() {
+            var _this = this;
+            
+            var data = {
+                fromDate: _this.fromInput.val(),
+                toDate: _this.toInput.val(),
+                amount: _this.amountInput.val()
+            };
+
+            $.ajax({
+                url: $("#recount_money_url").val(),
+                type: "GET",
+                dataType: "json",
+                async: true,
+                
+                data: data,
+
+                success: function(responseObj) {
+                    _this.updateTable(responseObj);
+                },
+
+                error: function() {
+                    // TODO 
+                }
+            });
+
+            this.dialog.modal('hide');
+        },
+        
+        updateTable: function(data) {
+            for (var a=0; a<data.length; a++) {
+                console.log("money_" + data[a].id);
+                var elem = document.getElementById("money_" + data[a].id);
+                console.log("elem = " + elem);
+                if (elem) {
+                    $(elem).html(data[a].formatted);
+                }
+            }
+        }
+    },
+    
     BlackDot: {
         dialog: null,
         countInput: null,
@@ -184,4 +240,5 @@ var Squad = {
 
 $(document).ready(function() {
     Squad.BlackDot.init();
+    Squad.Money.init();
 });

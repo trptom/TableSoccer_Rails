@@ -1,3 +1,5 @@
+# coding:utf-8
+
 cs:
   messages:
     base:
@@ -8,6 +10,7 @@ cs:
       add: Přidat
       add_comment: Přidat komentář
       all_types: Všechny typy
+      amount: Částka
       answer_comment: Reagovat na komentář
       are_you_sure: Jste si jistý(á)?
       attendance: Docházka
@@ -261,6 +264,9 @@ cs:
       form_addBlackDot:
         title: Přidání čárky
         submit: Přidat
+      form_recountMoney:
+        title: Rozpočítávání peněz
+        submit: Rozpočítat
       new:
         title: Nový tým
         submit: Vytvořit tým
@@ -279,6 +285,11 @@ cs:
       index:
         title: Seznam týmů
         new: Nový tým
+      squad:
+        money: Prachy
+        money_not_counted: zatím nerozpočteno
+        recount_money: Rozpočítat prachy
+        recount_amount: částka
     
     matches:
       form:
@@ -389,6 +400,12 @@ cs:
       create:
         success: Komentář byl úspěšně přidán.
         
+    currency:
+      name:
+        czk: Kč
+      format:
+        czk: "%{amount} %{currency}"
+  
   date:
     abbr_day_names:
       - Ne

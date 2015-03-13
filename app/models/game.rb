@@ -35,6 +35,16 @@ class Game < ActiveRecord::Base
         .where("matches.season = ?", season)
   }
   
+  scope :by_player_and_time, ->(player_id, from, to) {
+    select("games.*")
+        .from("game_players, games, matches")
+        .where("game_players.game_id = games.id")
+        .where("games.match_id = matches.id")
+        .where("game_players.player_id = ?", player_id)
+        .where("matches.start_date >= ?", from)
+        .where("matches.start_date <= ?", to)
+  }
+  
   def home_game_players
     return game_players.home
   end

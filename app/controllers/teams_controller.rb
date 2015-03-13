@@ -1,3 +1,7 @@
+# coding:utf-8
+
+include TeamsHelper
+
 class TeamsController < ApplicationController
   before_filter :require_admin, :except => [ :matches, :squad ]
   before_filter :require_login, :only => [ :matches, :squad ]
@@ -106,9 +110,36 @@ class TeamsController < ApplicationController
   def squad
     @team = Team.find(params[:id])
     @players = @team.players.all.sort{ |a,b| a.nick_or_name <=> b.nick_or_name }
+    @bounding_matches = get_bounding_matches_of_last_season
     
     respond_to do |format|
       format.html # just render
+    end
+  end
+  
+  # Counts partitial payments for each player in some time range. Amount is
+  # splitted dependently on how many games has player played within that
+  # range.
+  #
+  # ==== Required params
+  # _id_:: id of _Team_ for which money stats should be counted.
+  # _amount_:: amount to be counted between all players, based on their
+  # attendance to matches and games played.
+  # _fromDate_:: start date for recounting (matches before this date will not be
+  # used).
+  # _toDate_:: end date for recounting (matches after this date will not be
+  # used).
+  #
+  # ==== Format
+  # * JSON
+  def recount_money
+    @team = Team.find(params[:id])
+    @money = get_money_array(@team, params[:amount].to_f, params[:fromDate], params[:toDate])
+    
+    respond_to do |format|
+      format.json {
+        render json: @money
+      }
     end
   end
 end

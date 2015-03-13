@@ -1,0 +1,58 @@
+<%= javascript_include_tag asset_path("pages/teams/form_recountMoney.js") %>
+
+<div id="recount_money" class="modal hide fade" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">
+      <%= I18n.t("messages.teams.form_recountMoney.title") %>
+    </h3>
+  </div>
+  <div class="modal-body">
+    <form class="form-horizontal">
+      <div class="control-group">
+        <%= label_tag "", I18n.t("messages.base.from"), :class => "control-label", :for => "recount_money_from" %>
+        <div class="controls">
+          <div class="datetimepicker input-append date" data-behaviour="datetimepicker">
+            <input type="text"
+                   class="form-control"
+                   id="recount_money_from"
+                   value="<%= I18n.l(@bounding_matches != nil ? @bounding_matches[:first].start_date : DateTime.now, :format => :database) %>"
+                   data-format="yyyy-MM-dd hh:mm:ss" />
+            <span class="add-on">
+              <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+              </i>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= label_tag "", I18n.t("messages.base.to"), :class => "control-label", :for => "recount_money_to" %>
+        <div class="controls">
+          <div class="datetimepicker input-append date" data-behaviour="datetimepicker">
+            <input type="text"
+                   class="form-control"
+                   id="recount_money_to"
+                   value="<%= I18n.l(@bounding_matches != nil ? @bounding_matches[:last].start_date : DateTime.now, :format => :database) %>"
+                   data-format="yyyy-MM-dd hh:mm:ss" />
+            <span class="add-on">
+              <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+              </i>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= label_tag "", I18n.t("messages.base.amount"), :class => "control-label", :for => "recount_money_amount" %>
+        <div class="controls">
+          <%= number_field_tag 'recount_money_amount', 1000, :min => 1, :max => 999999 %> <%= I18n.t "messages.currency.name.#{CURRENCY}" %>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <input type="button" id="recount_money_submit"
+           value="<%= I18n.t("messages.teams.form_recountMoney.submit") %>"
+           class="btn btn-primary"
+           onclick="Squad.Money.recount()" />
+  </div>
+</div>

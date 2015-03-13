@@ -1,7 +1,9 @@
 <%= render "form_addBlackDot" %>
+<%= render "form_recountMoney" %>
 
 <input type="hidden" id="pay_beer_url" value="<%= url_for(:controller => 'players', :action => 'pay_beer', :id => 0, :format => 'json') %>" />
 <input type="hidden" id="add_black_dot_url" value="<%= url_for(:controller => 'players', :action => 'add_black_dot', :id => 0, :format => 'json') %>" />
+<input type="hidden" id="recount_money_url" value="<%= url_for(:controller => 'teams', :action => 'recount_money', :id => @team.id, :format => 'json') %>" />
 
 <div class="list">
   <table>
@@ -11,6 +13,7 @@
         <td><%= I18n.t "messages.base.player_name" %></td>
         <% if current_user.has_team(@team) %>
           <td><%= I18n.t "messages.base.dots_and_beers" %></td>
+          <td><%= I18n.t "messages.teams.squad.money" %></td>
         <% end %>
       </tr>
     </thead>
@@ -51,12 +54,17 @@
                 </a>
               <% end %>
             </td>
+            <td>
+              <span id="money_<%= player.id %>">
+                <%= I18n.t "messages.teams.squad.money_not_counted" %>
+              </span>
+            </td>
           <% end %>
         </tr>
         
         <% if current_user.has_team(@team) %>
           <tr id="detail_<%= player.id %>" class="non-displayed">
-            <td colspan="3">
+              <td colspan="<%= current_user.has_team(@team) ? "4" : "1" %>">
               <div class="table-wrapper">
                 <table>
                   <tbody id="detail_body_<%= player.id %>">
@@ -88,5 +96,14 @@
         <% end %>
       <% end %>
     </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="<%= current_user.has_team(@team) ? "4" : "1" %>">
+          <a class="btn btn-primary" href="#recount_money" role="button" data-toggle="modal">
+            <%= I18n.t "messages.teams.squad.recount_money" %>
+          </a>
+        </td>
+      </tr>
+    </tfoot>
   </table>
 </div>
